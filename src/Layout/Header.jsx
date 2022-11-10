@@ -1,62 +1,85 @@
 import React from "react";
-import { SearchOutlined, BellOutlined } from "@ant-design/icons";
-import { Layout, AutoComplete, Input, Avatar, Menu, Dropdown } from "antd";
-import { useNavigate } from "react-router-dom";
+import { DownOutlined } from "@ant-design/icons";
+import { Layout, Menu } from "antd";
+import { useNavigate, useLocation, Link } from "react-router-dom";
 
 export const Header = () => {
   const navigate = useNavigate();
-  const opts = [
+  const location = useLocation();
+  const keyMenu = location.pathname.split("/")[1];
+
+  const items = [
     {
-      title: "Logout",
-      cb: () => {
-        navigate("/login");
-      },
+      label: (
+        <Link to={"/movie"} className="flex items-center space-x-1 text-white">
+          <strong>PHIM</strong>
+          <DownOutlined />
+        </Link>
+      ),
+      key: "movie",
+
+      children: [
+        {
+          label: "Phim đang chiếu",
+        },
+        {
+          label: "Phim sắp chiếu",
+        },
+      ],
+    },
+    {
+      label: (
+        <Link to={"/cinema"} className="flex items-center ">
+          <strong className="text-white">RẠP</strong>
+        </Link>
+      ),
+      key: "cinema",
+
+      // disabled: true,
+    },
+    {
+      label: (
+        <Link to={"/news"} className="flex items-center w-[100px]">
+          <strong className="text-white">TIN TỨC</strong>
+        </Link>
+      ),
+      key: "news",
     },
   ];
-  const menu = (
-    <Menu>
-      {opts.map((item, key) => {
-        return (
-          <Menu.Item key={key} onClick={item.cb}>
-            {item.title}
-          </Menu.Item>
-        );
-      })}
-    </Menu>
-  );
+
   return (
-    <Layout.Header>
+    <Layout.Header style={{ backgroundColor: "#112D4E", color: "white" }}>
       <div className="flex justify-between items-center w-full max-h-[64px]">
-        <div className="flex justify-between items-center w-[400px]">
-          <div className="flex justify-between font-bold text-[32px] text-center  text-[white]  ">
-            IE104
-          </div>
-          <AutoComplete
-            style={{ width: "100%", maxWidth: "250px" }}
-            // filterOption={false}
-            // options={options}
-            // onSearch={(value) => setValue(value)}
-            // onSelect={(_val, option) => {
-            //   push(option.label.props.to);
-            // }}
+        <div className="flex justify-between items-center ">
+          <Link
+            to="/"
+            className="flex justify-between font-bold text-[24px] text-center  text-[#ff2a2a]  "
           >
-            <Input suffix={<SearchOutlined />} placeholder="Quick search" />
-          </AutoComplete>
+            CGV
+          </Link>
+          <Menu
+            style={{
+              backgroundColor: "#112D4E",
+              color: "white",
+              marginLeft: "50px",
+              border: "none",
+            }}
+            onClick={() => {}}
+            selectedKeys={[keyMenu]}
+            mode="horizontal"
+            items={items}
+          />
         </div>
 
-        {/* <Dropdown  placement="bottomRight" arrow>
-      
-    </Dropdown> */}
         <div className="text-[white] max-h-[64px]">
-          <BellOutlined className="text-[32px] mr-4" />
-          <Dropdown overlay={menu} placement="bottomRight" arrow>
-            <Avatar
-              size="large"
-              src={"https://avatars.githubusercontent.com/u/84139131?v=4"}
-            />
-          </Dropdown>
-
-          <span className="ml-2 font-bold"></span>
+          <span
+            className="ml-2 font-bold"
+            onClick={() => {
+              navigate("/login");
+            }}
+          >
+            Đăng nhập
+          </span>
         </div>
       </div>
     </Layout.Header>
