@@ -25,15 +25,15 @@ export const Movie = () => {
       >
         <Breadcrumb.Item className="text-white">Movie</Breadcrumb.Item>
       </Breadcrumb>
-      <div className="pt-[30px] h-[90px] w-[1228px] mx-[134.5px] bg-[#3F72AF] flex justify-between">
+      <div className="pt-[30px] h-[90px] w-[1228px] mx-auto bg-[#3F72AF] flex justify-between">
         <div className="text-[40px] text-white font-semibold">
           Phim đang chiếu
         </div>
         <div className="text-[40px] text-white">Phim sắp chiếu</div>
       </div>
 
-      <div className="h-[5px] w-[1228px] bg-black ml-[134.5px] mb-[15px]"></div>
-      <div className="max-h-[1872px] w-[1228px] bg-white mb-[20px] mx-[134.5px] grid grid-cols-5 gap-x-[67px] gap-y-[20px]">
+      <div className="h-[5px] w-[1228px] mx-auto bg-black mb-[15px]"></div>
+      <div className="max-h-[1872px] w-[1228px] bg-white mb-[20px] mx-auto grid grid-cols-5 gap-x-[67px] gap-y-[20px]">
         {temp.map((item) => {
           return (
             <div className="h-[465px] bg-black">
