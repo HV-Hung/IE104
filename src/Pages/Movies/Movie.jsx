@@ -25,7 +25,7 @@ export const Movie = () => {
       >
         <Breadcrumb.Item className="text-white">Movie</Breadcrumb.Item>
       </Breadcrumb>
-      <div className="pt-[30px] h-[90px] w-[1228px] mx-[134.5px] mt-[24px] bg-[#3F72AF] flex justify-between">
+      <div className="pt-[30px] h-[90px] w-[1228px] mx-[134.5px] bg-[#3F72AF] flex justify-between">
         <div className="text-[40px] text-white font-semibold">
           Phim đang chiếu
         </div>
