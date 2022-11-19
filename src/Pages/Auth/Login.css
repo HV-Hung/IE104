@@ -1,0 +1,35 @@
+@import url('https://fonts.googleapis.com/css2?family=Raleway:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,300&display=swap');
+
+.login-container{
+    background-image: url("https://media.zicxa.com/2900106");
+    background-position: center;
+    background-size: cover;
+    background-repeat: no-repeat;
+}
+
+.login-form-container{
+    font-family: 'Raleway', sans-serif;
+    width: 500px;
+    height: 500px;
+    background: rgba(255, 255, 255, 0.15);
+    border-radius: 10px;
+
+}
+
+h1, [title="EMAIL"], [title="PASSWORD"], p{
+    color: white !important;
+}
+
+.footer p{
+    cursor: pointer;
+}
+
+.footer a{
+    color: white;
+}
+
+.footer a:hover{
+    color: #31d7a9;
+    
+}
+

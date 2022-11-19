@@ -2,6 +2,7 @@ import React from "react";
 import { Home } from "./Pages/Home/Home";
 import { Route, Routes } from "react-router-dom";
 import { Login } from "./Pages/Auth/Login";
+import { Register } from "./Pages/Auth/Register";
 import { NotFound } from "./Pages/NotFound";
 import { Payment } from "./Pages/Payment/Payment";
 import { Cinema } from "./Pages/Cinemas/Cinema";
@@ -29,6 +30,7 @@ const App = () => {
       <Route path="/news" element={<News />} />
       <Route path="/profile" element={<Profile />} />
       <Route path="/login" element={<Login />} />
+      <Route path="/register" element={<Register />} />
       <Route path="*" element={<NotFound />}></Route>
     </Routes>
   );

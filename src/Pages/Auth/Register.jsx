@@ -1,9 +1,9 @@
 import React from "react";
 import { Button, Form, Input } from "antd";
 import { useNavigate } from "react-router-dom";
-import "./Login.css"
+import "./Register.css"
 
-export const Login = () => {
+export const Register = () => {
   let navigate = useNavigate();
 
   const onFinish = (values) => {
@@ -11,9 +11,9 @@ export const Login = () => {
   };
 
   return (
-    <div className="login-container relative w-screen min-h-screen m-0 p-0 bg-[#e5e7eb]">
-      <div className="login-form-container absolute w-[500px] m-auto top-[80px] left-0 right-0 pt-[100px] pb-[100px] pl-[50px] pr-[50px]">
-        <h1 className="text-center text-[40px] mb-[30px] mt-[-40px]">LOGIN</h1>
+    <div className="register-container relative w-screen min-h-screen m-0 p-0 bg-[#e5e7eb]">
+      <div className="register-form-container absolute w-[500px] m-auto top-[80px] left-0 right-0 pt-[100px] pb-[100px] pl-[50px] pr-[50px]">
+        <h1 className="text-center text-[40px] mb-[30px] mt-[-40px]">REGISTER</h1>
 
         <Form
           name="basic"
@@ -39,6 +39,29 @@ export const Login = () => {
             <Input.Password placeholder="Enter your password" />
           </Form.Item>
 
+          <Form.Item
+            name="confirm"
+            label="CONFIRM PASSWORD"
+            dependencies={['password']}
+            hasFeedback
+            rules={[
+            {
+                required: true,
+                message: 'Please confirm your password!',
+            },
+            ({ getFieldValue }) => ({
+                validator(_, value) {
+                if (!value || getFieldValue('password') === value) {
+                    return Promise.resolve();
+                }
+                return Promise.reject(new Error('The two passwords that you entered do not match!'));
+                },
+            }),
+            ]}
+            >
+                <Input.Password placeholder="Enter your password" />
+          </Form.Item>
+
           <Form.Item wrapperCol={{ offset: 0, span: 18 }}>
             <Button
               id="login"
@@ -46,14 +69,8 @@ export const Login = () => {
               htmlType="submit"
               
             >
-              Sign In
+              Sign Up
             </Button>
-          </Form.Item>
-          <Form.Item wrapperCol={{ offset: 0, span: 24 }}>
-            <div className="footer flex justify-between">
-              <p><a href="#">Forgot password</a></p>
-              <p><a href="#">Register</a></p>
-            </div>
           </Form.Item>
         </Form>
       </div>
