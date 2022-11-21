@@ -20,20 +20,24 @@ export const Movie = () => {
     <Layout>
       <Breadcrumb
         style={{
-          marginLeft: "16px",
+          marginTop: "10px",
+          marginBottom: "5px",
+          backgroundColor: "gray",
         }}
       >
-        <Breadcrumb.Item className="text-white">Movie</Breadcrumb.Item>
+        <Breadcrumb.Item className="text-white font-medium ml-[147px]">
+          Trang chủ Phim Đang chiếu
+        </Breadcrumb.Item>
       </Breadcrumb>
-      <div className="pt-[30px] h-[90px] w-[1228px] mx-auto bg-[#3F72AF] flex justify-between">
+      <div className="pt-[20px] h-[90px] w-[1228px] mx-auto flex justify-between">
         <div className="text-[40px] text-white font-semibold">
           Phim đang chiếu
         </div>
         <div className="text-[40px] text-white">Phim sắp chiếu</div>
       </div>
 
-      <div className="h-[5px] w-[1228px] mx-auto bg-black mb-[15px]"></div>
-      <div className="max-h-[1872px] w-[1228px] bg-white mb-[20px] mx-auto grid grid-cols-5 gap-x-[67px] gap-y-[20px]">
+      <div className="h-[2px] w-[1228px] mx-auto bg-white mb-[15px]"></div>
+      <div className="max-h-[1872px] w-[1228px] bg-[#0a1e5e] mb-[20px] mx-auto grid grid-cols-5 gap-x-[67px] gap-y-[20px]">
         {temp.map((item) => {
           return (
             <div className="h-[465px] bg-black">
@@ -42,22 +46,21 @@ export const Movie = () => {
                 src={item.img}
                 alt=""
               />
-              <div className="h-[160px] bg-white">
-                <div className="text-[20px] leading-[26px] font-bold uppercase">
+              <div className="h-[160px] bg-[#0a1e5e]">
+                <div className="text-[20px] text-white leading-[26px] font-bold uppercase">
                   {item.name}
                 </div>
-                <div className="text-[15px] font-semibold">
+                <div className="text-[15px] text-white">
                   Thể loại: {item.topic}
                 </div>
-                <div className="text-[15px] font-semibold">
+                <div className="text-[15px] text-white">
                   Thời lượng: {item.time}
                 </div>
-                <div className="text-[15px] font-semibold">
+                <div className="text-[15px] text-white">
                   Khởi chiếu: {item.start_date}
                 </div>
               </div>
-              <div className="h-[33px] bg-white flex justify-around">
-                <Button type="primary">Like</Button>
+              <div className="h-[33px] bg-[#0a1e5e] flex justify-around">
                 <Button type="primary">Mua vé</Button>
               </div>
             </div>
