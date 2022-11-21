@@ -1,0 +1,76 @@
+.title{
+
+    font-family: 'Inter';
+    font-style: normal;
+    font-weight: 700;
+    font-size: 35px;
+    line-height: 48px;
+    text-align: center;
+    vertical-align: middle;
+
+    background-color: #DBE2FB;
+
+    color: #043aa0;
+}
+
+.logoThanhToan{
+    width: 30px;
+    height: 30px;
+}
+
+.Sale{
+    background-color:yellowgreen;
+    
+}
+
+.NoiDung{
+    color: rgb(255, 255, 255);
+}
+
+.HTTT{
+    background-color: red;
+}
+
+.visa{
+    background-position: 50% 50%;
+    background-size: 100% 100%;
+    width: 37px;
+    height: 37px;
+    margin-right: 7px;
+    margin-top:0;
+    display:inline-block;
+    background-image:url("https://cdn4.iconfinder.com/data/icons/logos-and-brands/512/363_Visa_Credit_Card_logo-512.png");
+}
+
+.Zalo{
+    background-position: 50% 50%;
+    background-size: 100% 100%;
+    width: 37px;
+    height: 37px;
+    margin-right: 7px;
+    margin-top:0;
+    display:inline-block;
+    background-image:url("https://play-lh.googleusercontent.com/yHmIm7FYKe_dW2WHTwWizp2p_gt7_ctdpCUevX654E1dsj5c9McWO03k_S6PPLG_DNz7");
+}
+
+.ATM{
+    background-position: 50% 50%;
+    background-size: 100% 100%;
+    width: 37px;
+    height: 37px;
+    margin-right: 7px;
+    margin-top:0;
+    display:inline-block;
+    background-image:url("https://cdn-icons-png.flaticon.com/512/60/60378.png");
+}
+
+.MoMo{
+    background-position: 50% 50%;
+    background-size: 100% 100%;
+    width: 37px;
+    height: 37px;
+    margin-right: 7px;
+    margin-top:0;
+    display:inline-block;
+    background-image:url("https://business.momo.vn/assets/landingpage/img/931b119cf710fb54746d5be0e258ac89-logo-momo.png");
+}
