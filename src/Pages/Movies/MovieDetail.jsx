@@ -55,14 +55,15 @@ export const MovieDetail = () => {
               Phân loại: Phim dành cho mọi đối tượng
             </div>
           </div>
-          <div className="flex flex-start mt-[83px]">
+          <div className="h-[50px] w-[50px] bg-green-500 mt-[10px] text-center text-[30px] font-bold text-white">P</div>
+          <div className="flex flex-start mt-[23px]">
             <Button type="primary mr-[20px]">Like</Button>
             <Button type="primary">Mua vé</Button>
           </div>
         </div>
       </div>
       <div className="text-center text-white text-[20px] py-[10px] font-bold">CHI TIẾT</div>
-      <div className="max-h-[100px]  w-[1228px] mx-auto text-[15px] text-white mb-[20px]">
+      <div className="max-h-[100px]  w-[1228px] mx-auto text-[15px] text-white mb-[20px] leading-[25px]">
         Khỉ Con luôn khát khao được chu du năm châu bốn bể và khám phá thế giới
         rộng lớn nhiệm màu. Nhưng vì không muốn con trai đối mặt với bất kỳ nguy
         hiểm nào, mẹ Khỉ Con không cho phép cậu thực hiện ước mơ đó. Một ngày
