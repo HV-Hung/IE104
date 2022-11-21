@@ -1,6 +1,7 @@
 import { Breadcrumb, Button } from "antd";
 import React from "react";
 import { Layout } from "../../Layout/Layout";
+import { useNavigate } from "react-router-dom";
 
 const temp_item = {
   name: "Khỉ con lon ton thế giới",
@@ -16,6 +17,7 @@ for (let i = 0; i < 12; ++i) {
 }
 
 export const Movie = () => {
+  const navigate = useNavigate();
   return (
     <Layout>
       <Breadcrumb
@@ -40,7 +42,12 @@ export const Movie = () => {
       <div className="max-h-[1872px] w-[1228px] bg-[#0a1e5e] mb-[20px] mx-auto grid grid-cols-5 gap-x-[67px] gap-y-[20px]">
         {temp.map((item) => {
           return (
-            <div className="h-[465px] bg-black">
+            <div
+              className="h-[465px] bg-black"
+              onClick={() => {
+                navigate(`/movie/${"1"}`);
+              }}
+            >
               <img
                 className="h-[260px] w-[179.26px] block mx-auto my-[6px]"
                 src={item.img}
