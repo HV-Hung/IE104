@@ -1,4 +1,4 @@
-.title{
+.title {
 
     font-family: 'Inter';
     font-style: normal;
@@ -11,66 +11,115 @@
     background-color: #DBE2FB;
 
     color: #043aa0;
+
 }
 
-.logoThanhToan{
-    width: 30px;
-    height: 30px;
+.logoThanhToan {
+    background-position: 50% 50%;
+    background-size: 100% 100%;
+    width: 37px;
+    height: 37px;
+    margin-right: 7px;
+    margin-top: 10px;
+    display: inline-block;
 }
 
-.Sale{
-    background-color:yellowgreen;
-    
+.Sale {
+    background-color: yellowgreen;
+    position: absolute;
+    width: 432px;
+    height: 71px;
+    left: 226px;
+    top: 207px;
+
 }
 
-.NoiDung{
+.NoiDung {
     color: rgb(255, 255, 255);
 }
 
-.HTTT{
-    background-color: red;
+.HTTT {
+    background-color: rgb(48, 190, 48);
+    position: absolute;
+    width: 432px;
+    height: 250px;
+    left: 226px;
+    top: 300px;
 }
 
-.visa{
-    background-position: 50% 50%;
-    background-size: 100% 100%;
-    width: 37px;
-    height: 37px;
-    margin-right: 7px;
-    margin-top:0;
-    display:inline-block;
-    background-image:url("https://cdn4.iconfinder.com/data/icons/logos-and-brands/512/363_Visa_Credit_Card_logo-512.png");
+.checkbox {
+    position: absolute;
+    left: 226px;
+    top: 560px;
+
 }
 
-.Zalo{
-    background-position: 50% 50%;
-    background-size: 100% 100%;
-    width: 37px;
-    height: 37px;
-    margin-right: 7px;
-    margin-top:0;
-    display:inline-block;
-    background-image:url("https://play-lh.googleusercontent.com/yHmIm7FYKe_dW2WHTwWizp2p_gt7_ctdpCUevX654E1dsj5c9McWO03k_S6PPLG_DNz7");
+.visa {
+
+    background-image: url("https://cdn4.iconfinder.com/data/icons/logos-and-brands/512/363_Visa_Credit_Card_logo-512.png");
 }
 
-.ATM{
-    background-position: 50% 50%;
-    background-size: 100% 100%;
-    width: 37px;
-    height: 37px;
-    margin-right: 7px;
-    margin-top:0;
-    display:inline-block;
-    background-image:url("https://cdn-icons-png.flaticon.com/512/60/60378.png");
+.Zalo {
+
+    background-image: url("https://play-lh.googleusercontent.com/yHmIm7FYKe_dW2WHTwWizp2p_gt7_ctdpCUevX654E1dsj5c9McWO03k_S6PPLG_DNz7");
 }
 
-.MoMo{
-    background-position: 50% 50%;
-    background-size: 100% 100%;
-    width: 37px;
-    height: 37px;
-    margin-right: 7px;
-    margin-top:0;
-    display:inline-block;
-    background-image:url("https://business.momo.vn/assets/landingpage/img/931b119cf710fb54746d5be0e258ac89-logo-momo.png");
+.ATM {
+
+    background-image: url("https://cdn-icons-png.flaticon.com/512/60/60378.png");
+}
+
+.MoMo {
+
+    background-image: url("https://business.momo.vn/assets/landingpage/img/931b119cf710fb54746d5be0e258ac89-logo-momo.png");
+}
+
+.money {
+    border: 2px dotted red;
+}
+
+.TongCong {
+    position: absolute;
+    width: 246px;
+    height: 70px;
+    left: 1400px;
+    top: 207px;
+    border: 2px dotted red;
+}
+
+.TienKhuyeMai {
+    position: absolute;
+    width: 246px;
+    height: 70px;
+    left: 1400px;
+    top: 307px;
+    border: 2px dotted red;
+}
+
+.TongTien {
+    position: absolute;
+    width: 246px;
+    height: 70px;
+    left: 1400px;
+    top: 407px;
+    border: 2px dotted red;
+}
+
+.TieuDeH2 {
+    color: red;
+    font-size: 20px;
+    text-align: center;
+}
+
+.footer {
+    box-sizing: border-box;
+
+    position: absolute;
+    width: 100%;
+    height: 213px;
+    left: 0px;
+    bottom: 130px;
+    border-radius: 40px;
+    background: #112D4E;
+    border: 1px solid #000000;
 }
