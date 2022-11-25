@@ -19,12 +19,12 @@ export const Payment = () => {
         <div className="Sale ">
           <h2 className="TieuDeH2 mb-4 bg-pink-300 rounded-full h-15 w-60 align-middle">⭐Mã giảm giá</h2>
           <input type="text" className="text-2xl w-96 align-middle text-black mt-4"></input>
-          <button className="bg-yellow-300 w-20 h-8 ml-8 align-middle rounded-full">Nhập</button>
+          <button className="bg-yellow-300 w-20 h-8 ml-8 mt-4 align-middle rounded-full">Nhập</button>
         </div>
 
         <div className="HTTT">
           <h2 className="TieuDeH2 bg-pink-300 rounded-full mb-4 h-[50px] align-middle">Hình thức thanh toán</h2>
-          <div className="bg-amber-600 h-[300px]">
+          <div className="bg-amber-600 h-[300px] text-[15px]">
             <dl>
               <dt>
                 <input name="Pay" type="radio" value="visa" />
@@ -77,7 +77,7 @@ export const Payment = () => {
         </div>
 
 
-        <div className="h-[270px] bg-lime-600 col-start-1 col-end-3 row-start-4 row-end-5 self-start footer">
+        <div className=" text-[15px] h-[270px] bg-lime-600 col-start-1 col-end-3 row-start-4 row-end-5 self-start footer rounded-3xl">
           {/* <div className="format-bg-top"></div> */}
           <button className="h-[100px] w-[100px] bg-amber-900  rounded-[20px] col-start-1 col-end-2 row-start-1 row-end-6 justify-self-center self-center">PREVUOUS</button>
 
