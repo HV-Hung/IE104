@@ -2,7 +2,167 @@ import { Breadcrumb, Button } from "antd";
 import React from "react";
 import { Layout } from "../../Layout/Layout";
 
+
+
+const Dates = [];
+for (let i = 0; i <= 2; i++) {
+  const toDate = new Date();
+  const temp = new Date();
+  temp.setDate(toDate.getDate() + i);
+  const temp2 = (temp.getDay() !== 0 ? "T" + (1 + temp.getDay()) : "CN") + ", " + temp.getDate() + "/" + temp.getMonth();
+  Dates.push(
+    {
+      time: temp2,
+      id: i + 1
+    }
+  );
+}
+
+
+
+const branch = [
+  {
+    name: "Hà Nội 1",
+    id: 1,
+    idCity: 1,
+    idDate: 1,
+    time: ['9h30 AM', '10h AM', '11h30 AM', '1h PM']
+  },
+
+  {
+    name: "Hà Nội 1",
+    id: 2,
+    idCity: 1,
+    idDate: 2,
+    time: ['9h AM', '10h30 AM', '11h AM', '1h30 PM']
+  },
+
+  {
+    name: "Hà Nội 1",
+    id: 3,
+    idCity: 1,
+    idDate: 3,
+    time: ['11h15 AM', '4h30 PM']
+  },
+
+  {
+    name: "Hà Nội 2",
+    id: 4,
+    idCity: 1,
+    idDate: 1,
+    time: ['9h30 AM', '10h AM', '11h30 AM', '1h PM']
+  },
+
+  {
+    name: "Hà Nội 2",
+    id: 5,
+    idCity: 1,
+    idDate: 2,
+    time: ['9h AM', '10h30 AM', '11h AM', '1h30 PM']
+  },
+
+  {
+    name: "Hà Nội 2",
+    id: 6,
+    idCity: 1,
+    idDate: 3,
+    time: ['11h15 AM', '4h30 PM']
+  },
+
+  {
+    name: "HCM 1",
+    id: 7,
+    idCity: 2,
+    idDate: 1,
+    time: ['9h30 AM', '10h AM', '11h30 AM', '1h PM']
+  },
+
+  {
+    name: "HCM 1",
+    id: 8,
+    idCity: 2,
+    idDate: 2,
+    time: ['9h AM', '10h30 AM', '11h AM', '1h30 PM']
+  },
+
+  {
+    name: "HCM 1",
+    id: 9,
+    idCity: 2,
+    idDate: 3,
+    time: ['11h15 AM', '4h30 PM']
+  },
+
+  {
+    name: "HCM 2",
+    id: 10,
+    idCity: 2,
+    idDate: 1,
+    time: ['9h30 AM', '10h AM', '11h30 AM', '1h PM']
+  },
+
+  {
+    name: "HCM 2",
+    id: 11,
+    idCity: 2,
+    idDate: 2,
+    time: ['9h AM', '10h30 AM', '11h AM', '1h30 PM']
+  },
+
+  {
+    name: "HCM 2",
+    id: 12,
+    idCity: 2,
+    idDate: 3,
+    time: ['11h15 AM', '4h30 PM']
+  },
+
+]
+
+
 export const MovieDetail = () => {
+
+
+  const City = [
+    { name: "Hà Nội", id: 1 },
+    { name: "Hồ Chí Minh", id: 2 },
+    { name: "Cần Thơ", id: 3 },
+  ];
+
+  const [getIdDate, setGetIdDate] = React.useState(1);
+  const [getIdCity, setGetIdCity] = React.useState(1);
+
+  const [ShowTime, setShowTime] = React.useState([
+    {
+      name: "Hà Nội 1",
+      id: 1,
+      idCity: 1,
+      idDate: 1,
+      time: ['9h30 AM', '10h AM', '11h30 AM', '1h PM']
+    },
+    {
+      name: "Hà Nội 2",
+      id: 4,
+      idCity: 1,
+      idDate: 1,
+      time: ['9h30 AM', '10h AM', '11h30 AM', '1h PM']
+    },
+  ])
+
+  function getDate(id) {
+    setGetIdDate(id);
+  }
+
+
+
+  function getShowtime(id) {
+    setGetIdCity(id);
+    const newList = branch.filter(function (item) {
+      return item.idCity === getIdCity && item.idDate === getIdDate;
+    });
+    setShowTime([...newList]);
+  }
+
   return (
     <Layout>
       <Breadcrumb
@@ -72,6 +232,52 @@ export const MovieDetail = () => {
         giới chỉ trong vòng 80 ngày. Một cách tình cờ, Khỉ Con trở thành người
         bạn đồng hành của Ếch Bảnh, cả hai đã cùng bắt đầu một cuộc phiêu lưu
         đầy bất ngờ nhưng cũng không kém phần thú vị.
+      </div>
+
+      <div className="p-[24px] min-h-[360px] bg-white my-[50px] mx-[200px]">
+        <div className="border-y-4 border-black py-5">
+          {Dates.map((item) => (
+            <button
+              onClick={() => getDate(item.id)}
+              type="button"
+              key={item.id}
+              className="ml-5 border bg-sky-700 hover:bg-sky-300 text-white h-[50px] w-[100px] rounded-xl"
+            >
+              {item.time}
+            </button>
+
+          ))}
+        </div>
+
+        <div className="py-5">
+          {City.map((item) => (
+            <button
+              onClick={() => getShowtime(item.id)}
+              type="button"
+              key={item.id}
+              className="ml-5 border bg-sky-700 hover:bg-sky-300 text-white h-[50px] w-[100px] rounded-xl"
+            >
+              {item.name}
+            </button>
+
+          ))}
+        </div>
+        <div>
+          {ShowTime.map((item) => (
+            <div className="border-t-2 border-slate-600 py-5 mx-[50px]">
+              <div className="text-[30px] mb-[20px]">{item.name}</div>
+              {item.time.map((temp, index) => (
+                <button
+                  type="button"
+                  key={index}
+                  className="ml-5 border bg-gray-700 hover:bg-sky-300 text-white h-[50px] w-[100px]"
+                >
+                  {temp}
+                </button>
+              ))}
+            </div>
+          ))}
+        </div>
       </div>
     </Layout>
   );
