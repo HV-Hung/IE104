@@ -12,7 +12,7 @@ const temp_item = {
 };
 
 const temp = [];
-for (let i = 0; i < 12; ++i) {
+for (let i = 0; i < 15; ++i) {
   temp.push(temp_item);
 }
 
@@ -40,31 +40,32 @@ export const Movie = () => {
 
       <div className="h-[2px] w-[1228px] mx-auto bg-white mb-[15px]"></div>
       <div className="max-h-[1872px] w-[1228px] bg-[#0a1e5e] mb-[20px] mx-auto grid grid-cols-5 gap-x-[67px] gap-y-[20px]">
-        {temp.map((item) => {
+        {temp.map((item, index) => {
           return (
-            <div
-              className="h-[465px] bg-black"
-              onClick={() => {
-                navigate(`/movie/${"1"}`);
-              }}
-            >
-              <img
-                className="h-[260px] w-[179.26px] block mx-auto my-[6px]"
-                src={item.img}
-                alt=""
-              />
-              <div className="h-[160px] bg-[#0a1e5e]">
-                <div className="text-[20px] text-white leading-[26px] font-bold uppercase">
-                  {item.name}
-                </div>
-                <div className="text-[15px] text-white">
-                  Thể loại: {item.topic}
-                </div>
-                <div className="text-[15px] text-white">
-                  Thời lượng: {item.time}
-                </div>
-                <div className="text-[15px] text-white">
-                  Khởi chiếu: {item.start_date}
+            <div className="h-[465px]">
+              <div
+                onClick={() => {
+                  navigate(`/movie/${index}`);
+                }}
+              >
+                <img
+                  className="w-[192px] block mx-auto bg-black p-[6px]"
+                  src={item.img}
+                  alt=""
+                />
+                <div className="h-[160px] bg-[#0a1e5e]">
+                  <div className="text-[20px] text-white leading-[26px] font-bold uppercase">
+                    {item.name}
+                  </div>
+                  <div className="text-[15px] text-white">
+                    Thể loại: {item.topic}
+                  </div>
+                  <div className="text-[15px] text-white">
+                    Thời lượng: {item.time}
+                  </div>
+                  <div className="text-[15px] text-white">
+                    Khởi chiếu: {item.start_date}
+                  </div>
                 </div>
               </div>
               <div className="h-[33px] bg-[#0a1e5e] flex justify-around">
