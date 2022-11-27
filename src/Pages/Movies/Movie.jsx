@@ -3,21 +3,55 @@ import React from "react";
 import { Layout } from "../../Layout/Layout";
 import { useNavigate } from "react-router-dom";
 
-const temp_item = {
-  name: "Khỉ con lon ton thế giới",
-  img: "https://www.cgv.vn/media/catalog/product/cache/1/image/c5f0a1eff4c394a251036189ccddaacd/k/c/kclttg_-_main_poster_web_.jpg",
-  topic: "Hài hước",
-  time: "90 phút",
-  start_date: "01/09/2022",
-};
-
-const temp = [];
-for (let i = 0; i < 15; ++i) {
-  temp.push(temp_item);
-}
+const temp_item = [
+  {
+    id: "6382cdcf8419a4142a6f6417",
+    name: "Khỉ con lon ton thế giới",
+    img: "https://www.cgv.vn/media/catalog/product/cache/1/image/c5f0a1eff4c394a251036189ccddaacd/k/c/kclttg_-_main_poster_web_.jpg",
+    topic: "Hài hước",
+    time: "90 phút",
+    start_date: "01/09/2022",
+  },
+  {
+    id: "1",
+    name: "Khỉ con lon ton thế giới",
+    img: "https://www.cgv.vn/media/catalog/product/cache/1/image/c5f0a1eff4c394a251036189ccddaacd/k/c/kclttg_-_main_poster_web_.jpg",
+    topic: "Hài hước",
+    time: "90 phút",
+    start_date: "01/09/2022",
+  },
+  {
+    id: "2",
+    name: "Khỉ con lon ton thế giới",
+    img: "https://www.cgv.vn/media/catalog/product/cache/1/image/c5f0a1eff4c394a251036189ccddaacd/k/c/kclttg_-_main_poster_web_.jpg",
+    topic: "Hài hước",
+    time: "90 phút",
+    start_date: "01/09/2022",
+  },
+  {
+    id: "3",
+    name: "Khỉ con lon ton thế giới",
+    img: "https://www.cgv.vn/media/catalog/product/cache/1/image/c5f0a1eff4c394a251036189ccddaacd/k/c/kclttg_-_main_poster_web_.jpg",
+    topic: "Hài hước",
+    time: "90 phút",
+    start_date: "01/09/2022",
+  },
+];
 
 export const Movie = () => {
   const navigate = useNavigate();
+  const [movies, setMovies] = React.useState(undefined);
+
+  React.useEffect(() => {
+    fetch("http://localhost:3500/movie")
+      .then((data) => {
+        return data.json();
+      })
+      .then((data) => {
+        setMovies(data);
+        console.log(data);
+      });
+  }, []);
   return (
     <Layout>
       <Breadcrumb
@@ -40,12 +74,12 @@ export const Movie = () => {
 
       <div className="h-[2px] w-[1228px] mx-auto bg-white mb-[15px]"></div>
       <div className="max-h-[1872px] w-[1228px] bg-[#0a1e5e] mb-[20px] mx-auto grid grid-cols-5 gap-x-[67px] gap-y-[20px]">
-        {temp.map((item, index) => {
+        {temp_item.map((item, index) => {
           return (
-            <div className="h-[465px]">
+            <div key={index} className="h-[465px]">
               <div
                 onClick={() => {
-                  navigate(`/movie/${index}`);
+                  navigate(`/movie/${item.id}`);
                 }}
               >
                 <img

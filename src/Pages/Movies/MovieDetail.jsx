@@ -1,8 +1,21 @@
 import { Breadcrumb, Button } from "antd";
 import React from "react";
 import { Layout } from "../../Layout/Layout";
+import { useParams } from "react-router-dom";
 
 export const MovieDetail = () => {
+  const param = useParams();
+  const [movie, setMovie] = React.useState(undefined);
+  const id = param.id;
+  React.useEffect(() => {
+    fetch("http://localhost:3500/movie/" + id)
+      .then((data) => {
+        return data.json();
+      })
+      .then((data) => {
+        setMovie(data);
+      });
+  });
   return (
     <Layout>
       <Breadcrumb
@@ -25,21 +38,17 @@ export const MovieDetail = () => {
         <div className="h-[2px] bg-white mb-[15px]"></div>
 
         <div className="max-h-[900px] flex flex-start">
-          <img
-            className="max-h-[360px] mr-[30px]"
-            src="https://www.cgv.vn/media/catalog/product/cache/1/image/c5f0a1eff4c394a251036189ccddaacd/k/c/kclttg_-_main_poster_web_.jpg"
-            alt=""
-          />
+          <img className="max-h-[360px] mr-[30px]" src={movie?.image} alt="" />
           <div className="h-[360px] flex-1">
             <div className="text-[24px] py-[10px] font-semibold border-b-2 border-gray-500 text-white">
-              KHỈ CON LON TON THẾ GIỚI
+              {movie?.name}
             </div>
             <div className="mt-[10px]">
               <div className="text-[15px] leading-[25px] text-white">
-                Đạo diễn: Samuel Tourneux
+                Đạo diễn: {movie?.director}
               </div>
               <div className="text-[15px] leading-[25px] text-white">
-                Diễn viên: quần chúng nhân dân
+                Diễn viên: {movie?.actors}
               </div>
               <div className="text-[15px] leading-[25px] text-white">
                 Thể loại: hoạt hình
@@ -61,7 +70,9 @@ export const MovieDetail = () => {
               P
             </div>
             <div className="flex flex-start mt-[23px]">
-              <Button type="primary" className="mr-[10px]">Xem Trailer</Button>
+              <Button type="primary" className="mr-[10px]">
+                Xem Trailer
+              </Button>
               <Button type="primary">Mua vé</Button>
             </div>
           </div>
