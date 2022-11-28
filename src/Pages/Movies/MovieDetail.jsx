@@ -129,8 +129,10 @@ export const MovieDetail = () => {
     { name: "Cần Thơ", id: 3 },
   ];
 
-  const [getIdDate, setGetIdDate] = React.useState(1);
-  const [getIdCity, setGetIdCity] = React.useState(1);
+  // const [getIdDate, setGetIdDate] = React.useState(1);
+  // const [getIdCity, setGetIdCity] = React.useState(1);
+  let getIdCity = 1;
+  let getIdDate = 1;
 
   const [ShowTime, setShowTime] = React.useState([
     {
@@ -149,14 +151,22 @@ export const MovieDetail = () => {
     },
   ])
 
-  function getDate(id) {
-    setGetIdDate(id);
+  const getDate = (id) => {
+    getIdCity = 1;
+    getIdDate = id;
+    console.log('getDate ' + id);
+    loadShowtime();
   }
 
 
 
-  function getShowtime(id) {
-    setGetIdCity(id);
+  const getShowtime = (id) => {
+    getIdCity = id;
+    console.log('getShowTime ' + id);
+    loadShowtime();
+  }
+
+  const loadShowtime = () => {
     const newList = branch.filter(function (item) {
       return item.idCity === getIdCity && item.idDate === getIdDate;
     });
@@ -236,6 +246,7 @@ export const MovieDetail = () => {
 
       <div className="p-[24px] min-h-[360px] bg-white my-[50px] mx-[200px]">
         <div className="border-y-4 border-black py-5">
+
           {Dates.map((item) => (
             <button
               onClick={() => getDate(item.id)}
@@ -250,6 +261,7 @@ export const MovieDetail = () => {
         </div>
 
         <div className="py-5">
+
           {City.map((item) => (
             <button
               onClick={() => getShowtime(item.id)}
@@ -263,7 +275,9 @@ export const MovieDetail = () => {
           ))}
         </div>
         <div>
+
           {ShowTime.map((item) => (
+
             <div className="border-t-2 border-slate-600 py-5 mx-[50px]">
               <div className="text-[30px] mb-[20px]">{item.name}</div>
               {item.time.map((temp, index) => (
