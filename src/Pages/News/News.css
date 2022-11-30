@@ -1,3 +1,15 @@
-.active {
+.tab_item {
+    color: #fff;
+}
+
+.tab_item.active {
     color: #d4dd29;
+}
+
+.tab_content {
+    display: none;
+}
+
+.tab_content.active {
+    display: grid;
 }
