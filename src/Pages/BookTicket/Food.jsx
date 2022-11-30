@@ -5,13 +5,13 @@ import Ticket from "./Ticket";
 
 //bookticket/food
 
-const food_item = [
+const foodItems = [
   {
     id: 1,
     image:
       "https://www.tiendauroi.com/wp-content/uploads/2019/06/ca44264d97633d40d8eaea153208a50d54362f7c.jpeg",
     title: "Bắp nước size nhỏ",
-    contents: ["Không thể đổi vị", "nhiều vị lựa chọn"],
+    contents: ["Không thể đổi vị", "Nhiều vị lựa chọn", "Mua 3 tặng 1"],
     price: "100.000vnd",
     quantity: 0,
   },
@@ -19,7 +19,8 @@ const food_item = [
     id: 2,
     image:
       "https://www.tiendauroi.com/wp-content/uploads/2019/06/ca44264d97633d40d8eaea153208a50d54362f7c.jpeg",
-    contents: "Bắp nước size lớn",
+    title: "Bắp nước size lớn",
+    contents: ["Không thể đổi vị", "Nhiều vị lựa chọn", "Mua 3 tặng 1"],
     price: "200.000vnd",
     quantity: 0,
   },
@@ -85,8 +86,10 @@ class Counter extends React.Component {
 
 class FoodItem extends React.Component {
   render() {
+    const { id, image, title, contents, price, quantity } = this.props.foodItem;
     return (
       <div
+        key={id}
         className="p-[12px] min-h-[100px] bg-#e23f m-[12px]"
         style={{ display: "flex" }}
       >
@@ -97,17 +100,17 @@ class FoodItem extends React.Component {
             maxWidth: "200px",
             marginRight: "20px",
           }}
-          src="https://www.tiendauroi.com/wp-content/uploads/2019/06/ca44264d97633d40d8eaea153208a50d54362f7c.jpeg"
+          src={image}
           alt="day la mot buc anh thuc an"
         />
         <div style={{ flex: 1 }}>
-          <h2 style={{ fontSize: "1.5rem" }}>Ten combo</h2>
+          <h2 style={{ fontSize: "1.5rem" }}>{title}</h2>
           <ul>
-            <li>content</li>
-            <li>content</li>
-            <li>content</li>
+            {contents.map((content) => (
+              <li style={{ marginLeft: "20px" }}>{content}</li>
+            ))}
           </ul>
-          <h3 style={{ color: "red", fontSize: "1.5rem" }}>Giá: 100.000đ</h3>
+          <h3 style={{ color: "red", fontSize: "1.5rem" }}>{price}</h3>
           <Counter></Counter>
         </div>
       </div>
@@ -133,15 +136,11 @@ export const Food = () => {
             margin: "auto",
           }}
         >
-          <FoodItem></FoodItem>
-          <FoodItem></FoodItem>
-          <FoodItem></FoodItem>
-          <FoodItem></FoodItem>
-          <FoodItem></FoodItem>
-          <FoodItem></FoodItem>
-          <FoodItem></FoodItem>
-          <FoodItem></FoodItem>
-          <script></script>
+          {/* {foodItems.map((item) => (
+            //console.log(item.id)
+            <FoodItem foodItem={foodItems[0]}></FoodItem>
+          ))} */}
+          
         </div>
         <Ticket></Ticket>
       </div>
