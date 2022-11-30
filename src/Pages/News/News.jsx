@@ -145,7 +145,7 @@ export const News = () => {
       </Breadcrumb>
       <div className="p-[24px] min-h-[360px] bg-white m-[24px]">News</div>
       <div className="w-[1228px] mx-auto flex justify-center items-center cursor-pointer">
-        <div className="tab-item text-white text-[32px] text-center font-semibold mx-[16px] my-[32px] hover:text-[#d4dd29] hover:cursor-pointer">TIN TỨC</div>
+        <div className="tab-item active text-white text-[32px] text-center font-semibold mx-[16px] my-[32px] hover:text-[#d4dd29] hover:cursor-pointer">TIN TỨC</div>
         <div className="border-l-[3px] border-solid border-[#fff] h-[32px]"></div>
         <div className="tab-item text-white text-[32px] text-center font-semibold mx-[16px] my-[32px] hover:text-[#d4dd29] hover:cursor-pointer">ƯU ĐÃI</div>
       </div>
