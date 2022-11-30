@@ -145,11 +145,11 @@ export const News = () => {
       </Breadcrumb>
       <div className="p-[24px] min-h-[360px] bg-white m-[24px]">News</div>
       <div className="w-[1228px] mx-auto flex justify-center items-center cursor-pointer">
-        <div className="tab_item active text-[32px] text-center font-semibold mx-[16px] my-[32px] hover:text-[#d4dd29] hover:cursor-pointer">TIN TỨC</div>
+        <div className="tab_item active text-[32px] text-center font-semibold mx-[16px] my-[32px] hover:text-[#d4dd29] hover:cursor-pointer">KHUYẾN MÃI</div>
         <div className="border-l-[3px] border-solid border-[#fff] h-[32px]"></div>
-        <div className="tab_item text-[32px] text-center font-semibold mx-[16px] my-[32px] hover:text-[#d4dd29] hover:cursor-pointer">ƯU ĐÃI</div>
+        <div className="tab_item text-[32px] text-center font-semibold mx-[16px] my-[32px] hover:text-[#d4dd29] hover:cursor-pointer">TIN TỨC</div>
       </div>
-      <div className="tab_content active max-h-[1872px] w-[1228px] mx-auto grid-cols-4 gap-x-[20px] gap-y-[20px]">
+      <div className="tab_content active max-h-[1872px] w-[1228px] mx-auto grid grid-cols-4 gap-x-[20px] gap-y-[20px]">
         {news_list.map((item) => {
           return (
           <div className="w-full h-auto cursor-pointer">
@@ -167,7 +167,7 @@ export const News = () => {
           )
         })}
       </div>
-      <div className="tab_content max-h-[1872px] w-[1228px] mx-auto grid-cols-4 gap-y-[25px]">
+      <div className="tab_content max-h-[1872px] w-[1228px] mx-auto grid grid-cols-4 gap-y-[25px]">
         {preferential_list.map((item) => {
           return (
           <div className="w-full h-auto cursor-pointer">
@@ -189,6 +189,7 @@ export const News = () => {
   );
 };
 
+// handle javascript
 const $ = document.querySelector.bind(document);
 const $$ = document.querySelectorAll.bind(document);
 
@@ -209,6 +210,8 @@ const tabItem = tabs.forEach((tab, index) => {
     content.classList.add('active');
   }
 });
+
+
 
 
 
