@@ -9,7 +9,7 @@ for (let i = 0; i <= 2; i++) {
   const toDate = new Date();
   const temp = new Date();
   temp.setDate(toDate.getDate() + i);
-  const temp2 = (temp.getDay() !== 0 ? "T" + (1 + temp.getDay()) : "CN") + ", " + temp.getDate() + "/" + temp.getMonth();
+  const temp2 = (temp.getDay() !== 0 ? "T" + (1 + temp.getDay()) : "CN") + ", " + temp.getDate() + "/" + (temp.getMonth() + 1);
   Dates.push(
     {
       time: temp2,
