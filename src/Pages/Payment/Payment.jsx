@@ -6,7 +6,15 @@ import "../Payment/Payment.css"
 
 export const Payment = () => {
 
+  let payments = "Hi";
+  const pay = () => {
+    if (payments !== "Hi")
+      alert(payments);
+    else
+      alert("Vui lòng chọn hình thức thanh toán");
+  }
 
+  const onOptionChange = (e) => { payments = e.target.value; }
   return (
     <Layout>
       <br></br>
@@ -27,28 +35,15 @@ export const Payment = () => {
           <div className="bg-amber-600 h-[300px] text-[15px]">
             <dl>
               <dt>
-                <input name="Pay" type="radio" value="visa" />
+                <input name="Pay" type="radio" value="Visa" id="visa" onChange={onOptionChange} />
                 <label for="visa-radio">
                   <span className="visa logoThanhToan"></span>
                   <span>Thẻ quốc tế</span>
                 </label>
               </dt>
+
               <dt>
-                <input name="Pay" type="radio" value="Zalo" />
-                <label for="Zalo-radio">
-                  <span className="Zalo logoThanhToan"></span>
-                  <span>ZaloPay</span>
-                </label>
-              </dt>
-              <dt>
-                <input name="Pay" type="radio" value="ATM" />
-                <label for="ATM-radio">
-                  <span className="ATM logoThanhToan"></span>
-                  <span>ATM card</span>
-                </label>
-              </dt>
-              <dt>
-                <input name="Pay" type="radio" value="MoMo" />
+                <input name="Pay" type="radio" value="MoMo" id="momo" onChange={onOptionChange} />
                 <label for="MoMo-radio">
                   <span className="MoMo logoThanhToan"></span>
                   <span>Ví MoMo</span>
@@ -108,7 +103,7 @@ export const Payment = () => {
           <div className="col-[7_/_8] row-[3_/_4] justify-self-start self-center text-center">350.000đ</div>
 
 
-          <button className="h-[100px] w-[100px] bg-orange-400 rounded-[20px] col-start-8 col-end-9 row-start-1 row-end-5 justify-self-center self-center">PAYMENT</button>
+          <button className="h-[100px] w-[100px] bg-orange-400 rounded-[20px] col-start-8 col-end-9 row-start-1 row-end-5 justify-self-center self-center" onClick={pay}>PAYMENT</button>
           {/* <div className="format-bg-seatmap-bottom"></div> */}
         </div>
       </main>
