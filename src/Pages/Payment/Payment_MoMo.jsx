@@ -5,7 +5,7 @@ export const Payment_MoMo = () => {
 
     return (
 
-        <div className="absolute w-[901px] h-[625px] left-[25%] top-[100px] bg-neutral-300 rounded-2xl ">
+        <div className="absolute w-[901px] h-[625px] left-[25%] top-[100px] bg-white-300 rounded-2xl shadow-inner ">
             <div className=" w-[35%] h-[100%] bg-pink-500 rounded-l-2xl">
                 <div className=" text-3xl text-center border-b-2 border-dashed p-4">
                     <div className=" text-left">Nhà cung cấp</div>
