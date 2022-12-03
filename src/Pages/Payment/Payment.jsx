@@ -8,13 +8,17 @@ export const Payment = () => {
 
   let payments = "Hi";
   const pay = () => {
-    if (payments !== "Hi")
-      alert(payments);
-    else
+    if (payments === "Hi") {
       alert("Vui lòng chọn hình thức thanh toán");
+      return;
+    }
+    if (!checkAge)
+      alert("Vui lòng đồng ý với điều khoản!")
   }
 
+  let checkAge = false;
   const onOptionChange = (e) => { payments = e.target.value; }
+  const onCheckChange = () => { checkAge = !checkAge; }
   return (
     <Layout>
       <br></br>
@@ -52,7 +56,7 @@ export const Payment = () => {
             </dl>
           </div>
           <div className="mt-4">
-            <input type="checkbox" name="DieuKhoan" value="yes" />Tôi đồng ý với điều khoản sử dụng và mua vé cho người có độ tuổi phù hợp
+            <input type="checkbox" name="DieuKhoan" value="yes" onChange={onCheckChange} />Tôi đồng ý với điều khoản sử dụng và mua vé cho người có độ tuổi phù hợp
           </div>
         </div>
 
