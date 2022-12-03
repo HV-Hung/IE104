@@ -12,6 +12,7 @@ import { BookTicket } from "./Pages/BookTicket/BookTicket";
 import { Food } from "./Pages/BookTicket/Food";
 import { News } from "./Pages/News/News";
 import { Profile } from "./Pages/Auth/Profile";
+import "./App.less";
 
 const App = () => {
   return (
@@ -27,7 +28,6 @@ const App = () => {
       <Route path="/bookticket/food" element={<Food />} />
       <Route path="/news" element={<News />} />
       <Route path="/profile" element={<Profile />} />
-
       <Route path="/login" element={<Login />} />
       <Route path="*" element={<NotFound />}></Route>
     </Routes>
