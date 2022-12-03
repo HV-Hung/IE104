@@ -13,6 +13,7 @@ import { Food } from "./Pages/BookTicket/Food";
 import { News } from "./Pages/News/News";
 import { Profile } from "./Pages/Auth/Profile";
 import { Payment_MoMo } from "./Pages/Payment/Payment_MoMo";
+import { Payment_Zalo } from "./Pages/Payment/Payment_Zalo";
 import "./App.less";
 
 const App = () => {
@@ -21,6 +22,7 @@ const App = () => {
       <Route path="/" element={<Home />}></Route>
       <Route path="/payment" element={<Payment />} />
       <Route path="/payment/momo" element={<Payment_MoMo />} />
+      <Route path="/payment/zalo" element={<Payment_Zalo />} />
       <Route path="/cinema" element={<Cinema />} />
       <Route path="/cinema/:id" element={<CinemaDetail />} />
       <Route path="/login" element={<Login />} />
