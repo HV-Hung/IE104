@@ -151,17 +151,22 @@ export const MovieDetail = () => {
     },
   ])
 
+  const [clickedDate, getclikedDate] = React.useState(1);
+
   const getDate = (id) => {
     getIdCity = 1;
     getIdDate = id;
+    getclikedDate(id);
+    getclickedCity(1);
     console.log('getDate ' + id);
     loadShowtime();
   }
 
 
-
+  const [clickedCity, getclickedCity] = React.useState(1);
   const getShowtime = (id) => {
     getIdCity = id;
+    getclickedCity(id);
     console.log('getShowTime ' + id);
     loadShowtime();
   }
@@ -253,6 +258,7 @@ export const MovieDetail = () => {
               type="button"
               key={item.id}
               className="ml-5 border bg-sky-700 hover:bg-sky-300 text-white h-[50px] w-[100px] rounded-xl"
+              style={{ backgroundColor: clickedDate === item.id ? '#0288D1' : 'gray' }}
             >
               {item.time}
             </button>
@@ -267,7 +273,8 @@ export const MovieDetail = () => {
               onClick={() => getShowtime(item.id)}
               type="button"
               key={item.id}
-              className="ml-5 border bg-sky-700 hover:bg-sky-300 text-white h-[50px] w-[100px] rounded-xl"
+              className="ml-5 border hover:bg-sky-300  text-white h-[50px] w-[100px] rounded-xl"
+              style={{ backgroundColor: clickedCity === item.id ? '#0288D1' : 'gray' }}
             >
               {item.name}
             </button>
@@ -293,6 +300,6 @@ export const MovieDetail = () => {
           ))}
         </div>
       </div>
-    </Layout>
+    </Layout >
   );
 };
