@@ -16,8 +16,8 @@ export const Login = () => {
 
         <Form
           name="basic"
-          labelCol={{ span: 6 }}
-          wrapperCol={{ span: 18 }}
+          labelCol={{ span: 24 }}
+          wrapperCol={{ span: 24 }}
           initialValues={{ remember: true }}
           onFinish={onFinish}
           autoComplete="off"

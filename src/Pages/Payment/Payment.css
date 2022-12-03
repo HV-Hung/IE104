@@ -1,0 +1,146 @@
+.title {
+
+    font-family: 'Inter';
+    font-style: normal;
+    font-weight: 700;
+    font-size: 35px;
+    line-height: 48px;
+    text-align: center;
+    vertical-align: middle;
+
+    background-color: #DBE2FB;
+
+    color: #043aa0;
+
+}
+
+.logoThanhToan {
+    background-position: 50% 50%;
+    background-size: 100% 100%;
+    width: 37px;
+    height: 37px;
+    margin-right: 7px;
+    margin-top: 10px;
+    display: inline-block;
+}
+
+.Sale {
+    /* background-color: yellowgreen; */
+    grid-column: 1/2;
+    grid-row: 1/2;
+    align-self: start;
+    align-items: stretch;
+    text-align: center;
+    vertical-align: middle;
+}
+
+.NoiDung {
+    color: rgb(255, 255, 255);
+    margin: 0 auto;
+    padding: 0 20px;
+    max-width: 1200px;
+
+    /* 20521492 - Võ Trung Kiên */
+    display: grid;
+    grid-template-columns: 3fr 1fr;
+    grid-template-rows: 120px 1fr 120px 1fr;
+    gap: 30px 60px;
+}
+
+.HTTT {
+    /* background-color: rgb(48, 190, 48); */
+    grid-column: 1/2;
+    grid-row: 2/4;
+    vertical-align: middle;
+}
+
+
+
+.visa {
+
+    background-image: url("https://cdn4.iconfinder.com/data/icons/logos-and-brands/512/363_Visa_Credit_Card_logo-512.png");
+}
+
+.Zalo {
+
+    background-image: url("https://play-lh.googleusercontent.com/yHmIm7FYKe_dW2WHTwWizp2p_gt7_ctdpCUevX654E1dsj5c9McWO03k_S6PPLG_DNz7");
+}
+
+.ATM {
+
+    background-image: url("https://cdn-icons-png.flaticon.com/512/60/60378.png");
+}
+
+.MoMo {
+
+    background-image: url("https://business.momo.vn/assets/landingpage/img/931b119cf710fb54746d5be0e258ac89-logo-momo.png");
+}
+
+.money {
+    border: 2px dotted red;
+}
+
+.TongCong {
+    grid-column: 2/3;
+    grid-row: 1/2;
+    align-self: start;
+    /* border: 2px dotted red; */
+}
+
+.TienKhuyeMai {
+    grid-row: 2/3;
+    grid-column: 2/3;
+    /* border: 2px dotted red; */
+    align-self: center;
+    align-items: stretch;
+    text-align: center;
+}
+
+.TongTien {
+    grid-row: 3/4;
+    grid-column: 2/3;
+    /* border: 2px dotted red; */
+    align-self: start;
+    align-items: stretch;
+    text-align: center;
+}
+
+.TieuDeH2 {
+    color: red;
+    font-size: 25px;
+    text-align: center;
+    margin: auto;
+
+}
+
+.footer {
+    display: grid;
+    column-gap: 17px;
+    grid-template-rows: repeat(4, 1fr);
+    grid-template-columns: 120px 120px 150px 70px 1fr 1fr 1fr 120px;
+}
+
+dt {
+    margin-top: 20px;
+    margin-bottom: 20px;
+    margin-left: 30px;
+}
+
+span {
+    margin-left: 20px;
+    margin-right: 20px;
+}
+
+/* .format-bg-top {
+    width: 100%;
+    background: url('https://www.cgv.vn/skin/frontend/cgv/default/images/bg-cgv/bg-top-seatmap.png') repeat-x top left transparent;
+    height: 8px;
+    overflow: hidden;
+}
+
+.format-bg-seatmap-bottom {
+    float: left;
+    width: 100%;
+    background: url('https://ocwckgy6c1obj.vcdn.cloud/skin/frontend/cgv/default/images/bg-cgv/bg-bottom-seatmap.png') repeat-x bottom left transparent;
+    height: 264px;
+} */
