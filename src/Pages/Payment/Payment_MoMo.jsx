@@ -1,8 +1,8 @@
 import React from "react";
-
+import { useNavigate } from "react-router-dom";
 
 export const Payment_MoMo = () => {
-
+    const navigate = useNavigate();
     return (
 
         <div className="absolute w-[901px] h-[625px] left-[25%] top-[100px] bg-white-300 rounded-2xl shadow-[30px_40px_160px_20px_rgba(0,0,0,0.3)] ">
@@ -15,7 +15,7 @@ export const Payment_MoMo = () => {
                     <div className=" text-left">💵Số tiền</div>
                     <div>250.000đ</div>
                 </div>
-                <button className="text-3xl absolute left-5 bottom-[20px]">⬅️ Quay lại</button>
+                <button className="text-3xl absolute left-5 bottom-[20px]" onClick={() => { navigate(`/payment`); }}>⬅️ Quay lại</button>
             </div>
             <img className="absolute w-[80px] h-[80px] left-[37%] top-[10px] rounded-xl" src="https://i.rada.vn/data/image/2019/10/15/CGV-Cinemas-200.png" alt="logo cgv"></img>
             <img className="absolute w-[80px] h-[80px] left-[90%] top-[10px] rounded-xl" src="https://file.hstatic.net/1000273026/article/momo_logo_ee7f0396e57f4820a504f7ab63e9eade_1024x1024.png" alt="logo momo"></img>
