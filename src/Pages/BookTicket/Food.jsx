@@ -149,7 +149,7 @@ const Counter = () => {
       <div>
         <button
           style={{
-            fontSize:"20px",
+            fontSize: "20px",
             backgroundColor: "#90A5E8",
             border: "none",
             color: "white",
@@ -172,7 +172,7 @@ const Counter = () => {
         <span style={{ fontSize: "25px" }}>{count}</span>
         <button
           style={{
-            fontSize:"20px",
+            fontSize: "20px",
             backgroundColor: "#90A5E8",
             border: "none",
             color: "white",
