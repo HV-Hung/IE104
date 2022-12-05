@@ -39,9 +39,8 @@ const foodItems = [
       "https://www.cgv.vn/media/concession/web/63648762bc32b_1667532643.png",
     title: "SUPER POWER COMBO",
     contents: [
-      "1 ly Avater + 2 nước siêu lớn + 1 bắp ngọt lớn",
+      "1 ly Avatar + 2 nước siêu lớn + 1 bắp ngọt lớn",
       "Miễn phí đổi vị bắp Phô mai, Caramel",
-      "Nhận trong ngày xem phim",
     ],
     price: "259.000,00đ",
     quantity: 0,
@@ -54,7 +53,7 @@ const foodItems = [
     contents: [
       "1 ly Snoopy 32Oz (kèm nước) + 1 bắp ngọt lớn",
       "Miễn phí đổi vị bắp Pho mai, Caramel",
-      "Nhận trong ngày xem phim",
+
       "Mẫu ly phụ thuộc vào số lượng hàng tại rạp",
     ],
     price: "239.000,00đ",
@@ -68,7 +67,7 @@ const foodItems = [
     contents: [
       "2 ly Snoopy 32Oz (kèm nước) + 1 bắp ngọt lớn",
       "Miễn phí đổi vị bắp Phô mai, Caramel",
-      "Nhận trong ngày xem phim",
+
       "Mẫu ly phụ thuộc vào số lượng hàng tại rạp",
     ],
     price: "409.000,00đ",
@@ -82,7 +81,6 @@ const foodItems = [
     contents: [
       "3 ly Snoopy 32Oz (kèm nước) + 1 bắp ngọt lớn",
       "Miễn phí đổi vị bắp Phô mai, Caramel",
-      "Nhận trong ngày xem phim",
       "Mẫu ly phụ thuộc vào số lượng hàng tại rạp",
     ],
     price: "599.000,00đ",
@@ -151,12 +149,12 @@ const Counter = () => {
       <div>
         <button
           style={{
-            fontSize: "20px",
-            backgroundColor: "#e7e7e7",
+            fontSize:"20px",
+            backgroundColor: "#90A5E8",
             border: "none",
-            padding: "3px 20px",
-            margin: "0px 15px 0px 25px",
             color: "white",
+            padding: "0px 15px",
+            margin: "30px 15px 5px 30px",
             textAlign: "center",
             textDecoration: "none",
             display: "inline-block",
@@ -174,12 +172,12 @@ const Counter = () => {
         <span style={{ fontSize: "25px" }}>{count}</span>
         <button
           style={{
-            fontSize: "20px",
-            backgroundColor: "#e7e7e7",
+            fontSize:"20px",
+            backgroundColor: "#90A5E8",
             border: "none",
-            padding: "3px 20px",
-            marginLeft: "15px",
             color: "white",
+            padding: "0px 15px",
+            margin: "30px 0px 5px 15px",
             textAlign: "center",
             textDecoration: "none",
             display: "inline-block",
@@ -215,28 +213,42 @@ const FoodItem = ({ foodItem }) => {
         />
         <Counter> style={{ marginLeft: "30px" }}</Counter>
       </div>
-      <div style={{ flex: 1 }}>
+      <div style={{ flex: 1, position: "relative" }}>
         <h2 style={{ fontSize: "1.1rem" }}>{foodItem.title}</h2>
         <ul>
           {foodItem.contents.map((content) => (
-            <li style={{ marginLeft: "20px" }}>{content}</li>
+            <li style={{ marginLeft: "20px", listStyleType: "circle" }}>
+              {content}
+            </li>
           ))}
         </ul>
-        <h3 style={{ color: "red", fontSize: "1.5rem" }}>{foodItem.price}</h3>
+        <div
+          style={{
+            fontSize: "20px",
+            position: "absolute",
+            bottom: "3px",
+          }}
+        >
+          Giá:{" "}
+          <span style={{ fontSize: "25px", color: "red", fontWeight: "bold" }}>
+            {foodItem.price}
+          </span>
+        </div>
       </div>
     </div>
   );
 };
 
 export const Food = () => {
-  let [combo_total, setComboTotal] = useState(0);
+  let [combo_total, setComboTotal] = useState(150.0);
+
   return (
     <Layout>
       <Breadcrumb style={{ marginLeft: "16px" }}>
         <Breadcrumb.Item>Food</Breadcrumb.Item>
       </Breadcrumb>
       <div
-        className="p-[24px] min-h-[360px] max-w-[70rem] bg-[#F2F7FF] m-[24px] "
+        className="p-[24px] min-h-[360px] max-w-[90vw] bg-[#F2F7FF] m-[24px] "
         style={{ margin: "auto" }}
       >
         <BookingHeader></BookingHeader>
@@ -244,8 +256,10 @@ export const Food = () => {
           style={{
             display: "grid",
             gridTemplateColumns: "30rem 30rem",
-            gap: "5px",
-            margin: "auto",
+            gap: "50px",
+            width: "1000px",
+            marginLeft: "auto",
+            marginRight: "auto",
           }}
         >
           {foodItems.map((item) => (
