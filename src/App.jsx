@@ -11,6 +11,7 @@ import { CinemaDetail } from "./Pages/Cinemas/CinemaDetail";
 import { BookTicket } from "./Pages/BookTicket/BookTicket";
 import { Food } from "./Pages/BookTicket/Food";
 import { News } from "./Pages/News/News";
+import { NewsDetail } from "./Pages/News/NewsDetail";
 import { Profile } from "./Pages/Auth/Profile";
 
 const App = () => {
@@ -26,6 +27,7 @@ const App = () => {
       <Route path="/bookticket" element={<BookTicket />} />
       <Route path="/bookticket/food" element={<Food />} />
       <Route path="/news" element={<News />} />
+      <Route path="/news/:id" element={<NewsDetail />} />
       <Route path="/profile" element={<Profile />} />
 
       <Route path="/login" element={<Login />} />

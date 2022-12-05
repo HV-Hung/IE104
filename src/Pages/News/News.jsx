@@ -1,9 +1,11 @@
 import { Breadcrumb } from "antd";
-import React from "react";
+import React, { useState } from "react";
 import { Layout } from "../../Layout/Layout";
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faCalendarDays } from '@fortawesome/free-solid-svg-icons';
 import './News.css'
+import { Link } from "react-router-dom";
+
 
 const news_list = [
   { 
@@ -138,17 +140,20 @@ const preferential_list = [
 ];
 
 export const News = () => {
+  
+  const [tabItem, setTabIitem] = useState(0);
+  console.log(tabItem)
   return (
     <Layout>
       <Breadcrumb style={{ marginLeft: "16px" }}>
         <Breadcrumb.Item></Breadcrumb.Item>
       </Breadcrumb>
       <div className="w-[1228px] mx-auto flex justify-center items-center cursor-pointer">
-        <div className="tab_item active text-[32px] text-center font-semibold mx-[16px] my-[32px] hover:text-[#d4dd29] hover:cursor-pointer">KHUYẾN MÃI</div>
+        <div className="text-[32px] text-white text-center font-semibold mx-[16px] my-[32px] hover:text-[#d4dd29] hover:cursor-pointer" onClick={() => setTabIitem(0)}>KHUYẾN MÃI</div>
         <div className="border-l-[3px] border-solid border-[#fff] h-[32px]"></div>
-        <div className="tab_item text-[32px] text-center font-semibold mx-[16px] my-[32px] hover:text-[#d4dd29] hover:cursor-pointer">TIN TỨC</div>
+        <div className={`text-[32px] text-white text-center font-semibold mx-[16px] my-[32px] hover:text-[#d4dd29] hover:cursor-pointer ${tabItem === 1 && "text-red"}` } onClick={() => setTabIitem(1)}>TIN TỨC</div>
       </div>
-      <div className="tab_content active max-h-[1872px] w-[1228px] mx-auto grid grid-cols-4 gap-x-[20px] gap-y-[25px] hidden">
+      {tabItem === 0 && <div className="active max-h-[1872px] w-[1228px] mx-auto grid grid-cols-4 gap-x-[20px] gap-y-[25px]" >
         {news_list.map((item) => {
           return (
           <div className="w-full h-auto cursor-pointer">
@@ -165,8 +170,8 @@ export const News = () => {
           </div>
           )
         })}
-      </div>
-      <div className="tab_content max-h-[1872px] w-[1228px] mx-auto grid grid-cols-4 gap-y-[25px] hover:text-[#d4dd29] hidden">
+      </div>}
+      {tabItem === 1 && <div className="max-h-[1872px] w-[1228px] mx-auto grid grid-cols-4 gap-y-[25px] hover:text-[#d4dd29]">
         {preferential_list.map((item) => {
           return (
           <div className="w-full h-auto cursor-pointer">
@@ -183,37 +188,39 @@ export const News = () => {
           </div>
           )
         })}
-      </div>
+      </div>}
     </Layout>
   );
 };
 
-// handle javascript
 
-const $ = document.querySelector.bind(document);
-const $$ = document.querySelectorAll.bind(document);
 
-setTimeout(handle, 2000);
+//handle javascript
 
-function handle(){
-  const tabs = $$('.tab_item');
-  const contents = $$('.tab_content');
+// const $ = document.querySelector.bind(document);
+// const $$ = document.querySelectorAll.bind(document);
 
-  console.log(tabs);
-  console.log(contents);
+// setTimeout(handle, 2000);
 
-  const tabItem = tabs.forEach((tab, index) => {
-    const content = contents[index];
+// function handle(){
+//   const tabs = $$('.tab_item');
+//   const contents = $$('.tab_content');
 
-    tab.onclick = function() {
-      $('.tab_item.active').classList.remove('active');
-      $('.tab_content.active').classList.remove('active');
+//   console.log(tabs);
+//   console.log(contents);
 
-      this.classList.add('active');
-      content.classList.add('active');
-    }
-  });
-}
+//   const tabItem = tabs.forEach((tab, index) => {
+//     const content = contents[index];
+
+//     tab.onclick = function() {
+//       $('.tab_item.active').classList.remove('active');
+//       $('.tab_content.active').classList.remove('active');
+
+//       this.classList.add('active');
+//       content.classList.add('active');
+//     }
+//   });
+// }
 
 
 
