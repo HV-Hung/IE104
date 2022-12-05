@@ -3,7 +3,6 @@ import React, { useState } from "react";
 import { Layout } from "../../Layout/Layout";
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faCalendarDays } from '@fortawesome/free-solid-svg-icons';
-import './News.css'
 import { Link } from "react-router-dom";
 
 
@@ -156,18 +155,20 @@ export const News = () => {
       {tabItem === 0 && <div className="active max-h-[1872px] w-[1228px] mx-auto grid grid-cols-4 gap-x-[20px] gap-y-[25px]" >
         {news_list.map((item) => {
           return (
-          <div className="w-full h-auto cursor-pointer">
-            <img className="h-[164px] w-full" src={item.img} alt="" />
-            <div className="">
-              <div className="text-white text-[16px] text-center uppercase py-[8px] hover:text-[#d4dd29]">
-                {item.name}
-              </div>
-              <div className="text-white text text-center pb-[8px]">
-                <FontAwesomeIcon className="mx-[8px]" icon={faCalendarDays}></FontAwesomeIcon>
-                {item.date}
+           <Link to="/news/:id">
+            <div className="w-full h-auto cursor-pointer">
+              <img className="h-[164px] w-full" src={item.img} alt="" />
+              <div className="">
+                <div className="text-white text-[16px] text-center uppercase py-[8px] hover:text-[#d4dd29]">
+                  {item.name}
+                </div>
+                <div className="text-white text text-center pb-[8px]">
+                  <FontAwesomeIcon className="mx-[8px]" icon={faCalendarDays}></FontAwesomeIcon>
+                  {item.date}
+                </div>
               </div>
             </div>
-          </div>
+            </Link>
           )
         })}
       </div>}
