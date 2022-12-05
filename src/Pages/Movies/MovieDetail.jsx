@@ -1,11 +1,11 @@
 import { Breadcrumb, Button } from "antd";
-import React from "react";
+import React, { useState } from "react";
 import { Layout } from "../../Layout/Layout";
 import { useParams } from "react-router-dom";
 
 export const MovieDetail = () => {
   const param = useParams();
-  const [movie, setMovie] = React.useState(undefined);
+  const [movie, setMovie] = useState(undefined);
   const id = param.id;
   React.useEffect(() => {
     fetch("http://localhost:3500/movie/" + id)
@@ -16,6 +16,9 @@ export const MovieDetail = () => {
         setMovie(data);
       });
   });
+
+  const [trailer, setTrailer] = useState(false);
+
   return (
     <Layout>
       <Breadcrumb
@@ -70,13 +73,18 @@ export const MovieDetail = () => {
               P
             </div>
             <div className="flex flex-start mt-[23px]">
-              <Button type="primary" className="mr-[10px]">
+              <Button
+                type="primary"
+                className="mr-[10px]"
+                onClick={() => setTrailer(!trailer)}
+              >
                 Xem Trailer
               </Button>
               <Button type="primary">Mua vé</Button>
             </div>
           </div>
         </div>
+
         <div className="text-center text-white text-[20px] py-[10px] font-bold">
           CHI TIẾT
         </div>
@@ -91,6 +99,26 @@ export const MovieDetail = () => {
           cuộc phiêu lưu đầy bất ngờ nhưng cũng không kém phần thú vị.
         </div>
       </div>
+      {trailer ? (
+        <div
+          className="bg-black/70 min-h-screen w-[100%] fixed top-0"
+          onClick={() => setTrailer(false)}
+        >
+          <div
+            className="bg-white-500 ml-[100px] w-[1280px] absolute top-[44px]"
+          >
+            <iframe
+              width="1280"
+              height="720"
+              src="https://www.youtube.com/embed/ojcNcvb1olg"
+              title="YouTube video player"
+              frameborder="0"
+              allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+              allowfullscreen
+            ></iframe>
+          </div>
+        </div>
+      ) : null}
     </Layout>
   );
 };
