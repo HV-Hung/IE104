@@ -2,22 +2,26 @@ import { Breadcrumb, Button } from "antd";
 import React from "react";
 import { Layout } from "../../Layout/Layout";
 import { useNavigate } from "react-router-dom";
-
-const temp_item = {
-  name: "Khỉ con lon ton thế giới",
-  img: "https://www.cgv.vn/media/catalog/product/cache/1/image/c5f0a1eff4c394a251036189ccddaacd/k/c/kclttg_-_main_poster_web_.jpg",
-  topic: "Hài hước",
-  time: "90 phút",
-  start_date: "01/09/2022",
-};
-
-const temp = [];
-for (let i = 0; i < 12; ++i) {
-  temp.push(temp_item);
-}
+import { useState } from "react";
 
 export const Movie = () => {
   const navigate = useNavigate();
+  const [movies, setMovies] = useState(undefined);
+  const [movieType, setMovieType] = useState(true);
+
+  React.useEffect(() => {
+    fetch("http://localhost:3500/movie")
+      // lấy dữ liệu về dạng json
+      .then((data) => {
+        return data.json();
+      })
+      // set state movies bằng dữ liệu trả về
+      .then((data) => {
+        setMovies(data);
+      });
+  }, []);
+
+
   return (
     <Layout>
       <Breadcrumb
@@ -31,40 +35,50 @@ export const Movie = () => {
           Trang chủ Phim Đang chiếu
         </Breadcrumb.Item>
       </Breadcrumb>
-      <div className="pt-[20px] h-[90px] w-[1228px] mx-auto flex justify-between">
-        <div className="text-[40px] text-white font-semibold">
-          Phim đang chiếu
+      <div className="py-[15px] h-[70px] w-[1228px] mx-auto flex justify-center">
+        <div
+          className="text-[30px] text-white mr-[40px] cursor-pointer"
+          style={movieType ? { color: "#45ab3d " } : { color: "white" }}
+          onClick={() => setMovieType(true)}
+        >
+          PHIM ĐANG CHIẾU
         </div>
-        <div className="text-[40px] text-white">Phim sắp chiếu</div>
+        <div
+          className="text-[30px] text-white cursor-pointer"
+          style={movieType ? { color: "white" } : { color: "#45ab3d " }}
+          onClick={() => setMovieType(false)}
+        >
+          PHIM SẮP CHIẾU
+        </div>
       </div>
 
-      <div className="h-[2px] w-[1228px] mx-auto bg-white mb-[15px]"></div>
-      <div className="max-h-[1872px] w-[1228px] bg-[#0a1e5e] mb-[20px] mx-auto grid grid-cols-5 gap-x-[67px] gap-y-[20px]">
-        {temp.map((item) => {
+      <div className="max-h-[1872px] w-[1228px] bg-[#0a1e5e] mt-[10px] mb-[20px] mx-auto grid grid-cols-5 gap-x-[67px] gap-y-[20px]">
+        {movies?.map((item, index) => {
           return (
-            <div
-              className="h-[465px] bg-black"
-              onClick={() => {
-                navigate(`/movie/${"1"}`);
-              }}
-            >
-              <img
-                className="h-[260px] w-[179.26px] block mx-auto my-[6px]"
-                src={item.img}
-                alt=""
-              />
-              <div className="h-[160px] bg-[#0a1e5e]">
-                <div className="text-[20px] text-white leading-[26px] font-bold uppercase">
-                  {item.name}
-                </div>
-                <div className="text-[15px] text-white">
-                  Thể loại: {item.topic}
-                </div>
-                <div className="text-[15px] text-white">
-                  Thời lượng: {item.time}
-                </div>
-                <div className="text-[15px] text-white">
-                  Khởi chiếu: {item.start_date}
+            <div key={index} className="h-[475px]">
+              <div
+                onClick={() => {
+                  navigate(`/movie/${item._id}`);
+                }}
+              >
+                <img
+                  className="w-[192px] h-[276px] block mx-auto bg-black p-[6px]"
+                  src={item.image}
+                  alt=""
+                />
+                <div className="h-[170px] bg-[#0a1e5e]">
+                  <div className="text-[20px] text-white leading-[26px] font-bold uppercase mt-[10px]">
+                    {item.name}
+                  </div>
+                  <div className="text-[15px] text-white">
+                    Thể loại: {item.genre}
+                  </div>
+                  <div className="text-[15px] text-white">
+                    Thời lượng: {item.duration} phút
+                  </div>
+                  <div className="text-[15px] text-white">
+                    Khởi chiếu: {dateToString(item.releaseDate)}
+                  </div>
                 </div>
               </div>
               <div className="h-[33px] bg-[#0a1e5e] flex justify-around">
@@ -76,4 +90,9 @@ export const Movie = () => {
       </div>
     </Layout>
   );
+};
+
+const dateToString = (date) => {
+  let myDate = new Date(date).toLocaleDateString("en-UK");
+  return myDate;
 };
