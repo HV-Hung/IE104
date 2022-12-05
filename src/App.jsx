@@ -1,4 +1,5 @@
 import React from "react";
+import "antd/dist/antd.min.css";
 import { Home } from "./Pages/Home/Home";
 import { Route, Routes } from "react-router-dom";
 import { Login } from "./Pages/Auth/Login";
@@ -14,7 +15,6 @@ import { News } from "./Pages/News/News";
 import { Profile } from "./Pages/Auth/Profile";
 import { Payment_MoMo } from "./Pages/Payment/Payment_MoMo";
 import { Payment_Visa } from "./Pages/Payment/Payment_Visa";
-import "./App.less";
 
 const App = () => {
   return (
