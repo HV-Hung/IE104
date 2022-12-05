@@ -253,17 +253,10 @@ export const MovieDetail = () => {
               >
                 Xem Trailer
               </Button>
-              <Button type="primary">Mua vé</Button>
+              <Button onClick={ClickedBuyTicket} type="primary">
+                Mua vé
+              </Button>
             </div>
-          </div>
-          <div className="h-[50px] w-[50px] bg-green-500 mt-[10px] text-center text-[30px] font-bold text-white">
-            P
-          </div>
-          <div className="flex flex-start mt-[23px]">
-            <Button type="primary mr-[20px]">Like</Button>
-            <Button onClick={ClickedBuyTicket} type="primary">
-              Mua vé
-            </Button>
           </div>
         </div>
 
