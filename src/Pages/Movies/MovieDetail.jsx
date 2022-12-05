@@ -178,6 +178,10 @@ export const MovieDetail = () => {
     setShowTime([...newList]);
   }
 
+  const [buyTicket, setBuyTicket] = React.useState(false);
+  const ClickedBuyTicket = () => {
+    setBuyTicket(!buyTicket);
+  }
   return (
     <Layout>
       <Breadcrumb
@@ -233,7 +237,7 @@ export const MovieDetail = () => {
           <div className="h-[50px] w-[50px] bg-green-500 mt-[10px] text-center text-[30px] font-bold text-white">P</div>
           <div className="flex flex-start mt-[23px]">
             <Button type="primary mr-[20px]">Like</Button>
-            <Button type="primary">Mua vé</Button>
+            <Button onClick={ClickedBuyTicket} type="primary">Mua vé</Button>
           </div>
         </div>
       </div>
@@ -249,57 +253,59 @@ export const MovieDetail = () => {
         đầy bất ngờ nhưng cũng không kém phần thú vị.
       </div>
 
-      <div className="p-[24px] min-h-[360px] bg-white my-[50px] mx-[200px]">
-        <div className="border-y-4 border-black py-5">
+      {
+        buyTicket === true && <div className="p-[24px] min-h-[360px] bg-white my-[50px] mx-[200px]">
+          <div className="border-y-4 border-black py-5">
 
-          {Dates.map((item) => (
-            <button
-              onClick={() => getDate(item.id)}
-              type="button"
-              key={item.id}
-              className="ml-5 border bg-sky-700 hover:bg-sky-300 text-white h-[50px] w-[100px] rounded-xl"
-              style={{ backgroundColor: clickedDate === item.id ? '#0288D1' : 'gray' }}
-            >
-              {item.time}
-            </button>
+            {Dates.map((item) => (
+              <button
+                onClick={() => getDate(item.id)}
+                type="button"
+                key={item.id}
+                className="ml-5 border bg-sky-700 hover:bg-sky-300 text-white h-[50px] w-[100px] rounded-xl"
+                style={{ backgroundColor: clickedDate === item.id ? '#0288D1' : 'gray' }}
+              >
+                {item.time}
+              </button>
 
-          ))}
+            ))}
+          </div>
+
+          <div className="py-5">
+
+            {City.map((item) => (
+              <button
+                onClick={() => getShowtime(item.id)}
+                type="button"
+                key={item.id}
+                className="ml-5 border hover:bg-sky-300  text-white h-[50px] w-[100px] rounded-xl"
+                style={{ backgroundColor: clickedCity === item.id ? '#0288D1' : 'gray' }}
+              >
+                {item.name}
+              </button>
+
+            ))}
+          </div>
+          <div>
+
+            {ShowTime.map((item) => (
+
+              <div className="border-t-2 border-slate-600 py-5 mx-[50px]">
+                <div className="text-[30px] mb-[20px]">{item.name}</div>
+                {item.time.map((temp, index) => (
+                  <button
+                    type="button"
+                    key={index}
+                    className="ml-5 border bg-gray-700 hover:bg-sky-300 text-white h-[50px] w-[100px]"
+                  >
+                    {temp}
+                  </button>
+                ))}
+              </div>
+            ))}
+          </div>
         </div>
-
-        <div className="py-5">
-
-          {City.map((item) => (
-            <button
-              onClick={() => getShowtime(item.id)}
-              type="button"
-              key={item.id}
-              className="ml-5 border hover:bg-sky-300  text-white h-[50px] w-[100px] rounded-xl"
-              style={{ backgroundColor: clickedCity === item.id ? '#0288D1' : 'gray' }}
-            >
-              {item.name}
-            </button>
-
-          ))}
-        </div>
-        <div>
-
-          {ShowTime.map((item) => (
-
-            <div className="border-t-2 border-slate-600 py-5 mx-[50px]">
-              <div className="text-[30px] mb-[20px]">{item.name}</div>
-              {item.time.map((temp, index) => (
-                <button
-                  type="button"
-                  key={index}
-                  className="ml-5 border bg-gray-700 hover:bg-sky-300 text-white h-[50px] w-[100px]"
-                >
-                  {temp}
-                </button>
-              ))}
-            </div>
-          ))}
-        </div>
-      </div>
+      }
     </Layout >
   );
 };
