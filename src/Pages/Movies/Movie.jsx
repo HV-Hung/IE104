@@ -21,7 +21,6 @@ export const Movie = () => {
       });
   }, []);
 
-
   return (
     <Layout>
       <Breadcrumb

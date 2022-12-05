@@ -84,7 +84,6 @@ export const MovieDetail = () => {
             </div>
           </div>
         </div>
-
         <div className="text-center text-white text-[20px] py-[10px] font-bold">
           CHI TIẾT
         </div>
@@ -104,9 +103,7 @@ export const MovieDetail = () => {
           className="bg-black/70 min-h-screen w-[100%] fixed top-0"
           onClick={() => setTrailer(false)}
         >
-          <div
-            className="bg-white-500 ml-[100px] w-[1280px] absolute top-[44px]"
-          >
+          <div className="bg-white-500 ml-[100px] w-[1280px] absolute top-[44px]">
             <iframe
               width="1280"
               height="720"
