@@ -21,7 +21,6 @@ export const Movie = () => {
       });
   }, []);
 
-
   return (
     <Layout>
       <Breadcrumb
@@ -38,14 +37,14 @@ export const Movie = () => {
       <div className="py-[15px] h-[70px] w-[1228px] mx-auto flex justify-center">
         <div
           className="text-[30px] text-white mr-[40px] cursor-pointer"
-          style={movieType ? { color: "#45ab3d " } : { color: "white" }}
+          style={movieType ? { color: "#7dab4e" } : { color: "white" }}
           onClick={() => setMovieType(true)}
         >
           PHIM ĐANG CHIẾU
         </div>
         <div
           className="text-[30px] text-white cursor-pointer"
-          style={movieType ? { color: "white" } : { color: "#45ab3d " }}
+          style={movieType ? { color: "white" } : { color: "#7dab4e" }}
           onClick={() => setMovieType(false)}
         >
           PHIM SẮP CHIẾU
@@ -56,18 +55,22 @@ export const Movie = () => {
         {movies?.map((item, index) => {
           return (
             <div key={index} className="h-[475px]">
-              <div
-                onClick={() => {
-                  navigate(`/movie/${item._id}`);
-                }}
-              >
+              <div>
                 <img
-                  className="w-[192px] h-[276px] block mx-auto bg-black p-[6px]"
+                  className="w-[192px] h-[276px] block mx-auto cursor-pointer"
                   src={item.image}
                   alt=""
+                  onClick={() => {
+                    navigate(`/movie/${item._id}`);
+                  }}
                 />
                 <div className="h-[170px] bg-[#0a1e5e]">
-                  <div className="text-[20px] text-white leading-[26px] font-bold uppercase mt-[10px]">
+                  <div
+                    className="text-[20px] text-white leading-[26px] font-bold uppercase my-[10px] cursor-pointer"
+                    onClick={() => {
+                      navigate(`/movie/${item._id}`);
+                    }}
+                  >
                     {item.name}
                   </div>
                   <div className="text-[15px] text-white">
@@ -81,7 +84,7 @@ export const Movie = () => {
                   </div>
                 </div>
               </div>
-              <div className="h-[33px] bg-[#0a1e5e] flex justify-around">
+              <div className="h-[33px] bg-[#0a1e5e] flex justify-center">
                 <Button type="primary">Mua vé</Button>
               </div>
             </div>
