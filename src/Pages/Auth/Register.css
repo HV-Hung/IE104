@@ -1,0 +1,45 @@
+@import url('https://fonts.googleapis.com/css2?family=Raleway:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,300&display=swap');
+
+.register-container{
+    background-image: url("https://media.zicxa.com/2900106");
+    background-position: center;
+    background-size: cover;
+    background-repeat: no-repeat;
+}
+
+.register-form-container{
+    font-family: 'Raleway', sans-serif;
+    width: 500px;
+    height: 700px;
+    background: rgba(255, 255, 255, 0.15);
+    border-radius: 10px;
+
+}
+
+.title, [title="EMAIL"], [title="PASSWORD"], [title="PHONE NUMBER"], [title="CONFIRM PASSWORD"]{
+    color: white !important;
+}
+
+[title="FULL NAME"]{
+    color: white !important;
+}
+
+[type='submit']{
+    display: inline-block;
+    width: 10rem;
+    margin-top: 15px;
+    background-image: linear-gradient(to bottom right, #7d78ff, #11326f);
+    color: white;
+    border: none;
+    border-radius: 15px;
+    height: 2.5rem;
+}
+
+/* label::after{
+    content: '*'!important;
+    width: 10px;
+    height: 10px;
+    color: red;
+} */
+
+
