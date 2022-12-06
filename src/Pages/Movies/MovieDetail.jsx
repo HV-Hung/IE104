@@ -216,44 +216,46 @@ export const MovieDetail = () => {
         <div className="max-h-[900px] flex flex-start">
           <img className="max-h-[360px] mr-[30px]" src={movie?.image} alt="" />
           <div className="h-[360px] flex-1">
-            <div className="text-[24px] py-[10px] font-semibold border-b-2 border-gray-500 text-white">
+            <div className="text-[30px] pb-[10px] font-semibold text-white">
               {movie?.name}
             </div>
             <div className="mt-[10px]">
-              <div className="text-[15px] leading-[25px] text-white">
+              <div className="text-[15px] leading-[25px] text-white mb-[8px]">
                 Đạo diễn: {movie?.director}
               </div>
-              <div className="text-[15px] leading-[25px] text-white">
+              <div className="text-[15px] leading-[25px] text-white mb-[8px]">
                 Diễn viên: {movie?.actors}
               </div>
-              <div className="text-[15px] leading-[25px] text-white">
+              <div className="text-[15px] leading-[25px] text-white mb-[8px]">
                 Thể loại: hoạt hình
               </div>
-              <div className="text-[15px] leading-[25px] text-white">
+              <div className="text-[15px] leading-[25px] text-white mb-[8px]">
                 Khởi chiếu: 11/11/2022
               </div>
-              <div className="text-[15px] leading-[25px] text-white">
+              <div className="text-[15px] leading-[25px] text-white mb-[8px]">
                 Thời lượng: 82 phút
               </div>
-              <div className="text-[15px] leading-[25px] text-white">
+              <div className="text-[15px] leading-[25px] text-white mb-[8px]">
                 Ngôn ngữ: Lồng tiếng Việt
               </div>
-              <div className="text-[15px] leading-[25px] text-white">
+              <div className="text-[15px] leading-[25px] text-white mb-[30px]">
                 Phân loại: Phim dành cho mọi đối tượng
               </div>
             </div>
-            <div className="h-[50px] w-[50px] bg-green-500 mt-[10px] text-center text-[30px] font-bold text-white">
-              P
-            </div>
-            <div className="flex flex-start mt-[23px]">
+
+            <div className="flex flex-start">
               <Button
                 type="primary"
-                className="mr-[10px]"
+                className="mr-[10px] h-[40px] w-[130px]"
                 onClick={() => setTrailer(!trailer)}
               >
                 Xem Trailer
               </Button>
-              <Button onClick={ClickedBuyTicket} type="primary">
+              <Button
+                onClick={ClickedBuyTicket}
+                type="primary"
+                className="h-[40px] w-[130px]"
+              >
                 Mua vé
               </Button>
             </div>
@@ -329,10 +331,10 @@ export const MovieDetail = () => {
 
       {trailer ? (
         <div
-          className="bg-black/70 min-h-screen w-full fixed top-0"
+          className="bg-black/70 min-h-screen w-[100%] fixed top-0"
           onClick={() => setTrailer(false)}
         >
-          <div className="mx-auto my-[20px] w-[1280px]">
+          <div className="bg-white-500 ml-[100px] w-[1280px] absolute top-[44px]">
             <iframe
               width="1280"
               height="720"
