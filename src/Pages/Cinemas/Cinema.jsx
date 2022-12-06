@@ -8,8 +8,11 @@ import {
 } from "@ant-design/icons";
 import React, { useState } from "react";
 import { Layout } from "../../Layout/Layout";
+import { data } from "autoprefixer";
 
 export const Cinema = () => {
+  const [provinces, setProvinces] = React.useState();
+  const [cinemas, setCinemas] = React.useState();
   const [cinemaListProvince, setCinemaListProvince] = React.useState([
     {
       name: "BHD Hà Nội",
@@ -49,24 +52,30 @@ export const Cinema = () => {
     },
   ]);
 
-  const [buttonClick, setButtonClick] = React.useState({
-    name: "BHD Hà Nội",
-    id: 6,
-    idProvince: 1,
-    address: "Lầu 5, Siêu Thị Vincom 3/2, 3C Đường 3/2, Quận 10, TPHCM",
-    img: "https://www.cgv.vn/media/site/cache/1/980x415/b58515f018eb873dafa430b6f9ae0c1e/v/i/vivo-2_1.png",
-  });
+  // const [buttonClick, setButtonClick] = React.useState({
+  //   name: "BHD Hà Nội",
+  //   id: 6,
+  //   idProvince: 1,
+  //   address: "Lầu 5, Siêu Thị Vincom 3/2, 3C Đường 3/2, Quận 10, TPHCM",
+  //   img: "https://www.cgv.vn/media/site/cache/1/980x415/b58515f018eb873dafa430b6f9ae0c1e/v/i/vivo-2_1.png",
+  // });
 
-  const [cinemaList, setCinemaList] = React.useState([
-    { name: "Toàn Quốc", id: 0 },
-    { name: "Hà Nội", id: 1 },
-    { name: "TP Hồ Chí Minh", id: 2 },
-    { name: "Cần Thơ", id: 3 },
-    { name: "Hải Phòng", id: 4 },
-    { name: "Đà Nẵng", id: 5 },
-  ]);
+  // const [cinemaList, setCinemaList] = React.useState([
+  //   { name: "Toàn Quốc", id: 0 },
+  //   { name: "Hà Nội", id: 1 },
+  //   { name: "TP Hồ Chí Minh", id: 2 },
+  //   { name: "Cần Thơ", id: 3 },
+  //   { name: "Hải Phòng", id: 4 },
+  //   { name: "Đà Nẵng", id: 5 },
+  // ]);
 
-  function getProvincebyId(id) {
+  React.useEffect(() => {
+    fetch("http://localhost:3500/province")
+      .then((response) => response.json())
+      .then((province) => setProvinces(province));
+  }, []);
+
+  function getProvinceById(id) {
     if (id != 0) {
       const newList = cinema.filter(function (cinema) {
         return cinema.idProvince == id;
@@ -74,6 +83,15 @@ export const Cinema = () => {
       setCinemaListProvince([...newList]);
     } else setCinemaListProvince([...cinema]);
   }
+
+  // function getProvinceById(id) {
+  //   fetch("http://localhost:3500/province/" + id)
+  //     .then((response) => response.json())
+  //     .then((province) => setCinemas(province.cinemas));
+  // }
+  // console.log(cinemas);
+
+  // Initialize data
   const cinema = [
     {
       name: "BHD Hà Nội",
@@ -130,20 +148,21 @@ export const Cinema = () => {
       <Breadcrumb style={{ marginLeft: "16px" }}>
         <Breadcrumb.Item>Cinema</Breadcrumb.Item>
       </Breadcrumb>
-      <h1 className="text-3xl text-white text-center">BHD CINEMAS</h1>
+      <h1 className="text-3xl text-white text-center">DANH SÁCH RẠP</h1>
       <div className="flex justify-center align-center p-[24px] min-h-[70px] bg-white m-[24px]">
-        {cinemaList.map((item) => (
-          <button
-            onClick={() => getProvincebyId(item.id)}
-            // type="button"
-            key={item.id}
-            className="ml-12 border bg-sky-700 hover:bg-sky-300 text-white px-[12px] py-[12px]"
-          >
-            {item.name}
-          </button>
-        ))}
+        {provinces &&
+          provinces.map((item) => (
+            <button
+              onClick={() => getProvinceById(item.id)}
+              // type="button"
+              key={item.id}
+              className="ml-12 border bg-sky-700 hover:bg-sky-300 text-white px-[12px] py-[12px]"
+            >
+              {item.name}
+            </button>
+          ))}
       </div>
-      <div className="p-[24px] min-h-[360px] bg-white m-[48px] grid grid-cols-4 gap-4 px-[150px]">
+      <div className="p-[24px] min-h-[360px] bg-white m-[48px] grid grid-cols-4 gap-10 px-[150px]">
         {cinemaListProvince.map((item) => (
           // <Card
           //   title={item.name}
