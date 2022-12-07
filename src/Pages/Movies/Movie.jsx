@@ -37,14 +37,14 @@ export const Movie = () => {
       <div className="py-[15px] h-[70px] w-[1228px] mx-auto flex justify-center">
         <div
           className="text-[30px] text-white mr-[40px] cursor-pointer"
-          style={movieType ? { color: "#7dab4e" } : { color: "white" }}
+          style={movieType ? { color: "#0091ff" } : { color: "white" }}
           onClick={() => setMovieType(true)}
         >
           PHIM ĐANG CHIẾU
         </div>
         <div
           className="text-[30px] text-white cursor-pointer"
-          style={movieType ? { color: "white" } : { color: "#7dab4e" }}
+          style={movieType ? { color: "white" } : { color: "#0091ff" }}
           onClick={() => setMovieType(false)}
         >
           PHIM SẮP CHIẾU

@@ -239,7 +239,10 @@ export const MovieDetail = () => {
                 Ngôn ngữ: Lồng tiếng Việt
               </div>
               <div className="text-[15px] leading-[25px] text-white mb-[30px]">
-                Phân loại: Phim dành cho mọi đối tượng
+                Phân loại:{" "}
+                <span className="font-bold mx-0 text-[18px]">
+                  P - PHIM DÀNH CHO MỌI ĐỐI TƯỢNG
+                </span>
               </div>
             </div>
 
@@ -262,7 +265,7 @@ export const MovieDetail = () => {
           </div>
         </div>
 
-        <div className="text-center text-white text-[20px] py-[10px] font-bold">
+        <div className="text-center text-white text-[20px] mt-[30px] mb-[20px] font-bold">
           CHI TIẾT
         </div>
         <div className="max-h-[100px] text-[15px] text-white mb-[20px] leading-[25px]">
