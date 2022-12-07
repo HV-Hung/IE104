@@ -337,7 +337,7 @@ export const MovieDetail = () => {
           className="bg-black/70 min-h-screen w-[100%] fixed top-0"
           onClick={() => setTrailer(false)}
         >
-          <div className="bg-white-500 ml-[100px] w-[1280px] absolute top-[44px]">
+          <div className="mx-auto w-[1280px] relative top-[20px]">
             <iframe
               width="1280"
               height="720"
