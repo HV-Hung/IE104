@@ -17,7 +17,7 @@ const foodItems = [
       "Nhận trong ngày xem phim",
       "Mẫu ly phụ thuộc vào số lượng hàng tại rạp",
     ],
-    price: "309.000,00đ",
+    price: "309.000đ",
     quantity: 0,
   },
   {
@@ -30,7 +30,7 @@ const foodItems = [
       "Miễn phí đổi ",
       "Mua 3 tặng 1",
     ],
-    price: "200.000vnd",
+    price: "200.000đ",
     quantity: 0,
   },
   {
@@ -42,7 +42,7 @@ const foodItems = [
       "1 ly Avatar + 2 nước siêu lớn + 1 bắp ngọt lớn",
       "Miễn phí đổi vị bắp Phô mai, Caramel",
     ],
-    price: "259.000,00đ",
+    price: "259.000đ",
     quantity: 0,
   },
   {
@@ -56,7 +56,7 @@ const foodItems = [
 
       "Mẫu ly phụ thuộc vào số lượng hàng tại rạp",
     ],
-    price: "239.000,00đ",
+    price: "239.000đ",
     quantity: 0,
   },
   {
@@ -70,7 +70,7 @@ const foodItems = [
 
       "Mẫu ly phụ thuộc vào số lượng hàng tại rạp",
     ],
-    price: "409.000,00đ",
+    price: "409.000đ",
     quantity: 0,
   },
   {
@@ -83,7 +83,7 @@ const foodItems = [
       "Miễn phí đổi vị bắp Phô mai, Caramel",
       "Mẫu ly phụ thuộc vào số lượng hàng tại rạp",
     ],
-    price: "599.000,00đ",
+    price: "599.000đ",
     quantity: 0,
   },
   {
@@ -96,7 +96,7 @@ const foodItems = [
       "Nhận trong ngày xem phim",
       "Đủ 8 loại nhân vật",
     ],
-    price: "2099.000,00đ",
+    price: "2099.000đ",
     quantity: 0,
   },
   {
@@ -110,7 +110,7 @@ const foodItems = [
       "Miễn phí đổi vị bắp Caramel",
       "Đổi vị Phô mai phụ thu thêm tiền",
     ],
-    price: "83.000,00đ",
+    price: "83.000đ",
     quantity: 0,
   },
   {
@@ -124,7 +124,7 @@ const foodItems = [
       "Miễn phí đổi vị bắp Caramel",
       "Đổi vị Phô mai phụ thu thêm tiền",
     ],
-    price: "102.000,00đ",
+    price: "102.000đ",
     quantity: 0,
   },
   {
@@ -138,7 +138,7 @@ const foodItems = [
       "Miễn phí đổi vị bắp Caramel",
       "Đổi vị Phô mai phụ thu thêm tiền",
     ],
-    price: "113.000,00đ",
+    price: "113.000đ",
     quantity: 0,
   },
 ];
@@ -154,7 +154,7 @@ const Counter = () => {
             border: "none",
             color: "white",
             padding: "0px 15px",
-            margin: "30px 15px 5px 30px",
+            margin: "35px 0px 5px 30px",
             textAlign: "center",
             textDecoration: "none",
             display: "inline-block",
@@ -177,7 +177,7 @@ const Counter = () => {
             border: "none",
             color: "white",
             padding: "0px 15px",
-            margin: "30px 0px 5px 15px",
+            margin: "35px 0px 5px 0px",
             textAlign: "center",
             textDecoration: "none",
             display: "inline-block",
@@ -240,7 +240,6 @@ const FoodItem = ({ foodItem }) => {
 };
 
 export const Food = () => {
-  let [combo_total, setComboTotal] = useState(150.0);
 
   return (
     <Layout>
@@ -266,8 +265,9 @@ export const Food = () => {
             <FoodItem foodItem={item}></FoodItem>
           ))}
         </div>
-        <Ticket total={combo_total}></Ticket>
+        <Ticket></Ticket>
       </div>
     </Layout>
   );
 };
+ 

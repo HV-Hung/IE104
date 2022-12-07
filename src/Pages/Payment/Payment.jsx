@@ -2,23 +2,33 @@
 import React from "react";
 import { Layout } from "../../Layout/Layout";
 import "../Payment/Payment.css"
-
+import { useNavigate } from "react-router-dom";
 
 export const Payment = () => {
 
+  const navigate = useNavigate();
   let payments = "Hi";
   const pay = () => {
     if (payments === "Hi") {
       alert("Vui lòng chọn hình thức thanh toán");
       return;
     }
-    if (!checkAge)
+    if (!checkAge) {
       alert("Vui lòng đồng ý với điều khoản!")
+      return;
+    }
+    if (payments === "Visa")
+      navigate(`/payment/visa`);
+    else
+      navigate(`/payment/momo`);
   }
 
   let checkAge = false;
   const onOptionChange = (e) => { payments = e.target.value; }
   const onCheckChange = () => { checkAge = !checkAge; }
+
+
+
   return (
     <Layout>
       <br></br>
