@@ -1,18 +1,13 @@
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faLocationDot } from "@fortawesome/free-solid-svg-icons";
-import { Breadcrumb, Button, Card, Tabs, Radio } from "antd";
-import {
-  EditOutlined,
-  EllipsisOutlined,
-  SettingOutlined,
-} from "@ant-design/icons";
+import { Breadcrumb, Tabs, Radio } from "antd";
+
 import React, { useState } from "react";
 import { Layout } from "../../Layout/Layout";
-import { data } from "autoprefixer";
 
 export const Cinema = () => {
   const [provinces, setProvinces] = React.useState();
-  const [cinemas, setCinemas] = React.useState();
+
   const [cinemaListProvince, setCinemaListProvince] = React.useState([
     {
       name: "BHD Hà Nội",
@@ -76,9 +71,9 @@ export const Cinema = () => {
   }, []);
 
   function getProvinceById(id) {
-    if (id != 0) {
+    if (id !== 0) {
       const newList = cinema.filter(function (cinema) {
-        return cinema.idProvince == id;
+        return cinema.idProvince === id;
       });
       setCinemaListProvince([...newList]);
     } else setCinemaListProvince([...cinema]);
