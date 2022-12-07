@@ -52,7 +52,7 @@ const deal_list = [
   { 
     id: "d_8",
     img: "https://www.cgv.vn/media/wysiwyg/2022/122022/CGVU22-main_240x201.jpg",
-    name: "NHẬP HỘI U22 ZALOPAY VỚI CHỈ 1K/VÉ CGV! GIẢM TƯNG BỪNG, GIẢM ĐẬM SÂU",
+    name: "GIẢM TƯNG BỪNG, GIẢM ĐẬM SÂU",
     date: "05/12/2022 - 31/12/2022"
   },
   { 
@@ -64,7 +64,7 @@ const deal_list = [
   { 
     id: "d_10",
     img: "https://www.cgv.vn/media/wysiwyg/2022/112022/240x201_3.png",
-    name: "CHƯƠNG TRÌNH ƯU ĐÃI DÀNH CHO CHỦ THẺ CITI TẠI CGV “MUA 02 VÉ XEM PHIM TẶNG 01 MY COMBO”",
+    name: "CHƯƠNG TRÌNH ƯU ĐÃI DÀNH CHO CHỦ THẺ CITI",
     date: "02/12/2022 - 02/06/2023"
   },
   { 
@@ -196,34 +196,6 @@ export const News = () => {
   );
 };
 
-
-
-//handle javascript
-
-// const $ = document.querySelector.bind(document);
-// const $$ = document.querySelectorAll.bind(document);
-
-// setTimeout(handle, 2000);
-
-// function handle(){
-//   const tabs = $$('.tab_item');
-//   const contents = $$('.tab_content');
-
-//   console.log(tabs);
-//   console.log(contents);
-
-//   const tabItem = tabs.forEach((tab, index) => {
-//     const content = contents[index];
-
-//     tab.onclick = function() {
-//       $('.tab_item.active').classList.remove('active');
-//       $('.tab_content.active').classList.remove('active');
-
-//       this.classList.add('active');
-//       content.classList.add('active');
-//     }
-//   });
-// }
 
 
 
