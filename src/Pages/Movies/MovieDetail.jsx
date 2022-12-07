@@ -173,10 +173,6 @@ export const MovieDetail = () => {
     setShowTime([...newList]);
   };
 
-  const [buyTicket, setBuyTicket] = React.useState(false);
-  const ClickedBuyTicket = () => {
-    setBuyTicket(!buyTicket);
-  };
   const param = useParams();
   const [movie, setMovie] = useState(undefined);
   const id = param.id;
@@ -188,7 +184,7 @@ export const MovieDetail = () => {
       .then((data) => {
         setMovie(data);
       });
-  });
+  }, [id]);
 
   const [trailer, setTrailer] = useState(false);
 
@@ -255,7 +251,6 @@ export const MovieDetail = () => {
                 Xem Trailer
               </Button>
               <Button
-                onClick={ClickedBuyTicket}
                 type="primary"
                 className="h-[40px] w-[130px]"
               >
@@ -280,7 +275,7 @@ export const MovieDetail = () => {
         </div>
       </div>
 
-      {buyTicket === true && (
+      {(
         <div className="p-[24px] min-h-[360px] bg-white my-[50px] mx-[200px]">
           <div className="border-y-4 border-black py-5">
             {Dates.map((item) => (

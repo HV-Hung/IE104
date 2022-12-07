@@ -85,7 +85,14 @@ export const Movie = () => {
                 </div>
               </div>
               <div className="h-[33px] bg-[#0a1e5e] flex justify-center">
-                <Button type="primary">Mua vé</Button>
+                <Button
+                  type="primary"
+                  onClick={() => {
+                    navigate(`/movie/${item._id}`);
+                  }}
+                >
+                  Mua vé
+                </Button>
               </div>
             </div>
           );
