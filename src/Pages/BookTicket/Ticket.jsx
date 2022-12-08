@@ -1,24 +1,48 @@
 import React from "react";
+import { useState } from "react";
 import background from "./img/ticket_bg.png";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import {
+  faArrowLeft,
+  faArrowRight,
+  faCreditCard,
+} from "@fortawesome/free-solid-svg-icons";
+import { useNavigate } from "react-router-dom";
+import { useLocation } from "react-router-dom";
 
-export const Ticket = () => {
+export const Ticket = (props) => {
+  const location = useLocation();
+  const navigate = useNavigate();
+  const [totalCombo, setTotalCombo] = useState(0);
+  const [film_price, setFilmPrice] = useState(150);
   return (
     <div
       style={{
         display: "grid",
         columnGap: "17px",
         gridTemplateRows: "4 1fr",
-        gridTemplateColumns: "120px 120px 1.7fr 0.75fr 1fr 1fr 1fr 120px",
+        gridTemplateColumns: "100px 110px 1.5fr 0.77fr 1.5fr 1fr 0.75fr 100px",
         margin: "auto",
         marginTop: "80px",
         backgroundImage: `url(${background})`,
         backgroundSize: "100% 100%",
         backgroundRepeat: "no-repeat",
-        color:"white",
+        color: "white",
       }}
-      className=" text-[15px] h-[200px] w-[70vw] col-start-1 col-end-3 row-start-4 row-end-5 self-start footer rounded-xl"
+      className=" text-[15px] h-[200px] w-[70vw] col-[1_/_3] row-[4_/_5] self-start footer rounded-xl"
     >
-      <button className="h-[100px] w-[100px] bg-amber-900  rounded-[20px] col-start-1 col-end-2 row-start-1 row-end-6 justify-self-center self-center">
+      <button
+        className="h-[80px] w-[80px] bg-amber-900  rounded-[20px] col-[1_/_2] row-[1_/_6] justify-self-center self-center text-xs"
+        onClick={() => {
+          if (location.pathname === "/payment") navigate(`/bookticket/food`);
+          else if (location.pathname === "/bookticket/food")
+            navigate(`/bookticket`);
+        }}
+      >
+        <FontAwesomeIcon
+          className="mx-[20px] text-4xl"
+          icon={faArrowLeft}
+        ></FontAwesomeIcon>
         PREVUOUS
       </button>
 
@@ -37,7 +61,7 @@ export const Ticket = () => {
         2D
       </div>
 
-      <div className="col-start-3 col-end-4 row-start-3 row-end-4 justify-self-left self-center ">
+      <div className="col-[3_/_4] row-[3_/_4] justify-self-left self-center ">
         {/* Hiển thị độ tuổi được xem phim */}
         C13
       </div>
@@ -84,17 +108,29 @@ export const Ticket = () => {
       </div>
 
       <div className="col-[7_/_8] row-[1_/_2] justify-self-start self-center font-bold">
-        200.000đ
+        {film_price + "đ"}
       </div>
       <div className="col-[7_/_8] row-[2_/_3] justify-self-start self-center font-bold">
-        150.000đ
+        {totalCombo + "đ"}
       </div>
-      <div className="col-[7_/_8] row-[3_/_4] justify-self-start self-center text-center font-bold">
-        150.00đ
+      <div className="col-[7_/_8] row-[3_/_4] justify-self-start self-center font-bold">
+        {totalCombo + film_price + "đ"}
       </div>
 
-      <button className="h-[100px] w-[100px] bg-orange-400 rounded-[20px] col-start-8 col-end-9 row-start-1 row-end-5 justify-self-center self-center">
-        PAYMENT
+      <button
+        className="h-[80px] w-[80px] bg-[#e71a0f] border-white rounded-[20px] col-[8_/_9] row-[1_/_5] justify-self-center self-center text-xs"
+        onClick={() => {
+          if (location.pathname === "/bookticket/food") navigate(`/payment`);
+          else if (location.pathname === "/bookticket")
+            navigate(`/bookticket/food`);
+          else if (location.pathname === "/payment") props.onClick();
+        }}
+      >
+        <FontAwesomeIcon
+          className="mx-[20px] text-4xl"
+          icon={faArrowRight}
+        ></FontAwesomeIcon>
+        NEXT
       </button>
     </div>
   );

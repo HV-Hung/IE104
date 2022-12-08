@@ -1,8 +1,10 @@
-import { Breadcrumb } from "antd";
+//import { Breadcrumb } from "antd";
 import React, { useState } from "react";
 import { Layout } from "../../Layout/Layout";
 import { Ticket } from "./Ticket";
 import { BookingHeader } from "./BookingHeader";
+
+//const total = 150;
 
 //bookticket/food
 
@@ -18,7 +20,6 @@ const foodItems = [
       "Mẫu ly phụ thuộc vào số lượng hàng tại rạp",
     ],
     price: "309.000đ",
-    quantity: 0,
   },
   {
     id: 2,
@@ -31,7 +32,6 @@ const foodItems = [
       "Mua 3 tặng 1",
     ],
     price: "200.000đ",
-    quantity: 0,
   },
   {
     id: 3,
@@ -43,7 +43,6 @@ const foodItems = [
       "Miễn phí đổi vị bắp Phô mai, Caramel",
     ],
     price: "259.000đ",
-    quantity: 0,
   },
   {
     id: 4,
@@ -57,7 +56,6 @@ const foodItems = [
       "Mẫu ly phụ thuộc vào số lượng hàng tại rạp",
     ],
     price: "239.000đ",
-    quantity: 0,
   },
   {
     id: 5,
@@ -71,7 +69,6 @@ const foodItems = [
       "Mẫu ly phụ thuộc vào số lượng hàng tại rạp",
     ],
     price: "409.000đ",
-    quantity: 0,
   },
   {
     id: 6,
@@ -84,7 +81,6 @@ const foodItems = [
       "Mẫu ly phụ thuộc vào số lượng hàng tại rạp",
     ],
     price: "599.000đ",
-    quantity: 0,
   },
   {
     id: 7,
@@ -97,7 +93,6 @@ const foodItems = [
       "Đủ 8 loại nhân vật",
     ],
     price: "2099.000đ",
-    quantity: 0,
   },
   {
     id: 8,
@@ -111,7 +106,6 @@ const foodItems = [
       "Đổi vị Phô mai phụ thu thêm tiền",
     ],
     price: "83.000đ",
-    quantity: 0,
   },
   {
     id: 9,
@@ -125,7 +119,6 @@ const foodItems = [
       "Đổi vị Phô mai phụ thu thêm tiền",
     ],
     price: "102.000đ",
-    quantity: 0,
   },
   {
     id: 10,
@@ -139,7 +132,6 @@ const foodItems = [
       "Đổi vị Phô mai phụ thu thêm tiền",
     ],
     price: "113.000đ",
-    quantity: 0,
   },
 ];
 const Counter = () => {
@@ -229,7 +221,7 @@ const FoodItem = ({ foodItem }) => {
             bottom: "3px",
           }}
         >
-          Giá:{" "}
+          Giá:
           <span style={{ fontSize: "25px", color: "red", fontWeight: "bold" }}>
             {foodItem.price}
           </span>
@@ -240,12 +232,22 @@ const FoodItem = ({ foodItem }) => {
 };
 
 export const Food = () => {
-
   return (
     <Layout>
-      <Breadcrumb style={{ marginLeft: "16px" }}>
-        <Breadcrumb.Item>Food</Breadcrumb.Item>
-      </Breadcrumb>
+      {/* <Breadcrumb
+        style={{
+          marginTop: "10px",
+          marginBottom: "5px",
+          marginLeft: "auto",
+          marginRight: "auto",
+          backgroundColor: "gray",
+          width: "90vw",
+        }}
+      >
+        <Breadcrumb.Item className="text-white font-medium ml-[147px]">
+          Trang chủ Combo
+        </Breadcrumb.Item>
+      </Breadcrumb> */}
       <div
         className="p-[24px] min-h-[360px] max-w-[90vw] bg-[#F2F7FF] m-[24px] "
         style={{ margin: "auto" }}
@@ -255,7 +257,7 @@ export const Food = () => {
           style={{
             display: "grid",
             gridTemplateColumns: "30rem 30rem",
-            gap: "50px",
+            gap: "20px 50px",
             width: "1000px",
             marginLeft: "auto",
             marginRight: "auto",
@@ -270,4 +272,3 @@ export const Food = () => {
     </Layout>
   );
 };
- 
