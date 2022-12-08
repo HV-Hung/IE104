@@ -237,7 +237,7 @@ export const MovieDetail = () => {
               <div className="text-[15px] leading-[25px] text-white mb-[30px]">
                 Phân loại:{" "}
                 <span className="font-bold mx-0 text-[18px]">
-                  P - PHIM DÀNH CHO MỌI ĐỐI TƯỢNG
+                  {movie?.rated}
                 </span>
               </div>
             </div>
@@ -250,10 +250,7 @@ export const MovieDetail = () => {
               >
                 Xem Trailer
               </Button>
-              <Button
-                type="primary"
-                className="h-[40px] w-[130px]"
-              >
+              <Button type="primary" className="h-[40px] w-[130px]">
                 Mua vé
               </Button>
             </div>
@@ -264,18 +261,11 @@ export const MovieDetail = () => {
           CHI TIẾT
         </div>
         <div className="max-h-[100px] text-[15px] text-white mb-[20px] leading-[25px]">
-          Khỉ Con luôn khát khao được chu du năm châu bốn bể và khám phá thế
-          giới rộng lớn nhiệm màu. Nhưng vì không muốn con trai đối mặt với bất
-          kỳ nguy hiểm nào, mẹ Khỉ Con không cho phép cậu thực hiện ước mơ đó.
-          Một ngày nọ, nhà thám hiểm Ếch Bảnh ghé qua thị trấn nơi Khỉ Con đang
-          sinh sống và cá cược với những cư dân nơi đây rằng mình có thể đi vòng
-          quanh thế giới chỉ trong vòng 80 ngày. Một cách tình cờ, Khỉ Con trở
-          thành người bạn đồng hành của Ếch Bảnh, cả hai đã cùng bắt đầu một
-          cuộc phiêu lưu đầy bất ngờ nhưng cũng không kém phần thú vị.
+          {movie?.description}
         </div>
       </div>
 
-      {(
+      {
         <div className="p-[24px] min-h-[360px] bg-white my-[50px] mx-[200px]">
           <div className="border-y-4 border-black py-5">
             {Dates.map((item) => (
@@ -325,18 +315,18 @@ export const MovieDetail = () => {
             ))}
           </div>
         </div>
-      )}
+      }
 
       {trailer ? (
         <div
           className="bg-black/70 min-h-screen w-[100%] fixed top-0"
           onClick={() => setTrailer(false)}
         >
-          <div className="mx-auto w-[1280px] relative top-[20px]">
+          <div className="mx-auto w-[1280px] relative top-[44px]">
             <iframe
               width="1280"
               height="720"
-              src="https://www.youtube.com/embed/ojcNcvb1olg"
+              src={movie?.trailer_url}
               title="YouTube video player"
               frameborder="0"
               allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"

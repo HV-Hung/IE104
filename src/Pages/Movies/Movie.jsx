@@ -21,14 +21,15 @@ export const Movie = () => {
       });
   }, []);
 
-  const nowDate = dateToString(new Date().toJSON());
+  // const nowDate = dateToString(new Date().toJSON());
+  const nowDate = new Date().getTime();
 
   const nowShowing = movies?.filter((item) => {
-    return dateToString(item.releaseDate) <= nowDate;
+    return new Date(item.releaseDate).getTime() <= nowDate;
   }, []);
 
   const comingSoon = movies?.filter((item) => {
-    return dateToString(item.releaseDate) > nowDate;
+    return new Date(item.releaseDate).getTime() > nowDate;
   }, []);
 
   return (
