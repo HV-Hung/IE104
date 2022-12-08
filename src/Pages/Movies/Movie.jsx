@@ -21,6 +21,16 @@ export const Movie = () => {
       });
   }, []);
 
+  const nowDate = dateToString(new Date().toJSON());
+
+  const nowShowing = movies?.filter((item) => {
+    return dateToString(item.releaseDate) <= nowDate;
+  }, []);
+
+  const comingSoon = movies?.filter((item) => {
+    return dateToString(item.releaseDate) > nowDate;
+  }, []);
+
   return (
     <Layout>
       <Breadcrumb
@@ -52,7 +62,7 @@ export const Movie = () => {
       </div>
 
       <div className="max-h-[1872px] w-[1228px] bg-[#0a1e5e] mt-[10px] mb-[20px] mx-auto grid grid-cols-5 gap-x-[67px] gap-y-[20px]">
-        {movies?.map((item, index) => {
+        {(movieType ? nowShowing : comingSoon)?.map((item, index) => {
           return (
             <div key={index} className="h-[475px]">
               <div>
