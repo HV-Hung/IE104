@@ -27,4 +27,3 @@ export const Payment_MoMo = () => {
     );
 };
 
-// http://t3.gstatic.com/licensed-image?q=tbn:ANd9GcSh-wrQu254qFaRcoYktJ5QmUhmuUedlbeMaQeaozAVD4lh4ICsGdBNubZ8UlMvWjKC
