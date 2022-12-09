@@ -5,7 +5,7 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import {
   faArrowLeft,
   faArrowRight,
-  faCreditCard,
+  //faCreditCard,
 } from "@fortawesome/free-solid-svg-icons";
 import { useNavigate } from "react-router-dom";
 import { useLocation } from "react-router-dom";
@@ -14,7 +14,15 @@ export const Ticket = (props) => {
   const location = useLocation();
   const navigate = useNavigate();
   const [totalCombo, setTotalCombo] = useState(0);
-  const [film_price, setFilmPrice] = useState(150);
+  //const [film_price, setFilmPrice] = useState(150);
+
+  // const getTotal = (total) => {
+  //   setTotalCombo(total);
+  //   return total;
+  // };
+
+  //getTotal(props.totalCombo);
+
   return (
     <div
       style={{
@@ -32,7 +40,7 @@ export const Ticket = (props) => {
       className=" text-[15px] h-[200px] w-[70vw] col-[1_/_3] row-[4_/_5] self-start footer rounded-xl"
     >
       <button
-        className="h-[80px] w-[80px] bg-amber-900  rounded-[20px] col-[1_/_2] row-[1_/_6] justify-self-center self-center text-xs"
+        className="h-[80px] w-[80px]  bg-[#444444] rounded-[20px] col-[1_/_2] row-[1_/_6] justify-self-center self-center text-xs hover:opacity-80 border"
         onClick={() => {
           if (location.pathname === "/payment") navigate(`/bookticket/food`);
           else if (location.pathname === "/bookticket/food")
@@ -108,17 +116,21 @@ export const Ticket = (props) => {
       </div>
 
       <div className="col-[7_/_8] row-[1_/_2] justify-self-start self-center font-bold">
-        {film_price + "đ"}
+        {/* {film_price + "đ"} */}
       </div>
       <div className="col-[7_/_8] row-[2_/_3] justify-self-start self-center font-bold">
-        {totalCombo + "đ"}
+        {/* {props.totalCombo + "đ"} */}
+        {new Intl.NumberFormat("vi-VN", {
+          style: "currency",
+          currency: "VND",
+        }).format(props.totalCombo)}
       </div>
       <div className="col-[7_/_8] row-[3_/_4] justify-self-start self-center font-bold">
-        {totalCombo + film_price + "đ"}
+        {/* {totalCombo + film_price + "đ"} */}
       </div>
 
       <button
-        className="h-[80px] w-[80px] bg-[#e71a0f] border-white rounded-[20px] col-[8_/_9] row-[1_/_5] justify-self-center self-center text-xs"
+        className="h-[80px] w-[80px] bg-[#e71a0f] border-white rounded-[20px] col-[8_/_9] row-[1_/_5] justify-self-center self-center text-xs hover:opacity-80 border"
         onClick={() => {
           if (location.pathname === "/bookticket/food") navigate(`/payment`);
           else if (location.pathname === "/bookticket")

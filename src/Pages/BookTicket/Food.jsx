@@ -3,8 +3,7 @@ import React, { useState } from "react";
 import { Layout } from "../../Layout/Layout";
 import { Ticket } from "./Ticket";
 import { BookingHeader } from "./BookingHeader";
-
-//const total = 150;
+import { FoodItem } from "./FoodItem";
 
 //bookticket/food
 
@@ -19,7 +18,7 @@ const foodItems = [
       "Nhận trong ngày xem phim",
       "Mẫu ly phụ thuộc vào số lượng hàng tại rạp",
     ],
-    price: "309.000đ",
+    price: 309000,
   },
   {
     id: 2,
@@ -31,7 +30,7 @@ const foodItems = [
       "Miễn phí đổi ",
       "Mua 3 tặng 1",
     ],
-    price: "200.000đ",
+    price: 200000,
   },
   {
     id: 3,
@@ -42,7 +41,7 @@ const foodItems = [
       "1 ly Avatar + 2 nước siêu lớn + 1 bắp ngọt lớn",
       "Miễn phí đổi vị bắp Phô mai, Caramel",
     ],
-    price: "259.000đ",
+    price: 259000,
   },
   {
     id: 4,
@@ -55,7 +54,7 @@ const foodItems = [
 
       "Mẫu ly phụ thuộc vào số lượng hàng tại rạp",
     ],
-    price: "239.000đ",
+    price: 239000,
   },
   {
     id: 5,
@@ -68,7 +67,7 @@ const foodItems = [
 
       "Mẫu ly phụ thuộc vào số lượng hàng tại rạp",
     ],
-    price: "409.000đ",
+    price: 409000,
   },
   {
     id: 6,
@@ -80,7 +79,7 @@ const foodItems = [
       "Miễn phí đổi vị bắp Phô mai, Caramel",
       "Mẫu ly phụ thuộc vào số lượng hàng tại rạp",
     ],
-    price: "599.000đ",
+    price: 599000,
   },
   {
     id: 7,
@@ -92,7 +91,7 @@ const foodItems = [
       "Nhận trong ngày xem phim",
       "Đủ 8 loại nhân vật",
     ],
-    price: "2099.000đ",
+    price: 2099000,
   },
   {
     id: 8,
@@ -105,7 +104,7 @@ const foodItems = [
       "Miễn phí đổi vị bắp Caramel",
       "Đổi vị Phô mai phụ thu thêm tiền",
     ],
-    price: "83.000đ",
+    price: 83000,
   },
   {
     id: 9,
@@ -118,7 +117,7 @@ const foodItems = [
       "Miễn phí đổi vị bắp Caramel",
       "Đổi vị Phô mai phụ thu thêm tiền",
     ],
-    price: "102.000đ",
+    price: 102000,
   },
   {
     id: 10,
@@ -131,123 +130,18 @@ const foodItems = [
       "Miễn phí đổi vị bắp Caramel",
       "Đổi vị Phô mai phụ thu thêm tiền",
     ],
-    price: "113.000đ",
+    price: 113000,
   },
 ];
-const Counter = () => {
-  let [count, setCount] = useState(0);
-  return (
-    <div>
-      <div>
-        <button
-          style={{
-            fontSize: "20px",
-            backgroundColor: "#90A5E8",
-            border: "none",
-            color: "white",
-            padding: "0px 15px",
-            margin: "35px 0px 5px 30px",
-            textAlign: "center",
-            textDecoration: "none",
-            display: "inline-block",
-            borderRadius: "8px",
-          }}
-          onClick={() => {
-            if (count === 0) {
-              return;
-            }
-            setCount(--count);
-          }}
-        >
-          -
-        </button>
-        <span style={{ fontSize: "25px" }}>{count}</span>
-        <button
-          style={{
-            fontSize: "20px",
-            backgroundColor: "#90A5E8",
-            border: "none",
-            color: "white",
-            padding: "0px 15px",
-            margin: "35px 0px 5px 0px",
-            textAlign: "center",
-            textDecoration: "none",
-            display: "inline-block",
-            borderRadius: "8px",
-          }}
-          onClick={() => {
-            setCount(++count);
-          }}
-        >
-          +
-        </button>
-      </div>
-    </div>
-  );
-};
-
-const FoodItem = ({ foodItem }) => {
-  return (
-    <div
-      key={foodItem.id}
-      className="p-[12px] min-h-[100px] bg-#e23f m-[12px]"
-      style={{ display: "flex" }}
-    >
-      <div style={{ flex: 1 }}>
-        <img
-          style={{
-            maxHeight: "200px",
-            maxWidth: "200px",
-            marginRight: "20px",
-          }}
-          src={foodItem.image}
-          alt="day la mot buc anh thuc an"
-        />
-        <Counter> style={{ marginLeft: "30px" }}</Counter>
-      </div>
-      <div style={{ flex: 1, position: "relative" }}>
-        <h2 style={{ fontSize: "1.1rem" }}>{foodItem.title}</h2>
-        <ul>
-          {foodItem.contents.map((content) => (
-            <li style={{ marginLeft: "20px", listStyleType: "circle" }}>
-              {content}
-            </li>
-          ))}
-        </ul>
-        <div
-          style={{
-            fontSize: "20px",
-            position: "absolute",
-            bottom: "3px",
-          }}
-        >
-          Giá:
-          <span style={{ fontSize: "25px", color: "red", fontWeight: "bold" }}>
-            {foodItem.price}
-          </span>
-        </div>
-      </div>
-    </div>
-  );
-};
 
 export const Food = () => {
+  let [totalItemComBo, setTotalItemCombo] = useState(0);
+  const getTotal = (total) => {
+    setTotalItemCombo(totalItemComBo + total);
+  };
+
   return (
     <Layout>
-      {/* <Breadcrumb
-        style={{
-          marginTop: "10px",
-          marginBottom: "5px",
-          marginLeft: "auto",
-          marginRight: "auto",
-          backgroundColor: "gray",
-          width: "90vw",
-        }}
-      >
-        <Breadcrumb.Item className="text-white font-medium ml-[147px]">
-          Trang chủ Combo
-        </Breadcrumb.Item>
-      </Breadcrumb> */}
       <div
         className="p-[24px] min-h-[360px] max-w-[90vw] bg-[#F2F7FF] m-[24px] "
         style={{ margin: "auto" }}
@@ -264,10 +158,10 @@ export const Food = () => {
           }}
         >
           {foodItems.map((item) => (
-            <FoodItem foodItem={item}></FoodItem>
+            <FoodItem foodItem={item} getTotal={getTotal}></FoodItem>
           ))}
         </div>
-        <Ticket></Ticket>
+        <Ticket totalCombo={totalItemComBo}></Ticket>
       </div>
     </Layout>
   );
