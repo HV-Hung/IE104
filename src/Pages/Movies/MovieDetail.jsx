@@ -125,8 +125,6 @@ export const MovieDetail = () => {
     { name: "Cần Thơ", id: 3 },
   ];
 
-  // const [getIdDate, setGetIdDate] = React.useState(1);
-  // const [getIdCity, setGetIdCity] = React.useState(1);
   let getIdCity = 1;
   let getIdDate = 1;
 
@@ -225,10 +223,11 @@ export const MovieDetail = () => {
                 Diễn viên: {movie?.actors}
               </div>
               <div className="text-[15px] leading-[25px] text-white mb-[8px]">
-                Thể loại: hoạt hình
+                Thể loại: {movie?.genre}
               </div>
               <div className="text-[15px] leading-[25px] text-white mb-[8px]">
-                Khởi chiếu: {new Date(movie?.releaseDate).toLocaleDateString("en-UK")}
+                Khởi chiếu:{" "}
+                {new Date(movie?.releaseDate).toLocaleDateString("en-UK")}
               </div>
               <div className="text-[15px] leading-[25px] text-white mb-[8px]">
                 Thời lượng: 82 phút
@@ -332,7 +331,7 @@ export const MovieDetail = () => {
               width="1280"
               height="720"
               src={movie?.trailer_url}
-              title="YouTube video player"
+              title="Avatar 2 - Trailer mới nhất - Vietsub"
               frameborder="0"
               allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
               allowfullscreen
