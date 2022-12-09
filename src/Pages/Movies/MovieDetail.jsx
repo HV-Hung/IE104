@@ -197,9 +197,7 @@ export const MovieDetail = () => {
           backgroundColor: "gray",
         }}
       >
-        <Breadcrumb.Item className="text-white font-medium ml-[147px]">
-          Trang chủ Phim Đang chiếu Khí con lon ton thành phố
-        </Breadcrumb.Item>
+        <Breadcrumb.Item></Breadcrumb.Item>
       </Breadcrumb>
 
       <div className="max-w-[1228px] mx-auto">
@@ -210,7 +208,11 @@ export const MovieDetail = () => {
         <div className="h-[2px] bg-white mb-[15px]"></div>
 
         <div className="max-h-[900px] flex flex-start">
-          <img className="max-h-[360px] mr-[30px]" src={movie?.image} alt="" />
+          <img
+            className="max-h-[360px] w-[246px] mr-[30px]"
+            src={movie?.image}
+            alt=""
+          />
           <div className="h-[360px] flex-1">
             <div className="text-[30px] pb-[10px] font-semibold text-white">
               {movie?.name}
@@ -226,7 +228,7 @@ export const MovieDetail = () => {
                 Thể loại: hoạt hình
               </div>
               <div className="text-[15px] leading-[25px] text-white mb-[8px]">
-                Khởi chiếu: 11/11/2022
+                Khởi chiếu: {new Date(movie?.releaseDate).toLocaleDateString("en-UK")}
               </div>
               <div className="text-[15px] leading-[25px] text-white mb-[8px]">
                 Thời lượng: 82 phút
@@ -250,9 +252,12 @@ export const MovieDetail = () => {
               >
                 Xem Trailer
               </Button>
-              <Button type="primary" className="h-[40px] w-[130px]">
-                Mua vé
-              </Button>
+              {new Date(movie?.releaseDate).getDate() <=
+              new Date().getDate() ? (
+                <Button type="primary" className="h-[40px] w-[130px]">
+                  Mua vé
+                </Button>
+              ) : null}
             </div>
           </div>
         </div>
@@ -265,7 +270,7 @@ export const MovieDetail = () => {
         </div>
       </div>
 
-      {
+      {new Date(movie?.releaseDate).getDate() <= new Date().getDate() ? (
         <div className="p-[24px] min-h-[360px] bg-white my-[50px] mx-[200px]">
           <div className="border-y-4 border-black py-5">
             {Dates.map((item) => (
@@ -315,7 +320,7 @@ export const MovieDetail = () => {
             ))}
           </div>
         </div>
-      }
+      ) : null}
 
       {trailer ? (
         <div

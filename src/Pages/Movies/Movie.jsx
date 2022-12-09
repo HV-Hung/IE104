@@ -21,15 +21,12 @@ export const Movie = () => {
       });
   }, []);
 
-  // const nowDate = dateToString(new Date().toJSON());
-  const nowDate = new Date().getTime();
-
   const nowShowing = movies?.filter((item) => {
-    return new Date(item.releaseDate).getTime() <= nowDate;
+    return new Date(item.releaseDate).getDate() <= new Date().getDate();
   }, []);
 
   const comingSoon = movies?.filter((item) => {
-    return new Date(item.releaseDate).getTime() > nowDate;
+    return new Date(item.releaseDate).getDate() > new Date().getDate();
   }, []);
 
   return (
@@ -41,21 +38,21 @@ export const Movie = () => {
           backgroundColor: "gray",
         }}
       >
-        <Breadcrumb.Item className="text-white font-medium ml-[147px]">
-          Trang chủ Phim Đang chiếu
-        </Breadcrumb.Item>
+        <Breadcrumb.Item></Breadcrumb.Item>
       </Breadcrumb>
       <div className="py-[15px] h-[70px] w-[1228px] mx-auto flex justify-center">
         <div
-          className="text-[30px] text-white mr-[40px] cursor-pointer"
-          style={movieType ? { color: "#0091ff" } : { color: "white" }}
+          className={`text-[30px] text-white mr-[40px] cursor-pointer hover:text-[#d4dd29] ${
+            movieType === true && "text-[#d4dd29]"
+          }`}
           onClick={() => setMovieType(true)}
         >
           PHIM ĐANG CHIẾU
         </div>
         <div
-          className="text-[30px] text-white cursor-pointer"
-          style={movieType ? { color: "white" } : { color: "#0091ff" }}
+          className={`text-[30px] text-white mr-[40px] cursor-pointer hover:text-[#d4dd29] ${
+            movieType === false && "text-[#d4dd29]"
+          }`}
           onClick={() => setMovieType(false)}
         >
           PHIM SẮP CHIẾU
