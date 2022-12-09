@@ -12,8 +12,8 @@ export const Register = () => {
 
   return (
     <div className="register-container relative w-screen min-h-screen m-0 p-0 bg-[#e5e7eb]">
-      <div className="register-form-container absolute w-[500px] m-auto top-[20px] left-0 right-0 pt-[100px] pb-[100px] pl-[50px] pr-[50px]">
-        <h1 className="title text-center text-[40px] mb-[20px] mt-[-50px]">REGISTER</h1>
+      <div className="register-form-container absolute w-[500px] m-auto top-[20px] left-0 right-0 pt-[80px] pb-[100px] pl-[50px] pr-[50px]">
+        <h1 className="title text-center text-[40px] mb-[40px] mt-[-50px]">ĐĂNG KÝ</h1>
 
         <Form
           name="basic"
@@ -24,60 +24,60 @@ export const Register = () => {
           autoComplete="off"
         >
           <Form.Item
-            label="FULL NAME"
+            label="TÊN ĐẦY ĐỦ"
             name="username"
-            rules={[{required: true,message: "Please input your name!" }]}
+            
             
           >
-            <Input title="Username should only contain lowercase, uppercase, number" pattern="^[A-Za-z]{3,16}$" type="text" placeholder="Enter your name" />
+            <Input required title="Tên chỉ nên chứa kí tự hoa hoặc kí tự thường" pattern="^[A-Za-z]{3,16}$" type="text" placeholder="Nhập tên" />
             
           </Form.Item>
 
           <Form.Item
-            label="PHONE NUMBER"
+            label="SỐ ĐIỆN THOẠI"
             name="phonenumber"
-            rules={[{ required: true, message: "Please input your phone number!" }]}
+            
           >
-            <Input title="Minimum length should be 10" pattern="[0-9]{10,}" type="phonenumber" placeholder="Enter your phone number" />
+            <Input required title="Chỉ chứa chữ số và dài tối thiểu 10" pattern="[0-9]{10,}" type="phonenumber" placeholder="Nhập số điện thoại " />
           </Form.Item>
 
           <Form.Item
             label="EMAIL"
             name="email"
-            rules={[{ required: true, message: "Please input your email!" }]}
+            
           >
-            <Input type="email" placeholder="Enter your email" />
+            <Input required type="email" placeholder="Nhập email" />
           </Form.Item>
 
           <Form.Item
-            label="PASSWORD"
+            label="MẬT KHẨU"
             name="password"
-            rules={[{ required: true, message: "Please input your password!" }]}
+            
           >
-            <Input.Password pattern="^[A-za-z0-9]{6, 25}" placeholder="Enter your password" />
+            <Input.Password required pattern="^[A-za-z0-9]{6, 25}" placeholder="Nhập mật khẩu" />
           </Form.Item>
 
           <Form.Item
-            name="confirm"
-            label="CONFIRM PASSWORD"
+            name="confirmPassword"
+            label="XÁC NHẬN MẬT KHẨU"
             dependencies={['password']}
             hasFeedback
             rules={[
             {
-                required: true,
-                message: 'Please confirm your password!',
+                
+                
             },
             ({ getFieldValue }) => ({
                 validator(_, value) {
                 if (!value || getFieldValue('password') === value) {
                     return Promise.resolve();
                 }
-                return Promise.reject(new Error('The two passwords that you entered do not match!'));
+                return Promise.reject(new Error('Mật khẩu không khớp!'));
                 },
             }),
             ]}
             >
-                <Input.Password placeholder="Enter your password" />
+                <Input.Password required placeholder="Nhập lại mật khẩu" />
           </Form.Item>
 
           <Form.Item wrapperCol={{ offset: 0, span: 18 }}>
@@ -88,7 +88,7 @@ export const Register = () => {
               htmlType="submit"
               
             >
-              Sign Up
+              ĐĂNG KÝ
             </Button>
           </Form.Item>
         </Form>

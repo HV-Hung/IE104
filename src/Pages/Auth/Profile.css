@@ -51,9 +51,7 @@
 
 .page-title h1{
     color: white !important;
-    font-size: 1.5rem;
-    margin-top: 10px;
-    
+    font-size: 1.5rem;    
 }
 
 .user-info-card{
@@ -141,7 +139,7 @@
 
 .dot{
     position: absolute;
-    top: 44%;
+    top: 43.5%;
     left: 5%;
     padding-top: 50px;
     width: 56px;
@@ -166,7 +164,7 @@
     height: 6px;
     background-color: white;
     padding-top: 6px;
-    top: 48%;
+    top: 47.5%;
     right: 13%;
     border-radius: 100%;
     transform: translate(-50%,-50%);
@@ -279,7 +277,7 @@ input[type="radio"]{
     margin: -15px 0 0 0;
 }
 
-.btn-submit{
+.column-main .btn-submit{
     cursor: pointer;
     float: right;
     background: linear-gradient(0.4turn, #007bff, #112d4e);
@@ -287,7 +285,11 @@ input[type="radio"]{
     border-radius: 22px;
     width: 110px;
     margin: 0;
-    
+    height: 30px;
+    color: white;
+    border: none;
+    outline: none;
+    margin-top: 20px;
 }
 
 .form-control:disabled{
@@ -296,7 +298,6 @@ input[type="radio"]{
 }
 
 .address h1{
-    margin-top: 15px;
     font-size: 2rem;
 }
 
@@ -308,13 +309,12 @@ input[type="radio"]{
     height: 35px;
     margin-top: 16px;
     margin-bottom: 10px;
-    padding: 5px 0;
+    
 }
 
 .address h1{
     color: white !important;
-    font-size: 1.5rem;
-    margin-top: 10px;    
+    font-size: 1.5rem; 
 }
 
 .processing{
@@ -335,6 +335,10 @@ nav{
     justify-content: center;
 }
 
+.nav-tabs a{
+    text-decoration: none;
+}
+
 .nav-item{
     width: 20%;
     color: black !important;
@@ -350,14 +354,13 @@ nav{
 }
 
 .tab-content{
-    margin-top: 25px;
+    margin-top: 35px;
 }
 
 .cover-all-benefit{
     align-items: center;
     justify-content: center;
 }
-
 
 .cover-image{
     margin-top: 20px;
@@ -424,6 +427,14 @@ nav{
 }
 
 #nav-5 .all-benefit{
-    margin-top: 25px;
+    margin-top: 0px;
 }
 
+.tab-content .all-benefit{
+    width: 200px;
+    margin: 20px;
+}
+
+.tab-content span{
+    font-size: 1.2rem;
+}

@@ -1,12 +1,13 @@
 import { Breadcrumb } from "antd";
 import React from "react";
 import { Layout } from "../../Layout/Layout";
+import Barcode from 'react-barcode';
 import "./Profile.css"
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 
 
 export const Profile = () => {
   var Barcode = require('react-barcode');
-  const [menuNumber, setMenuNumber] = React.useState(0);
   return (
     <Layout>
       <Breadcrumb style={{ marginLeft: "16px" }}>
@@ -291,8 +292,9 @@ export const Profile = () => {
                   </div>
           </div>
 
-          <div id="title" className="title control not-active">
-            <h1>Sổ địa chỉ</h1>
+          <div id="card-product-note-item" className="card-product-note-item control not-active">
+            <input type={"text"}></input>
+            <FontAwesomeIcon icon={['fab', 'google']} />
           </div>
          
         </div>
