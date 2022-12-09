@@ -42,7 +42,7 @@ export const Ticket = (props) => {
       <button
         className="h-[80px] w-[80px]  bg-[#444444] rounded-[20px] col-[1_/_2] row-[1_/_6] justify-self-center self-center text-xs hover:opacity-80 border"
         onClick={() => {
-          if (location.pathname === "/payment") navigate(`/bookticket/food`);
+          if (location.pathname === "/payment") navigate(`/bookticket`);
           else if (location.pathname === "/bookticket/food")
             navigate(`/bookticket`);
         }}
