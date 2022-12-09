@@ -36,22 +36,22 @@ export const Login = () => {
           <Form.Item
             label="EMAIL"
             name="email"
-            rules={[{ message: "Hãy nhập email của bạn!" }]}
+            rules={[{required: true, message: "Hãy nhập email của bạn!" }]}
           >
-            <Input required type="email" placeholder="Nhập email" pattern="[A-Za-z0-9]{2,}"/>
+            <Input type="email" placeholder="Nhập email" pattern="[A-Za-z0-9]{2,}"/>
           </Form.Item>
 
           <Form.Item
             label="MẬT KHẨU"
             name="password"
-            rules={[{ message: "Hãy nhập mật khẩu của bạn!" }]}
+            rules={[{required: true, message: "Hãy nhập mật khẩu của bạn!" }]}
           >
-            <Input.Password placeholder="Mật khẩu"  required/>
+            <Input.Password placeholder="Mật khẩu" />
           </Form.Item>
           <Form.Item wrapperCol={{ offset: 0, span: 24 }}>
             <div className="footer flex justify-between">
               <div className="checkbox">
-                <input type="checkbox" name="remember-password" id="bal1"  required/>
+                <input type="checkbox" name="remember-password" id="bal1"/>
                 <label htmlFor="bal1">               
                   Nhớ Mật Khẩu
                 </label>
