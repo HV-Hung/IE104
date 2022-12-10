@@ -4,17 +4,21 @@ import { useNavigate } from "react-router-dom";
 import "./Login.css";
 import { Layout } from "../../Layout/Layout";
 import { Breadcrumb } from "antd";
-
+import { usePost } from "../../api/post";
 export const Login = () => {
   let navigate = useNavigate();
 
+  const { fetchPost, result } = usePost();
+
   const onFinish = (values) => {
-    navigate("/");
+    console.log(values);
+    fetchPost("auth/userlogin", values);
   };
 
   const handleClick = () => {
     navigate("/register");
   };
+  console.log(result);
 
   return (
     <Layout>
@@ -40,11 +44,7 @@ export const Login = () => {
               name="email"
               rules={[{ required: true, message: "Hãy nhập email của bạn!" }]}
             >
-              <Input
-                type="email"
-                placeholder="Nhập email"
-                // pattern="[A-Za-z0-9]{20,}"
-              />
+              <Input type="email" placeholder="Nhập email" />
             </Form.Item>
 
             <Form.Item
