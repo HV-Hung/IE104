@@ -21,6 +21,14 @@ export const Movie = () => {
       });
   }, []);
 
+  const nowShowing = movies?.filter((item) => {
+    return new Date(item.releaseDate).getDate() <= new Date().getDate();
+  }, []);
+
+  const comingSoon = movies?.filter((item) => {
+    return new Date(item.releaseDate).getDate() > new Date().getDate();
+  }, []);
+
   return (
     <Layout>
       <Breadcrumb
@@ -30,21 +38,21 @@ export const Movie = () => {
           backgroundColor: "gray",
         }}
       >
-        <Breadcrumb.Item className="text-white font-medium ml-[147px]">
-          Trang chủ Phim Đang chiếu
-        </Breadcrumb.Item>
+        <Breadcrumb.Item></Breadcrumb.Item>
       </Breadcrumb>
       <div className="py-[15px] h-[70px] w-[1228px] mx-auto flex justify-center">
         <div
-          className="text-[30px] text-white mr-[40px] cursor-pointer"
-          style={movieType ? { color: "#0091ff" } : { color: "white" }}
+          className={`text-[30px] text-white mr-[40px] cursor-pointer hover:text-[#d4dd29] ${
+            movieType === true && "text-[#d4dd29]"
+          }`}
           onClick={() => setMovieType(true)}
         >
           PHIM ĐANG CHIẾU
         </div>
         <div
-          className="text-[30px] text-white cursor-pointer"
-          style={movieType ? { color: "white" } : { color: "#0091ff" }}
+          className={`text-[30px] text-white mr-[40px] cursor-pointer hover:text-[#d4dd29] ${
+            movieType === false && "text-[#d4dd29]"
+          }`}
           onClick={() => setMovieType(false)}
         >
           PHIM SẮP CHIẾU
@@ -52,7 +60,7 @@ export const Movie = () => {
       </div>
 
       <div className="max-h-[1872px] w-[1228px] bg-[#0a1e5e] mt-[10px] mb-[20px] mx-auto grid grid-cols-5 gap-x-[67px] gap-y-[20px]">
-        {movies?.map((item, index) => {
+        {(movieType ? nowShowing : comingSoon)?.map((item, index) => {
           return (
             <div key={index} className="h-[475px]">
               <div>
@@ -85,7 +93,14 @@ export const Movie = () => {
                 </div>
               </div>
               <div className="h-[33px] bg-[#0a1e5e] flex justify-center">
-                <Button type="primary">Mua vé</Button>
+                <Button
+                  type="primary"
+                  onClick={() => {
+                    navigate(`/movie/${item._id}`);
+                  }}
+                >
+                  Mua vé
+                </Button>
               </div>
             </div>
           );

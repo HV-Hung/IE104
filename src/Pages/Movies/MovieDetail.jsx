@@ -125,8 +125,6 @@ export const MovieDetail = () => {
     { name: "Cần Thơ", id: 3 },
   ];
 
-  // const [getIdDate, setGetIdDate] = React.useState(1);
-  // const [getIdCity, setGetIdCity] = React.useState(1);
   let getIdCity = 1;
   let getIdDate = 1;
 
@@ -173,10 +171,6 @@ export const MovieDetail = () => {
     setShowTime([...newList]);
   };
 
-  const [buyTicket, setBuyTicket] = React.useState(false);
-  const ClickedBuyTicket = () => {
-    setBuyTicket(!buyTicket);
-  };
   const param = useParams();
   const [movie, setMovie] = useState(undefined);
   const id = param.id;
@@ -188,7 +182,7 @@ export const MovieDetail = () => {
       .then((data) => {
         setMovie(data);
       });
-  });
+  }, [id]);
 
   const [trailer, setTrailer] = useState(false);
 
@@ -201,9 +195,7 @@ export const MovieDetail = () => {
           backgroundColor: "gray",
         }}
       >
-        <Breadcrumb.Item className="text-white font-medium ml-[147px]">
-          Trang chủ Phim Đang chiếu Khí con lon ton thành phố
-        </Breadcrumb.Item>
+        <Breadcrumb.Item></Breadcrumb.Item>
       </Breadcrumb>
 
       <div className="max-w-[1228px] mx-auto">
@@ -214,7 +206,11 @@ export const MovieDetail = () => {
         <div className="h-[2px] bg-white mb-[15px]"></div>
 
         <div className="max-h-[900px] flex flex-start">
-          <img className="max-h-[360px] mr-[30px]" src={movie?.image} alt="" />
+          <img
+            className="max-h-[360px] w-[246px] mr-[30px]"
+            src={movie?.image}
+            alt=""
+          />
           <div className="h-[360px] flex-1">
             <div className="text-[30px] pb-[10px] font-semibold text-white">
               {movie?.name}
@@ -227,10 +223,11 @@ export const MovieDetail = () => {
                 Diễn viên: {movie?.actors}
               </div>
               <div className="text-[15px] leading-[25px] text-white mb-[8px]">
-                Thể loại: hoạt hình
+                Thể loại: {movie?.genre}
               </div>
               <div className="text-[15px] leading-[25px] text-white mb-[8px]">
-                Khởi chiếu: 11/11/2022
+                Khởi chiếu:{" "}
+                {new Date(movie?.releaseDate).toLocaleDateString("en-UK")}
               </div>
               <div className="text-[15px] leading-[25px] text-white mb-[8px]">
                 Thời lượng: 82 phút
@@ -241,7 +238,7 @@ export const MovieDetail = () => {
               <div className="text-[15px] leading-[25px] text-white mb-[30px]">
                 Phân loại:{" "}
                 <span className="font-bold mx-0 text-[18px]">
-                  P - PHIM DÀNH CHO MỌI ĐỐI TƯỢNG
+                  {movie?.rated}
                 </span>
               </div>
             </div>
@@ -254,13 +251,12 @@ export const MovieDetail = () => {
               >
                 Xem Trailer
               </Button>
-              <Button
-                onClick={ClickedBuyTicket}
-                type="primary"
-                className="h-[40px] w-[130px]"
-              >
-                Mua vé
-              </Button>
+              {new Date(movie?.releaseDate).getDate() <=
+              new Date().getDate() ? (
+                <Button type="primary" className="h-[40px] w-[130px]">
+                  Mua vé
+                </Button>
+              ) : null}
             </div>
           </div>
         </div>
@@ -269,18 +265,11 @@ export const MovieDetail = () => {
           CHI TIẾT
         </div>
         <div className="max-h-[100px] text-[15px] text-white mb-[20px] leading-[25px]">
-          Khỉ Con luôn khát khao được chu du năm châu bốn bể và khám phá thế
-          giới rộng lớn nhiệm màu. Nhưng vì không muốn con trai đối mặt với bất
-          kỳ nguy hiểm nào, mẹ Khỉ Con không cho phép cậu thực hiện ước mơ đó.
-          Một ngày nọ, nhà thám hiểm Ếch Bảnh ghé qua thị trấn nơi Khỉ Con đang
-          sinh sống và cá cược với những cư dân nơi đây rằng mình có thể đi vòng
-          quanh thế giới chỉ trong vòng 80 ngày. Một cách tình cờ, Khỉ Con trở
-          thành người bạn đồng hành của Ếch Bảnh, cả hai đã cùng bắt đầu một
-          cuộc phiêu lưu đầy bất ngờ nhưng cũng không kém phần thú vị.
+          {movie?.description}
         </div>
       </div>
 
-      {buyTicket === true && (
+      {new Date(movie?.releaseDate).getDate() <= new Date().getDate() ? (
         <div className="p-[24px] min-h-[360px] bg-white my-[50px] mx-[200px]">
           <div className="border-y-4 border-black py-5">
             {Dates.map((item) => (
@@ -330,19 +319,19 @@ export const MovieDetail = () => {
             ))}
           </div>
         </div>
-      )}
+      ) : null}
 
       {trailer ? (
         <div
           className="bg-black/70 min-h-screen w-[100%] fixed top-0"
           onClick={() => setTrailer(false)}
         >
-          <div className="mx-auto w-[1280px] relative top-[20px]">
+          <div className="mx-auto w-[1280px] relative top-[44px]">
             <iframe
               width="1280"
               height="720"
-              src="https://www.youtube.com/embed/ojcNcvb1olg"
-              title="YouTube video player"
+              src={movie?.trailer_url}
+              title="Avatar 2 - Trailer mới nhất - Vietsub"
               frameborder="0"
               allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
               allowfullscreen
