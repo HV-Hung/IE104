@@ -17,17 +17,57 @@ export const Home = () => {
     "https://wallpapercave.com/wp/wp9424755.jpg",
   ]);
 
+  function SampleNextArrow(props) {
+    const { className, style, onClick } = props;
+    return (
+      <div
+        className={className}
+        style={{
+          ...style,
+          display: "block",
+          background: "rgb(2 132 199)",
+          "border-radius": "9999px",
+          "font-size": "50px",
+          transform: "scale(4)",
+        }}
+        onClick={onClick}
+      />
+    );
+  }
+
+  function SamplePrevArrow(props) {
+    const { className, style, onClick } = props;
+    return (
+      <div
+        className={className}
+        style={{
+          ...style,
+          display: "block",
+          background: "rgb(2 132 199)",
+          "border-radius": "9999px",
+          "font-size": "50px",
+          transform: "scale(4)",
+        }}
+        onClick={onClick}
+      />
+    );
+  }
+
   const settings = {
     dots: true,
     infinite: true,
     speed: 500,
-    slidesToShow: 2,
+    slidesToShow: 1,
     slidesToScroll: 1,
+    nextArrow: <SampleNextArrow />,
+    prevArrow: <SamplePrevArrow />,
   };
 
   const navigate = useNavigate();
   const [movies, setMovies] = useState(undefined);
   const [movieType, setMovieType] = useState(true);
+
+  const [newsType, setNewsType] = useState(true);
 
   React.useEffect(() => {
     fetch("http://localhost:3500/movie")
@@ -41,12 +81,15 @@ export const Home = () => {
       });
   }, []);
 
+  const nowDay = new Date();
+  nowDay.setHours(0,0,0,0)
+
   const nowShowing = movies?.filter((item) => {
-    return new Date(item.releaseDate).getDate() <= new Date().getDate();
+    return new Date(item.releaseDate) <= nowDay;
   }, []);
 
   const comingSoon = movies?.filter((item) => {
-    return new Date(item.releaseDate).getDate() > new Date().getDate();
+    return new Date(item.releaseDate) > nowDay;
   }, []);
 
   const dateToString = (date) => {
@@ -91,35 +134,35 @@ export const Home = () => {
           ))}
         </Carousel>
         <LeftOutlined
-          className="absolute top-[350px] text-white text-[30px] left-[20px]"
+          className="absolute top-[300px] text-white text-[40px] left-[40px] rounded-full
+          p-[20px] bg-white/25 transition ease-in-out delay-150 hover:scale-110 duration-300" 
           onClick={() => slider.current.prev()}
         />
         <RightOutlined
-          className="absolute top-[350px] text-white text-[30px] right-[20px]"
+          className="absolute top-[300px] text-white text-[40px] right-[40px] rounded-full
+          p-[20px] bg-white/25 transition ease-in-out delay-150 hover:scale-110 duration-300"
           onClick={() => slider.current.next()}
         />
       </div>
 
-      <div className=" mx-[200px]  border-2 rounded-lg my-[50px] shadow-2xl">
-        <div className="py-[15px] h-[100px] mx-[300px] my-[20px]
-        flex justify-center items-center rounded-full border-sky-500">
+      <div className=" mx-[200px]  border-2 rounded-lg my-[50px] shadow-xl">
+        <div
+          className="py-[15px] h-[100px] mx-[300px] my-[20px]
+        flex justify-center items-center rounded-full border-sky-600"
+        >
           <div
-            className={`text-[30px] bg-[#F2F7FF] py-[10px] px-[30px] font-bold hover:text-amber-300
-            text-black mr-[30px] cursor-pointer rounded-full border-sky-500
-            ${
-              movieType === true && "text-amber-300 bg-[#0c468a]"
-            }
+            className={`text-[30px] py-[10px] px-[30px] font-bold hover:text-amber-300
+            mr-[30px] cursor-pointer rounded-full border-sky-600 border-2
+            ${movieType === true && "text-amber-300 bg-sky-600"}
       `}
             onClick={() => setMovieType(true)}
           >
             PHIM ĐANG CHIẾU
           </div>
           <div
-            className={`text-[30px] bg-[#F2F7FF] py-[10px] px-[30px] font-bold hover:text-amber-300
-            text-black cursor-pointer rounded-full border-sky-500
-            ${
-              movieType === false && "text-amber-300 bg-[#0c468a]"
-            }
+            className={`text-[30px] py-[10px] px-[30px] font-bold hover:text-amber-300
+            cursor-pointer rounded-full border-sky-600 border-2
+            ${movieType === false && "text-amber-300 bg-sky-600"}
             `}
             onClick={() => setMovieType(false)}
           >
@@ -127,14 +170,15 @@ export const Home = () => {
           </div>
         </div>
 
-        <div className="mx-[24px] h-[700px] bg-[#F2F7FF]">
+        <div className="relative mx-[24px] h-[700px] bg-[#F2F7FF]">
           <Slider {...settings}>
-          {(movieType ? nowShowing : comingSoon)?.map((item, index) => {
+            {(movieType ? nowShowing : comingSoon)?.map((item, index) => {
               return (
                 <div key={index} className="relative h-[600px]">
                   <div className="flex flex-wrap justify-center">
                     <img
-                      className="w-[220px] h-[276px] block mx-auto cursor-pointer"
+                      className="w-[220px] h-[276px] block mx-auto cursor-pointer
+                      transition ease-in-out delay-150 hover:scale-110 duration-300"
                       src={item.image}
                       alt=""
                       onClick={() => {
@@ -143,7 +187,7 @@ export const Home = () => {
                     />
                     <div className="h-[180px] w-[220px]">
                       <div
-                        className="text-[20px] text-black leading-[26px] font-bold uppercase my-[10px] cursor-pointer"
+                        className="text-[20px] text-black leading-[26px] font-bold uppercase my-[10px] cursor-pointer  hover:text-[#0c468a]"
                         onClick={() => {
                           navigate(`/movie/${item._id}`);
                         }}
@@ -174,7 +218,34 @@ export const Home = () => {
             })}
           </Slider>
         </div>
+        
       </div>
+
+      <div className=" mx-[200px]  border-2 rounded-lg my-[75px] shadow-xl">
+        <div
+          className="py-[15px] h-[100px] mx-[300px] my-[20px]
+        flex justify-center items-center rounded-full border-sky-600"
+        >
+          <div
+            className={`text-[30px] py-[10px] px-[30px] font-bold hover:text-amber-300
+            mr-[30px] cursor-pointer rounded-full border-sky-600 border-2
+            ${newsType === true && "text-amber-300 bg-sky-600"}
+      `}
+            onClick={() => setNewsType(true)}
+          >
+            TIN TỨC
+          </div>
+          <div
+            className={`text-[30px] py-[10px] px-[30px] font-bold hover:text-amber-300
+            cursor-pointer rounded-full border-sky-600 border-2
+            ${newsType === false && "text-amber-300 bg-sky-600"}
+            `}
+            onClick={() => setNewsType(false)}
+          >
+            KHUYẾN MÃI
+          </div>
+        </div>
+        </div>
     </Layout>
   );
 };
