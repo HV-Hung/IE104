@@ -88,7 +88,7 @@ export const Payment = () => {
 
         <div className=" text-[15px] h-[270px] bg-lime-600 col-start-1 col-end-3 row-start-4 row-end-5 self-start footer rounded-3xl">
           {/* <div className="format-bg-top"></div> */}
-          <button className="h-[100px] w-[100px] bg-amber-900  rounded-[20px] col-start-1 col-end-2 row-start-1 row-end-6 justify-self-center self-center">PREVUOUS</button>
+          <button className="h-[100px] w-[100px] bg-amber-900  rounded-[20px] col-start-1 col-end-2 row-start-1 row-end-6 justify-self-center self-center" onClick={() => { navigate(`/bookticket/food`) }}>PREVUOUS</button>
 
           <img className="col-start-2 col-end-3 row-start-1 row-end-5 justify-self-center self-center rounded-2xl" src="https://www.cgv.vn/media/catalog/product/cache/1/image/c5f0a1eff4c394a251036189ccddaacd/p/o/poster_adam_4_1.jpg" alt="hinh anh film" />
 

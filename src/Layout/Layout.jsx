@@ -3,6 +3,7 @@ import { Header } from "./Header";
 import { Footer } from "./Footer";
 import { Layout as AntLayout } from "antd";
 
+
 export const Layout = (props) => {
   return (
     <AntLayout
@@ -12,7 +13,7 @@ export const Layout = (props) => {
     >
       <Header></Header>
       <AntLayout>
-        <AntLayout.Content style={{ backgroundColor: "#0A1E5E" }}>
+        <AntLayout.Content style={{ backgroundColor: "#F2F7FF" }}>
           {props.children}
         </AntLayout.Content>
         <Footer></Footer>
