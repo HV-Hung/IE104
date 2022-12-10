@@ -45,21 +45,21 @@ export const Movie = () => {
       </Breadcrumb>
       <div
         className="py-[15px] h-[100px] mx-[300px] my-[20px]
-        flex justify-center items-center rounded-full border-sky-500"
+        flex justify-center items-center rounded-full border-sky-600"
       >
         <div
-          className={`text-[30px] bg-[#F2F7FF] py-[10px] px-[30px] font-bold hover:text-amber-300
-            text-black mr-[30px] cursor-pointer rounded-full border-sky-500
-            ${movieType === true && "text-amber-300 bg-[#0c468a]"}
+          className={`text-[30px] py-[10px] px-[30px] font-bold hover:text-amber-300
+            mr-[30px] cursor-pointer rounded-full border-sky-600 border-2
+            ${movieType === true && "text-amber-300 bg-sky-600"}
       `}
           onClick={() => setMovieType(true)}
         >
           PHIM ĐANG CHIẾU
         </div>
         <div
-          className={`text-[30px] bg-[#F2F7FF] py-[10px] px-[30px] font-bold hover:text-amber-300
-            text-black cursor-pointer rounded-full border-sky-500
-            ${movieType === false && "text-amber-300 bg-[#0c468a]"}
+          className={`text-[30px] py-[10px] px-[30px] font-bold hover:text-amber-300
+            cursor-pointer rounded-full border-sky-600 border-2
+            ${movieType === false && "text-amber-300 bg-sky-600"}
             `}
           onClick={() => setMovieType(false)}
         >
