@@ -1,25 +1,31 @@
 import React from "react";
 import { useState } from "react";
 import background from "./img/ticket_bg.png";
+import { seats as allSeat } from "./seats";
+import { foodItems } from "./foodItems";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { useNavigate } from "react-router-dom";
 import {
   faArrowLeft,
   faArrowRight,
   faCreditCard,
 } from "@fortawesome/free-solid-svg-icons";
-import { useNavigate } from "react-router-dom";
-import { useLocation } from "react-router-dom";
 
-export function Ticket(props) {
-  const location = useLocation();
+export const Ticket = ({ seats, showtime, step, setStep, foods }) => {
   const navigate = useNavigate();
-  const [totalCombo, setTotalCombo] = useState(0);
-  //const [film_price, setFilmPrice] = useState(150);
+  const pickingSeat = allSeat.filter((seat) => seats?.includes(seat.id));
+  const pickingSeatCode = pickingSeat?.map((seat) => seat.code);
+  const date = new Date(showtime?.showtime.date);
+  const formatDate =
+    date.getDate() + "/" + (date.getMonth() + 1) + "/" + date.getFullYear();
 
-  function getTotal(total) {
-    if (!isNaN(total)) setTotalCombo(total);
-  }
-
+  const newFoods = foods.map((food) => {
+    const newFood = foodItems.filter((foodItem) => food.id === foodItem.id)[0];
+    newFood.quantity = food.quantity;
+    return newFood;
+  });
+  const totalFood = newFoods.reduce((a, b) => a + b.price * b.quantity, 0);
+  const totalTicket = pickingSeat.reduce((a, b) => a + b.price, 0);
   return (
     <div
       style={{
@@ -36,30 +42,28 @@ export function Ticket(props) {
       }}
       className=" text-[15px] h-[200px] w-[70vw] col-[1_/_3] row-[4_/_5] self-start footer rounded-xl"
     >
-      <button
-        className="h-[80px] w-[80px]  bg-[#444444] rounded-[20px] col-[1_/_2] row-[1_/_6] justify-self-center self-center text-xs hover:opacity-80 border"
-        onClick={() => {
-          if (location.pathname === "/payment") navigate(`/bookticket`);
-          else if (location.pathname === "/bookticket/food")
-            navigate(`/bookticket`);
-        }}
-      >
-        <FontAwesomeIcon
-          className="mx-[20px] text-4xl"
-          icon={faArrowLeft}
-        ></FontAwesomeIcon>
-        PREVUOUS
-      </button>
+      {step > 1 && (
+        <button
+          onClick={() => (step === 3 ? setStep(1) : setStep(step - 1))}
+          className="h-[80px] w-[80px]  bg-[#444444] rounded-[20px] col-[1_/_2] row-[1_/_6] justify-self-center self-center text-xs hover:opacity-80 border"
+        >
+          <FontAwesomeIcon
+            className="mx-[20px] text-4xl"
+            icon={faArrowLeft}
+          ></FontAwesomeIcon>
+          PREVUOUS
+        </button>
+      )}
 
       <img
         className="col-[2_/_3] row-[1_/_6] justify-self-center self-center rounded-2xl"
-        src="https://www.cgv.vn/media/catalog/product/cache/1/image/c5f0a1eff4c394a251036189ccddaacd/p/o/poster_adam_4_1.jpg"
+        src={showtime?.showtime.movieId.image}
         alt="hinh anh film"
       />
 
       <div className="col-start-3 col-end-4 row-start-1 row-end-2 justify-self-left self-center">
         {/* Hiển thị tên phim */}
-        BLACK ADAM
+        {showtime?.showtime.movieId.name}
       </div>
       <div className="col-start-3 col-end-4 row-start-2 row-end-3 justify-self-left self-center">
         {/* Hiển thị loại phim */}
@@ -68,7 +72,7 @@ export function Ticket(props) {
 
       <div className="col-[3_/_4] row-[3_/_4] justify-self-left self-center ">
         {/* Hiển thị độ tuổi được xem phim */}
-        C13
+        {showtime?.showtime.movieId.rated}
       </div>
 
       <div className="col-[4_/_5] row-[1_/_2] justify-self-start self-center">
@@ -86,12 +90,12 @@ export function Ticket(props) {
 
       <div className="col-[5_/_6] row-[1_/_2] justify-self-start  self-center font-bold">
         {/* Hiển thị rạp chiếu */}
-        CGV HÙNG VƯƠNG
+        {showtime?.cinema.name}
       </div>
       <div className="col-[5_/_6] row-[2_/_3] justify-self-start self-center font-bold">
         {/* Hiển thị ngày giờ phim chiếu */}
-        <p>11:00</p>
-        <p>26/11/2022</p>
+        <p>{showtime?.showtime.time}</p>
+        <p>{formatDate}</p>
       </div>
       <div className="col-[5_/_6] row-[3_/_4] justify-self-start self-center text-center font-bold">
         {/* Hiển thị phòng chiếu phim được chọn */}
@@ -99,7 +103,7 @@ export function Ticket(props) {
       </div>
       <div className="col-[5_/_6] row-[4_/_5] justify-self-start self-center font-bold">
         {/* Hiển thị ghế được chọn */}
-        G14, G15
+        {pickingSeatCode && pickingSeatCode.join(", ")}
       </div>
 
       <div className="col-[6_/_7] row-[1_/_2] justify-self-end self-center">
@@ -113,38 +117,39 @@ export function Ticket(props) {
       </div>
 
       <div className="col-[7_/_8] row-[1_/_2] justify-self-start self-center font-bold">
-        {/* {film_price + "đ"} */}
-      </div>
-      <div
-        className="col-[7_/_8] row-[2_/_3] justify-self-start self-center font-bold"
-        onClick={() => getTotal(props.totalCombo)}
-      >
-        {new Intl.NumberFormat("vi-VN", {
+        {totalTicket.toLocaleString("it-IT", {
           style: "currency",
           currency: "VND",
-        }).format(totalCombo)}
+        })}
       </div>
-      <div className="col-[7_/_8] row-[3_/_4] justify-self-start self-center font-bold">
-        {/* {totalCombo + film_price + "đ"} */}
+      <div className="col-[7_/_8] row-[2_/_3] justify-self-start self-center font-bold">
+        {totalFood.toLocaleString("it-IT", {
+          style: "currency",
+          currency: "VND",
+        })}
+      </div>
+      <div className="col-[7_/_8] row-[3_/_4] justify-self-start self-center text-center font-bold">
+        {(totalTicket + totalFood).toLocaleString("it-IT", {
+          style: "currency",
+          currency: "VND",
+        })}
       </div>
 
       <button
-        className="h-[80px] w-[80px] bg-[#e71a0f] border-white rounded-[20px] col-[8_/_9] row-[1_/_5] justify-self-center self-center text-xs hover:opacity-80 border"
         onClick={() => {
-          if (location.pathname === "/bookticket/food") navigate(`/payment`);
-          else if (location.pathname === "/bookticket")
-            navigate(`/bookticket/food`);
-          else if (location.pathname === "/payment") props.onClick();
+          if (step === 2) {
+            setStep(step + 1);
+            navigate(`/payment`);
+          } else setStep(step + 1);
         }}
+        className="h-[80px] w-[80px] bg-[#e71a0f] border-white rounded-[20px] col-[8_/_9] row-[1_/_5] justify-self-center self-center text-xs hover:opacity-80 border"
       >
         <FontAwesomeIcon
           className="mx-[20px] text-4xl"
-          icon={
-            !(location.pathname === "/payment") ? faArrowRight : faCreditCard
-          }
+          icon={step < 3 ? faArrowRight : faCreditCard}
         ></FontAwesomeIcon>
-        {!(location.pathname === "/payment") ? "NEXT" : "PAYMENT"}
+        {step < 3 ? "NEXT" : "PAYMENT"}
       </button>
     </div>
   );
-}
+};

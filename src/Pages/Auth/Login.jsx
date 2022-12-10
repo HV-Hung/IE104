@@ -1,6 +1,9 @@
 import React from "react";
 import { Button, Form, Input } from "antd";
 import { useNavigate } from "react-router-dom";
+import "./Login.css";
+import { Layout } from "../../Layout/Layout";
+import { Breadcrumb } from "antd";
 
 export const Login = () => {
   let navigate = useNavigate();
@@ -9,53 +12,79 @@ export const Login = () => {
     navigate("/");
   };
 
+  const handleClick = () => {
+    navigate("/register");
+  };
+
   return (
-    <div className="relative w-screen min-h-screen m-0 p-0 bg-[#e5e7eb]">
-      <div className="absolute w-[500px] m-auto top-[150px] left-0 right-0 pt-[100px] pb-[100px] pl-[50px] pr-[50px] bg-[white]">
-        <h1 className="text-center text-[40px] mb-[30px]">Long đẹp trai</h1>
+    <Layout>
+      <Breadcrumb style={{ marginLeft: "16px" }}>
+        <Breadcrumb.Item>Profile</Breadcrumb.Item>
+      </Breadcrumb>
+      <div className="login-container relative w-screen min-h-screen m-0 p-0 bg-[#e5e7eb]">
+        <div className="login-form-container absolute w-[540px] m-auto top-[80px] left-0 right-0 pt-[100px] pb-[0px] pl-[50px] pr-[50px]">
+          <h1 className="text-white font-bold text-center text-[40px] mb-[30px] mt-[-50px]">
+            ĐĂNG NHẬP
+          </h1>
 
-        <Form
-          name="basic"
-          labelCol={{ span: 24 }}
-          wrapperCol={{ span: 24 }}
-          initialValues={{ remember: true }}
-          onFinish={onFinish}
-          autoComplete="off"
-        >
-          <Form.Item
-            label="Email"
-            name="email"
-            rules={[{ required: true, message: "Please input your username!" }]}
+          <Form
+            name="basic"
+            labelCol={{ span: 24 }}
+            wrapperCol={{ span: 24 }}
+            initialValues={{ remember: true }}
+            onFinish={onFinish}
+            autoComplete="off"
           >
-            <Input type="email" placeholder="Enter your email" />
-          </Form.Item>
-
-          <Form.Item
-            label="Password"
-            name="password"
-            rules={[{ required: true, message: "Please input your password!" }]}
-          >
-            <Input.Password placeholder="Enter your password" />
-          </Form.Item>
-
-          <Form.Item wrapperCol={{ offset: 6, span: 18 }}>
-            <Button
-              id="login"
-              type="primary"
-              htmlType="submit"
-              style={{ width: "100%" }}
+            <Form.Item
+              label={<span className="text-white text-[16px]">EMAIL</span>}
+              name="email"
+              rules={[{ required: true, message: "Hãy nhập email của bạn!" }]}
             >
-              Login
-            </Button>
-          </Form.Item>
-          <Form.Item wrapperCol={{ offset: 0, span: 24 }}>
-            <div className="flex justify-between">
-              <p>Forgot password</p>
-              <p>Register</p>
-            </div>
-          </Form.Item>
-        </Form>
+              <Input
+                type="email"
+                placeholder="Nhập email"
+                pattern="[A-Za-z0-9]{2,}"
+              />
+            </Form.Item>
+
+            <Form.Item
+              label={<span className="text-white text-[16px]">MẬT KHẨU</span>}
+              name="password"
+              rules={[
+                { required: true, message: "Hãy nhập mật khẩu của bạn!" },
+              ]}
+            >
+              <Input.Password placeholder="Mật khẩu" />
+            </Form.Item>
+            <Form.Item wrapperCol={{ offset: 0, span: 24 }}>
+              <div className="footer flex justify-between">
+                <div className="checkbox">
+                  <input type="checkbox" name="remember-password" id="bal1" />
+                  <label htmlFor="bal1">Nhớ Mật Khẩu</label>
+                </div>
+                <a className="link" href="#">
+                  Quên Mật Khẩu
+                </a>
+              </div>
+            </Form.Item>
+            <Form.Item wrapperCol={{ offset: 0, span: 18 }}>
+              <Button id="login" type="primary" htmlType="submit">
+                ĐĂNG NHẬP
+              </Button>
+            </Form.Item>
+            <Form.Item wrapperCol={{ offset: 0, span: 24 }}>
+              <div className=" flex content-center justify-center text-base">
+                <p onClick={handleClick} className="text">
+                  Chưa có tài khoản?{" "}
+                  <a className="no-underline text-emerald-600" href="">
+                    Đăng ký ngay
+                  </a>
+                </p>
+              </div>
+            </Form.Item>
+          </Form>
+        </div>
       </div>
-    </div>
+    </Layout>
   );
 };
