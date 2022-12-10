@@ -35,7 +35,6 @@ export const FoodItem = (props) => {
                 borderRadius: "8px",
               }}
               onClick={() => {
-                console.log(count);
                 if (count === 0) {
                   return;
                 }
@@ -62,7 +61,6 @@ export const FoodItem = (props) => {
               onClick={() => {
                 setCount(count + 1);
                 props.getTotal(props.foodItem.price);
-                console.log(count);
               }}
             >
               +

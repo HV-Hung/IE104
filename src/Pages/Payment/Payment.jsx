@@ -3,6 +3,7 @@ import React from "react";
 import { Layout } from "../../Layout/Layout";
 import "../Payment/Payment.css"
 import { useNavigate } from "react-router-dom";
+import { Ticket } from "../BookTicket/Ticket";
 
 export const Payment = () => {
 
@@ -120,6 +121,7 @@ export const Payment = () => {
           <button className="h-[100px] w-[100px] bg-orange-400 rounded-[20px] col-start-8 col-end-9 row-start-1 row-end-5 justify-self-center self-center" onClick={pay}>PAYMENT</button>
           {/* <div className="format-bg-seatmap-bottom"></div> */}
         </div>
+        <Ticket onClick={pay}></Ticket>
       </main>
 
     </Layout>

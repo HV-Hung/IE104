@@ -5,23 +5,20 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import {
   faArrowLeft,
   faArrowRight,
-  //faCreditCard,
+  faCreditCard,
 } from "@fortawesome/free-solid-svg-icons";
 import { useNavigate } from "react-router-dom";
 import { useLocation } from "react-router-dom";
 
-export const Ticket = (props) => {
+export function Ticket(props) {
   const location = useLocation();
   const navigate = useNavigate();
   const [totalCombo, setTotalCombo] = useState(0);
   //const [film_price, setFilmPrice] = useState(150);
 
-  // const getTotal = (total) => {
-  //   setTotalCombo(total);
-  //   return total;
-  // };
-
-  //getTotal(props.totalCombo);
+  function getTotal(total) {
+    if (!isNaN(total)) setTotalCombo(total);
+  }
 
   return (
     <div
@@ -118,12 +115,14 @@ export const Ticket = (props) => {
       <div className="col-[7_/_8] row-[1_/_2] justify-self-start self-center font-bold">
         {/* {film_price + "đ"} */}
       </div>
-      <div className="col-[7_/_8] row-[2_/_3] justify-self-start self-center font-bold">
-        {/* {props.totalCombo + "đ"} */}
+      <div
+        className="col-[7_/_8] row-[2_/_3] justify-self-start self-center font-bold"
+        onClick={() => getTotal(props.totalCombo)}
+      >
         {new Intl.NumberFormat("vi-VN", {
           style: "currency",
           currency: "VND",
-        }).format(props.totalCombo)}
+        }).format(totalCombo)}
       </div>
       <div className="col-[7_/_8] row-[3_/_4] justify-self-start self-center font-bold">
         {/* {totalCombo + film_price + "đ"} */}
@@ -140,10 +139,12 @@ export const Ticket = (props) => {
       >
         <FontAwesomeIcon
           className="mx-[20px] text-4xl"
-          icon={faArrowRight}
+          icon={
+            !(location.pathname === "/payment") ? faArrowRight : faCreditCard
+          }
         ></FontAwesomeIcon>
-        NEXT
+        {!(location.pathname === "/payment") ? "NEXT" : "PAYMENT"}
       </button>
     </div>
   );
-};
+}
