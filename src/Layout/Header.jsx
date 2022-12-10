@@ -62,7 +62,7 @@ export const Header = () => {
           </Link>
 
           <Link
-            to="/cinema"
+            to="/movie"
             className="flex justify-between font-bold text-[24px] text-center text-white
             hover:text-[#aaf0d1] active:text-[#aaf0d1]"
           >
@@ -70,7 +70,7 @@ export const Header = () => {
           </Link>
 
           <Link
-            to="/movie"
+            to="/cinema"
             className="flex justify-between font-bold text-[24px] text-center text-white
             hover:text-[#aaf0d1]"
           >
