@@ -377,9 +377,9 @@ nav{
     height: 60px;
 }
 
-.active{
+/* .active{
     display: block;
-}
+} */
 
 .not-active{
     display: none;

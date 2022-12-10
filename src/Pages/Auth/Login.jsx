@@ -43,7 +43,7 @@ export const Login = () => {
               <Input
                 type="email"
                 placeholder="Nhập email"
-                pattern="[A-Za-z0-9]{2,}"
+                // pattern="[A-Za-z0-9]{20,}"
               />
             </Form.Item>
 
