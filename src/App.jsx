@@ -17,6 +17,10 @@ import { PaymentMoMo } from "./Pages/Payment/PaymentMoMo";
 import { PaymentVisa } from "./Pages/Payment/PaymentVisa";
 import { NewsDetail } from "./Pages/News/NewsDetail";
 
+import "slick-carousel/slick/slick.css";
+
+import "slick-carousel/slick/slick-theme.css";
+
 const App = () => {
   return (
     <Routes>
