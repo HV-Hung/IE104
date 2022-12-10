@@ -1,4 +1,4 @@
-import { Breadcrumb, Button, Space, Spin } from "antd";
+import { Button, Space } from "antd";
 import React from "react";
 import { Layout } from "../../Layout/Layout";
 import { BookingHeader } from "./BookingHeader";
@@ -31,6 +31,7 @@ export const BookTicket = () => {
       setBookingSeats(bookingSeats.filter((seat) => seat !== Number(seatId)));
     } else setBookingSeats([...bookingSeats, seatId]);
   };
+
   React.useEffect(() => {
     fetchShowtime("showtime/" + id);
   }, []);
@@ -46,9 +47,6 @@ export const BookTicket = () => {
   };
   return (
     <Layout>
-      <Breadcrumb style={{ marginLeft: "16px" }}>
-        <Breadcrumb.Item>Food</Breadcrumb.Item>
-      </Breadcrumb>
       <div
         className="p-[24px] min-h-[360px] max-w-[90vw] bg-[#F2F7FF] m-[24px] "
         style={{ margin: "auto" }}
