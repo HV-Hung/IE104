@@ -1,4 +1,4 @@
-import { Space, } from "antd";
+import { Space } from "antd";
 import React from "react";
 import { Layout } from "../../Layout/Layout";
 import { BookingHeader } from "./BookingHeader";
