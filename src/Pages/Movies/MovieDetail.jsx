@@ -1,10 +1,10 @@
-import { Breadcrumb, Button } from "antd";
+import { Breadcrumb, Button, Space } from "antd";
 import React, { useState } from "react";
 import { Layout } from "../../Layout/Layout";
-import { useParams } from "react-router-dom";
-
+import { useParams, useNavigate } from "react-router-dom";
+import { useGet } from "../../api";
 const Dates = [];
-for (let i = 0; i <= 2; i++) {
+for (let i = 0; i <= 6; i++) {
   const toDate = new Date();
   const temp = new Date();
   temp.setDate(toDate.getDate() + i);
@@ -14,169 +14,18 @@ for (let i = 0; i <= 2; i++) {
     temp.getDate() +
     "/" +
     (temp.getMonth() + 1);
+  temp.setHours(7);
+  temp.setMinutes(0);
+  temp.setSeconds(1);
   Dates.push({
     time: temp2,
     id: i + 1,
+    date: temp.toISOString(),
   });
 }
 
-const branch = [
-  {
-    name: "Hà Nội 1",
-    id: 1,
-    idCity: 1,
-    idDate: 1,
-    time: ["9h30 AM", "10h AM", "11h30 AM", "1h PM"],
-  },
-
-  {
-    name: "Hà Nội 1",
-    id: 2,
-    idCity: 1,
-    idDate: 2,
-    time: ["9h AM", "10h30 AM", "11h AM", "1h30 PM"],
-  },
-
-  {
-    name: "Hà Nội 1",
-    id: 3,
-    idCity: 1,
-    idDate: 3,
-    time: ["11h15 AM", "4h30 PM"],
-  },
-
-  {
-    name: "Hà Nội 2",
-    id: 4,
-    idCity: 1,
-    idDate: 1,
-    time: ["9h30 AM", "10h AM", "11h30 AM", "1h PM"],
-  },
-
-  {
-    name: "Hà Nội 2",
-    id: 5,
-    idCity: 1,
-    idDate: 2,
-    time: ["9h AM", "10h30 AM", "11h AM", "1h30 PM"],
-  },
-
-  {
-    name: "Hà Nội 2",
-    id: 6,
-    idCity: 1,
-    idDate: 3,
-    time: ["11h15 AM", "4h30 PM"],
-  },
-
-  {
-    name: "HCM 1",
-    id: 7,
-    idCity: 2,
-    idDate: 1,
-    time: ["9h30 AM", "10h AM", "11h30 AM", "1h PM"],
-  },
-
-  {
-    name: "HCM 1",
-    id: 8,
-    idCity: 2,
-    idDate: 2,
-    time: ["9h AM", "10h30 AM", "11h AM", "1h30 PM"],
-  },
-
-  {
-    name: "HCM 1",
-    id: 9,
-    idCity: 2,
-    idDate: 3,
-    time: ["11h15 AM", "4h30 PM"],
-  },
-
-  {
-    name: "HCM 2",
-    id: 10,
-    idCity: 2,
-    idDate: 1,
-    time: ["9h30 AM", "10h AM", "11h30 AM", "1h PM"],
-  },
-
-  {
-    name: "HCM 2",
-    id: 11,
-    idCity: 2,
-    idDate: 2,
-    time: ["9h AM", "10h30 AM", "11h AM", "1h30 PM"],
-  },
-
-  {
-    name: "HCM 2",
-    id: 12,
-    idCity: 2,
-    idDate: 3,
-    time: ["11h15 AM", "4h30 PM"],
-  },
-];
-
 export const MovieDetail = () => {
-  const City = [
-    { name: "Hà Nội", id: 1 },
-    { name: "Hồ Chí Minh", id: 2 },
-    { name: "Cần Thơ", id: 3 },
-  ];
-
-  // const [getIdDate, setGetIdDate] = React.useState(1);
-  // const [getIdCity, setGetIdCity] = React.useState(1);
-  let getIdCity = 1;
-  let getIdDate = 1;
-
-  const [ShowTime, setShowTime] = React.useState([
-    {
-      name: "Hà Nội 1",
-      id: 1,
-      idCity: 1,
-      idDate: 1,
-      time: ["9h30 AM", "10h AM", "11h30 AM", "1h PM"],
-    },
-    {
-      name: "Hà Nội 2",
-      id: 4,
-      idCity: 1,
-      idDate: 1,
-      time: ["9h30 AM", "10h AM", "11h30 AM", "1h PM"],
-    },
-  ]);
-
-  const [clickedDate, getclikedDate] = React.useState(1);
-
-  const getDate = (id) => {
-    getIdCity = 1;
-    getIdDate = id;
-    getclikedDate(id);
-    getclickedCity(1);
-    console.log("getDate " + id);
-    loadShowtime();
-  };
-
-  const [clickedCity, getclickedCity] = React.useState(1);
-  const getShowtime = (id) => {
-    getIdCity = id;
-    getclickedCity(id);
-    console.log("getShowTime " + id);
-    loadShowtime();
-  };
-
-  const loadShowtime = () => {
-    const newList = branch.filter(function (item) {
-      return item.idCity === getIdCity && item.idDate === getIdDate;
-    });
-    setShowTime([...newList]);
-  };
-
-  const [buyTicket, setBuyTicket] = React.useState(false);
-  const ClickedBuyTicket = () => {
-    setBuyTicket(!buyTicket);
-  };
+  const navigate = useNavigate();
   const param = useParams();
   const [movie, setMovie] = useState(undefined);
   const id = param.id;
@@ -188,9 +37,39 @@ export const MovieDetail = () => {
       .then((data) => {
         setMovie(data);
       });
-  });
+  }, [id]);
 
   const [trailer, setTrailer] = useState(false);
+
+  const ref = React.useRef(null);
+  const handleClick = () => {
+    setBuyTicket(!buyTicket);
+    ref.current?.scrollIntoView({ behavior: "smooth" });
+  };
+
+  const [buyTicket, setBuyTicket] = React.useState(false);
+
+  const [date, setDate] = React.useState(Dates[0].date);
+
+  const [provinceId, setProvinceId] = React.useState(
+    "638f61dceae6921efd78e7b4"
+  );
+
+  const { fetchGet, result: Optionsresult } = useGet();
+  const { fetchGet: fetchGetShowtime, result: showtimeResult } = useGet();
+
+  React.useEffect(() => {
+    fetchGet("province");
+    // eslint-disable-next-line
+  }, []);
+
+  React.useEffect(() => {
+    fetchGetShowtime(`showtime/${id}/${provinceId}/${date}`);
+    // eslint-disable-next-line
+  }, [provinceId, date, id]);
+
+  const nowDay = new Date();
+  nowDay.setHours(0, 0, 0, 0);
 
   return (
     <Layout>
@@ -201,47 +80,56 @@ export const MovieDetail = () => {
           backgroundColor: "gray",
         }}
       >
-        <Breadcrumb.Item className="text-white font-medium ml-[147px]">
-          Trang chủ Phim Đang chiếu Khí con lon ton thành phố
-        </Breadcrumb.Item>
+        <Breadcrumb.Item></Breadcrumb.Item>
       </Breadcrumb>
 
       <div className="max-w-[1228px] mx-auto">
-        <div className="pt-[20px] h-[90px] text-[40px] text-white font-semibold">
+        <div className="pt-[20px] h-[90px] text-[40px] font-semibold">
           Nội dung
         </div>
 
-        <div className="h-[2px] bg-white mb-[15px]"></div>
-
-        <div className="max-h-[900px] flex flex-start">
-          <img className="max-h-[360px] mr-[30px]" src={movie?.image} alt="" />
-          <div className="h-[360px] flex-1">
-            <div className="text-[30px] pb-[10px] font-semibold text-white">
+        <div className="grid grid-cols-[30%_70%] gap-x-[20px] mb-[40px]">
+          <img
+            className="mr-[30px] w-[100%] h-[w-[100%]*2]"
+            src={movie?.image}
+            alt=""
+          />
+          <div>
+            <div className="text-[30px] mb-[20px] font-semibold">
               {movie?.name}
             </div>
-            <div className="mt-[10px]">
-              <div className="text-[15px] leading-[25px] text-white mb-[8px]">
-                Đạo diễn: {movie?.director}
+            <div className="text-[16px] mb-[30px] leading-[25px]">
+              {movie?.description}
+            </div>
+            <div>
+              <div className="text-[16px] leading-[25px] mb-[15px]">
+                <span className="font-medium mx-0">Đạo diễn: </span>
+                {movie?.director}
               </div>
-              <div className="text-[15px] leading-[25px] text-white mb-[8px]">
-                Diễn viên: {movie?.actors}
+              <div className="text-[16px] leading-[25px] mb-[15px]">
+                <span className="font-medium mx-0">Diễn viên: </span>
+                {movie?.actors}
               </div>
-              <div className="text-[15px] leading-[25px] text-white mb-[8px]">
-                Thể loại: hoạt hình
+              <div className="text-[16px] leading-[25px] mb-[15px]">
+                <span className="font-medium mx-0">Thể loại: </span>
+                {movie?.genre.join(", ")}
               </div>
-              <div className="text-[15px] leading-[25px] text-white mb-[8px]">
-                Khởi chiếu: 11/11/2022
+              <div className="text-[16px] leading-[25px] mb-[15px]">
+                <span className="font-medium mx-0">Khởi chiếu: </span>
+                {new Date(movie?.releaseDate).toLocaleDateString("en-UK")}
               </div>
-              <div className="text-[15px] leading-[25px] text-white mb-[8px]">
-                Thời lượng: 82 phút
+              <div className="text-[16px] leading-[25px] mb-[15px]">
+                <span className="font-medium mx-0">Thời lượng: </span>
+                {movie?.duration} phút
               </div>
-              <div className="text-[15px] leading-[25px] text-white mb-[8px]">
-                Ngôn ngữ: Lồng tiếng Việt
+              <div className="text-[16px] leading-[25px] mb-[15px]">
+                <span className="font-medium mx-0">Ngôn ngữ: </span>
+                {movie?.language}
               </div>
-              <div className="text-[15px] leading-[25px] text-white mb-[30px]">
-                Phân loại:{" "}
+              <div className="text-[16px] leading-[25px] mb-[15px] mb-[40px]">
+                <span className="font-medium mx-0">Phân loại: </span>
                 <span className="font-bold mx-0 text-[18px]">
-                  P - PHIM DÀNH CHO MỌI ĐỐI TƯỢNG
+                  {movie?.rated}
                 </span>
               </div>
             </div>
@@ -249,49 +137,39 @@ export const MovieDetail = () => {
             <div className="flex flex-start">
               <Button
                 type="primary"
-                className="mr-[10px] h-[40px] w-[130px]"
+                className="mr-[10px] h-[40px] w-[130px] bg-blue-500 font-bold"
                 onClick={() => setTrailer(!trailer)}
               >
                 Xem Trailer
               </Button>
-              <Button
-                onClick={ClickedBuyTicket}
-                type="primary"
-                className="h-[40px] w-[130px]"
-              >
-                Mua vé
-              </Button>
+              {new Date(movie?.releaseDate) <= nowDay ? (
+                <Button
+                  type="primary"
+                  className="h-[40px] w-[130px] bg-blue-500 font-bold"
+                  onClick={handleClick}
+                >
+                  Mua vé
+                </Button>
+              ) : null}
             </div>
           </div>
-        </div>
-
-        <div className="text-center text-white text-[20px] mt-[30px] mb-[20px] font-bold">
-          CHI TIẾT
-        </div>
-        <div className="max-h-[100px] text-[15px] text-white mb-[20px] leading-[25px]">
-          Khỉ Con luôn khát khao được chu du năm châu bốn bể và khám phá thế
-          giới rộng lớn nhiệm màu. Nhưng vì không muốn con trai đối mặt với bất
-          kỳ nguy hiểm nào, mẹ Khỉ Con không cho phép cậu thực hiện ước mơ đó.
-          Một ngày nọ, nhà thám hiểm Ếch Bảnh ghé qua thị trấn nơi Khỉ Con đang
-          sinh sống và cá cược với những cư dân nơi đây rằng mình có thể đi vòng
-          quanh thế giới chỉ trong vòng 80 ngày. Một cách tình cờ, Khỉ Con trở
-          thành người bạn đồng hành của Ếch Bảnh, cả hai đã cùng bắt đầu một
-          cuộc phiêu lưu đầy bất ngờ nhưng cũng không kém phần thú vị.
         </div>
       </div>
 
       {buyTicket === true && (
-        <div className="p-[24px] min-h-[360px] bg-white my-[50px] mx-[200px]">
+        <div
+          className="p-[24px] min-h-[360px] bg-white my-[50px] mx-[200px]"
+          ref={ref}
+        >
           <div className="border-y-4 border-black py-5">
             {Dates.map((item) => (
               <button
-                onClick={() => getDate(item.id)}
+                onClick={() => setDate(item.date)}
                 type="button"
                 key={item.id}
-                className="ml-5 border bg-sky-700 hover:bg-sky-300 text-white h-[50px] w-[100px] rounded-xl"
-                style={{
-                  backgroundColor: clickedDate === item.id ? "#0288D1" : "gray",
-                }}
+                className={`ml-5 border ${
+                  item.date === date ? "bg-sky-600" : " bg-gray-400"
+                }  hover:bg-sky-300 text-white h-[50px] w-[100px] rounded-xl`}
               >
                 {item.time}
               </button>
@@ -299,35 +177,44 @@ export const MovieDetail = () => {
           </div>
 
           <div className="py-5">
-            {City.map((item) => (
-              <button
-                onClick={() => getShowtime(item.id)}
-                type="button"
-                key={item.id}
-                className="ml-5 border hover:bg-sky-300  text-white h-[50px] w-[100px] rounded-xl"
-                style={{
-                  backgroundColor: clickedCity === item.id ? "#0288D1" : "gray",
-                }}
-              >
-                {item.name}
-              </button>
-            ))}
+            {Optionsresult &&
+              Optionsresult.map((item) => (
+                <button
+                  onClick={() => setProvinceId(item._id)}
+                  type="button"
+                  key={item._id}
+                  className={`ml-5 border ${
+                    item._id === provinceId ? "bg-sky-600" : " bg-gray-400"
+                  } hover:bg-sky-300  text-white h-[50px] w-[100px] rounded-xl`}
+                >
+                  {item.name}
+                </button>
+              ))}
           </div>
           <div>
-            {ShowTime.map((item) => (
-              <div className="border-t-2 border-slate-600 py-5 mx-[50px]">
-                <div className="text-[30px] mb-[20px]">{item.name}</div>
-                {item.time.map((temp, index) => (
-                  <button
-                    type="button"
-                    key={index}
-                    className="ml-5 border bg-gray-700 hover:bg-sky-300 text-white h-[50px] w-[100px]"
-                  >
-                    {temp}
-                  </button>
-                ))}
-              </div>
-            ))}
+            {showtimeResult &&
+              showtimeResult.map((item) => (
+                <div className="border-t-2 border-slate-600 py-5 mx-[50px]">
+                  <div className="text-[30px] mb-[20px]">
+                    {item?.cinema?.name}
+                  </div>
+                  <Space>
+                    {item.showtimes.map((temp, index) => {
+                      return (
+                        <div
+                          key={index}
+                          className="ml-5 border bg-gray-700 hover:bg-sky-300 text-white h-[50px] w-[100px] text-center pt-3 relative"
+                          onClick={() => {
+                            navigate(`/bookticket/${temp._id}`);
+                          }}
+                        >
+                          {temp.time}
+                        </div>
+                      );
+                    })}
+                  </Space>
+                </div>
+              ))}
           </div>
         </div>
       )}
@@ -337,12 +224,12 @@ export const MovieDetail = () => {
           className="bg-black/70 min-h-screen w-[100%] fixed top-0"
           onClick={() => setTrailer(false)}
         >
-          <div className="mx-auto w-[1280px] relative top-[20px]">
+          <div className="mx-auto w-[1280px] relative top-[44px]">
             <iframe
               width="1280"
               height="720"
-              src="https://www.youtube.com/embed/ojcNcvb1olg"
-              title="YouTube video player"
+              src={movie?.trailer_url}
+              title="Avatar 2 - Trailer mới nhất - Vietsub"
               frameborder="0"
               allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
               allowfullscreen

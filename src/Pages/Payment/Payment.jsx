@@ -33,14 +33,15 @@ export const Payment = () => {
   return (
     <Layout>
       <div className="heading">
-        <h1 className="header text-black">THANH TOÁN</h1>
+        <h1 className="header">THANH TOÁN</h1>
       </div>
         
         <div className="wrap">
           <div className="container">
             <div className="content-pay">
               <div className="method-pay">
-                  <h2 className="method-pay-heading rounded-lg">Hình thức thanh toán</h2>
+
+                  <h2 className="method-pay-heading">Hình thức thanh toán</h2>
                   <div className="method-pay-content">
                       <div className="method-pay-item">
                         <input name="method-pay" type="radio" value="atm" id="atm-radio" onChange={onOptionChange} />
