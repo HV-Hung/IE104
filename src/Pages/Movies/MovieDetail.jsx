@@ -16,17 +16,15 @@ for (let i = 0; i <= 6; i++) {
     (temp.getMonth() + 1);
   temp.setHours(7);
   temp.setMinutes(0);
-  temp.setSeconds(1)
+  temp.setSeconds(1);
   Dates.push({
     time: temp2,
     id: i + 1,
-    date: temp.toISOString()
+    date: temp.toISOString(),
   });
 }
 
-
 export const MovieDetail = () => {
-
   const navigate = useNavigate();
   const param = useParams();
   const [movie, setMovie] = useState(undefined);
@@ -45,32 +43,33 @@ export const MovieDetail = () => {
 
   const ref = React.useRef(null);
   const handleClick = () => {
-    ref.current?.scrollIntoView({ behavior: "smooth" });
     setBuyTicket(!buyTicket);
+    ref.current?.scrollIntoView({ behavior: "smooth" });
   };
 
   const [buyTicket, setBuyTicket] = React.useState(false);
 
   const [date, setDate] = React.useState(Dates[0].date);
 
-  const [provinceId, setProvinceId] = React.useState("638f61dceae6921efd78e7b4");
-
+  const [provinceId, setProvinceId] = React.useState(
+    "638f61dceae6921efd78e7b4"
+  );
 
   const { fetchGet, result: Optionsresult } = useGet();
   const { fetchGet: fetchGetShowtime, result: showtimeResult } = useGet();
 
-
-
   React.useEffect(() => {
     fetchGet("province");
     // eslint-disable-next-line
-  }, [])
-
+  }, []);
 
   React.useEffect(() => {
-    fetchGetShowtime(`showtime/${id}/${provinceId}/${date}`)
+    fetchGetShowtime(`showtime/${id}/${provinceId}/${date}`);
     // eslint-disable-next-line
   }, [provinceId, date, id]);
+
+  const nowDay = new Date();
+  nowDay.setHours(0, 0, 0, 0);
 
   return (
     <Layout>
@@ -90,7 +89,11 @@ export const MovieDetail = () => {
         </div>
 
         <div className="grid grid-cols-[30%_70%] gap-x-[20px] mb-[40px]">
-          <img className="mr-[30px] w-[100%] h-[w-[100%]*2]" src={movie?.image} alt="" />
+          <img
+            className="mr-[30px] w-[100%] h-[w-[100%]*2]"
+            src={movie?.image}
+            alt=""
+          />
           <div>
             <div className="text-[30px] mb-[20px] font-semibold">
               {movie?.name}
@@ -139,8 +142,7 @@ export const MovieDetail = () => {
               >
                 Xem Trailer
               </Button>
-              {
-              new Date().getDate() ? (
+              {new Date(movie?.releaseDate) <= nowDay ? (
                 <Button
                   type="primary"
                   className="h-[40px] w-[130px] bg-blue-500 font-bold"
@@ -155,14 +157,19 @@ export const MovieDetail = () => {
       </div>
 
       {buyTicket === true && (
-        <div className="p-[24px] min-h-[360px] bg-white my-[50px] mx-[200px]">
+        <div
+          className="p-[24px] min-h-[360px] bg-white my-[50px] mx-[200px]"
+          ref={ref}
+        >
           <div className="border-y-4 border-black py-5">
             {Dates.map((item) => (
               <button
                 onClick={() => setDate(item.date)}
                 type="button"
                 key={item.id}
-                className={`ml-5 border ${item.date === date ? "bg-sky-600" : " bg-gray-400"}  hover:bg-sky-300 text-white h-[50px] w-[100px] rounded-xl`}
+                className={`ml-5 border ${
+                  item.date === date ? "bg-sky-600" : " bg-gray-400"
+                }  hover:bg-sky-300 text-white h-[50px] w-[100px] rounded-xl`}
               >
                 {item.time}
               </button>
@@ -170,37 +177,44 @@ export const MovieDetail = () => {
           </div>
 
           <div className="py-5">
-            {Optionsresult && Optionsresult.map((item) => (
-              <button
-                onClick={() => setProvinceId(item._id)}
-                type="button"
-                key={item._id}
-                className={`ml-5 border ${item._id === provinceId ? "bg-sky-600" : " bg-gray-400"} hover:bg-sky-300  text-white h-[50px] w-[100px] rounded-xl`}
-              >
-                {item.name}
-              </button>
-            ))}
+            {Optionsresult &&
+              Optionsresult.map((item) => (
+                <button
+                  onClick={() => setProvinceId(item._id)}
+                  type="button"
+                  key={item._id}
+                  className={`ml-5 border ${
+                    item._id === provinceId ? "bg-sky-600" : " bg-gray-400"
+                  } hover:bg-sky-300  text-white h-[50px] w-[100px] rounded-xl`}
+                >
+                  {item.name}
+                </button>
+              ))}
           </div>
           <div>
-            {showtimeResult && showtimeResult.map((item) => (
-              <div className="border-t-2 border-slate-600 py-5 mx-[50px]">
-                <div className="text-[30px] mb-[20px]">{item?.cinema?.name}</div>
-                <Space>
-                  {item.showtimes.map((temp, index) => {
-                    return (<div
-                      key={index}
-                      className="ml-5 border bg-gray-700 hover:bg-sky-300 text-white h-[50px] w-[100px] text-center pt-3 relative"
-                      onClick={() => {
-                        navigate(`/bookticket/${temp._id}`);
-                      }}
-                    >
-                      {temp.time}
-                    </div>)
-
-                  })}
-                </Space>
-              </div>
-            ))}
+            {showtimeResult &&
+              showtimeResult.map((item) => (
+                <div className="border-t-2 border-slate-600 py-5 mx-[50px]">
+                  <div className="text-[30px] mb-[20px]">
+                    {item?.cinema?.name}
+                  </div>
+                  <Space>
+                    {item.showtimes.map((temp, index) => {
+                      return (
+                        <div
+                          key={index}
+                          className="ml-5 border bg-gray-700 hover:bg-sky-300 text-white h-[50px] w-[100px] text-center pt-3 relative"
+                          onClick={() => {
+                            navigate(`/bookticket/${temp._id}`);
+                          }}
+                        >
+                          {temp.time}
+                        </div>
+                      );
+                    })}
+                  </Space>
+                </div>
+              ))}
           </div>
         </div>
       )}

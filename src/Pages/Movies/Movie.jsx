@@ -67,10 +67,10 @@ export const Movie = () => {
         </div>
       </div>
 
-      <div className="max-h-[1872px] max-w-[1228px] mb-[20px] mx-auto grid grid-cols-5 gap-x-[67px] gap-y-[20px]">
+      <div className="max-w-[1228px] mb-[20px] mx-auto grid grid-cols-5 gap-x-[67px] gap-y-[50px]">
         {(movieType ? nowShowing : comingSoon)?.map((item, index) => {
           return (
-            <div key={index} className="h-[475px]">
+            <div key={index} className="h-[495px]">
               <div>
                 <img
                   className="w-[192px] h-[276px] mx-auto cursor-pointer"
@@ -80,7 +80,7 @@ export const Movie = () => {
                     navigate(`/movie/${item._id}`);
                   }}
                 />
-                <div className="h-[170px]">
+                <div className="h-[190px]">
                   <div
                     className="text-[20px] text-black leading-[26px] font-bold uppercase my-[10px] cursor-pointer hover:text-cyan-300"
                     onClick={() => {
