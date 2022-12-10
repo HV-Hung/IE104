@@ -5,12 +5,66 @@
     margin: auto;
 }
 
+.container {
+    color: rgb(255, 255, 255);
+    margin: 0 auto;
+    padding: 0 20px;
+    max-width: 1024px;
+    padding: 30px 0;
+}
+
 .content-pay {
     display: flex;
     justify-content: space-between;
 }
 
-.title {
+.method-pay {
+    flex: 1;
+    margin-right: 25px;
+}
+
+.total-pay {
+    align-self: center;
+}
+
+.pay-item {
+    width: 300px;
+    font-size: 20px;
+    text-align: center;
+    border: 1px solid #333;
+    margin-bottom: 20px;
+}
+
+.pay-item p {
+    color: #000;
+    padding: 8px 0;
+    font-weight: 500;
+    background-color: #fff1ce;
+}
+
+.pay-item p:last-child {
+    background-color: #d0cece;
+}
+
+.pay-item span {
+    color: #000;
+    font-size: 15px;
+    padding: 8px 8px;
+    margin: 0;
+    align-self: center;
+}
+
+.pay-item-total p:first-child {
+    background-color: #e71a0f;
+    color: #fff;
+}
+
+.pay-content {
+    display: flex;
+    background-color: #fff1ce;
+}
+
+.header {
     color: #fff;
     font-family: 'Inter';
     font-style: normal;
@@ -18,9 +72,47 @@
     font-size: 32px;
     text-align: center;
     padding: 16px 0;
-    vertical-align: middle;
 }
 
+.method-pay-heading {
+    font-size: 24px;
+    font-weight: 700;
+    text-transform: uppercase;
+    text-align: center;
+    padding: 6px 0;
+    border: 1px solid #333;
+    background-color: #bcbdc0;
+}
+
+.method-pay-content {
+    background-color: #fff1ce;
+    margin-top: 10px;
+}
+
+.method-pay-item {
+    padding: 16px 0;
+}
+
+.method-pay-item label {
+    color: #000;
+    font-size: 18px;
+}
+
+.method-pay-item label img {
+    display: inline-block;
+    width: 40px;
+    margin: 0 12px;
+}
+
+.method-pay-check {
+    font-size: 16px;
+    color: #000;
+    padding: 12px 0;
+}
+
+.method-pay-check input {
+    margin-right: 8px;
+}
 
 .logoThanhToan {
     background-position: 50% 50%;
@@ -36,23 +128,8 @@
     color: #000;
     text-transform: uppercase;
     font-size: 24px;
+    
 }
-
-.container {
-    color: rgb(255, 255, 255);
-    margin: 0 auto;
-    padding: 0 20px;
-    max-width: 1200px;
-    padding: 30px 0;
-}
-
-.HTTT {
-    /* background-color: rgb(48, 190, 48); */
-    grid-column: 1/2;
-    grid-row: 2/4;
-    vertical-align: middle;
-}
-
 
 
 .visa {
@@ -77,31 +154,6 @@
 
 .money {
     border: 2px dotted red;
-}
-
-.TongCong {
-    grid-column: 2/3;
-    grid-row: 1/2;
-    align-self: start;
-    /* border: 2px dotted red; */
-}
-
-.TienKhuyeMai {
-    grid-row: 2/3;
-    grid-column: 2/3;
-    /* border: 2px dotted red; */
-    align-self: center;
-    align-items: stretch;
-    text-align: center;
-}
-
-.TongTien {
-    grid-row: 3/4;
-    grid-column: 2/3;
-    /* border: 2px dotted red; */
-    align-self: start;
-    align-items: stretch;
-    text-align: center;
 }
 
 .TieuDeH2 {
