@@ -16,6 +16,7 @@ import { Profile } from "./Pages/Auth/Profile";
 import { PaymentMoMo } from "./Pages/Payment/PaymentMoMo";
 import { PaymentVisa } from "./Pages/Payment/PaymentVisa";
 import { NewsDetail } from "./Pages/News/NewsDetail";
+import { Ticket } from "./Pages/Ticket/Ticket";
 
 import "slick-carousel/slick/slick.css";
 
@@ -39,7 +40,9 @@ const App = () => {
       <Route path="/news/:id" element={<NewsDetail />} />
       <Route path="/profile" element={<Profile />} />
       <Route path="/login" element={<Login />} />
+      <Route path="/ticket" element={<Ticket />} />
       <Route path="*" element={<NotFound />}></Route>
+
     </Routes>
   );
 };

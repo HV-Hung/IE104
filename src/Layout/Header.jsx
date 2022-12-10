@@ -56,23 +56,23 @@ export const Header = () => {
           <Link
             to="/"
             className="flex justify-between font-bold text-[36px] text-center text-[#FFD700]
-            hover:text-[#aaf0d1]"
+            hover:text-cyan-300"
           >
             UIT CINEMA
           </Link>
 
           <Link
-            to="/cinema"
+            to="/movie"
             className="flex justify-between font-bold text-[24px] text-center text-white
-            hover:text-[#aaf0d1] active:text-[#aaf0d1]"
+            hover:text-cyan-300 active:text-cyan-300"
           >
             PHIM
           </Link>
 
           <Link
-            to="/movie"
+            to="/cinema"
             className="flex justify-between font-bold text-[24px] text-center text-white
-            hover:text-[#aaf0d1]"
+            hover:text-cyan-300"
           >
             RẠP
           </Link>
@@ -80,7 +80,7 @@ export const Header = () => {
           <Link
             to="/news"
             className="flex justify-between font-bold text-[24px] text-center text-white
-            hover:text-[#aaf0d1]"
+            hover:text-cyan-300"
           >
             TIN TỨC
           </Link>
@@ -88,7 +88,7 @@ export const Header = () => {
 
         <div className="text-[white] text-[20px]">
           <span
-            className="ml-2 font-bold hover:text-[#aaf0d1]"
+            className="ml-2 font-bold text-[24px] text-white hover:text-cyan-300"
             onClick={() => {
               navigate("/login");
             }}
