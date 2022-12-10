@@ -1,8 +1,11 @@
 import React from "react";
 
-export const BookingHeader = () => {
+export const BookingHeader = ({ showtime, step }) => {
+  const date = new Date(showtime?.showtime.date);
+  const formatDate =
+    date.getDate() + "/" + (date.getMonth() + 1) + "/" + date.getFullYear();
   return (
-    <div>
+    <div className="mb-10">
       <div style={{ textAlign: "center" }}>
         <div
           style={{
@@ -36,12 +39,22 @@ export const BookingHeader = () => {
           }}
         ></div>
       </div>
-      <div style={{margin:"10px 10px 10px 10px"}}>
-        <span>CGV Hùng Vương Plaza | Cinema 5 | Số ghế (260/260)<br></br></span>
-        <span>06/11/2022 11:11 ~ 06/11/2022 13:30</span>
+      <div style={{ margin: "10px 10px 10px 10px" }}>
+        <span>
+          {`${showtime?.cinema.name} | Phòng ${
+            showtime?.showtime.roomId.name
+          } | Số ghế (${240 - showtime?.showtime.tickets.length}/240)`}
+          <br />
+        </span>
+        <span>
+          {formatDate} {showtime?.showtime.time} ~ {formatDate}{" "}
+          {showtime?.showtime.time_end}
+        </span>
       </div>
       <hr></hr>
-      <div style={{ textAlign: "center",fontSize:"20px" }} >Bắp / Nước</div>
+      <div style={{ textAlign: "center", fontSize: "20px" }}>
+        {step === 1 ? "Đặt ghế" : "Bắp / Nước"}
+      </div>
       <hr></hr>
     </div>
   );
