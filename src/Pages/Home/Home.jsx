@@ -11,7 +11,7 @@ export const Home = () => {
   const slider = React.useRef();
 
   const [listImage, setListImage] = React.useState([
-    "https://i.imgur.com/9OjcQC6.jpg",
+    "https://a-static.besthdwallpaper.com/phim-avatar-2-hinh-nen-3440x1440-84375_15.jpg",
     "https://phongcachdoisong.vn/wp-content/uploads/2022/09/DDD_FB-Cover_Character-1.jpg",
     "https://www.cgv.vn/media/catalog/product/cache/1/image/1800x/71252117777b696995f01934522c402d/p/u/pussinboots-blogroll-1647280577032.jpg",
     "https://wallpapercave.com/wp/wp9424755.jpg",
@@ -57,7 +57,7 @@ export const Home = () => {
     dots: true,
     infinite: true,
     speed: 500,
-    slidesToShow: 1,
+    slidesToShow: 5,
     slidesToScroll: 1,
     nextArrow: <SampleNextArrow />,
     prevArrow: <SamplePrevArrow />,
@@ -116,7 +116,7 @@ export const Home = () => {
             <div className="text-center absolute right-0 left-0 m-auto top-[250px]">
               <div className="text-5xl text-white font-bold">
                 XEM GÌ
-                <span className="text-amber-300">HÔM NAY</span>
+                <span className="text-amber-300 ml-[15px]">HÔM NAY</span>
               </div>
               <div className="text-4xl text-white italic m-[24px]">
                 TẠI UIT CINEMA & THEATERS
@@ -170,14 +170,14 @@ export const Home = () => {
           </div>
         </div>
 
-        <div className="relative mx-[24px] h-[700px] bg-[#F2F7FF]">
+        <div className="relative mx-[24px] h-[630px] bg-[#F2F7FF]">
           <Slider {...settings}>
             {(movieType ? nowShowing : comingSoon)?.map((item, index) => {
               return (
-                <div key={index} className="relative h-[600px]">
+                <div key={index} className="relative min-h-[550px]">
                   <div className="flex flex-wrap justify-center">
                     <img
-                      className="w-[220px] h-[276px] block mx-auto cursor-pointer
+                      className="w-[220px] h-[276px] block mx-auto cursor-pointer rounded-lg
                       transition ease-in-out delay-150 hover:scale-110 duration-300"
                       src={item.image}
                       alt=""
@@ -194,23 +194,25 @@ export const Home = () => {
                       >
                         {item.name}
                       </div>
-                      <div className="text-[15px] text-black">
+                      <div className="text-[18px] text-black">
                         Thể loại: {item.genre.join(", ")}
                       </div>
-                      <div className="text-[15px] text-black">
+                      <div className="text-[18px] text-black">
                         Thời lượng: {item.duration} phút
                       </div>
-                      <div className="text-[15px] text-black">
+                      <div className="text-[18px] text-black">
                         Khởi chiếu: {dateToString(item.releaseDate)}
                       </div>
-                      <div className="absolute bottom-0 translate-x-[-50%] left-[50%] h-[33px] flex justify-center">
+                      <div className="absolute bottom-5 translate-x-[-50%] left-[50%] flex justify-center">
                         <Button
                           type="primary"
-                          className="bg-[#0a1e5e] text-center"
+                          className="bg-sky-700 font-bold text-center text-[20px] pb-[40px]"
                         >
                           Mua vé
                         </Button>
+                        
                       </div>
+                      
                     </div>
                   </div>
                 </div>
