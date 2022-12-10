@@ -9,78 +9,72 @@ import { Link } from "react-router-dom";
 const deal_list = [
   { 
     id: "d_1",
-    img: "https://www.bhdstar.vn/wp-content/uploads/2018/03/COLORFULFESTIVAL-WEB-1920x1080-270x152.jpg",
-    name: "LỄ HỘI ĐA SẮC MÀU",
-    date: "18/11/2022 - 02/01/2023"
+    img: "https://www.cgv.vn/media/wysiwyg/2022/122022/N_O_240x201_1.jpg",
+    name: "LỄ HỘI MERCHANDISE",
+    date: "07/12/2022 - 09/12/2022"
   },
   { 
     id: "d_2",
-    img: "https://www.bhdstar.vn/wp-content/uploads/2022/12/S%C3%BAtB%C3%B3ngChallenge-1920X1080-1-270x152.png",
-    name: "ĐỒNG HÀNH CÙNG WORLD CUP",
-    date: "03/12/2022 - 18/12/2022"
+    img: "https://www.cgv.vn/media/wysiwyg/2022/122022/News___Offer_-_240x201.jpg",
+    name: "TUẦN LỄ PHIM KHOA HỌC CÔNG NGHỆ QUỐC TẾ VINFUTURE 2022",
+    date: "06/12/2022 - 11/12/2022"
   },
   { 
     id: "d_3",
-    img: "https://www.bhdstar.vn/wp-content/uploads/2018/03/Visa-x-BHD-WEB-270x152.jpg",
-    name: "XÀI VISA NHẬN NGAY BẮP LỚN",
-    date: "23/09/2022 - 31/03/2023"
+    img: "https://www.cgv.vn/media/wysiwyg/2022/122022/CGV_T12_240x201.jpg",
+    name: "MÙA BOM TẤN CUỐI NĂM ZALOPAY TẶNG VÉ 9K!",
+    date: "05/12/2022 - 31/12/2022"
   },
   { 
     id: "d_4",
-    img: "https://www.bhdstar.vn/wp-content/uploads/2018/03/U22-web-1-270x152.png",
-    name: "ƯU ĐÃI ĐẶC BIỆT CHO U22",
-    date: "TỪ 08/09/2017"
+    img: "https://www.cgv.vn/media/wysiwyg/2022/112022/Late_Shift_HDSD_-_240x201.png",
+    name: "PHIM TƯƠNG TÁC PHI VỤ NỬA ĐÊM",
+    date: "TỪ 25/11/2022"
   },
   { 
     id: "d_5",
-    img: "https://www.bhdstar.vn/wp-content/uploads/2018/03/Web-HappyDay-270x152.png",
-    name: "HAPPY MONDAY - THỨ 2 VUI VẺ",
-    date: "TỪ 17/05/2016"
+    img: "https://www.cgv.vn/media/wysiwyg/2022/112022/z3906772171729_97b9db28a7b220a25ede5c4fb36abf56.jpg",
+    name: "BÙNG CHÁY WORLD CUP ĐI GROUP THÊM VUI",
+    date: "24/11/2022 - 14/12/2022"
   },
   { 
     id: "d_6",
-    img: "https://www.bhdstar.vn/wp-content/uploads/2018/03/Suat-Khuya-Web-270x152.jpg",
-    name: "GIÁ VÉ ƯU ĐÃI CHO SUẤT KHUYA",
-    date: "TỪ 01/04/2016"
-  },
-  { 
-    id: "d_7",
     img: "https://www.cgv.vn/media/wysiwyg/2022/122022/240wx201h_1.jpg",
     name: "RA RẠP GẶP LUFFY RINH QUÀ XINH HẾT Ý",
     date: "Từ 02/12/2022"
   },
   { 
-    id: "d_8",
+    id: "d_7",
     img: "https://www.cgv.vn/media/wysiwyg/2022/122022/CGVU22-main_240x201.jpg",
     name: "GIẢM TƯNG BỪNG, GIẢM ĐẬM SÂU",
     date: "05/12/2022 - 31/12/2022"
   },
   { 
-    id: "d_9",
+    id: "d_8",
     img: "https://www.cgv.vn/media/wysiwyg/2022/122022/240x291.jpg",
     name: "QUÀ TẶNG SINH NHẬT THÀNH VIÊN CGV THÁNG 12",
     date: "01/12/2022 - 31/12/2022"
   },
   { 
-    id: "d_10",
+    id: "d_9",
     img: "https://www.cgv.vn/media/wysiwyg/2022/112022/240x201_3.png",
     name: "CHƯƠNG TRÌNH ƯU ĐÃI DÀNH CHO CHỦ THẺ CITI",
     date: "02/12/2022 - 02/06/2023"
   },
   { 
-    id: "d_11",
+    id: "d_10",
     img: "https://www.cgv.vn/media/wysiwyg/2022/112022/adapt_kenh_doi_tac_240x201.png",
     name: "CHƯƠNG TRÌNH ƯU ĐÃI DÀNH CHO CHỦ THẺ NGÂN HÀNG BẢN VIỆT TẠI CGV",
     date: "30/11/2022 - 31/12/2023"
   },
   { 
-    id: "d_12",
+    id: "d_11",
     img: "https://www.cgv.vn/media/wysiwyg/2022/112022/N_O_240x201.jpg",
     name: "ƯU ĐÃI THỨ 4 VUI VẺ CHIA SẺ YÊU THƯƠNG",
     date: "Từ 30/11/2022"
   },
   { 
-    id: "d_13",
+    id: "d_12",
     img: "https://www.cgv.vn/media/wysiwyg/2022/112022/N_O_-_240x201_2.jpg",
     name: "NĂNG LƯỢNG TRÀN ĐẦY - NHẬN NGAY TÚI HOT",
     date: "25/11/2022 - 11/12/2022"
