@@ -203,3 +203,7 @@
 }
 
 
+.login-container .ant-form-item-row{
+    display: flex;
+    justify-content: center;
+}
