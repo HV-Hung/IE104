@@ -10,12 +10,17 @@ import { Movie } from "./Pages/Movies/Movie";
 import { MovieDetail } from "./Pages/Movies/MovieDetail";
 import { CinemaDetail } from "./Pages/Cinemas/CinemaDetail";
 import { BookTicket } from "./Pages/BookTicket/BookTicket";
-import { Food } from "./Pages/BookTicket/Food";
 import { News } from "./Pages/News/News";
 import { Profile } from "./Pages/Auth/Profile";
 import { PaymentMoMo } from "./Pages/Payment/PaymentMoMo";
 import { PaymentVisa } from "./Pages/Payment/PaymentVisa";
 import { NewsDetail } from "./Pages/News/NewsDetail";
+import { Ticket } from "./Pages/Ticket/Ticket";
+
+import "slick-carousel/slick/slick.css";
+
+import "slick-carousel/slick/slick-theme.css";
+import { Register } from "./Pages/Auth/Register";
 
 const App = () => {
   return (
@@ -29,13 +34,16 @@ const App = () => {
       <Route path="/login" element={<Login />} />
       <Route path="/movie" element={<Movie />}></Route>
       <Route path="/movie/:id" element={<MovieDetail />} />
-      <Route path="/bookticket" element={<BookTicket />} />
-      <Route path="/bookticket/food" element={<Food />} />
+      <Route path="/bookticket/:id" element={<BookTicket />} />
       <Route path="/news" element={<News />} />
       <Route path="/news/:id" element={<NewsDetail />} />
       <Route path="/profile" element={<Profile />} />
       <Route path="/login" element={<Login />} />
+      <Route path="/ticket" element={<Ticket />} />
+      <Route path="/register" element={<Register />} />
+
       <Route path="*" element={<NotFound />}></Route>
+
     </Routes>
   );
 };

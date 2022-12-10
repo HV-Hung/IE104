@@ -1,0 +1,205 @@
+@import url('https://fonts.googleapis.com/css2?family=Raleway:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,300&display=swap');
+
+.login-container{
+    font-family: 'Courier New', Courier, monospace;
+    height: 100%;
+    max-width: 100%;
+    overflow-x: hidden;
+}
+
+.login-container::before{
+    content: '';
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-image: url("http://pixner.net/boleto/demo/assets/images/account/account-bg.jpg");
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: center;
+  
+
+}
+
+.login-container .login-form-container{
+    font-family: 'Raleway', sans-serif;
+    background-color: rgba(68, 90, 153, 0.051);
+    box-shadow: 0px 0px 29.4px 0.6px rgb(0 0 0 / 50%);
+    /* margin-bottom: 100px; */
+}
+
+.login-container .footer p{
+    cursor: pointer;
+}
+
+.login-container .footer a{
+    text-decoration: none;
+    color: white;
+}
+
+.login-container .footer a:hover{
+    color: #31d7a9;
+    
+}
+
+.login-container [type='submit']{
+    display: inline-block;
+    width: 10rem;
+    /* margin-top: 15px; */
+    background-image: linear-gradient(to bottom right, #7d78ff, #11326f);
+    color: white;
+    border: none;
+    border-radius: 15px;
+    height: 2.5rem;
+}
+
+/* .ant-form{
+    margin-top: 50px;
+} */
+
+/* .ant-form .ant-form-item .ant-row{
+    margin-bottom: 22px;
+} */
+
+.login-container .login-form-container .title{
+    color: white !important;
+}
+
+.login-container .ant-form .ant-form-item .ant-row .ant-col{
+    margin-bottom: 10px;
+    color: rgba(255, 255, 255, 0.7);
+}
+
+.login-container .ant-form .ant-form-item .ant-row .ant-col [title="EMAIL"], .ant-form .ant-form-item .ant-row .ant-col [title="MẬT KHẨU"]{
+    display: inline-block;
+    position: relative;
+    width: 100px;
+    cursor: pointer;
+}
+
+.login-container .ant-form .ant-form-item .ant-row .ant-form-item-label [title="EMAIL"]::after{
+    position: absolute;
+    content: '';
+    background-image: url("./image/kisspng-ashworth-maintenance-group-llc-password-asterisk-5b20a7b5ddedf3.566037781528866741909-removebg-preview.png");
+    background-position: center;
+    background-size: cover;
+    background-repeat: no-repeat;
+    width: 8px;
+    height: 8px;
+    top: 2px;
+    right: 42px;
+}
+.login-container .ant-form .ant-form-item .ant-row .ant-form-item-label [title="MẬT KHẨU"]::after{
+    position: absolute;
+    content: '';
+    background-image: url("./image/kisspng-ashworth-maintenance-group-llc-password-asterisk-5b20a7b5ddedf3.566037781528866741909-removebg-preview.png");
+    background-position: center;
+    background-size: cover;
+    background-repeat: no-repeat;
+    width: 8px;
+    height: 8px;
+    top: 2px;
+    right: 5px;
+}
+
+.login-container .ant-form-item-control{
+    height: 60px;
+}
+
+.login-container .ant-form-item-control-input{
+    height: 40px;
+}
+
+.login-container .ant-form-item-control-input-content{
+    width: 100%;
+}
+
+.login-container .ant-form-item-control-input-content input::placeholder{
+    font-size: 16px;
+    color: #17a2b8;
+}
+
+.login-container .ant-form-item-control-input-content .ant-input{
+    width: 100%;
+    height: 45px;
+    border: none;
+    outline: none;
+    border-radius: none;
+    background: transparent;
+    border-bottom: 1px solid #23334f;
+    color: white;
+    font-size: 14px;
+}
+
+.login-container .ant-form-item-control-input-content .ant-input-affix-wrapper [title="MẬT KHẨU"]{
+    background: transparent;
+}
+
+.login-container .ant-form-item-control-input-content .ant-input-affix-wrapper{
+    position: relative;
+}
+
+.login-container .ant-form-item-control-input-content .ant-input-affix-wrapper .ant-input-suffix{
+    right: 0;
+    top: 2px;
+    position: absolute;
+}
+
+.login-container .footer .checkbox #bal1{
+    clip-path: circle(46% at 50% 50%);
+    width: 16px;
+    height: 16px;
+    background-color: #5560ff;
+}
+
+.login-container .footer .checkbox #bal1:checked{
+    background: blue;
+}
+
+.login-container .footer .checkbox{
+    display: flex;
+    position: relative;
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+    align-items: center;
+    justify-content: center;
+    gap: 5px;
+    color: #6d7bba;
+    font-size: 14px;
+}
+
+.login-container .footer .checkbox label{
+    cursor: pointer;
+}
+
+.login-container .footer a{
+    color: #6d7bba;
+    font-size: 14px;
+}
+
+.login-container .ant-form-item-control-input-content .ant-btn{
+    margin: 0;
+    position: relative;
+    top: -10px;
+    left: 50%;
+    transform: translate(-50%, 0);
+    cursor: pointer;
+    height: 55px;
+    border-radius:30px;
+    background-image: -webkit-linear-gradient(169deg, #007bff 17%, #7d7bff 63%, #3f72af 100%);
+}
+
+.login-container .ant-form-item-control-input-content .ant-btn span{
+    font-size: 16px;
+    font-weight: 700;
+    letter-spacing: 1px;
+}
+
+.login-container .ant-form-item-control-input-content .text a{
+    color: #31d7a9;
+}
+
+

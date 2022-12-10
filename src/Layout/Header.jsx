@@ -11,13 +11,15 @@ export const Header = () => {
   const items = [
     {
       label: (
-        <Link to={"/movie"} className="flex items-center space-x-1 text-white">
+        <Link
+          to={"/movie"}
+          className="flex items-center space-x-1 text-white max-h-[100px]"
+        >
           <strong>PHIM</strong>
           <DownOutlined />
         </Link>
       ),
       key: "movie",
-
       children: [
         {
           label: "Phim đang chiếu",
@@ -29,7 +31,7 @@ export const Header = () => {
     },
     {
       label: (
-        <Link to={"/cinema"} className="flex items-center ">
+        <Link to={"/cinema"} className="flex items-center">
           <strong className="text-white">RẠP</strong>
         </Link>
       ),
@@ -39,7 +41,7 @@ export const Header = () => {
     },
     {
       label: (
-        <Link to={"/news"} className="flex items-center w-[100px]">
+        <Link to={"/news"} className="flex items-center">
           <strong className="text-white">TIN TỨC</strong>
         </Link>
       ),
@@ -48,32 +50,45 @@ export const Header = () => {
   ];
 
   return (
-    <Layout.Header style={{ backgroundColor: "#112D4E", color: "white" }}>
-      <div className="flex justify-between items-center w-full max-h-[64px]">
-        <div className="flex justify-between items-center ">
+    <Layout.Header className="bg-[#0c468a] min-h-[100px] items-center">
+      <div className="flex justify-between items-center w-full min-h-[100px]">
+        <div className="flex justify-between items-center w-[600px] h-full">
           <Link
             to="/"
-            className="flex justify-between font-bold text-[24px] text-center  text-[#ff2a2a]  "
+            className="flex justify-between font-bold text-[36px] text-center text-[#FFD700]
+            hover:text-cyan-300"
           >
-            CGV
+            UIT CINEMA
           </Link>
-          <Menu
-            style={{
-              backgroundColor: "#112D4E",
-              color: "white",
-              marginLeft: "50px",
-              border: "none",
-            }}
-            onClick={() => {}}
-            selectedKeys={[keyMenu]}
-            mode="horizontal"
-            items={items}
-          />
+
+          <Link
+            to="/movie"
+            className="flex justify-between font-bold text-[24px] text-center text-white
+            hover:text-cyan-300 active:text-cyan-300"
+          >
+            PHIM
+          </Link>
+
+          <Link
+            to="/cinema"
+            className="flex justify-between font-bold text-[24px] text-center text-white
+            hover:text-cyan-300"
+          >
+            RẠP
+          </Link>
+
+          <Link
+            to="/news"
+            className="flex justify-between font-bold text-[24px] text-center text-white
+            hover:text-cyan-300"
+          >
+            TIN TỨC
+          </Link>
         </div>
 
-        <div className="text-[white] max-h-[64px]">
+        <div className="text-[white] text-[20px]">
           <span
-            className="ml-2 font-bold"
+            className="ml-2 font-bold text-[24px] text-white hover:text-cyan-300"
             onClick={() => {
               navigate("/login");
             }}
