@@ -21,6 +21,17 @@ export const Movie = () => {
       });
   }, []);
 
+  const nowDay = new Date();
+  nowDay.setHours(0, 0, 0, 0);
+
+  const nowShowing = movies?.filter((item) => {
+    return new Date(item.releaseDate) <= nowDay;
+  }, []);
+
+  const comingSoon = movies?.filter((item) => {
+    return new Date(item.releaseDate) > nowDay;
+  }, []);
+
   return (
     <Layout>
       <Breadcrumb
@@ -30,62 +41,78 @@ export const Movie = () => {
           backgroundColor: "gray",
         }}
       >
-        <Breadcrumb.Item className="text-white font-medium ml-[147px]">
-          Trang chủ Phim Đang chiếu
-        </Breadcrumb.Item>
+        <Breadcrumb.Item></Breadcrumb.Item>
       </Breadcrumb>
-      <div className="py-[15px] h-[70px] w-[1228px] mx-auto flex justify-center">
+      <div
+        className="py-[15px] h-[100px] mx-[300px] my-[20px]
+        flex justify-center items-center rounded-full border-sky-600"
+      >
         <div
-          className="text-[30px] text-white mr-[40px] cursor-pointer"
-          style={movieType ? { color: "#0091ff" } : { color: "white" }}
+          className={`text-[30px] py-[10px] px-[30px] font-bold hover:text-amber-300
+            mr-[30px] cursor-pointer rounded-full border-sky-600 border-2
+            ${movieType === true && "text-amber-300 bg-sky-600"}
+      `}
           onClick={() => setMovieType(true)}
         >
           PHIM ĐANG CHIẾU
         </div>
         <div
-          className="text-[30px] text-white cursor-pointer"
-          style={movieType ? { color: "white" } : { color: "#0091ff" }}
+          className={`text-[30px] py-[10px] px-[30px] font-bold hover:text-amber-300
+            cursor-pointer rounded-full border-sky-600 border-2
+            ${movieType === false && "text-amber-300 bg-sky-600"}
+            `}
           onClick={() => setMovieType(false)}
         >
           PHIM SẮP CHIẾU
         </div>
       </div>
 
-      <div className="max-h-[1872px] w-[1228px] bg-[#0a1e5e] mt-[10px] mb-[20px] mx-auto grid grid-cols-5 gap-x-[67px] gap-y-[20px]">
-        {movies?.map((item, index) => {
+      <div className="max-w-[1228px] mb-[20px] mx-auto grid grid-cols-5 gap-x-[67px] gap-y-[50px]">
+        {(movieType ? nowShowing : comingSoon)?.map((item, index) => {
           return (
-            <div key={index} className="h-[475px]">
+            <div key={index} className="h-[495px]">
               <div>
                 <img
-                  className="w-[192px] h-[276px] block mx-auto cursor-pointer"
+                  className="w-[192px] h-[276px] mx-auto cursor-pointer"
                   src={item.image}
                   alt=""
                   onClick={() => {
                     navigate(`/movie/${item._id}`);
                   }}
                 />
-                <div className="h-[170px] bg-[#0a1e5e]">
+                <div className="h-[190px]">
                   <div
-                    className="text-[20px] text-white leading-[26px] font-bold uppercase my-[10px] cursor-pointer"
+                    className="text-[20px] text-black leading-[26px] font-bold uppercase my-[10px] cursor-pointer hover:text-cyan-300"
                     onClick={() => {
                       navigate(`/movie/${item._id}`);
                     }}
                   >
                     {item.name}
                   </div>
-                  <div className="text-[15px] text-white">
-                    Thể loại: {item.genre}
+                  <div className="text-[15px] text-black">
+                    <span className="font-medium mx-0">Thể loại: </span>
+                    {item.genre.join(", ")}
                   </div>
-                  <div className="text-[15px] text-white">
-                    Thời lượng: {item.duration} phút
+                  <div className="text-[15px] text-black">
+                    <span className="font-medium mx-0">Thời lượng: </span>
+                    {item.duration} phút
                   </div>
-                  <div className="text-[15px] text-white">
-                    Khởi chiếu: {dateToString(item.releaseDate)}
+                  <div className="text-[15px] text-black">
+                    <span className="font-medium mx-0">Khởi chiếu: </span>
+                    {dateToString(item.releaseDate)}
                   </div>
                 </div>
               </div>
-              <div className="h-[33px] bg-[#0a1e5e] flex justify-center">
-                <Button type="primary">Mua vé</Button>
+              <div className="h-[33px] flex justify-center">
+                <Button
+                  className="bg-blue-500 font-bold"
+                  type="primary"
+                  onClick={() => {
+                    navigate(`/movie/${item._id}`);
+                  }}
+                >
+                  Mua vé
+                </Button>
               </div>
             </div>
           );

@@ -1,13 +1,9 @@
 import React, { useState } from "react";
-
 import { Button } from "./Button";
-
-//bookticket/food
 
 export const Food = ({ foodItem, setFoods, foods }) => {
   // eslint-disable-next-line eqeqeq
   const foodIndex = foods?.findIndex((food) => food.id == foodItem.id);
-
   return (
     <div
       key={foodItem.id}

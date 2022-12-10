@@ -1,4 +1,4 @@
-import { Breadcrumb, Space, Spin } from "antd";
+import { Button, Space } from "antd";
 import React from "react";
 import { Layout } from "../../Layout/Layout";
 import { BookingHeader } from "./BookingHeader";
@@ -8,11 +8,12 @@ import { Ticket } from "./Ticket";
 import { seatMap } from "./seats";
 import { Seat } from "./Seat";
 import { useParams } from "react-router-dom";
-import { useGet } from "../../api/get";
+import { useGet, usePost } from "../../api";
 
 export const BookTicket = () => {
   const { id } = useParams();
   const { fetchGet: fetchShowtime, result: ShowTimeResult } = useGet();
+  const { fetchPost: fetchBook, result: booked } = usePost();
   const [bookingSeats, setBookingSeats] = React.useState([]);
   const [bookedSeats, setBookedSeat] = React.useState([0, 1, 200, 50]);
   const [step, setStep] = React.useState(1);
@@ -30,15 +31,22 @@ export const BookTicket = () => {
       setBookingSeats(bookingSeats.filter((seat) => seat !== Number(seatId)));
     } else setBookingSeats([...bookingSeats, seatId]);
   };
+
   React.useEffect(() => {
     fetchShowtime("showtime/" + id);
   }, []);
 
+  const bookTicket = () => {
+    fetchBook("ticket", {
+      showtime: id,
+      user: "63945659e1908fbde745df3b",
+      seat: bookingSeats,
+      foods: foods,
+      paymentMethod: "momo",
+    });
+  };
   return (
     <Layout>
-      <Breadcrumb style={{ marginLeft: "16px" }}>
-        <Breadcrumb.Item>Food</Breadcrumb.Item>
-      </Breadcrumb>
       <div
         className="p-[24px] min-h-[360px] max-w-[90vw] bg-[#F2F7FF] m-[24px] "
         style={{ margin: "auto" }}
@@ -96,6 +104,7 @@ export const BookTicket = () => {
             {foodItems.map((item) => (
               <Food foods={foods} setFoods={setFoods} foodItem={item} />
             ))}
+            <Button onClick={bookTicket}> book</Button>
           </div>
         )}
         <Ticket
