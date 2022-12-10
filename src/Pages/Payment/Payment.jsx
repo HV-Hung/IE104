@@ -42,13 +42,13 @@ export const Payment = () => {
               <div className="method-pay">
                   <h2 className="method-pay-heading">Hình thức thanh toán</h2>
                   <div className="method-pay-content">
-                      <div className="method-pay-item">
+                      {/* <div className="method-pay-item">
                         <input name="method-pay" type="radio" value="atm" id="atm-radio" onChange={onOptionChange} />
                         <label for="atm-radio">     
                           <img src="https://www.cgv.vn/media/catalog/product/placeholder/default/atm_icon.png" alt="Thẻ quốc tế"/>
                           AMT card (Thẻ nội địa)
                         </label>
-                      </div>
+                      </div> */}
 
                       <div className="method-pay-item">
                         <input name="method-pay" type="radio" value="visa" id="visa-radio" onChange={onOptionChange} />
@@ -96,10 +96,10 @@ export const Payment = () => {
                   <p>Tổng cộng</p>
                   <p>250.000,00 đ</p>
                 </div>
-                <div className="pay-item">
+                {/* <div className="pay-item">
                   <p>Khuyến mãi</p>
                   <p>0,00 đ</p>
-                </div>
+                </div> */}
                 <div className="pay-item pay-item-total">
                   <p>Tổng số tiền thanh toán</p>
                   <div className="pay-content">
