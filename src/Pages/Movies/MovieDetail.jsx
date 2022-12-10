@@ -186,6 +186,11 @@ export const MovieDetail = () => {
 
   const [trailer, setTrailer] = useState(false);
 
+  const ref = React.useRef(null);
+  const handleClick = () => {
+    ref.current?.scrollIntoView({ behavior: "smooth" });
+  };
+
   return (
     <Layout>
       <Breadcrumb
@@ -199,44 +204,46 @@ export const MovieDetail = () => {
       </Breadcrumb>
 
       <div className="max-w-[1228px] mx-auto">
-        <div className="pt-[20px] h-[90px] text-[40px] text-white font-semibold">
+        <div className="pt-[20px] h-[90px] text-[40px] font-semibold">
           Nội dung
         </div>
 
-        <div className="h-[2px] bg-white mb-[15px]"></div>
-
-        <div className="max-h-[900px] flex flex-start">
-          <img
-            className="max-h-[360px] w-[246px] mr-[30px]"
-            src={movie?.image}
-            alt=""
-          />
-          <div className="h-[360px] flex-1">
-            <div className="text-[30px] pb-[10px] font-semibold text-white">
+        <div className="grid grid-cols-[35%_65%] gap-x-[20px] mb-[40px]">
+          <img className="mr-[30px] w-[100%] h-[w-[100%]*2]" src={movie?.image} alt="" />
+          <div>
+            <div className="text-[30px] mb-[20px] font-semibold">
               {movie?.name}
             </div>
-            <div className="mt-[10px]">
-              <div className="text-[15px] leading-[25px] text-white mb-[8px]">
-                Đạo diễn: {movie?.director}
+            <div className="text-[16px] mb-[30px] leading-[25px]">
+              {movie?.description}
+            </div>
+            <div>
+              <div className="text-[16px] leading-[25px] mb-[15px]">
+                <span className="font-medium mx-0">Đạo diễn: </span>
+                {movie?.director}
               </div>
-              <div className="text-[15px] leading-[25px] text-white mb-[8px]">
-                Diễn viên: {movie?.actors}
+              <div className="text-[16px] leading-[25px] mb-[15px]">
+                <span className="font-medium mx-0">Diễn viên: </span>
+                {movie?.actors}
               </div>
-              <div className="text-[15px] leading-[25px] text-white mb-[8px]">
-                Thể loại: {movie?.genre}
+              <div className="text-[16px] leading-[25px] mb-[15px]">
+                <span className="font-medium mx-0">Thể loại: </span>
+                {movie?.genre.join(", ")}
               </div>
-              <div className="text-[15px] leading-[25px] text-white mb-[8px]">
-                Khởi chiếu:{" "}
+              <div className="text-[16px] leading-[25px] mb-[15px]">
+                <span className="font-medium mx-0">Khởi chiếu: </span>
                 {new Date(movie?.releaseDate).toLocaleDateString("en-UK")}
               </div>
-              <div className="text-[15px] leading-[25px] text-white mb-[8px]">
-                Thời lượng: 82 phút
+              <div className="text-[16px] leading-[25px] mb-[15px]">
+                <span className="font-medium mx-0">Thời lượng: </span>
+                {movie?.duration} phút
               </div>
-              <div className="text-[15px] leading-[25px] text-white mb-[8px]">
-                Ngôn ngữ: Lồng tiếng Việt
+              <div className="text-[16px] leading-[25px] mb-[15px]">
+                <span className="font-medium mx-0">Ngôn ngữ: </span>
+                {movie?.language}
               </div>
-              <div className="text-[15px] leading-[25px] text-white mb-[30px]">
-                Phân loại:{" "}
+              <div className="text-[16px] leading-[25px] mb-[15px] mb-[40px]">
+                <span className="font-medium mx-0">Phân loại: </span>
                 <span className="font-bold mx-0 text-[18px]">
                   {movie?.rated}
                 </span>
@@ -246,31 +253,31 @@ export const MovieDetail = () => {
             <div className="flex flex-start">
               <Button
                 type="primary"
-                className="mr-[10px] h-[40px] w-[130px]"
+                className="mr-[10px] h-[40px] w-[130px] bg-blue-500 font-bold"
                 onClick={() => setTrailer(!trailer)}
               >
                 Xem Trailer
               </Button>
               {new Date(movie?.releaseDate).getDate() <=
               new Date().getDate() ? (
-                <Button type="primary" className="h-[40px] w-[130px]">
+                <Button
+                  type="primary"
+                  className="h-[40px] w-[130px] bg-blue-500 font-bold"
+                  onClick={handleClick}
+                >
                   Mua vé
                 </Button>
               ) : null}
             </div>
           </div>
         </div>
-
-        <div className="text-center text-white text-[20px] mt-[30px] mb-[20px] font-bold">
-          CHI TIẾT
-        </div>
-        <div className="max-h-[100px] text-[15px] text-white mb-[20px] leading-[25px]">
-          {movie?.description}
-        </div>
       </div>
 
       {new Date(movie?.releaseDate).getDate() <= new Date().getDate() ? (
-        <div className="p-[24px] min-h-[360px] bg-white my-[50px] mx-[200px]">
+        <div
+          className="p-[24px] min-h-[360px] bg-white my-[50px] mx-[200px]"
+          ref={ref}
+        >
           <div className="border-y-4 border-black py-5">
             {Dates.map((item) => (
               <button

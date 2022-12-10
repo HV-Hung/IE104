@@ -12,7 +12,7 @@ export const Layout = (props) => {
     >
       <Header></Header>
       <AntLayout>
-        <AntLayout.Content style={{ backgroundColor: "#0A1E5E" }}>
+        <AntLayout.Content style={{ backgroundColor: "#f2f7ff" }}>
           {props.children}
         </AntLayout.Content>
         <Footer></Footer>
