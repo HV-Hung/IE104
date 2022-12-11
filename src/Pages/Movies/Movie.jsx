@@ -70,17 +70,17 @@ export const Movie = () => {
       <div className="max-w-[1228px] mb-[20px] mx-auto grid grid-cols-5 gap-x-[67px] gap-y-[50px]">
         {(movieType ? nowShowing : comingSoon)?.map((item, index) => {
           return (
-            <div key={index} className="h-[495px]">
+            <div key={index} className="h-[540px]">
               <div>
                 <img
-                  className="w-[192px] h-[276px] mx-auto cursor-pointer"
+                  className="w-[192px] h-[276px] mx-auto cursor-pointer transition ease-in-out delay-150 hover:scale-110 duration-300"
                   src={item.image}
                   alt=""
                   onClick={() => {
                     navigate(`/movie/${item._id}`);
                   }}
                 />
-                <div className="h-[190px]">
+                <div className="h-[235px]">
                   <div
                     className="text-[20px] text-black leading-[26px] font-bold uppercase my-[10px] cursor-pointer hover:text-cyan-300"
                     onClick={() => {
@@ -89,15 +89,15 @@ export const Movie = () => {
                   >
                     {item.name}
                   </div>
-                  <div className="text-[15px] text-black">
+                  <div className="text-[18px] text-black">
                     <span className="font-medium mx-0">Thể loại: </span>
                     {item.genre.join(", ")}
                   </div>
-                  <div className="text-[15px] text-black">
+                  <div className="text-[18px] text-black">
                     <span className="font-medium mx-0">Thời lượng: </span>
                     {item.duration} phút
                   </div>
-                  <div className="text-[15px] text-black">
+                  <div className="text-[18px] text-black">
                     <span className="font-medium mx-0">Khởi chiếu: </span>
                     {dateToString(item.releaseDate)}
                   </div>
