@@ -4,7 +4,7 @@ import { useNavigate } from "react-router-dom";
 import "./Login.css";
 import { usePost } from "../../api/post";
 
-const openNotificationWithIcon = (type, message = "", des = "") => {
+export const openNotificationWithIcon = (type, message = "", des = "") => {
   notification[type]({
     message: message,
     description: des,
@@ -27,7 +27,12 @@ export const Login = () => {
       openNotificationWithIcon("success", "Đăng nhập thành công");
       localStorage.setItem("user", JSON.stringify(result.foundUser));
       localStorage.setItem("token", result.accessToken);
-      navigate("/");
+
+      const showtime = sessionStorage.getItem("showtime");
+      if (showtime) navigate("/bookticket/" + showtime);
+      else navigate("/");
+
+      sessionStorage.clear();
     }
   }, [result, navigate]);
 
