@@ -44,7 +44,7 @@ export const MovieDetail = () => {
   const ref = React.useRef(null);
   const handleClick = () => {
     setBuyTicket(!buyTicket);
-    // ref.current?.scrollIntoView({ behavior: "smooth" });
+    ref.current?.scrollIntoView({ behavior: "smooth" });
   };
 
   const [buyTicket, setBuyTicket] = React.useState(false);
@@ -59,6 +59,7 @@ export const MovieDetail = () => {
   const { fetchGet: fetchGetShowtime, result: showtimeResult } = useGet();
 
   React.useEffect(() => {
+    window.scrollTo(0, 0)
     fetchGet("province");
     // eslint-disable-next-line
   }, []);
@@ -152,7 +153,7 @@ export const MovieDetail = () => {
         </div>
       </div>
 
-      {buyTicket === true && (
+      {new Date(movie?.releaseDate) <= nowDay && (
         <div
           className="my-[24px] min-h-[360px] mb-[50px] mx-[200px]"
           ref={ref}
