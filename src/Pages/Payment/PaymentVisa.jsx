@@ -6,8 +6,8 @@ import { faMoneyBill1, faCreditCard, faBarcode, faArrowLeft } from "@fortawesome
 export const PaymentVisa = () => {
   const navigate = useNavigate();
   return (
-    <div className="w-[900px] mx-[auto] my-[32px] flex">
-      <div className="w-[315px] bg-[#af206f] text-[#fff] rounded-[6px]">
+    <div className="w-[900px] mx-[auto] mt-[64px] flex">
+      <div className="w-[315px] bg-[#0c468a] text-[#fff] rounded-[6px]">
         <div className="mx-[16px] my-[24px]">
           <span class="text-[20px] my-[32px]" >Nhà cung cấp CGV</span>
         </div>
@@ -64,8 +64,8 @@ export const PaymentVisa = () => {
               </div>
             </div>
             <div className="absolute bottom-[8px] right-[8px]">
-              <a className="text-[#16a8e1] mr-[16px]" href="">Hướng dẫn</a>
-              <button className="text-[#fff] px-[12px] py-[12px] bg-[#ccc]  rounded-[4px]" >Thanh toán</button>
+              <a className="text-[#16a8e1] mr-[28px]" href="">Hướng dẫn</a>
+              <button className="text-white px-[12px] py-[12px] bg-[#ccc] rounded-[4px] hover:bg-[#333]">Thanh toán</button>
             </div>
           </div>
       </div>

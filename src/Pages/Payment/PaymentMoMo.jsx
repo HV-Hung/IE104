@@ -6,7 +6,7 @@ import { faMoneyBill1, faCreditCard, faBarcode, faArrowLeft } from "@fortawesome
 export const PaymentMoMo = () => {
   const navigate = useNavigate();
   return (
-    <div className="w-[900px] mx-[auto] my-[32px] flex">
+    <div className="w-[900px] mx-[auto] mt-[64px] flex">
       <div className="w-[315px] bg-[#af206f] text-[#fff] rounded-[6px]">
         <div className="mx-[16px] my-[24px]">
           <span class="text-[20px] my-[32px]" >Nhà cung cấp CGV</span>
