@@ -69,6 +69,11 @@ export const MovieDetail = () => {
   const nowDay = new Date();
   nowDay.setHours(0, 0, 0, 0);
 
+  const showtimeCounter = showtimeResult?.reduce(
+    (counter, showtime) => counter + showtime.showtimes.length,
+    0
+  );
+
   return (
     <Layout>
       <Breadcrumb
@@ -253,6 +258,13 @@ export const MovieDetail = () => {
                   ) : null}
                 </div>
               ))}
+            <div>
+              {showtimeCounter === 0 ? (
+                <div className="text-[30px] mt-[20px] font-bold text-center">
+                  KHÔNG CÓ SUẤT CHIẾU PHÙ HỢP
+                </div>
+              ) : null}
+            </div>
           </div>
         </div>
       )}
