@@ -10,7 +10,7 @@ export const Profile = () => {
   console.log(tab);
   return (
     <Layout>
-      <div className="container ">
+      <div className="profile-container ">
         <div className="column-left">
           <div className="user-info-card">
             <div className="point">
@@ -108,12 +108,16 @@ export const Profile = () => {
           )}
 
           {tab === 3 && <UserBenefit />}
-          {tab === 4 && (<div id="card-product-note-item" className="card-product-note-item control">
-            <input type="text" name="" id="" />
-          </div>)}
-          </div>
+          {tab === 4 && (
+            <div
+              id="card-product-note-item"
+              className="card-product-note-item control"
+            >
+              <input type="text" name="" id="" />
+            </div>
+          )}
         </div>
-      
+      </div>
     </Layout>
   );
 };
