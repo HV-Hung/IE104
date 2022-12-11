@@ -19,13 +19,13 @@ export const Ticket = ({ seats, showtime, step, setStep, foods }) => {
   const formatDate =
     date.getDate() + "/" + (date.getMonth() + 1) + "/" + date.getFullYear();
 
-  const newFoods = foods.map((food) => {
-    const newFood = foodItems.filter((foodItem) => food.id === foodItem.id)[0];
+  const newFoods = foods?.map((food) => {
+    const newFood = foodItems?.filter((foodItem) => food.id === foodItem.id)[0];
     newFood.quantity = food.quantity;
     return newFood;
   });
-  const totalFood = newFoods.reduce((a, b) => a + b.price * b.quantity, 0);
-  const totalTicket = pickingSeat.reduce((a, b) => a + b.price, 0);
+  const totalFood = newFoods?.reduce((a, b) => a + b.price * b.quantity, 0);
+  const totalTicket = pickingSeat?.reduce((a, b) => a + b.price, 0);
   return (
     <div
       style={{
@@ -113,13 +113,13 @@ export const Ticket = ({ seats, showtime, step, setStep, foods }) => {
       </div>
 
       <div className="col-[7_/_8] row-[1_/_2] justify-self-start self-center font-bold">
-        {totalTicket.toLocaleString("it-IT", {
+        {totalTicket?.toLocaleString("it-IT", {
           style: "currency",
           currency: "VND",
         })}
       </div>
       <div className="col-[7_/_8] row-[2_/_3] justify-self-start self-center font-bold">
-        {totalFood.toLocaleString("it-IT", {
+        {totalFood?.toLocaleString("it-IT", {
           style: "currency",
           currency: "VND",
         })}
