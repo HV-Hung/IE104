@@ -1,8 +1,8 @@
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faLocationDot } from "@fortawesome/free-solid-svg-icons";
-import { Breadcrumb, Space } from "antd";
+import { Space } from "antd";
 import { useNavigate } from "react-router-dom";
-import React, { useState } from "react";
+import React from "react";
 import { Layout } from "../../Layout/Layout";
 
 import "./Cinema.css";
@@ -41,7 +41,7 @@ export const Cinema = () => {
   const { fetchGet: fetchShowtime, result: showtimeResult } = useGet();
   const [date, setDate] = React.useState(Dates[0].date);
   const [movies, setMovies] = React.useState(0);
-  
+
   // Load provinces từ Back-end
   // Load tất cả các tỉnh
   React.useEffect(() => {
@@ -128,11 +128,11 @@ export const Cinema = () => {
     }
   }, [showtimeResult, cinemaId]);
   //console.log(showtimeResult);
+
+  const movieShowCount = movies.length;
+
   return (
     <Layout>
-      <Breadcrumb style={{ marginLeft: "16px" }}>
-        <Breadcrumb.Item>Cinema</Breadcrumb.Item>
-      </Breadcrumb>
       <div className="mb-10">
         <div style={{ textAlign: "center" }}>
           <div
@@ -211,8 +211,8 @@ export const Cinema = () => {
                     {item.address}
                   </div>
                   <div
-                    className="text-center py-[12px] border-2 border-sky-800 cursor-pointer hover:bg-sky-300" 
-                    onClick={() => window.open(`${item.address_url}`,'_blank')}
+                    className="text-center py-[12px] border-2 border-sky-800 cursor-pointer hover:bg-sky-300"
+                    onClick={() => window.open(`${item.address_url}`, "_blank")}
                   >
                     <FontAwesomeIcon size="lg" icon={faLocationDot} />
                   </div>
@@ -279,7 +279,7 @@ export const Cinema = () => {
                 </div>
 
                 <div>
-                  {movies !== 0 &&
+                  {movies &&
                     movies.map((movie) => {
                       return (
                         <div className="border-t-2 border-slate-600 py-5 mx-[50px]">
@@ -316,6 +316,13 @@ export const Cinema = () => {
                         </div>
                       );
                     })}
+                </div>
+                <div>
+                  {movieShowCount == 0 ? (
+                    <div className="font-bold text-[30px] text-center">
+                      KHÔNG CÓ SUẤT CHIẾU PHÙ HỢP
+                    </div>
+                  ) : null}
                 </div>
               </div>
             </div>

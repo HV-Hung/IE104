@@ -1,5 +1,4 @@
 import React from "react";
-import { DownOutlined } from "@ant-design/icons";
 import { Layout, Menu, Dropdown } from "antd";
 import { useNavigate, useLocation, Link } from "react-router-dom";
 
@@ -9,47 +8,13 @@ export const Header = () => {
   const keyMenu = location.pathname.split("/")[1];
   const user = JSON.parse(localStorage.getItem("user"));
 
-  const items = [
-    {
-      label: (
-        <Link
-          to={"/movie"}
-          className="flex items-center space-x-1 text-white max-h-[100px]"
-        >
-          <strong>PHIM</strong>
-          <DownOutlined />
-        </Link>
-      ),
-      key: "movie",
-      children: [
-        {
-          label: "Phim đang chiếu",
-        },
-        {
-          label: "Phim sắp chiếu",
-        },
-      ],
-    },
-    {
-      label: (
-        <Link to={"/cinema"} className="flex items-center">
-          <strong className="text-white">RẠP</strong>
-        </Link>
-      ),
-      key: "cinema",
-
-      // disabled: true,
-    },
-    {
-      label: (
-        <Link to={"/news"} className="flex items-center">
-          <strong className="text-white">TIN TỨC</strong>
-        </Link>
-      ),
-      key: "news",
-    },
-  ];
   const opts = [
+    {
+      title: "Thông tin tài khoản",
+      cb: () => {
+        navigate("/profile");
+      },
+    },
     {
       title: "Đăng xuất",
       cb: () => {
@@ -59,18 +24,16 @@ export const Header = () => {
         navigate("/");
       },
     },
-    {
-      title: "Thông tin tài khoản",
-      cb: () => {
-        navigate("/profile");
-      },
-    },
   ];
   const menu = (
     <Menu>
       {opts.map((item, key) => {
         return (
-          <Menu.Item key={key} onClick={item.cb}>
+          <Menu.Item
+            className="text-[24px] px-6 py-3 hover:text-cyan-600"
+            key={key}
+            onClick={item.cb}
+          >
             {item.title}
           </Menu.Item>
         );
@@ -91,24 +54,27 @@ export const Header = () => {
 
           <Link
             to="/movie"
-            className="flex justify-between font-bold text-[24px] text-center text-white
-            hover:text-cyan-300 active:text-cyan-300"
+            className={`flex justify-between font-bold text-[24px] text-center ${
+              keyMenu === "movie" ? "text-cyan-300" : " text-white"
+            } hover:text-cyan-300`}
           >
             PHIM
           </Link>
 
           <Link
             to="/cinema"
-            className="flex justify-between font-bold text-[24px] text-center text-white
-            hover:text-cyan-300"
+            className={`flex justify-between font-bold text-[24px] text-center ${
+              keyMenu === "cinema" ? "text-cyan-300" : " text-white"
+            } hover:text-cyan-300`}
           >
             RẠP
           </Link>
 
           <Link
             to="/news"
-            className="flex justify-between font-bold text-[24px] text-center text-white
-            hover:text-cyan-300"
+            className={`flex justify-between font-bold text-[24px] text-center ${
+              keyMenu === "news" ? "text-cyan-300" : " text-white"
+            } hover:text-cyan-300`}
           >
             TIN TỨC
           </Link>

@@ -70,7 +70,7 @@ export const BookTicket = () => {
       navigate("/ticket/" + booked?.ticket?._id);
     }
   }, [isError, booked]);
-  console.log({ booked });
+
   return (
     <Layout>
       <div

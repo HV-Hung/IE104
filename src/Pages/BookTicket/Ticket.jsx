@@ -33,6 +33,7 @@ export const Ticket = ({
     newFood.quantity = food.quantity;
     return newFood;
   });
+
   const totalFood = newFoods?.reduce((a, b) => a + b.price * b.quantity, 0);
   const totalTicket = pickingSeat?.reduce((a, b) => a + b.price, 0);
   return (

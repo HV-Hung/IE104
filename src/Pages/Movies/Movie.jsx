@@ -1,10 +1,8 @@
-import { Breadcrumb, Button } from "antd";
+import { Button } from "antd";
 import React from "react";
 import { Layout } from "../../Layout/Layout";
 import { useNavigate } from "react-router-dom";
 import { useState } from "react";
-
-
 
 export const Movie = () => {
   const navigate = useNavigate();
@@ -36,15 +34,6 @@ export const Movie = () => {
 
   return (
     <Layout>
-      <Breadcrumb
-        style={{
-          marginTop: "10px",
-          marginBottom: "5px",
-          backgroundColor: "gray",
-        }}
-      >
-        <Breadcrumb.Item></Breadcrumb.Item>
-      </Breadcrumb>
       <div
         className="py-[15px] h-[100px] mx-[300px] my-[20px]
         flex justify-center items-center rounded-full border-sky-600"

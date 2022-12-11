@@ -1,17 +1,19 @@
 import React from "react";
 
-export const useGet = () => {
+export const usePatch = () => {
   const [isLoading, setIsLoading] = React.useState(false);
   const [isError, setIsError] = React.useState(false);
-  const [result, setResult] = React.useState(undefined);
+  const [result, setResult] = React.useState({});
   const token = localStorage.getItem("token");
 
-  const fetchGet = async (path) => {
+  const fetchPatch = async (path, data) => {
     setIsLoading(true);
     setIsError(false);
     const response = await fetch(process.env.REACT_APP_BACKEND_URL + path, {
-      method: "GET",
+      method: "PATCH",
+      body: JSON.stringify(data),
       headers: {
+        "Content-Type": "application/json",
         Authorization: `Bearer ${token}`,
       },
     })
@@ -28,5 +30,5 @@ export const useGet = () => {
     return response;
   };
 
-  return { isLoading, isError, fetchGet, result };
+  return { isLoading, isError, fetchPatch, result };
 };
