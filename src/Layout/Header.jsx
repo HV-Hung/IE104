@@ -1,12 +1,13 @@
 import React from "react";
 import { DownOutlined } from "@ant-design/icons";
-import { Layout, Menu } from "antd";
+import { Layout, Menu, Dropdown } from "antd";
 import { useNavigate, useLocation, Link } from "react-router-dom";
 
 export const Header = () => {
   const navigate = useNavigate();
   const location = useLocation();
   const keyMenu = location.pathname.split("/")[1];
+  const user = JSON.parse(localStorage.getItem("user"));
 
   const items = [
     {
@@ -48,7 +49,34 @@ export const Header = () => {
       key: "news",
     },
   ];
+  const opts = [
+    {
+      title: "Đăng xuất",
+      cb: () => {
+        window.localStorage.removeItem("user");
+        window.localStorage.removeItem("token");
 
+        navigate("/");
+      },
+    },
+    {
+      title: "Thông tin tài khoản",
+      cb: () => {
+        navigate("/profile");
+      },
+    },
+  ];
+  const menu = (
+    <Menu>
+      {opts.map((item, key) => {
+        return (
+          <Menu.Item key={key} onClick={item.cb}>
+            {item.title}
+          </Menu.Item>
+        );
+      })}
+    </Menu>
+  );
   return (
     <Layout.Header className="bg-[#0c468a] min-h-[100px] items-center">
       <div className="flex justify-between items-center w-full min-h-[100px]">
@@ -87,14 +115,22 @@ export const Header = () => {
         </div>
 
         <div className="text-[white] text-[20px]">
-          <span
-            className="ml-2 font-bold text-[24px] text-white hover:text-cyan-300"
-            onClick={() => {
-              navigate("/login");
-            }}
-          >
-            Đăng nhập
-          </span>
+          {user ? (
+            <Dropdown overlay={menu} placement="bottomRight" arrow>
+              <span className="ml-2 font-bold text-[24px] text-white hover:text-cyan-300 cursor-pointer">
+                {user.name}
+              </span>
+            </Dropdown>
+          ) : (
+            <span
+              className="ml-2 font-bold text-[24px] text-white hover:text-cyan-300 cursor-pointer"
+              onClick={() => {
+                navigate("/login");
+              }}
+            >
+              Đăng nhập
+            </span>
+          )}
         </div>
       </div>
     </Layout.Header>

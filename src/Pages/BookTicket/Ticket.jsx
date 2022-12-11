@@ -130,22 +130,25 @@ export const Ticket = ({ seats, showtime, step, setStep, foods, onClick }) => {
         })}
       </div>
 
-      <button
-        onClick={() => {
-          if (step === 2) {
-            setStep(step + 1);
-            navigate(`/payment`);
-          } else if (step === 3) onClick();
-          else setStep(step + 1);
-        }}
-        className="h-[80px] w-[80px] bg-[#e71a0f] border-white rounded-[20px] col-[8_/_9] row-[1_/_5] justify-self-center self-center text-xs hover:opacity-80 border"
-      >
-        <FontAwesomeIcon
-          className="mx-[20px] text-4xl"
-          icon={step < 3 ? faArrowRight : faCreditCard}
-        ></FontAwesomeIcon>
-        {step < 3 ? "NEXT" : "PAYMENT"}
-      </button>
+
+      {seats?.length !== 0 && (
+        <button
+          onClick={() => {
+            if (step === 3) {
+              setStep(step + 1);
+              navigate(`/payment`);
+            } else setStep(step + 1);
+          }}
+          className="h-[80px] w-[80px] bg-[#e71a0f] border-white rounded-[20px] col-[8_/_9] row-[1_/_5] justify-self-center self-center text-xs hover:opacity-80 border"
+        >
+          <FontAwesomeIcon
+            className="mx-[20px] text-4xl"
+            icon={step < 3 ? faArrowRight : faCreditCard}
+          ></FontAwesomeIcon>
+          {step < 3 ? "NEXT" : "PAYMENT"}
+        </button>
+      )}
+
     </div>
   );
 };

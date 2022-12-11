@@ -1,85 +1,161 @@
 import React from "react";
+import { Button, Form, Input, notification } from "antd";
+import { useNavigate } from "react-router-dom";
+import "./Register.css";
+import { usePost } from "../../api/post";
+import { Layout } from "../../Layout/Layout";
+import { DatePicker } from "antd";
+import { Radio } from "antd";
 
+const openNotificationWithIcon = (type, message = "", des = "") => {
+  notification[type]({
+    message: message,
+    description: des,
+  });
+};
+const user = JSON.parse(localStorage.getItem("user"));
+console.log(user);
 const UserInfo = () => {
+  let navigate = useNavigate();
+  const { fetchPost, result, isError } = usePost();
+
+  const onFinish = (values) => {
+    console.log(values);
+    fetchPost("auth/register", {
+      ...values,
+      dayOfBirth: values.dayOfBirth._d.toISOString(),
+    });
+  };
+
+  const handleClick = () => {
+    navigate("/login");
+  };
+  React.useEffect(() => {
+    if (result.message) {
+      if (isError) openNotificationWithIcon("error", result.message);
+      else {
+        openNotificationWithIcon("success", "Đăng ký thành công");
+        navigate("/login");
+      }
+    }
+  }, [result, navigate, isError]);
+
+  const dateFormat = "DD/MM/YYYY";
   return (
     <div id="dashboard" className="dashboard control">
       <div className="page-title">
         <h1>Thông tin tài khoản</h1>
       </div>
 
-      <form action="#" className="form-user">
-        <div className="form-group ">
-          <label id="user-name" htmlFor="user-name">
-            Tên khách hàng
-          </label>
-          <div className="name-input">
-            <input
-              pattern="[A-Za-z]"
-              required
-              placeholder="Tên"
-              id="first-name"
-              type="text"
-            />
-            <input
-              pattern="[A-Za-z]"
-              required
-              placeholder="Họ"
-              id="last-name"
-              type="text"
-            />
-          </div>
-        </div>
-
-        <div className="form-group row">
-          <label htmlFor="phone-number">Số điện thoại</label>
-          <input
-            disabled
-            className="form-control"
-            required
-            pattern="[0-9]{10,}"
+      <Form
+        name="basic"
+        labelCol={{ span: 24 }}
+        wrapperCol={{ span: 24 }}
+        initialValues={{ remember: true }}
+        onFinish={onFinish}
+        autoComplete="off"
+      >
+        <Form.Item
+          label="TÊN ĐẦY ĐỦ"
+          name="name"
+          rules={[{ required: true, message: "Hãy nhập tên của bạn!" }]}
+        >
+          <Input
+            title="Tên chỉ nên chứa kí tự hoa hoặc kí tự thường"
             type="text"
-            name="user-phone-number"
-            id="phone-number"
+            placeholder="Nhập tên"
           />
-        </div>
+        </Form.Item>
 
-        <div className="form-group row">
-          <label htmlFor="datapicker">
-            Sinh nhật (Bạn không thể thay đổi sau khi đã lựa chọn)
-          </label>
-          <input required type="date" name="date-of-birth" id="datapicker" />
-        </div>
-
-        <div className="form-group row">
-          <label htmlFor="email">Email</label>
-          <input
-            disabled
-            className="form-control"
-            required
-            type="email"
-            name="email"
-            id="email"
+        <Form.Item
+          label="SỐ ĐIỆN THOẠI"
+          name="phoneNumber"
+          rules={[
+            { required: true, message: "Hãy nhập số diện thoại của bạn!" },
+          ]}
+        >
+          <Input
+            title="Chỉ chứa chữ số và dài tối thiểu 10"
+            pattern="[0-9]{10,}"
+            type="phonenumber"
+            placeholder="Nhập số điện thoại "
           />
-        </div>
+        </Form.Item>
 
-        <div className="form-group column">
-          <div className="gender">
-            <input type="radio" name="male-female" id="male" />
-            <label htmlFor="male">Nam</label>
-          </div>
+        <Form.Item
+          label="EMAIL"
+          name="email"
+          rules={[{ required: true, message: "Hãy nhập email của bạn!" }]}
+        >
+          <Input type="email" placeholder="Nhập email" />
+        </Form.Item>
+        <Form.Item
+          label="NGÀY SINH"
+          name="dayOfBirth"
+          className="flex flex-nowrap flex-row"
+          rules={[
+            {
+              required: true,
+              message: "Nhập ngày sinh trước ngày hiện tại",
+            },
+          ]}
+        >
+          <DatePicker format={dateFormat} />
+        </Form.Item>
+        <Form.Item label="GIỚI TÍNH" name="gender">
+          <Radio.Group className="w-[200px]">
+            <Radio className="text-white " value={"Nam"}>
+              Nam
+            </Radio>
+            <Radio className="text-white" value={"Nữ"}>
+              Nữ
+            </Radio>
+          </Radio.Group>
+        </Form.Item>
 
-          <div className="gender">
-            <input type="radio" name="male-female" id="female" />
-            <label htmlFor="female">Nữ</label>
-          </div>
-        </div>
+        <Form.Item
+          label="MẬT KHẨU"
+          name="password"
+          rules={[{ required: true, message: "Hãy nhập mật khẩu của bạn!" }]}
+        >
+          <Input.Password
+            pattern="^[A-za-z0-9]{6, 25}"
+            placeholder="Nhập mật khẩu"
+          />
+        </Form.Item>
 
-        <div className="btn">
-          <button className="btn-submit" type="submit">
-            Cập nhật
-          </button>
-        </div>
-      </form>
+        <Form.Item
+          name="confirmPassword"
+          label="XÁC NHẬN MẬT KHẨU"
+          dependencies={["password"]}
+          hasFeedback
+          rules={[
+            {
+              required: true,
+              message: "Hãy nhập lại mật khẩu của bạn!",
+            },
+            ({ getFieldValue }) => ({
+              validator(_, value) {
+                if (!value || getFieldValue("password") === value) {
+                  return Promise.resolve();
+                }
+                return Promise.reject(new Error("Mật khẩu không khớp!"));
+              },
+            }),
+          ]}
+        >
+          <Input.Password placeholder="Nhập lại mật khẩu" />
+        </Form.Item>
+
+        <Form.Item
+          className="gap-0 flex flex-col mt-[90px]"
+          wrapperCol={{ offset: 0, span: 24 }}
+        >
+          <Button id="register" type="primary" htmlType="submit">
+            ĐĂNG KÝ
+          </Button>
+        </Form.Item>
+      </Form>
     </div>
   );
 };

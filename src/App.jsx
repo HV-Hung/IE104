@@ -23,6 +23,7 @@ import "slick-carousel/slick/slick.css";
 
 import "slick-carousel/slick/slick-theme.css";
 import { Register } from "./Pages/Auth/Register";
+import { PrivatePage } from "./Pages/PrivatePage";
 
 const App = () => {
   return (
@@ -41,13 +42,19 @@ const App = () => {
       <Route path="/bookticket/:id" element={<BookTicket />} />
       <Route path="/news" element={<News />} />
       <Route path="/news/:id" element={<NewsDetail />} />
-      <Route path="/profile" element={<Profile />} />
+      <Route
+        path="/profile"
+        element={
+          <PrivatePage>
+            <Profile />
+          </PrivatePage>
+        }
+      />
       <Route path="/login" element={<Login />} />
       <Route path="/ticket" element={<Ticket />} />
       <Route path="/register" element={<Register />} />
 
       <Route path="*" element={<NotFound />}></Route>
-
     </Routes>
   );
 };
