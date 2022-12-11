@@ -6,6 +6,8 @@ import { usePost } from "../../api/post";
 import { Layout } from "../../Layout/Layout";
 import { DatePicker } from "antd";
 import { Radio } from "antd";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faCircle} from "@fortawesome/free-solid-svg-icons";
 
 const openNotificationWithIcon = (type, message = "", des = "") => {
   notification[type]({
@@ -21,10 +23,7 @@ const UserInfo = () => {
 
   const onFinish = (values) => {
     console.log(values);
-    fetchPost("auth/register", {
-      ...values,
-      dayOfBirth: values.dayOfBirth._d.toISOString(),
-    });
+   
   };
 
   const handleClick = () => {
@@ -39,7 +38,7 @@ const UserInfo = () => {
       }
     }
   }, [result, navigate, isError]);
-
+  console.log(user);
   const dateFormat = "DD/MM/YYYY";
   return (
     <div id="dashboard" className="dashboard control">
@@ -51,9 +50,14 @@ const UserInfo = () => {
         name="basic"
         labelCol={{ span: 24 }}
         wrapperCol={{ span: 24 }}
-        initialValues={{ remember: true }}
         onFinish={onFinish}
         autoComplete="off"
+        initialValues={{
+          name: user?.name,
+          phoneNumber:user?.phoneNumber,
+          email:user?.email,
+          
+        }}
       >
         <Form.Item
           label="TÊN KHÁCH HÀNG"
@@ -61,6 +65,7 @@ const UserInfo = () => {
           rules={[{ required: true, message: "Hãy nhập tên của bạn!" }]}
         >
           <Input
+  
             title="Tên chỉ nên chứa kí tự hoa hoặc kí tự thường"
             type="text"
             placeholder="Nhập tên"

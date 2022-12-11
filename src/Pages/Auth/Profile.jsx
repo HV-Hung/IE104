@@ -6,6 +6,7 @@ import UserInfo from "./UserInfo";
 import UserBenefit from "./UserBenefit";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faUser, faClockRotateLeft, faGift, faCircle } from "@fortawesome/free-solid-svg-icons";
+import { HistoryBooKing } from "./HistoryBooKing";
 
 export const Profile = () => {
   const [tab, setTab] = React.useState(1);
@@ -82,9 +83,7 @@ export const Profile = () => {
           
 
           {tab === 2 && <UserBenefit />}
-          {tab === 3 && (<div id="card-product-note-item" className="card-product-note-item control">
-            <input type="text" name="" id="" />
-          </div>)}
+          {tab === 3 && <HistoryBooKing/>}
           </div>
         </div>
      
