@@ -123,7 +123,7 @@ export const Register = () => {
           </Form.Item>
 
           <Form.Item wrapperCol={{ offset: 0, span: 18 }}>
-            <Button id="login" type="primary" htmlType="submit">
+            <Button id="register" type="primary" htmlType="submit">
               ĐĂNG KÝ
             </Button>
           </Form.Item>

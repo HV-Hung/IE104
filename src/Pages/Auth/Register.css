@@ -258,6 +258,7 @@
     border: none;
     border-radius: 15px;
     height: 2.5rem;
+    cursor: pointer;
 }
 
 .register-container .ant-form-item-control-input-content .ant-btn{
@@ -291,8 +292,9 @@
    justify-content: center;
 }
 
-.register-container #login{
+.register-container #register{
     margin-top: 50px;
+    cursor: pointer;
 }
 
 .register-container .footer{
