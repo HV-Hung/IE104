@@ -68,6 +68,7 @@ export const BookTicket = () => {
     if (booked.Showtime)
       openNotificationWithIcon("success", "Đặt vé thành công");
   }, [isError, booked]);
+
   return (
     <Layout>
       <div

@@ -1,11 +1,11 @@
 import React from "react";
-import { Layout } from "../../Layout/Layout";
 import "../Payment/Payment.css";
 import { useNavigate } from "react-router-dom";
 
 export const Payment = () => {
   const navigate = useNavigate();
   let payments = "Hi";
+
   const pay = () => {
     if (payments === "Hi") {
       alert("Vui lòng chọn hình thức thanh toán");
@@ -19,7 +19,10 @@ export const Payment = () => {
     else if (payments === "momo") {
       navigate(`/payment/momo`);
     }
-    navigate(`/payment/momo`);
+    else if (payments === "zalopay")
+      navigate(`/payment/zalopay`);
+    else if (payments === "shopepay")
+      navigate(`/payment/shopepay`);
   };
 
   let checkAge = false;

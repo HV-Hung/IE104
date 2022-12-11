@@ -7,7 +7,7 @@ export const Food = ({ foodItem, setFoods, foods }) => {
   return (
     <div
       key={foodItem.id}
-      className="p-[12px] min-h-[100px] bg-#e23f m-[12px]"
+      className="p-[12px] min-h-[100px] bg-#e23f border"
       style={{ display: "flex" }}
     >
       <div style={{ flex: 1 }}>
@@ -33,7 +33,7 @@ export const Food = ({ foodItem, setFoods, foods }) => {
               setFoods(newFoods);
             }}
           />
-          <span style={{ fontSize: "25px" }}>
+          <span className="text-[25px] mx-[20px]">
             {foodIndex !== -1 ? foods[foodIndex]?.quantity : 0}
           </span>
           <Button
@@ -52,10 +52,20 @@ export const Food = ({ foodItem, setFoods, foods }) => {
         </div>
       </div>
       <div style={{ flex: 1, position: "relative" }}>
-        <h2 style={{ fontSize: "1.1rem" }}>{foodItem.title}</h2>
+        <h2
+          style={{ fontSize: "1.1rem", fontWeight: "bold", paddingTop: "20px" }}
+        >
+          {foodItem.title}
+        </h2>
         <ul>
           {foodItem.contents.map((content) => (
-            <li style={{ marginLeft: "20px", listStyleType: "circle" }}>
+            <li
+              style={{
+                marginLeft: "20px",
+                listStyleType: "circle",
+                fontSize: "16px",
+              }}
+            >
               {content}
             </li>
           ))}
@@ -68,7 +78,9 @@ export const Food = ({ foodItem, setFoods, foods }) => {
           }}
         >
           Giá:{" "}
-          <span style={{ fontSize: "20px", color: "red", fontWeight: "bold" }}>
+          <span
+            style={{ fontSize: "20px", color: "#0c468a", fontWeight: "bold" }}
+          >
             {foodItem.price.toLocaleString("it-IT", {
               style: "currency",
               currency: "VND",

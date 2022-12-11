@@ -11,7 +11,7 @@ import {
   faCreditCard,
 } from "@fortawesome/free-solid-svg-icons";
 
-export const Ticket = ({ seats, showtime, step, setStep, foods }) => {
+export const Ticket = ({ seats, showtime, step, setStep, foods}) => {
   const navigate = useNavigate();
   const pickingSeat = allSeat.filter((seat) => seats?.includes(seat.id));
   const pickingSeatCode = pickingSeat?.map((seat) => seat.code);
@@ -24,6 +24,7 @@ export const Ticket = ({ seats, showtime, step, setStep, foods }) => {
     newFood.quantity = food.quantity;
     return newFood;
   });
+
   const totalFood = newFoods?.reduce((a, b) => a + b.price * b.quantity, 0);
   const totalTicket = pickingSeat?.reduce((a, b) => a + b.price, 0);
   return (
@@ -130,23 +131,20 @@ export const Ticket = ({ seats, showtime, step, setStep, foods }) => {
         })}
       </div>
 
-      {seats?.length !== 0 && (
-        <button
-          onClick={() => {
-            if (step === 3) {
-              setStep(step + 1);
-              navigate(`/payment`);
-            } else setStep(step + 1);
-          }}
-          className="h-[80px] w-[80px] bg-[#e71a0f] border-white rounded-[20px] col-[8_/_9] row-[1_/_5] justify-self-center self-center text-xs hover:opacity-80 border"
-        >
-          <FontAwesomeIcon
-            className="mx-[20px] text-4xl"
-            icon={step < 3 ? faArrowRight : faCreditCard}
-          ></FontAwesomeIcon>
-          {step < 3 ? "NEXT" : "PAYMENT"}
-        </button>
-      )}
+      <button
+        onClick={() => {
+          if (step === 3) {
+              
+          } else setStep(step + 1);
+        }}
+        className="h-[80px] w-[80px] bg-[#e71a0f] border-white rounded-[20px] col-[8_/_9] row-[1_/_5] justify-self-center self-center text-xs hover:opacity-80 border"
+      >
+        <FontAwesomeIcon
+          className="mx-[20px] text-4xl"
+          icon={step < 3 ? faArrowRight : faCreditCard}
+        ></FontAwesomeIcon>
+        {step < 3 ? "NEXT" : "PAYMENT"}
+      </button>
     </div>
   );
 };
