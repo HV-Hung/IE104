@@ -86,14 +86,14 @@ export const MovieDetail = () => {
       <div className="max-w-[1228px] mx-auto">
         <div className="py-[20px] h-[90px] text-[40px] font-bold">NỘI DUNG</div>
 
-        <div className="grid grid-cols-[25%_75%] gap-x-[20px] mb-[40px]">
+        <div className="grid grid-cols-[27%_73%] gap-x-[20px] mb-[40px]">
           <img className="mr-[30px] w-[100%]" src={movie?.image} alt="" />
 
           <div>
             <div className="text-[30px] mb-[20px] font-semibold">
               {movie?.name}
             </div>
-            <div>
+            <div className="mb-[40px]">
               <div className="text-[18px] leading-[25px] mb-[15px]">
                 <span className="font-medium mx-0">Đạo diễn: </span>
                 {movie?.director}
@@ -118,9 +118,9 @@ export const MovieDetail = () => {
                 <span className="font-medium mx-0">Ngôn ngữ: </span>
                 {movie?.language}
               </div>
-              <div className="text-[18px] leading-[25px] mb-[15px] mb-[40px]">
+              <div className="text-[18px] leading-[25px]">
                 <span className="font-medium mx-0">Phân loại: </span>
-                <span className="font-bold mx-0 text-[18px]">
+                <span className="font-bold mx-0 text-[20px]">
                   {movie?.rated}
                 </span>
               </div>
@@ -194,7 +194,7 @@ export const MovieDetail = () => {
                   <div className="text-[30px] mb-[20px]">
                     {item?.cinema?.name}
                   </div>
-                  <Space>
+                  <Space wrap>
                     {item.showtimes.map((temp, index) => {
                       return (
                         <div

@@ -67,7 +67,7 @@ export const Movie = () => {
         </div>
       </div>
 
-      <div className="max-w-[1228px] mb-[20px] mx-auto grid grid-cols-5 gap-x-[67px] gap-y-[50px]">
+      <div className="max-w-[1228px] mb-[50px] mx-auto grid grid-cols-5 gap-x-[67px] gap-y-[50px]">
         {(movieType ? nowShowing : comingSoon)?.map((item, index) => {
           return (
             <div key={index} className="h-[540px]">
