@@ -11,7 +11,16 @@ import {
   faCreditCard,
 } from "@fortawesome/free-solid-svg-icons";
 
-export const Ticket = ({ seats, showtime, step, setStep, foods }) => {
+export const Ticket = ({
+  seats,
+  showtime,
+  step,
+  setStep,
+  foods,
+  isConfirm,
+  payment,
+  bookTicket,
+}) => {
   const navigate = useNavigate();
   const pickingSeat = allSeat.filter((seat) => seats?.includes(seat.id));
   const pickingSeatCode = pickingSeat?.map((seat) => seat.code);
@@ -134,8 +143,16 @@ export const Ticket = ({ seats, showtime, step, setStep, foods }) => {
         <button
           onClick={() => {
             if (step === 3) {
-              setStep(step + 1);
-              navigate(`/payment`);
+              if (payment === "") {
+                alert("Vui lòng chọn phương thức thanh toán!");
+                return;
+              }
+              if (!isConfirm) {
+                alert("Vui lòng xác nhận điều khoản!");
+                return;
+              }
+
+              bookTicket();
             } else setStep(step + 1);
           }}
           className="h-[80px] w-[80px] bg-[#e71a0f] border-white rounded-[20px] col-[8_/_9] row-[1_/_5] justify-self-center self-center text-xs hover:opacity-80 border"

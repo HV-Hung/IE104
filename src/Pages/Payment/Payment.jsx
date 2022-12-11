@@ -1,33 +1,10 @@
 import React from "react";
-import { Layout } from "../../Layout/Layout";
 import "../Payment/Payment.css";
-import { useNavigate } from "react-router-dom";
+import { Checkbox } from "antd";
 
-export const Payment = () => {
-  const navigate = useNavigate();
-  let payments = "Hi";
-  const pay = () => {
-    if (payments === "Hi") {
-      alert("Vui lòng chọn hình thức thanh toán");
-      return;
-    }
-    if (!checkAge) {
-      alert("Vui lòng đồng ý với điều khoản!");
-      return;
-    }
-    if (payments === "visa") navigate(`/payment/visa`);
-    else if (payments === "momo") {
-      navigate(`/payment/momo`);
-    }
-    navigate(`/payment/momo`);
-  };
-
-  let checkAge = false;
+export const Payment = ({ setPayment, setIsConfirm, isConfirm }) => {
   const onOptionChange = (e) => {
-    payments = e.target.value;
-  };
-  const onCheckChange = () => {
-    checkAge = !checkAge;
+    setPayment(e.target.value);
   };
 
   return (
@@ -105,12 +82,9 @@ export const Payment = () => {
             </div>
           </div>
           <div className="method-pay-check">
-            <input
-              type="checkbox"
-              name="rule"
-              id="rule"
-              value="yes"
-              onChange={onCheckChange}
+            <Checkbox
+              checked={isConfirm}
+              onChange={() => setIsConfirm(!isConfirm)}
             />
             <label for="rule">
               Tôi đồng ý với điều khoản sử dụng và mua vé cho người có độ tuổi
