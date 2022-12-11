@@ -1,11 +1,20 @@
 import { Breadcrumb, Space } from "antd";
-import React from "react";
+import React, { useEffect } from "react";
 import { Layout } from "../../Layout/Layout";
 import Barcode from "react-barcode";
 import { useState } from "react";
+import { useGet } from "../../api";
+import { Food } from "../BookTicket/Food";
 
 export const Ticket = () => {
-  const [ticket, setTicket] = useState({});
+  const { fetchGet, result: ticket } = useGet();
+
+  useEffect(() => {
+    fetchGet("ticket/6394869ad027e20aade7aab2");
+  }, []);
+  console.log(ticket);
+  const foods = ticket?.foods.filter((food) => food.quantity !== 0);
+  console.log(foods);
   return (
     <Layout>
       <div className="p-[12px] min-h-[800px]">
@@ -18,7 +27,7 @@ export const Ticket = () => {
             MÃ ĐẶT VÉ #9876234233 - HOÀN TẤT
           </div>
           <div className="px-[625px]">
-            <Barcode className="" value="9876234233" />
+            <Barcode className="" value={ticket?.id} />
           </div>
 
           <div
@@ -32,60 +41,84 @@ export const Ticket = () => {
             <div>
               <img
                 className="w-[370px] rounded-lg"
-                src="https://www.cgv.vn/media/catalog/product/cache/1/image/c5f0a1eff4c394a251036189ccddaacd/v/i/violent_night-700x1000px_1_.jpg"
+                src={ticket?.movieImage}
               ></img>
             </div>
             <div className="ml-[50px] text-start w-full mb-[75px] text-[20px] font-bold">
-              <p>TÊN PHIM: ĐÊM HUNG TÀN</p>
+              <p>TÊN PHIM: {ticket?.movieName}</p>
               <p>
                 THỜI GIAN:
-                <span className="font-normal"> 20:40 - 22:40 ~ 120 phút</span>
+                <span className="font-normal"> {ticket?.time}</span>
               </p>
               <div>
                 NGÀY:
-                <span className="font-normal">
-                  {" "}
-                  Thứ hai, ngày 22 tháng 12 năm 2022
-                </span>
+                <span className="font-normal"> {ticket?.date}</span>
               </div>
               <div>
                 RẠP:
-                <span className="font-normal"> CGV Gigamall Thủ Đức</span>
+                <span className="font-normal"> {ticket?.cinemaName}</span>
               </div>
               <div>
                 PHÒNG:
-                <span className="font-normal"> 5</span>
+                <span className="font-normal"> {ticket?.room}</span>
               </div>
 
               <div className="w-full flex justify-between mt-[30px]">
                 <div className="ml-0">
                   GHẾ:
-                  <span className="font-normal"> SWEETBOX D5</span>
+                  <span className="font-normal"> {ticket?.seat}</span>
                 </div>
 
-                <span className="mr-[50px]">100.000đ</span>
+                <span className="mr-[50px]">
+                  {ticket?.totalTicket.toLocaleString("it-IT", {
+                    style: "currency",
+                    currency: "VND",
+                  })}
+                </span>
               </div>
+              {ticket?.totalFood !== 0 && (
+                <div>
+                  <div>BẮP NƯỚC:</div>
 
-              <div>BẮP NƯỚC:</div>
-              <div className="ml-[50px] pl-50px">
-                <div className="w-full flex justify-between">
-                  <span className="ml-0 font-normal">CGV Combo x1</span>
-                  <span className="font-bold mr-[50px]">100.000đ</span>
+                  <div className="ml-[50px] pl-50px">
+                    {foods?.map((food, index) => {
+                      return (
+                        <div className="w-full flex justify-between">
+                          <span className="ml-0 font-normal">
+                            {food.title} x{food.quantity}
+                          </span>
+                          <span className="font-bold mr-[50px]">
+                            {food.price.toLocaleString("it-IT", {
+                              style: "currency",
+                              currency: "VND",
+                            })}
+                          </span>
+                        </div>
+                      );
+                    })}
+                  </div>
                 </div>
-                <div className="w-full flex justify-between">
-                  <span className="ml-0 font-normal">My Combo x1</span>
-                  <span className="font-bold mr-[50px]">100.000đ</span>
-                </div>
-              </div>
+              )}
 
               <div className="w-full flex justify-between">
                 <span className="ml-0">TỔNG THANH TOÁN:</span>
-                <span className="mr-[50px]">300.000đ</span>
+                <span className="mr-[50px]">
+                  {" "}
+                  {(ticket?.totalTicket + ticket?.totalFood).toLocaleString(
+                    "it-IT",
+                    {
+                      style: "currency",
+                      currency: "VND",
+                    }
+                  )}
+                </span>
               </div>
 
               <div className="w-full flex justify-between">
                 <span className="ml-0">PHƯƠNG THỨC THANH TOÁN:</span>
-                <span className="mr-[50px] font-normal">Ví điện tử</span>
+                <span className="mr-[50px] font-normal">
+                  {ticket?.paymentMethod}
+                </span>
               </div>
             </div>
           </div>
