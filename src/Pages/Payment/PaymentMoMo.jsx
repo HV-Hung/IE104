@@ -1,5 +1,6 @@
 import React from "react";
-import { useNavigate } from "react-router-dom";
+import { useParams, useNavigate } from "react-router-dom";
+import { useGet } from "../../api";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import {
   faMoneyBill1,
@@ -9,7 +10,17 @@ import {
 } from "@fortawesome/free-solid-svg-icons";
 
 export const PaymentMoMo = () => {
+  const param = useParams();
   const navigate = useNavigate();
+  const id = param.id;
+  const { fetchGet, result: resultticket } = useGet();
+
+
+  React.useEffect(() => {
+    fetchGet("ticket/" + id);
+    // eslint-disable-next-line
+  }, []);
+
   return (
     <div className="w-[900px] mx-[auto] mt-[64px] flex">
       <div className="w-[315px] bg-[#af206f] text-[#fff] rounded-[6px]">
@@ -22,7 +33,10 @@ export const PaymentMoMo = () => {
             className="mr-[8px] inline-block"
             icon={faMoneyBill1}
           ></FontAwesomeIcon>
-          <span className="">Số tiền 125.000đ</span>
+          <span className="">Số tiền {(resultticket?.totalFood + resultticket?.totalTicket).toLocaleString("it-IT", {
+            style: "currency",
+            currency: "VND",
+          })}</span>
         </div>
         <hr className="mx-[16px]" />
         <div className="text-[18px] mx-[16px] my-[24px]">
@@ -44,7 +58,7 @@ export const PaymentMoMo = () => {
         <div
           className="text-[18px] my-[64px] text-center cursor-pointer "
           onClick={() => {
-            navigate(`/payment`);
+            navigate(`/`);
           }}
         >
           <FontAwesomeIcon
@@ -76,6 +90,10 @@ export const PaymentMoMo = () => {
             className="w-[300px] mx-[auto]"
             src="https://www.investopedia.com/thmb/hJrIBjjMBGfx0oa_bHAgZ9AWyn0=/1500x0/filters:no_upscale():max_bytes(150000):strip_icc()/qr-code-bc94057f452f4806af70fd34540f72ad.png"
             alt="QR Code"
+            onClick={() => {
+              console.log(resultticket);
+              navigate(`/ticket/${id}`);
+            }}
           />
           <p className="text-center text-[18px] mt-[24px]">
             Sử dụng App MoMo hoặc ứng dựng Camera hỗ trợ QR code để quét mã
@@ -83,6 +101,7 @@ export const PaymentMoMo = () => {
         </div>
       </div>
     </div>
+
   );
 };
 

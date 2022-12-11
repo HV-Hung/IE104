@@ -28,6 +28,7 @@ export const BookTicket = () => {
   if (!user) {
     sessionStorage.setItem("showtime", id);
     navigate("/login");
+
   }
   const status = (seatId) => {
     if (bookedSeats.includes(seatId)) return 2;

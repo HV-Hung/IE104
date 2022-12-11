@@ -1,35 +1,49 @@
 import React from "react";
-import { useNavigate } from "react-router-dom";
+import { useGet } from "../../api";
+import { useParams, useNavigate } from "react-router-dom";
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faMoneyBill1, faCreditCard, faBarcode, faArrowLeft } from "@fortawesome/free-solid-svg-icons";
 
 export const PaymentShopeePay = () => {
   const navigate = useNavigate();
+
+  const param = useParams();
+  const id = param.id;
+  const { fetchGet, result: resultticket } = useGet();
+
+
+  React.useEffect(() => {
+    fetchGet("ticket/" + id);
+    // eslint-disable-next-line
+  }, []);
   return (
     <div className="w-[900px] mx-[auto] my-[32px] flex">
       <div className="w-[315px] bg-[#ee4d2d] text-[#fff] rounded-[6px]">
         <div className="mx-[16px] my-[24px]">
           <span class="text-[20px] my-[32px]" >Nhà cung cấp CGV</span>
         </div>
-        <hr className="mx-[16px]"/>
+        <hr className="mx-[16px]" />
         <div className="text-[18px] mx-[16px] my-[24px]">
           <FontAwesomeIcon className="mr-[8px] inline-block" icon={faMoneyBill1}></FontAwesomeIcon>
-          <span className="">Số tiền 125.000đ</span>
+          <span className="">Số tiền {(resultticket?.totalFood + resultticket?.totalTicket).toLocaleString("it-IT", {
+            style: "currency",
+            currency: "VND",
+          })}</span>
         </div>
-        <hr className="mx-[16px]"/>
+        <hr className="mx-[16px]" />
         <div className="text-[18px] mx-[16px] my-[24px]">
           <FontAwesomeIcon className="mr-[8px] inline-block" icon={faCreditCard}></FontAwesomeIcon>
           <span>Thông tin 088-202212101313-2001</span>
         </div>
-        <hr className="mx-[16px]"/>
+        <hr className="mx-[16px]" />
         <div className="text-[18px] mx-[16px] my-[24px]">
           <FontAwesomeIcon className="mr-[8px] inline-block" icon={faBarcode}></FontAwesomeIcon>
           <span>Đơn hàng 120466494</span>
         </div>
-        <hr className="mx-[16px]"/>
+        <hr className="mx-[16px]" />
         <div className="text-[18px] my-[64px] text-center cursor-pointer " onClick={() => {
-            navigate(`/payment`);
-          }}>
+          navigate(`/`);
+        }}>
           <FontAwesomeIcon className="mr-[8px] inline-block" icon={faArrowLeft}></FontAwesomeIcon>
           <span>Quay lại</span>
         </div>
@@ -42,12 +56,17 @@ export const PaymentShopeePay = () => {
         <div className="mx-[16px]">
           <hr />
           <p className="text-[28px] text-[#af206f] text-center py-[32px]" >Quét mã để thanh toán</p>
-          <img className="w-[300px] mx-[auto]" src="https://www.investopedia.com/thmb/hJrIBjjMBGfx0oa_bHAgZ9AWyn0=/1500x0/filters:no_upscale():max_bytes(150000):strip_icc()/qr-code-bc94057f452f4806af70fd34540f72ad.png" alt="QR Code" />
+          <img
+            onClick={() => {
+              console.log(resultticket);
+              navigate(`/ticket/${id}`);
+            }}
+            className="w-[300px] mx-[auto]" src="https://www.investopedia.com/thmb/hJrIBjjMBGfx0oa_bHAgZ9AWyn0=/1500x0/filters:no_upscale():max_bytes(150000):strip_icc()/qr-code-bc94057f452f4806af70fd34540f72ad.png" alt="QR Code" />
           <p className="text-center text-[18px] mt-[24px]" >Sử dụng App ShopeePay hoặc ứng dựng Camera hỗ trợ QR code để quét mã</p>
         </div>
       </div>
     </div>
-      
+
   );
 };
 

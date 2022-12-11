@@ -29,7 +29,7 @@ export const Ticket = ({
     date.getDate() + "/" + (date.getMonth() + 1) + "/" + date.getFullYear();
 
   const newFoods = foods?.map((food) => {
-    const newFood = foodItems?.filter((foodItem) => food.id === foodItem.id)[0];
+    const newFood = foodItems.filter((foodItem) => food.id === foodItem.id)[0];
     newFood.quantity = food.quantity;
     return newFood;
   });
