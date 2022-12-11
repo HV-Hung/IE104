@@ -10,7 +10,7 @@ export const Profile = () => {
   console.log(tab);
   return (
     <Layout>
-      <div className="container ">
+      <div className="profile-container ">
         <div className="column-left">
           <div className="user-info-card">
             <div className="point">
