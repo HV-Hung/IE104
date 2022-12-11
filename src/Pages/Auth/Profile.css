@@ -71,7 +71,7 @@
   display: flex;
   justify-content: center;
   align-items: center;
-  margin-bottom: 10px;
+  margin-top: 30px;
 }
 
 .user-card-barcode svg {
@@ -132,7 +132,7 @@
 
 .dot {
   position: absolute;
-  top: 43.5%;
+  top: 44%;
   left: 5%;
   padding-top: 50px;
   width: 56px;
@@ -157,7 +157,7 @@
   height: 6px;
   background-color: white;
   padding-top: 6px;
-  top: 47.5%;
+  top: 48%;
   right: 13%;
   border-radius: 100%;
   transform: translate(-50%, -50%);

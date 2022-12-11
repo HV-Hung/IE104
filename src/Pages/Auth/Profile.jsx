@@ -7,6 +7,7 @@ import UserBenefit from "./UserBenefit";
 
 export const Profile = () => {
   const [tab, setTab] = React.useState(1);
+  const color = ['linear-gradient(0.4turn, #C0C0C0, #112d4e)', 'linear-gradient(0.4turn, #ffd700, #a17f1a)', 'linear-gradient(0.4turn, #007bff, #112d4e)']
   console.log(tab);
   return (
     <Layout>
@@ -19,7 +20,7 @@ export const Profile = () => {
             </div>
             <div className="user-info-card-header">
               <span>Nguyễn Phi</span>
-              <p>0 bean - Mới</p>
+              
             </div>
             <div className="user-card-barcode">
               <Barcode className="barcode" value="M161696901" />
