@@ -198,7 +198,7 @@ export const MovieDetail = () => {
                   <div className="text-[30px] mb-[20px]">
                     {item?.cinema?.name}
                   </div>
-                  <Space>
+                  <Space wrap>
                     {item.showtimes.map((temp, index) => {
                       return (
                         <div
