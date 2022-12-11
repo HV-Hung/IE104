@@ -1,8 +1,8 @@
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faLocationDot } from "@fortawesome/free-solid-svg-icons";
-import { Breadcrumb, Space } from "antd";
+import { Space } from "antd";
 import { useNavigate } from "react-router-dom";
-import React, { useState } from "react";
+import React from "react";
 import { Layout } from "../../Layout/Layout";
 
 import "./Cinema.css";
@@ -128,11 +128,11 @@ export const Cinema = () => {
     }
   }, [showtimeResult, cinemaId]);
   //console.log(showtimeResult);
+
+  const movieShowCount = movies.length;
+
   return (
     <Layout>
-      <Breadcrumb style={{ marginLeft: "16px" }}>
-        <Breadcrumb.Item>Cinema</Breadcrumb.Item>
-      </Breadcrumb>
       <div className="mb-10">
         <div style={{ textAlign: "center" }}>
           <div
@@ -173,7 +173,12 @@ export const Cinema = () => {
           {provincesResult &&
             provincesResult.map((province) => (
               <button
-                onClick={() => setProvinceId(province._id)}
+                onClick={() => {
+                  setProvinceId(province._id);
+                  setCinemaId();
+                  setNameCinemaClick(null);
+                  setDate(Dates[0].date);
+                }}
                 // type="button"
                 key={province._id}
                 className={`ml-12 border hover:bg-sky-300 text-black px-[12px] py-[12px] border-sky-800 border-2 rounded-lg
@@ -189,24 +194,26 @@ export const Cinema = () => {
           {provinceResult &&
             provinceResult.cinemas.map((item) => {
               return (
-                <div
-                  className=" h-[255px]"
-                  onClick={() => {
-                    setCinemaId(item._id);
-                    setNameCinemaClick(item.name);
-                  }}
-                >
+                <div className=" h-[255px]">
                   <div
-                    className={`border-2 border-sky-800 text-center py-[12px] font-bold text-[22px] cursor-pointer
+                    className={`border-2 border-sky-800 text-center py-[12px] font-bold text-[22px] cursor-pointer hover:bg-sky-300
                     ${item._id === cinemaId ? "bg-sky-300" : "bg-[#f2f7ff]"}
                   `}
+                    onClick={() => {
+                      setCinemaId(item._id);
+                      setNameCinemaClick(item.name);
+                      setDate(Dates[0].date);
+                    }}
                   >
                     {item.name}
                   </div>
                   <div className=" px-[10px] py-[5px] h-[120px] text-[18px] border-l-2 border-r-2 border-sky-800">
                     {item.address}
                   </div>
-                  <div className="text-center py-[12px] border-2 border-sky-800">
+                  <div
+                    className="text-center py-[12px] border-2 border-sky-800 cursor-pointer hover:bg-sky-300"
+                    onClick={() => window.open(`${item.address_url}`, "_blank")}
+                  >
                     <FontAwesomeIcon size="lg" icon={faLocationDot} />
                   </div>
                 </div>
@@ -261,7 +268,7 @@ export const Cinema = () => {
                         }}
                         type="button"
                         key={item.id}
-                        className={`ml-12 font-bold text-[20px] border hover:bg-sky-300 text-black px-[12px] py-[12px] border-sky-800 border-2 rounded-lg ${
+                        className={`my-2 ml-12 font-bold text-[20px] border hover:bg-sky-300 text-black px-[12px] py-[12px] border-sky-800 border-2 rounded-lg ${
                           item.date === date ? "bg-sky-300" : "bg-[#f2f7ff]"
                         }`}
                       >
@@ -272,7 +279,7 @@ export const Cinema = () => {
                 </div>
 
                 <div>
-                  {movies !== 0 &&
+                  {movies &&
                     movies.map((movie) => {
                       return (
                         <div className="border-t-2 border-slate-600 py-5 mx-[50px]">
@@ -282,7 +289,7 @@ export const Cinema = () => {
                               src={movie.movieId.image}
                               alt=""
                               onClick={() => {
-                                navigate(`/movie/${movie._id}`);
+                                navigate(`/movie/${movie.movieId._id}`);
                               }}
                             />
                             <div>
@@ -309,6 +316,13 @@ export const Cinema = () => {
                         </div>
                       );
                     })}
+                </div>
+                <div>
+                  {movieShowCount == 0 ? (
+                    <div className="font-bold text-[30px] text-center">
+                      KHÔNG CÓ SUẤT CHIẾU PHÙ HỢP
+                    </div>
+                  ) : null}
                 </div>
               </div>
             </div>

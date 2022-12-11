@@ -9,7 +9,6 @@ import { seatMap } from "./seats";
 import { Seat } from "./Seat";
 import { useParams, useNavigate } from "react-router-dom";
 import { useGet, usePost } from "../../api";
-import { useEffect } from "react";
 import { openNotificationWithIcon } from "../Auth/Login";
 import { Payment } from "../Payment/Payment";
 
@@ -20,6 +19,8 @@ export const BookTicket = () => {
   const { fetchPost: fetchBook, result: booked, isError } = usePost();
   const [bookingSeats, setBookingSeats] = React.useState([]);
   const [bookedSeats, setBookedSeat] = React.useState([]);
+  const [payment, setPayment] = React.useState("");
+  const [isConfirm, setIsConfirm] = React.useState(false);
   const [step, setStep] = React.useState(1);
   const [foods, setFoods] = React.useState([]);
   const user = JSON.parse(localStorage.getItem("user"));
@@ -39,7 +40,6 @@ export const BookTicket = () => {
       setBookingSeats(bookingSeats.filter((seat) => seat !== Number(seatId)));
     } else setBookingSeats([...bookingSeats, seatId]);
   };
-
   React.useEffect(() => {
     fetchShowtime("showtime/" + id);
     // eslint-disable-next-line react-hooks/exhaustive-deps
@@ -55,7 +55,7 @@ export const BookTicket = () => {
       user: user._id,
       seat: bookingSeats,
       foods: foods,
-      paymentMethod: "momo",
+      paymentMethod: payment,
     });
   };
   React.useEffect(() => {
@@ -65,9 +65,12 @@ export const BookTicket = () => {
         "Vé bạn chọn đã có người đặt, vui lòng đặt lại"
       );
 
-    if (booked.Showtime)
+    if (booked?.ticket?.Showtime) {
       openNotificationWithIcon("success", "Đặt vé thành công");
+      navigate("/ticket/" + booked?.ticket?._id);
+    }
   }, [isError, booked]);
+
   return (
     <Layout>
       <div
@@ -136,11 +139,19 @@ export const BookTicket = () => {
             {foodItems.map((item) => (
               <Food foods={foods} setFoods={setFoods} foodItem={item} />
             ))}
-            <Button onClick={bookTicket}> book</Button>
           </div>
         )}
-        {step === 3 && <Payment />}
+        {step === 3 && (
+          <Payment
+            setPayment={setPayment}
+            setIsConfirm={setIsConfirm}
+            isConfirm={isConfirm}
+          />
+        )}
         <Ticket
+          isConfirm={isConfirm}
+          payment={payment}
+          bookTicket={bookTicket}
           seats={bookingSeats}
           showtime={ShowTimeResult}
           setStep={setStep}

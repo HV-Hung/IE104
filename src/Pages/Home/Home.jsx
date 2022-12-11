@@ -1,21 +1,16 @@
-import { Breadcrumb, Button } from "antd";
+import { Button } from "antd";
 import { Carousel } from "antd";
 import { Layout } from "../../Layout/Layout";
 import { LeftOutlined, RightOutlined } from "@ant-design/icons";
-import React, { Component } from "react";
+import React from "react";
 import Slider from "react-slick";
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
+import { Link } from "react-router-dom";
+import { deal_list, news_list, listImage } from "./deals";
 
 export const Home = () => {
   const slider = React.useRef();
-
-  const [listImage, setListImage] = React.useState([
-    "https://a-static.besthdwallpaper.com/phim-avatar-2-hinh-nen-3440x1440-84375_15.jpg",
-    "https://phongcachdoisong.vn/wp-content/uploads/2022/09/DDD_FB-Cover_Character-1.jpg",
-    "https://www.cgv.vn/media/catalog/product/cache/1/image/1800x/71252117777b696995f01934522c402d/p/u/pussinboots-blogroll-1647280577032.jpg",
-    "https://wallpapercave.com/wp/wp9424755.jpg",
-  ]);
 
   function SampleNextArrow(props) {
     const { className, style, onClick } = props;
@@ -53,6 +48,42 @@ export const Home = () => {
     );
   }
 
+  function SampleNextArrowNews(props) {
+    const { className, style, onClick } = props;
+    return (
+      <div
+        className={className}
+        style={{
+          ...style,
+          display: "block",
+          background: "rgb(2 132 199)",
+          "border-radius": "9999px",
+          "font-size": "50px",
+          transform: "scale(4)",
+        }}
+        onClick={onClick}
+      />
+    );
+  }
+
+  function SamplePrevArrowNews(props) {
+    const { className, style, onClick } = props;
+    return (
+      <div
+        className={className}
+        style={{
+          ...style,
+          display: "block",
+          background: "rgb(2 132 199)",
+          "border-radius": "9999px",
+          "font-size": "50px",
+          transform: "scale(4)",
+        }}
+        onClick={onClick}
+      />
+    );
+  }
+
   const settings = {
     dots: true,
     infinite: true,
@@ -63,11 +94,21 @@ export const Home = () => {
     prevArrow: <SamplePrevArrow />,
   };
 
+  const settingsNews = {
+    dots: true,
+    infinite: true,
+    speed: 500,
+    slidesToShow: 4,
+    slidesToScroll: 1,
+    nextArrow: <SampleNextArrowNews />,
+    prevArrow: <SamplePrevArrowNews />,
+  };
+
   const navigate = useNavigate();
   const [movies, setMovies] = useState(undefined);
   const [movieType, setMovieType] = useState(true);
 
-  const [newsType, setNewsType] = useState(true);
+  const [newsType, setNewsType] = useState(deal_list);
 
   React.useEffect(() => {
     fetch("http://localhost:3500/movie")
@@ -82,7 +123,7 @@ export const Home = () => {
   }, []);
 
   const nowDay = new Date();
-  nowDay.setHours(0,0,0,0)
+  nowDay.setHours(0, 0, 0, 0);
 
   const nowShowing = movies?.filter((item) => {
     return new Date(item.releaseDate) <= nowDay;
@@ -111,7 +152,7 @@ export const Home = () => {
             <img
               className="w-screen object-cover object-center opacity-50"
               src="http://pixner.net/boleto/demo/assets/images/account/account-bg.jpg"
-              alt="image"
+              alt=""
             />
             <div className="text-center absolute right-0 left-0 m-auto top-[250px]">
               <div className="text-5xl text-white font-bold">
@@ -130,12 +171,13 @@ export const Home = () => {
             <img
               className="w-screen h-full object-cover object-center"
               src={item}
+              alt=""
             ></img>
           ))}
         </Carousel>
         <LeftOutlined
           className="absolute top-[300px] text-white text-[40px] left-[40px] rounded-full
-          p-[20px] bg-white/25 transition ease-in-out delay-150 hover:scale-110 duration-300" 
+          p-[20px] bg-white/25 transition ease-in-out delay-150 hover:scale-110 duration-300"
           onClick={() => slider.current.prev()}
         />
         <RightOutlined
@@ -170,7 +212,7 @@ export const Home = () => {
           </div>
         </div>
 
-        <div className="relative mx-[24px] h-[630px] bg-[#F2F7FF]">
+        <div className="relative mx-[24px] h-[620px] bg-[#F2F7FF]">
           <Slider {...settings}>
             {(movieType ? nowShowing : comingSoon)?.map((item, index) => {
               return (
@@ -210,9 +252,7 @@ export const Home = () => {
                         >
                           Mua vé
                         </Button>
-                        
                       </div>
-                      
                     </div>
                   </div>
                 </div>
@@ -220,7 +260,6 @@ export const Home = () => {
             })}
           </Slider>
         </div>
-        
       </div>
 
       <div className=" mx-[200px]  border-2 rounded-lg my-[75px] shadow-xl">
@@ -231,23 +270,47 @@ export const Home = () => {
           <div
             className={`text-[30px] py-[10px] px-[30px] font-bold hover:text-amber-300
             mr-[30px] cursor-pointer rounded-full border-sky-600 border-2
-            ${newsType === true && "text-amber-300 bg-sky-600"}
+            ${newsType === deal_list && "text-amber-300 bg-sky-600"}
       `}
-            onClick={() => setNewsType(true)}
+            onClick={() => setNewsType(deal_list)}
           >
-            TIN TỨC
+            KHUYẾN MÃI
           </div>
           <div
             className={`text-[30px] py-[10px] px-[30px] font-bold hover:text-amber-300
             cursor-pointer rounded-full border-sky-600 border-2
-            ${newsType === false && "text-amber-300 bg-sky-600"}
+            ${newsType === news_list && "text-amber-300 bg-sky-600"}
             `}
-            onClick={() => setNewsType(false)}
+            onClick={() => setNewsType(news_list)}
           >
-            KHUYẾN MÃI
+            TIN TỨC
           </div>
         </div>
+        <div className="relative mx-[48px] bg-[#F2F7FF] pb-[75px]">
+          <Slider {...settingsNews}>
+            {newsType.map((item, index) => {
+              return (
+                <div key={index} className="relative">
+                  <div className="flex flex-wrap justify-center">
+                    <Link to={`/news/${item.id}`}>
+                      <div className=" cursor-pointer">
+                        <img
+                          className="mx-auto transition ease-in-out delay-150 hover:scale-110 duration-300"
+                          src={item.img}
+                          alt=""
+                        />
+                        <div className="px-[30px] text-black text-[18px] text-center font-[500] uppercase py-[12px] hover:text-[#0c468a]">
+                          {item.name}
+                        </div>
+                      </div>
+                    </Link>
+                  </div>
+                </div>
+              );
+            })}
+          </Slider>
         </div>
+      </div>
     </Layout>
   );
 };

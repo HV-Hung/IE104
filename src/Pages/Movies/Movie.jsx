@@ -1,4 +1,4 @@
-import { Breadcrumb, Button } from "antd";
+import { Button } from "antd";
 import React from "react";
 import { Layout } from "../../Layout/Layout";
 import { useNavigate } from "react-router-dom";
@@ -34,15 +34,6 @@ export const Movie = () => {
 
   return (
     <Layout>
-      <Breadcrumb
-        style={{
-          marginTop: "10px",
-          marginBottom: "5px",
-          backgroundColor: "gray",
-        }}
-      >
-        <Breadcrumb.Item></Breadcrumb.Item>
-      </Breadcrumb>
       <div
         className="py-[15px] h-[100px] mx-[300px] my-[20px]
         flex justify-center items-center rounded-full border-sky-600"
@@ -67,7 +58,7 @@ export const Movie = () => {
         </div>
       </div>
 
-      <div className="max-w-[1228px] mb-[50px] mx-auto grid grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-y-[50px] justify-items-center">
+      <div className="max-w-[1228px] mb-[80px] mx-auto grid grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-y-[80px] justify-items-center">
         {(movieType ? nowShowing : comingSoon)?.map((item, index) => {
           return (
             <div key={index} className="h-[540px] w-[192px]">
@@ -105,7 +96,7 @@ export const Movie = () => {
               </div>
               <div className="h-[33px] flex justify-center">
                 <Button
-                  className="bg-blue-500 font-bold"
+                  className="bg-sky-700 font-bold text-center text-[20px] pb-[40px] rounded-lg"
                   type="primary"
                   onClick={() => {
                     navigate(`/movie/${item._id}`);
