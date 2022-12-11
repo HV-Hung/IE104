@@ -2,6 +2,7 @@ import { Breadcrumb } from "antd";
 import React from "react";
 import { Layout } from "../../Layout/Layout";
 import { useParams } from "react-router-dom";
+import "..News/img";
 
 const deal_detail = [
   {
