@@ -1,30 +1,31 @@
 import React from "react";
 import "./Register.css";
 const UserBenefit = () => {
+  const [change, setChange] = React.useState(1);
   return (
     <div id="processing" className="processing control ">
       <nav>
         <div role={"tablist"} className="nav-tabs" id="nav-tab">
-          <a role={"tab"} className="nav-item active" href="#">
+          <a onClick={() => setChange(1)} className={`nav-item ${change === 1 && "active"}`} role={"tab"} href="#">
             <span>Mới</span>
           </a>
-          <a role={"tab"} className="nav-item" href="#">
+          <a onClick={() => setChange(2)} className={`nav-item ${change === 2 && "active"}`} role={"tab"} href="#">
             Đồng
           </a>
-          <a role={"tab"} className="nav-item" href="#">
+          <a onClick={() => setChange(3)} className={`nav-item ${change === 3 && "active"}`} role={"tab"} href="#">
             Bạc
           </a>
-          <a role={"tab"} className="nav-item" href="#">
+          <a onClick={() => setChange(4)} className={`nav-item ${change === 4 && "active"}`} role={"tab"} href="#">
             Vàng
           </a>
-          <a role={"tab"} className="nav-item" href="#">
+          <a onClick={() => setChange(5)} className={`nav-item ${change === 5 && "active"}`} role={"tab"} href="#">
             Kim Cương
           </a>
         </div>
       </nav>
 
       <div className="tab-content" id="nav-content">
-        <div id="nav-1" role={"tabpanel"} className="tab-pane">
+        {change === 1 && (<div id="nav-1" role={"tabpanel"} className="tab-pane">
           <div className="cover-all-benefit row">
             <div className="all-benefit">
               <div className="cover-image">
@@ -36,9 +37,9 @@ const UserBenefit = () => {
               </div>
             </div>
           </div>
-        </div>
+        </div>)}
 
-        <div id="nav-2" role={"tabpanel"} className="tab-pane not-active">
+        {change === 2 && (<div id="nav-2" role={"tabpanel"} className="tab-pane">
           <div className="cover-all-benefit">
             <div className="all-benefit">
               <div className="cover-image">
@@ -68,9 +69,9 @@ const UserBenefit = () => {
               </div>
             </div>
           </div>
-        </div>
+        </div>)}
 
-        <div id="nav-3" role={"tabpanel"} className="tab-pane not-active">
+        {change === 3 && (<div id="nav-3" role={"tabpanel"} className="tab-pane ">
           <div className="cover-all-benefit">
             <div className="all-benefit">
               <div className="cover-image">
@@ -100,9 +101,9 @@ const UserBenefit = () => {
               </div>
             </div>
           </div>
-        </div>
+        </div>)}
 
-        <div id="nav-4" role={"tabpanel"} className="tab-pane not-active">
+        {change === 4 && (<div id="nav-4" role={"tabpanel"} className="tab-pane ">
           <div className="cover-all-benefit">
             <div className="all-benefit">
               <div className="cover-image">
@@ -132,9 +133,9 @@ const UserBenefit = () => {
               </div>
             </div>
           </div>
-        </div>
+        </div>)}
 
-        <div id="nav-5" role={"tabpanel"} className="tab-pane not-active">
+        {change === 5 && (<div id="nav-5" role={"tabpanel"} className="tab-pane ">
           <div className="cover-all-benefit">
             <div className="all-benefit">
               <div className="cover-image">
@@ -193,7 +194,7 @@ const UserBenefit = () => {
               </div>
             </div>
           </div>
-        </div>
+        </div>)}
       </div>
     </div>
   );

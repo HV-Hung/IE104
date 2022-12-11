@@ -4,7 +4,7 @@
     font-family: 'Courier New', Courier, monospace;
     height: 100%;
     max-width: 100%;
-    overflow-x: hidden;
+    /* overflow-x: hidden; */
 }
 
 .login-container::before{
@@ -203,3 +203,7 @@
 }
 
 
+.login-container .ant-form-item-row{
+    display: flex;
+    justify-content: center;
+}
