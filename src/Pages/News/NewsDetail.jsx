@@ -421,7 +421,7 @@ export const NewsDetail = () => {
                       src={item.img}
                       alt="Ảnh minh họa"
                     />
-                    <div className="w-[60%]">
+                    <div className="w-3/5">
                       <p className="text-[18px]">
                         <b>1. Thời gian áp dụng: </b>
                         {item.date}
