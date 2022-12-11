@@ -16,7 +16,14 @@ import imagend9 from "./img/news_img_d9.png";
 import imagend10 from "./img/news_img_d10.png";
 import imagend11 from "./img/news_img_d11.jpg";
 import imagend12 from "./img/news_img_d12.jpg";
-import imagenn1 from "./img/news_img_n1.jpg"
+import imagenn1 from "./img/news_img_n1.jpg";
+import imagenn2 from "./img/news_img_n2.jpg";
+import imagenn3 from "./img/news_img_n3.jpg";
+import imagenn4 from "./img/news_img_n4.jpg";
+import imagenn5 from "./img/news_img_n5.jpg";
+import imagenn6 from "./img/news_img_n6.jpg";
+import imagenn7 from "./img/news_img_n7.png";
+import imagenn8 from "./img/news_img_n8.png";
 
 
 const deal_list = [
@@ -97,49 +104,49 @@ const deal_list = [
 const news_list = [
   {
     id: "n_1",
-    img: "https://www.bhdstar.vn/wp-content/uploads/2019/12/Banner-billboard-3m2x4m3-246x330.jpg",
+    img: imagenn1,
     name: "BHD STAR GARDEN",
     date: "TỪ 01/12/2022"
   },
   {
     id: "n_2",
-    img: "https://www.bhdstar.vn/wp-content/uploads/2019/08/BHD-Star-ScanQR-315x420-248x330.jpg",
+    img: imagenn2,
     name: "QUÉT MÃ QR NHANH VÀO RẠP",
     date: "TỪ 12/08/2019"
   },
   {
     id: "n_3",
-    img: "https://www.bhdstar.vn/wp-content/uploads/2019/03/A4appmoi-233x330.jpg",
+    img: imagenn3,
     name: "ỨNG DỤNG MUA VÉ MỚI",
     date: "01/11/2022 - 31/12/2022"
   },
   {
     id: "n_4",
-    img: "https://www.bhdstar.vn/wp-content/uploads/2018/08/BHD-STAR-CHECK-IN-CUNG-GAU-314X420-248x330.jpg",
+    img: imagenn4,
     name: "ĐIỂM HẸN MỚI CỦA GIỚI TRẺ",
     date: "Từ 01/12/2022"
   },
   {
     id: "n_5",
-    img: "https://www.bhdstar.vn/wp-content/uploads/2018/07/BHD-Star-HuongDanOnline-315x420-248x330.jpg",
+    img: imagenn5,
     name: "THẺ THÀNH VIÊN ĐIỆN TỬ",
     date: "11/11/2022 - 29/11/2022"
   },
   {
     id: "n_6",
-    img: "https://www.bhdstar.vn/wp-content/uploads/2018/04/BHD-Star-HUE-KhaiTruong-Teasing-315x420-248x330.jpg",
+    img: imagenn6,
     name: "BHD STAR HUẾ",
     date: "Từ 01/12/2022"
   },
   {
     id: "n_7",
-    img: "https://www.bhdstar.vn/wp-content/uploads/2017/10/BHD-Star_Hotline_315x420-2-248x330.png",
+    img: imagenn7,
     name: "ĐƯỜNG DÂY NÓNG BHD STAR",
     date: "Từ 01/12/2022"
   },
   {
     id: "n_8",
-    img: "https://www.bhdstar.vn/wp-content/uploads/2016/11/BHDSTAR-HA-NOI-KHAI-TRUONG-248x330.png",
+    img: imagenn8,
     name: "BHD STAR PHẠM NGỌC THẠCH",
     date: "Từ 03/11/2016"
   },

@@ -2,14 +2,14 @@ import { Breadcrumb } from "antd";
 import React from "react";
 import { Layout } from "../../Layout/Layout";
 import { useParams } from "react-router-dom";
-import imaged1 from "./img/news_detail_img_d1.jpg"
-// import "../News/img";
+import imagendd1 from "./img/news_detail_img_d1.jpg"
+
 
 const deal_detail = [
   {
     id: "d_1",
     name: "LỄ HỘI MERCHANDISE",
-    img: imaged1,
+    img: imagendd1,
     date: "Từ ngày 07/12/2022 - 09/12/2022.",
     contents: [
       "- Mua 01 Merchandise (có kèm nước) trị giá 149K, có ngay 01 phần Bắp mix.",
@@ -421,7 +421,7 @@ export const NewsDetail = () => {
                       src={item.img}
                       alt="Ảnh minh họa"
                     />
-                    <div className="">
+                    <div className="w-[60%]">
                       <p className="text-[18px]">
                         <b>1. Thời gian áp dụng: </b>
                         {item.date}
