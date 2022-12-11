@@ -1,16 +1,15 @@
-import { Breadcrumb, Space } from "antd";
 import React, { useEffect } from "react";
 import { Layout } from "../../Layout/Layout";
 import Barcode from "react-barcode";
-import { useState } from "react";
+import { useParams } from "react-router-dom";
 import { useGet } from "../../api";
-import { Food } from "../BookTicket/Food";
 
 export const Ticket = () => {
   const { fetchGet, result: ticket } = useGet();
+  const { id } = useParams();
 
   useEffect(() => {
-    fetchGet("ticket/6395ad4086c1a37aec0d5f65");
+    fetchGet("ticket/" + id);
   }, []);
   console.log(ticket);
   const foods = ticket?.foods.filter((food) => food.quantity !== 0);
@@ -22,7 +21,7 @@ export const Ticket = () => {
           <div
             className="ml-[250px] mr-[250px] my-[20px]
              text-[22px] py-[10px] font-bold
-            mr-[30px] rounded-full border-sky-600 border-2 bg-sky-600"
+             rounded-full border-sky-600 border-2 bg-sky-600"
           >
             MÃ ĐẶT VÉ #9876234233 - HOÀN TẤT
           </div>
@@ -31,7 +30,7 @@ export const Ticket = () => {
           </div>
 
           <div
-            className="ml-[250px] mr-[250px] my-[20px]
+            className="ml-[250px]  my-[20px]
              text-[22px] py-[10px] font-bold
             mr-[30px] rounded-full border-sky-600 border-2 bg-sky-600"
           >

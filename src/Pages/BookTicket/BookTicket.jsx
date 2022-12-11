@@ -9,7 +9,6 @@ import { seatMap } from "./seats";
 import { Seat } from "./Seat";
 import { useParams, useNavigate } from "react-router-dom";
 import { useGet, usePost } from "../../api";
-import { useEffect } from "react";
 import { openNotificationWithIcon } from "../Auth/Login";
 import { Payment } from "../Payment/Payment";
 
@@ -28,7 +27,6 @@ export const BookTicket = () => {
   if (!user) {
     sessionStorage.setItem("showtime", id);
     navigate("/login");
-
   }
   const status = (seatId) => {
     if (bookedSeats.includes(seatId)) return 2;
@@ -67,9 +65,10 @@ export const BookTicket = () => {
         "Vé bạn chọn đã có người đặt, vui lòng đặt lại"
       );
 
-    if (booked?.ticket?.Showtime)
+    if (booked?.ticket?.Showtime) {
       openNotificationWithIcon("success", "Đặt vé thành công");
-    navigate("/ticket/" + booked?.ticket._id);
+      navigate("/ticket/" + booked?.ticket?._id);
+    }
   }, [isError, booked]);
   console.log({ booked });
   return (
