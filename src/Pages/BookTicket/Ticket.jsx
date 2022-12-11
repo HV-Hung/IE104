@@ -40,7 +40,7 @@ export const Ticket = ({ seats, showtime, step, setStep, foods }) => {
         backgroundRepeat: "no-repeat",
         color: "white",
       }}
-      className=" text-[15px] h-[200px] w-[70vw] col-[1_/_3] row-[4_/_5] self-start footer rounded-xl"
+      className=" text-[15px] h-[200px] w-[75vw] col-[1_/_3] row-[4_/_5] self-start footer rounded-xl"
     >
       {step > 1 && (
         <button
@@ -61,13 +61,9 @@ export const Ticket = ({ seats, showtime, step, setStep, foods }) => {
         alt="hinh anh film"
       />
 
-      <div className="col-start-3 col-end-4 row-start-1 row-end-2 justify-self-left self-center">
-        {/* Hiển thị tên phim */}
-        {showtime?.showtime.movieId.name}
-      </div>
-      <div className="col-start-3 col-end-4 row-start-2 row-end-3 justify-self-left self-center">
-        {/* Hiển thị loại phim */}
-        2D
+      <div className="font-bold col-start-3 col-end-4 row-start-2 row-end-3 justify-self-left self-center">
+      {showtime?.showtime.movieId.name}
+
       </div>
 
       <div className="col-[3_/_4] row-[3_/_4] justify-self-left self-center ">
