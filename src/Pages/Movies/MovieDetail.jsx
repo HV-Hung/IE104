@@ -199,7 +199,7 @@ export const MovieDetail = () => {
             VUI LÒNG CHỌN THÔNG TIN VÉ
           </div>
 
-          <div className="py-5 font-bold border-t-2 border-black mx-[50px]">
+          <div className="py-8 font-bold border-t-2 border-black mx-[50px]">
             {Optionsresult &&
               Optionsresult.map((item) => (
                 <button
@@ -215,7 +215,7 @@ export const MovieDetail = () => {
               ))}
           </div>
 
-          <div className="border-t-2 border-black py-5 font-bold text-[20px] mx-[50px]">
+          <div className="border-t-2 border-black py-8 font-bold text-[20px] mx-[50px]">
             {Dates.map((item) => (
               <button
                 onClick={() => setDate(item.date)}
