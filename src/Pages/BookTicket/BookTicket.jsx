@@ -13,6 +13,7 @@ import { useGet, usePost } from "../../api";
 export const BookTicket = () => {
   const { id } = useParams();
   const { fetchGet: fetchShowtime, result: ShowTimeResult } = useGet();
+  console.log(ShowTimeResult)
   const { fetchPost: fetchBook, result: booked } = usePost();
   const [bookingSeats, setBookingSeats] = React.useState([]);
   const [bookedSeats, setBookedSeat] = React.useState([0, 1, 200, 50]);

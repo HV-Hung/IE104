@@ -11,7 +11,7 @@ import {
   faCreditCard,
 } from "@fortawesome/free-solid-svg-icons";
 
-export const Ticket = ({ seats, showtime, step, setStep, foods }) => {
+export const Ticket = ({ seats, showtime, step, setStep, foods, onClick}) => {
   const navigate = useNavigate();
   const pickingSeat = allSeat.filter((seat) => seats?.includes(seat.id));
   const pickingSeatCode = pickingSeat?.map((seat) => seat.code);
@@ -19,13 +19,13 @@ export const Ticket = ({ seats, showtime, step, setStep, foods }) => {
   const formatDate =
     date.getDate() + "/" + (date.getMonth() + 1) + "/" + date.getFullYear();
 
-  const newFoods = foods.map((food) => {
+  const newFoods = foods?.map((food) => {
     const newFood = foodItems.filter((foodItem) => food.id === foodItem.id)[0];
     newFood.quantity = food.quantity;
     return newFood;
   });
-  const totalFood = newFoods.reduce((a, b) => a + b.price * b.quantity, 0);
-  const totalTicket = pickingSeat.reduce((a, b) => a + b.price, 0);
+  const totalFood = newFoods?.reduce((a, b) => a + b.price * b.quantity, 0);
+  const totalTicket = pickingSeat?.reduce((a, b) => a + b.price, 0);
   return (
     <div
       style={{
@@ -62,8 +62,7 @@ export const Ticket = ({ seats, showtime, step, setStep, foods }) => {
       />
 
       <div className="font-bold col-start-3 col-end-4 row-start-2 row-end-3 justify-self-left self-center">
-      {showtime?.showtime.movieId.name}
-
+        {showtime?.showtime.movieId.name}
       </div>
 
       <div className="col-[3_/_4] row-[3_/_4] justify-self-left self-center ">
@@ -113,13 +112,13 @@ export const Ticket = ({ seats, showtime, step, setStep, foods }) => {
       </div>
 
       <div className="col-[7_/_8] row-[1_/_2] justify-self-start self-center font-bold">
-        {totalTicket.toLocaleString("it-IT", {
+        {totalTicket?.toLocaleString("it-IT", {
           style: "currency",
           currency: "VND",
         })}
       </div>
       <div className="col-[7_/_8] row-[2_/_3] justify-self-start self-center font-bold">
-        {totalFood.toLocaleString("it-IT", {
+        {totalFood?.toLocaleString("it-IT", {
           style: "currency",
           currency: "VND",
         })}
@@ -136,7 +135,8 @@ export const Ticket = ({ seats, showtime, step, setStep, foods }) => {
           if (step === 2) {
             setStep(step + 1);
             navigate(`/payment`);
-          } else setStep(step + 1);
+          } else if (step === 3) onClick();
+          else setStep(step + 1);
         }}
         className="h-[80px] w-[80px] bg-[#e71a0f] border-white rounded-[20px] col-[8_/_9] row-[1_/_5] justify-self-center self-center text-xs hover:opacity-80 border"
       >

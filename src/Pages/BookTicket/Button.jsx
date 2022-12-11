@@ -5,7 +5,7 @@ export const Button = ({ isAdd, onClick }) => {
     <button
       style={{
         fontSize: "20px",
-        backgroundColor: "#90A5E8",
+        backgroundColor:"#0369A1",
         border: "none",
         color: "white",
         padding: "0px 15px",
