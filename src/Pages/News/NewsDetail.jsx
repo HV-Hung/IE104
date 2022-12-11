@@ -2,7 +2,18 @@ import { Breadcrumb } from "antd";
 import React from "react";
 import { Layout } from "../../Layout/Layout";
 import { useParams } from "react-router-dom";
-import imagendd1 from "./img/news_detail_img_d1.jpg"
+import imagendd1 from "./img/news_detail_img_d1.jpg";
+import imagendd2 from "./img/news_detail_img_d2.jpg";
+import imagendd3 from "./img/news_detail_img_d3.jpg";
+import imagendd4 from "./img/news_detail_img_d4.png";
+import imagendd5 from "./img/news_detail_img_d5.jpg";
+import imagendd6 from "./img/news_detail_img_d6.jpg";
+import imagendd7 from "./img/news_detail_img_d7.jpg";
+import imagendd8 from "./img/news_detail_img_d8.jpg";
+import imagendd9 from "./img/news_detail_img_d9.png";
+import imagendd10 from "./img/news_detail_img_d10.png";
+import imagendd11 from "./img/news_detail_img_d11.jpg";
+import imagendd12 from "./img/news_detail_img_d12.jpg";
 
 
 const deal_detail = [
@@ -33,7 +44,7 @@ const deal_detail = [
   {
     id: "d_2",
     name: "TUẦN LỄ PHIM KHOA HỌC CÔNG NGHỆ QUỐC TẾ VINFUTURE 2022",
-    img: "https://www.cgv.vn/media/wysiwyg/2022/122022/News___Offer_-_350x495.jpg",
+    img: imagendd2,
     date: "Từ ngày 06/12 - 11/12/2022.",
     contents: [
       `- 25.000 vé mời sẽ được VinFuture dành tặng miễn phí cho công chúng trên toàn quốc từ 6-11/12, 
@@ -53,7 +64,7 @@ const deal_detail = [
   {
     id: "d_3",
     name: "MÙA BOM TẤN CUỐI NĂM ZALOPAY TẶNG VÉ 9K!",
-    img: "https://www.cgv.vn/media/wysiwyg/2022/122022/CGV_T12_350x495.jpg",
+    img: imagendd3,
     date: "Từ ngày 5/12 - 31/12/2022.",
     contents: [
       "- Bạn mới: Chỉ 9.000đ/vé khi thanh toán bằng Ví điện tử ZaloPay.",
@@ -77,7 +88,7 @@ const deal_detail = [
   {
     id: "d_4",
     name: "PHIM TƯƠNG TÁC PHI VỤ NỬA ĐÊM: HƯỚNG DẪN TƯƠNG TÁC TẠI RẠP",
-    img: "https://www.cgv.vn/media/wysiwyg/2022/112022/Late_Shift_HDSD_-_350x495.png",
+    img: imagendd4,
     date: "Từ ngày 25/11/2022.",
     contents: [
       "- Tương tác với phim tại rạp CGV.",
@@ -99,7 +110,7 @@ const deal_detail = [
   {
     id: "d_5",
     name: "BÙNG CHÁY WORLD CUP ĐI GROUP THÊM VUI",
-    img: "https://www.cgv.vn/media/wysiwyg/2022/112022/z3906772168255_331b769a1586d63682218c914c18d081.jpg",
+    img: imagendd5,
     date: "24/11/2022 - 14/12/2022.",
     contents: [
       "- Khách hàng mua 05 vé xem phim bất kì + 01 Warm Up Combo, sẽ được tặng 02 Ly Coca-Cola Contour.",
@@ -121,7 +132,7 @@ const deal_detail = [
   {
     id: "d_6",
     name: "RA RẠP GẶP LUFFY RINH QUÀ XINH HẾT Ý",
-    img: "https://www.cgv.vn/media/wysiwyg/2022/122022/350wx495h.jpg",
+    img: imagendd6,
     date: "Từ ngày 02/12/2022 đến khi hết quà tặng.",
     contents: [
       "- Khách hàng mua một lần 2 vé xem phim ONE PIECE FILM RED sẽ được tặng 1 huy hiệu và 1 bìa hồ sơ hoặc 2 huy hiệu hoặc 2 bìa hồ sơ.",
@@ -143,7 +154,7 @@ const deal_detail = [
   {
     id: "d_7",
     name: "NHẬP HỘI U22 ZALOPAY VỚI CHỈ 1K/VÉ CGV! GIẢM TƯNG BỪNG, GIẢM ĐẬM SÂU",
-    img: "https://www.cgv.vn/media/wysiwyg/2022/122022/CGVU22-main_350x495.jpg",
+    img: imagendd7,
     date: "Từ ngày 05/12 - 31/12/2022.",
     contents: [
       "- Bạn mới: Chỉ 1.000đ/vé khi thành viên U22 thanh toán bằng Ví điện tử ZaloPay."
@@ -167,7 +178,7 @@ const deal_detail = [
   {
     id: "d_8",
     name: "QUÀ TẶNG SINH NHẬT THÀNH VIÊN CGV THÁNG 12",
-    img: "https://www.cgv.vn/media/wysiwyg/2022/122022/350x495.jpg",
+    img: imagendd8,
     date: "Từ ngày 01/12/2022 - 31/12/2022.",
     contents: [
       `- CGV xin gửi lời chúc mừng đến các thành viên có sinh nhật trong tháng 12. Và với quyền lợi thành viên, CGV tặng bạn Combo 1 Bắp 2 Nước. Hy vọng bạn sẽ có một sinh nhật thật vui và ý nghĩa.`
@@ -187,7 +198,7 @@ const deal_detail = [
   {
     id: "d_9",
     name: "CHƯƠNG TRÌNH ƯU ĐÃI DÀNH CHO CHỦ THẺ CITI TẠI CGV “MUA 02 VÉ XEM PHIM TẶNG 01 MY COMBO”",
-    img: "https://www.cgv.vn/media/wysiwyg/2022/112022/350x495_2.png",
+    img: imagendd9,
     date: "Áp dụng vào thứ 6 hàng tuần từ 02/12/2022 – 02/06/2023  từ 6:00 đến 23:59.",
     contents: [
       `- Khách hàng sẽ nhận một (01) ưu đãi MY COMBO bao gồm một (01) phần Bắp lớn (44oz) và một (01) Ly Nước Ngọt cỡ vừa (32oz) khi mua hai (02) vé xem phim có xuất chiếu tại các cụm rạp CGV tại Hồ Chí Minh và Hà Nội, 
@@ -210,7 +221,7 @@ const deal_detail = [
   {
     id: "d_10",
     name: "CHƯƠNG TRÌNH ƯU ĐÃI DÀNH CHO CHỦ THẺ NGÂN HÀNG BẢN VIỆT TẠI CGV",
-    img: "https://www.cgv.vn/media/wysiwyg/2022/112022/adapt_kenh_doi_tac_350x495.png",
+    img: imagendd10,
     date: "Thứ Năm, Thứ Sáu, Thứ Bảy và Chủ Nhật hàng tuần từ ngày  30/11/2022– 31/12/2023.",
     contents: [
       "- Mua 02 vé xem phim CGV chỉ với 90.000 đồng khi mua vé trực tuyến trên ứng dụng CGV Cinema hoặc website www.cgv.vn.",
@@ -236,7 +247,7 @@ const deal_detail = [
   {
     id: "d_11",
     name: "THỨ TƯ VUI VẺ - VÉ PHIM ƯU ĐÃI",
-    img: "https://www.cgv.vn/media/wysiwyg/2021/112021/350x495_2x-100.jpg",
+    img: imagendd11,
     date: "Thứ tư hàng tuần từ ngày 30/11/2022.",
     contents: [
       `- Đến CGV vào thứ tư hàng tuần để tận hưởng những bộ phim cực hay với giá cực ưu đãi các bạn nhé! Không cần chờ đợi đến cuối tuần, hãy đến CGV để nạp lại năng lượng nào!`,
@@ -257,7 +268,7 @@ const deal_detail = [
   {
     id: "d_12",
     name: "NĂNG LƯỢNG TRÀN ĐẦY - NHẬN NGAY TÚI HOT",
-    img: "https://www.cgv.vn/media/wysiwyg/2022/112022/N_0-350x495.jpg",
+    img: imagendd12,
     date: "Từ ngày 25/11 - 11/12/2022 hoặc đến khi hết quà tặng",
     contents: [
       "- Khách hàng mua 01 Milo Premium Combo sẽ được tặng 01 Túi Milo Eco Friendly.",
