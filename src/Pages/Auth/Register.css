@@ -30,23 +30,23 @@
     margin-bottom: 10px;
 }
 
-.ant-form .ant-form-item .ant-row .ant-col{
+.register-container .ant-form .ant-form-item .ant-row .ant-col{
     /* margin-bottom: 10px; */
     color: rgba(255, 255, 255, 0.7);
 }
 
-.ant-form .ant-form-item .ant-row .ant-col [title="EMAIL"], .ant-form .ant-form-item .ant-row .ant-col [title="MẬT KHẨU"]{
+.register-container .ant-form .ant-form-item .ant-row .ant-col [title="EMAIL"], .ant-form .ant-form-item .ant-row .ant-col [title="MẬT KHẨU"]{
     display: inline-block;
     position: relative;
     width: 100px;
     cursor: pointer;
 }
 
-.ant-form .ant-form-item .ant-row .ant-form-item-label label{
+.register-container .ant-form .ant-form-item .ant-row .ant-form-item-label label{
     color: white !important;
 }
 
-.ant-form .ant-form-item .ant-row .ant-form-item-label [title="EMAIL"]::after{
+.register-container .ant-form .ant-form-item .ant-row .ant-form-item-label [title="EMAIL"]::after{
     position: absolute;
     content: '';
     background-image: url("./image/kisspng-ashworth-maintenance-group-llc-password-asterisk-5b20a7b5ddedf3.566037781528866741909-removebg-preview.png");
@@ -58,7 +58,7 @@
     top: 2px;
     right: 42px;
 }
-.ant-form .ant-form-item .ant-row .ant-form-item-label [title="MẬT KHẨU"]::after{
+.register-container .ant-form .ant-form-item .ant-row .ant-form-item-label [title="MẬT KHẨU"]::after{
     position: absolute;
     content: '';
     background-image: url("./image/kisspng-ashworth-maintenance-group-llc-password-asterisk-5b20a7b5ddedf3.566037781528866741909-removebg-preview.png");
@@ -71,24 +71,24 @@
     right: 0;
 }
 
-.ant-form-item-control{
+.register-container .ant-form-item-control{
     height: 60px;
 }
 
-.ant-form-item-control-input{
+.register-container .ant-form-item-control-input{
     height: 40px;
 }
 
-.ant-form-item-control-input-content{
+.register-container .ant-form-item-control-input-content{
     width: 100%;
 }
 
-.ant-form-item-control-input-content input::placeholder{
+.register-container .ant-form-item-control-input-content input::placeholder{
     font-size: 16px;
     color: #17a2b8;
 }
 
-.ant-form-item-control-input-content .ant-input{
+.register-container .ant-form-item-control-input-content .ant-input{
     width: 100%;
     height: 45px;
     border: none;
@@ -96,35 +96,35 @@
     border-radius: none;
     background: white;
     color: black;
-    font-size: 14px;
+    font-size: 20px;
 }
 
-.ant-form-item-control-input-content .ant-input-affix-wrapper [title="PASSWORD"]{
+.register-container .ant-form-item-control-input-content .ant-input-affix-wrapper [title="PASSWORD"]{
     background: transparent;
 }
 
-.ant-form-item-control-input-content .ant-input-affix-wrapper{
+.register-container .ant-form-item-control-input-content .ant-input-affix-wrapper{
     position: relative;
 }
 
-.ant-form-item-control-input-content .ant-input-affix-wrapper .ant-input-suffix{
+.register-container .ant-form-item-control-input-content .ant-input-affix-wrapper .ant-input-suffix{
     right: 5px;
     top: 20px;
     position: absolute;
 }
 
-.footer .checkbox #bal1{
+.register-container .footer .checkbox #bal1{
     clip-path: circle(46% at 50% 50%);
     width: 16px;
     height: 16px;
     background-color: #5560ff;
 }
 
-.footer .checkbox #bal1:checked{
+.register-container .footer .checkbox #bal1:checked{
     background: blue;
 }
 
-.footer .checkbox{
+.register-container .footer .checkbox{
     display: flex;
     position: relative;
     -webkit-user-select: none;
@@ -138,11 +138,11 @@
     font-size: 14px;
 }
 
-.footer .checkbox label{
+.register-container .footer .checkbox label{
     cursor: pointer;
 }
 
-.footer a{
+.register-container .footer a{
     color: #6d7bba;
     font-size: 14px;
 }
@@ -151,7 +151,7 @@
     color: white !important;
 }
 
-.ant-form-item-control-input-content .ant-btn{
+.register-container .ant-form-item-control-input-content .ant-btn{
     margin: 0;
     position: relative;
     left: 50%;
@@ -162,13 +162,13 @@
     background-image: -webkit-linear-gradient(169deg, #007bff 17%, #7d7bff 63%, #3f72af 100%);
 }
 
-.ant-form-item-control-input-content .ant-btn span{
+.register-container .ant-form-item-control-input-content .ant-btn span{
     font-size: 16px;
     font-weight: 700;
     letter-spacing: 1px;
 }
 
-.ant-form-item-control-input-content .text a{
+.register-container .ant-form-item-control-input-content .text a{
     color: #31d7a9;
 }
 
