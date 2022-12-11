@@ -6,6 +6,154 @@ import React, { Component } from "react";
 import Slider from "react-slick";
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
+import { Link } from "react-router-dom";
+
+import imagend1 from "./img/news_img_d1.jpg";
+import imagend2 from "./img/news_img_d2.jpg";
+import imagend3 from "./img/news_img_d3.jpg";
+import imagend4 from "./img/news_img_d4.png";
+import imagend5 from "./img/news_img_d5.jpg";
+import imagend6 from "./img/news_img_d6.jpg";
+import imagend7 from "./img/news_img_d7.jpg";
+import imagend8 from "./img/news_img_d8.jpg";
+import imagend9 from "./img/news_img_d9.png";
+import imagend10 from "./img/news_img_d10.png";
+import imagend11 from "./img/news_img_d11.jpg";
+import imagend12 from "./img/news_img_d12.jpg";
+import imagenn1 from "./img/news_img_n1.jpg";
+import imagenn2 from "./img/news_img_n2.jpg";
+import imagenn3 from "./img/news_img_n3.jpg";
+import imagenn4 from "./img/news_img_n4.jpg";
+import imagenn5 from "./img/news_img_n5.jpg";
+import imagenn6 from "./img/news_img_n6.jpg";
+import imagenn7 from "./img/news_img_n7.png";
+import imagenn8 from "./img/news_img_n8.png";
+
+const deal_list = [
+  {
+    id: "d_1",
+    img: imagend1,
+    name: "LỄ HỘI MERCHANDISE",
+    date: "07/12/2022 - 09/12/2022",
+  },
+  {
+    id: "d_2",
+    img: imagend2,
+    name: "TUẦN LỄ PHIM KHOA HỌC CÔNG NGHỆ QUỐC TẾ VINFUTURE 2022",
+    date: "06/12/2022 - 11/12/2022",
+  },
+  {
+    id: "d_3",
+    img: imagend3,
+    name: "MÙA BOM TẤN CUỐI NĂM ZALOPAY TẶNG VÉ 9K!",
+    date: "05/12/2022 - 31/12/2022",
+  },
+  {
+    id: "d_4",
+    img: imagend4,
+    name: "PHIM TƯƠNG TÁC PHI VỤ NỬA ĐÊM",
+    date: "TỪ 25/11/2022",
+  },
+  {
+    id: "d_5",
+    img: imagend5,
+    name: "BÙNG CHÁY WORLD CUP ĐI GROUP THÊM VUI",
+    date: "24/11/2022 - 14/12/2022",
+  },
+  {
+    id: "d_6",
+    img: imagend6,
+    name: "RA RẠP GẶP LUFFY RINH QUÀ XINH HẾT Ý",
+    date: "Từ 02/12/2022",
+  },
+  {
+    id: "d_7",
+    img: imagend7,
+    name: "GIẢM TƯNG BỪNG, GIẢM ĐẬM SÂU",
+    date: "05/12/2022 - 31/12/2022",
+  },
+  {
+    id: "d_8",
+    img: imagend8,
+    name: "QUÀ TẶNG SINH NHẬT THÀNH VIÊN CGV THÁNG 12",
+    date: "01/12/2022 - 31/12/2022",
+  },
+  {
+    id: "d_9",
+    img: imagend9,
+    name: "CHƯƠNG TRÌNH ƯU ĐÃI DÀNH CHO CHỦ THẺ CITI",
+    date: "02/12/2022 - 02/06/2023",
+  },
+  {
+    id: "d_10",
+    img: imagend10,
+    name: "CHƯƠNG TRÌNH ƯU ĐÃI DÀNH CHO CHỦ THẺ NGÂN HÀNG BẢN VIỆT TẠI CGV",
+    date: "30/11/2022 - 31/12/2023",
+  },
+  {
+    id: "d_11",
+    img: imagend11,
+    name: "ƯU ĐÃI THỨ 4 VUI VẺ CHIA SẺ YÊU THƯƠNG",
+    date: "Từ 30/11/2022",
+  },
+  {
+    id: "d_12",
+    img: imagend12,
+    name: "NĂNG LƯỢNG TRÀN ĐẦY - NHẬN NGAY TÚI HOT",
+    date: "25/11/2022 - 11/12/2022",
+  },
+];
+
+const news_list = [
+  {
+    id: "n_1",
+    img: imagenn1,
+    name: "BHD STAR GARDEN",
+    date: "TỪ 01/12/2022",
+  },
+  {
+    id: "n_2",
+    img: imagenn2,
+    name: "QUÉT MÃ QR NHANH VÀO RẠP",
+    date: "TỪ 12/08/2019",
+  },
+  {
+    id: "n_3",
+    img: imagenn3,
+    name: "ỨNG DỤNG MUA VÉ MỚI",
+    date: "01/11/2022 - 31/12/2022",
+  },
+  {
+    id: "n_4",
+    img: imagenn4,
+    name: "ĐIỂM HẸN MỚI CỦA GIỚI TRẺ",
+    date: "Từ 01/12/2022",
+  },
+  {
+    id: "n_5",
+    img: imagenn5,
+    name: "THẺ THÀNH VIÊN ĐIỆN TỬ",
+    date: "11/11/2022 - 29/11/2022",
+  },
+  {
+    id: "n_6",
+    img: imagenn6,
+    name: "BHD STAR HUẾ",
+    date: "Từ 01/12/2022",
+  },
+  {
+    id: "n_7",
+    img: imagenn7,
+    name: "ĐƯỜNG DÂY NÓNG BHD STAR",
+    date: "Từ 01/12/2022",
+  },
+  {
+    id: "n_8",
+    img: imagenn8,
+    name: "BHD STAR PHẠM NGỌC THẠCH",
+    date: "Từ 03/11/2016",
+  },
+];
 
 export const Home = () => {
   const slider = React.useRef();
@@ -53,6 +201,42 @@ export const Home = () => {
     );
   }
 
+  function SampleNextArrowNews(props) {
+    const { className, style, onClick } = props;
+    return (
+      <div
+        className={className}
+        style={{
+          ...style,
+          display: "block",
+          background: "rgb(2 132 199)",
+          "border-radius": "9999px",
+          "font-size": "50px",
+          transform: "scale(4)",
+        }}
+        onClick={onClick}
+      />
+    );
+  }
+
+  function SamplePrevArrowNews(props) {
+    const { className, style, onClick } = props;
+    return (
+      <div
+        className={className}
+        style={{
+          ...style,
+          display: "block",
+          background: "rgb(2 132 199)",
+          "border-radius": "9999px",
+          "font-size": "50px",
+          transform: "scale(4)",
+        }}
+        onClick={onClick}
+      />
+    );
+  }
+
   const settings = {
     dots: true,
     infinite: true,
@@ -63,11 +247,21 @@ export const Home = () => {
     prevArrow: <SamplePrevArrow />,
   };
 
+  const settingsNews = {
+    dots: true,
+    infinite: true,
+    speed: 500,
+    slidesToShow: 4,
+    slidesToScroll: 1,
+    nextArrow: <SampleNextArrowNews />,
+    prevArrow: <SamplePrevArrowNews />,
+  };
+
   const navigate = useNavigate();
   const [movies, setMovies] = useState(undefined);
   const [movieType, setMovieType] = useState(true);
 
-  const [newsType, setNewsType] = useState(true);
+  const [newsType, setNewsType] = useState(deal_list);
 
   React.useEffect(() => {
     fetch("http://localhost:3500/movie")
@@ -82,7 +276,7 @@ export const Home = () => {
   }, []);
 
   const nowDay = new Date();
-  nowDay.setHours(0,0,0,0)
+  nowDay.setHours(0, 0, 0, 0);
 
   const nowShowing = movies?.filter((item) => {
     return new Date(item.releaseDate) <= nowDay;
@@ -135,7 +329,7 @@ export const Home = () => {
         </Carousel>
         <LeftOutlined
           className="absolute top-[300px] text-white text-[40px] left-[40px] rounded-full
-          p-[20px] bg-white/25 transition ease-in-out delay-150 hover:scale-110 duration-300" 
+          p-[20px] bg-white/25 transition ease-in-out delay-150 hover:scale-110 duration-300"
           onClick={() => slider.current.prev()}
         />
         <RightOutlined
@@ -170,7 +364,7 @@ export const Home = () => {
           </div>
         </div>
 
-        <div className="relative mx-[24px] h-[630px] bg-[#F2F7FF]">
+        <div className="relative mx-[24px] h-[620px] bg-[#F2F7FF]">
           <Slider {...settings}>
             {(movieType ? nowShowing : comingSoon)?.map((item, index) => {
               return (
@@ -210,9 +404,7 @@ export const Home = () => {
                         >
                           Mua vé
                         </Button>
-                        
                       </div>
-                      
                     </div>
                   </div>
                 </div>
@@ -220,7 +412,6 @@ export const Home = () => {
             })}
           </Slider>
         </div>
-        
       </div>
 
       <div className=" mx-[200px]  border-2 rounded-lg my-[75px] shadow-xl">
@@ -231,23 +422,47 @@ export const Home = () => {
           <div
             className={`text-[30px] py-[10px] px-[30px] font-bold hover:text-amber-300
             mr-[30px] cursor-pointer rounded-full border-sky-600 border-2
-            ${newsType === true && "text-amber-300 bg-sky-600"}
+            ${newsType === deal_list && "text-amber-300 bg-sky-600"}
       `}
-            onClick={() => setNewsType(true)}
+            onClick={() => setNewsType(deal_list)}
           >
-            TIN TỨC
+            KHUYẾN MÃI
           </div>
           <div
             className={`text-[30px] py-[10px] px-[30px] font-bold hover:text-amber-300
             cursor-pointer rounded-full border-sky-600 border-2
-            ${newsType === false && "text-amber-300 bg-sky-600"}
+            ${newsType === news_list && "text-amber-300 bg-sky-600"}
             `}
-            onClick={() => setNewsType(false)}
+            onClick={() => setNewsType(news_list)}
           >
-            KHUYẾN MÃI
+            TIN TỨC
           </div>
         </div>
+        <div className="relative mx-[48px] bg-[#F2F7FF] pb-[75px]">
+          <Slider {...settingsNews}>
+            {newsType.map((item, index) => {
+              return (
+                <div key={index} className="relative">
+                  <div className="flex flex-wrap justify-center">
+                    <Link to={`/news/${item.id}`}>
+                      <div className=" cursor-pointer">
+                        <img
+                          className="mx-auto transition ease-in-out delay-150 hover:scale-110 duration-300"
+                          src={item.img}
+                          alt=""
+                        />
+                        <div className="px-[30px] text-black text-[18px] text-center font-[500] uppercase py-[12px] hover:text-[#0c468a]">
+                          {item.name}
+                        </div>
+                      </div>
+                    </Link>
+                  </div>
+                </div>
+              );
+            })}
+          </Slider>
         </div>
+      </div>
     </Layout>
   );
 };

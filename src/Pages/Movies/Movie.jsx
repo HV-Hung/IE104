@@ -4,6 +4,8 @@ import { Layout } from "../../Layout/Layout";
 import { useNavigate } from "react-router-dom";
 import { useState } from "react";
 
+
+
 export const Movie = () => {
   const navigate = useNavigate();
   const [movies, setMovies] = useState(undefined);
