@@ -14,6 +14,14 @@ import imagendd9 from "./img/news_detail_img_d9.png";
 import imagendd10 from "./img/news_detail_img_d10.png";
 import imagendd11 from "./img/news_detail_img_d11.jpg";
 import imagendd12 from "./img/news_detail_img_d12.jpg";
+import imagendn1 from "./img/news_detail_img_n1.jpg";
+import imagendn2 from "./img/news_detail_img_n2.jpg";
+import imagendn3 from "./img/news_detail_img_n3.jpg";
+import imagendn4 from "./img/news_detail_img_n4.jpg";
+import imagendn5 from "./img/news_detail_img_n5.jpg";
+import imagendn6 from "./img/news_detail_img_n6.jpg";
+import imagendn7 from "./img/news_detail_img_n7.png";
+import imagendn8 from "./img/news_detail_img_n8.png";
 
 
 const deal_detail = [
@@ -296,7 +304,7 @@ const news_detail = [
   {
     id: "n_1",
     name: "BHD STAR GARDEN",
-    img: "https://www.bhdstar.vn/wp-content/uploads/2019/12/Banner-billboard-3m2x4m3-246x330.jpg",
+    img: imagendn1,
     title: "- TƯNG BỪNG KHAI TRƯƠNG RẠP CHIẾU PHIM BHD STAR THE GARDEN - RỘN RÀNG CÙNG CHUỖI ƯU ĐÃI SIÊU KHỦNG.",
     contents: [
       `- Cụm rạp thứ 10 của BHD Star Cineplex sẽ chính thức khai trương vào ngày 21/12/2019 tại Hà Nội với ưu đãi xem phim miễn phí cùng hàng ngàn chương trình khuyến mãi siêu khủng!`,
@@ -313,7 +321,7 @@ const news_detail = [
   {
     id: "n_2",
     name: "QUÉT MÃ QR NHANH VÀO RẠP!",
-    img: "https://www.bhdstar.vn/wp-content/uploads/2019/08/BHD-Star-ScanQR-315x420-248x330.jpg",
+    img: imagendn2,
     title: "- Với tiêu chí GO GREEN chung tay bảo vệ môi trường của BHD Star Cineplex ☘️ chúng tôi hy vọng đóng góp nho nhỏ sẽ tạo nên kết quả to to.",
     contents: [
       `- Không những tăng sự tiện lợi cũng như tiết kiệm thời gian của các bạn, BHD Star mong muốn lượng vé in ra sẽ ít hơn, đồng nghĩa với việc giảm lượng cây xanh bị đốn để sản xuất giấy tiêu dùng.`,
@@ -326,7 +334,7 @@ const news_detail = [
   {
     id: "n_3",
     name: "ỨNG DỤNG MUA VÉ MỚI",
-    img: "https://www.bhdstar.vn/wp-content/uploads/2019/03/A4appmoi-233x330.jpg",
+    img: imagendn3,
     title: `Tin vui cho đại gia đình BHD Star đây!!!
     Từ hôm nay, việc đặt vé trở nên tiện lợi hơn bao giờ hết với phiên bản ứng dụng di động BHD Star.`,
     contents: [
@@ -343,7 +351,7 @@ const news_detail = [
   {
     id: "n_4",
     name: "ĐIỂM HẸN MỚI CỦA GIỚI TRẺ",
-    img: "https://www.bhdstar.vn/wp-content/uploads/2018/08/BHD-STAR-CHECK-IN-CUNG-GAU-314X420-248x330.jpg",
+    img: imagendn4,
     title: "- Điểm hẹn của giới trẻ Sài Thành.",
     contents: [
       `- Rạp chiếu phim BHD Star 3/2 vừa thực hiện một khu vực chụp hình siêu đáng yêu với chú gấu Brown “nổi tiếng” 
@@ -359,7 +367,7 @@ const news_detail = [
   {
     id: "n_5",
     name: "THẺ THÀNH VIÊN ĐIỆN TỬ",
-    img: "https://www.bhdstar.vn/wp-content/uploads/2018/07/BHD-Star-HuongDanOnline-315x420-248x330.jpg",
+    img: imagendn5,
     title: "- Hướng dẫn mua vé trên ứng dụng CGV.",
     contents: [
      `- Bước 1: Quét mã QR Code để tải app CGV.`,
@@ -372,7 +380,7 @@ const news_detail = [
   {
     id: "n_6",
     name: "BHD STAR HUẾ",
-    img: "https://www.bhdstar.vn/wp-content/uploads/2018/04/BHD-Star-HUE-KhaiTruong-Teasing-315x420-248x330.jpg",
+    img: imagendn6,
     title: "- HCM, ngày 04/04/2018 – Cụm rạp chiếu phim BHD Star Cineplex sẽ khai trương rạp đầu tiên tại TP. Huế vào ngày 19/05/2018 với 4 phòng chiếu gần 800 ghế.",
     contents: [
       `- Thành Phố Huế là điểm hẹn du lịch nổi tiếng trong và ngoài nước, chính vì thế nhu cầu vui chơi, giải trí của du khách và cả người dân Cố Đô cũng rất cao và đa dạng. 
@@ -388,7 +396,7 @@ const news_detail = [
   {
     id: "n_7",
     name: "ĐƯỜNG DÂY NÓNG BHD STAR",
-    img: "https://www.bhdstar.vn/wp-content/uploads/2017/10/BHD-Star_Hotline_315x420-2-248x330.png",
+    img: imagendn7,
     title: "- Từ ngày 15.10.2017, Đường Dây Nóng của BHD Star chính thức hoạt động.",
     contents: [
       `- Các khách hàng thân thiết của BHD Star sẽ có thêm kênh thông tin để cập nhật tin tức, giải đáp thắc mắc một cách nhanh chóng và dễ dàng nhất.`,
@@ -398,7 +406,7 @@ const news_detail = [
   {
     id: "n_8",
     name: "BHD STAR PHẠM NGỌC THẠCH",
-    img: "https://www.bhdstar.vn/wp-content/uploads/2016/11/BHDSTAR-HA-NOI-KHAI-TRUONG-248x330.png",
+    img: imagendn8,
     title: "- Bắt đầu từ 02/11/2016, BHD Star chính thức khai trương cụm rạp đầu tiên tại Hà Nội: BHD STAR VINCOM PHẠM NGỌC THẠCH, tầng 8 TTTM Vincom, số 2 Phạm Ngọc Thạch, Đống Đa, Hà Nội.",
     contents: [
       `- Là cụm rạp đầu tiên được trang bị phòng chiếu FIRST CLASS, hệ thống âm thanh Atmos, BHD Star Movie Shop, BHD Star Kitchen… BHD Star Vincom Phạm Ngọc Thạch hứa hẹn sẽ là điểm đến thú 
@@ -490,11 +498,11 @@ export const NewsDetail = () => {
                   </div>
                   <div className="flex">
                     <img
-                      className="w-[250px] h-fit mr-[40px]"
+                      className="w-[350px] h-fit mr-[40px]"
                       src={item.img}
                       alt="Ảnh minh họa"
                     />
-                    <div className="">
+                    <div className="w-[50%]">
                       <div className="text-[18px]">
                         <b>Sự kiện: </b>
                         <br/>
