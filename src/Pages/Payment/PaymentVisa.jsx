@@ -1,68 +1,130 @@
 import React from "react";
 import { useNavigate } from "react-router-dom";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import {
+  faMoneyBill1,
+  faCreditCard,
+  faBarcode,
+  faArrowLeft,
+} from "@fortawesome/free-solid-svg-icons";
+
 export const PaymentVisa = () => {
   const navigate = useNavigate();
   return (
-    <div className="absolute w-[901px] h-[625px] left-[25%] top-[100px] bg-white-300 rounded-2xl shadow-[30px_40px_160px_20px_rgba(0,0,0,0.3)] ">
-      <div className=" w-[35%] h-[100%] bg-blue-400 rounded-l-2xl">
-        <div className=" text-3xl text-center border-b-2 border-dashed p-4">
-          <div className=" text-left">Nhà cung cấp</div>
-          <div>CGV</div>
+    <div className="w-[900px] mx-[auto] mt-[64px] flex">
+      <div className="w-[315px] bg-[#0c468a] text-[#fff] rounded-[6px]">
+        <div className="mx-[16px] my-[24px]">
+          <span class="text-[20px] my-[32px]">Nhà cung cấp CGV</span>
         </div>
-        <div className=" text-3xl text-center border-b-2 border-dashed p-4">
-          <div className=" text-left">💵Số tiền</div>
-          <div>250.000đ</div>
+        <hr className="mx-[16px]" />
+        <div className="text-[18px] mx-[16px] my-[24px]">
+          <FontAwesomeIcon
+            className="mr-[8px] inline-block"
+            icon={faMoneyBill1}
+          ></FontAwesomeIcon>
+          <span className="">Số tiền 125.000đ</span>
         </div>
-        <button className="absolute w-[200px] h-[50px] text-[20px] bg-slate-800 text-cyan-50  left-[60px] top-[250px] rounded-xl">
-          Thanh toán
-        </button>
-        <button
-          className="text-3xl absolute left-5 bottom-[20px]"
+        <hr className="mx-[16px]" />
+        <div className="text-[18px] mx-[16px] my-[24px]">
+          <FontAwesomeIcon
+            className="mr-[8px] inline-block"
+            icon={faCreditCard}
+          ></FontAwesomeIcon>
+          <span>Thông tin 088-202212101313-2001</span>
+        </div>
+        <hr className="mx-[16px]" />
+        <div className="text-[18px] mx-[16px] my-[24px]">
+          <FontAwesomeIcon
+            className="mr-[8px] inline-block"
+            icon={faBarcode}
+          ></FontAwesomeIcon>
+          <span>Đơn hàng 120466494</span>
+        </div>
+        <hr className="mx-[16px]" />
+        <div
+          className="text-[18px] my-[64px] text-center cursor-pointer "
           onClick={() => {
             navigate(`/payment`);
           }}
         >
-          ⬅️ Quay lại
-        </button>
+          <FontAwesomeIcon
+            className="mr-[8px] inline-block"
+            icon={faArrowLeft}
+          ></FontAwesomeIcon>
+          <span>Quay lại</span>
+        </div>
       </div>
-      <img
-        className="absolute w-[80px] h-[80px] left-[37%] top-[10px] rounded-xl"
-        src="https://i.rada.vn/data/image/2019/10/15/CGV-Cinemas-200.png"
-        alt="logo cgv"
-      ></img>
-      <img
-        className="absolute w-[100px] h-[80px] left-[85%] top-[10px] rounded-xl"
-        src="https://inkdtex.com/Image/Picture/New/LOGO-VISA-DTEX-5.jpg"
-        alt="logo momo"
-      ></img>
-      <form className="absolute left-[40%] top-[200px] rounded-xl text-[20px]">
-        <div>
-          <label className=" mr-2">Số thẻ*</label>
-          <br></br>
-          <input
-            className=" border-solid border-black border-[1px] w-[500px]"
-            type="text"
-          ></input>
+      <div className="flex-1 rounded-[6px] ml-[20px]">
+        <div className="flex bg-[#f0f0f0] px-[16px] py-[16px] mb-[20px]">
+          <span className="text-[20px] mr-[16px]">Thẻ tín dụng/ Ghi nợ</span>
+          <img
+            className="w-[32px] mr-[8px]"
+            src="https://onepay.vn/paygate/assets/img/VS.svg"
+            alt=""
+          />
+          <img
+            className="w-[32px] mr-[8px]"
+            src="https://onepay.vn/paygate/assets/img/MC.svg"
+            alt=""
+          />
+          <img
+            className="w-[32px] mr-[8px]"
+            src="https://onepay.vn/paygate/assets/img/amex.svg"
+            alt=""
+          />
+          <img
+            className="w-[32px] mr-[8px]"
+            src="https://onepay.vn/paygate/assets/img/JC.svg"
+            alt=""
+          />
         </div>
-        <br></br>
-        <div>
-          <label className=" mr-2">Tháng/năm hết hạn*</label>
-          <br></br>
-          <input
-            className=" border-solid border-black border-[1px]"
-            type="text"
-          ></input>
+        <div className="text-[16px] relative border-[1px] border-solid border-[#ccc] px-[16px] py-[16px] rounded-[2px]">
+          <div className="mb-[24px]">
+            <label htmlFor="number_card">
+              <p className="mb-[8px]">Số thẻ*</p>
+            </label>
+            <input
+              className="w-full px-[4px] py-[4px] border-[1px] border-solid border-[#ccc] rounded-[4px]"
+              id="number_card"
+              type="text"
+              placeholder="1234 4568 9101 1234"
+            />
+          </div>
+          <div className="flex justify-between mb-[48px]">
+            <div className="div">
+              <label htmlFor="date_card">
+                <p className="mb-[8px]">Tháng/Năm hết hạn*</p>
+              </label>
+              <input
+                className="w-full px-[4px] py-[4px] border-[1px] border-solid border-[#ccc] rounded-[4px]"
+                id="date_card"
+                type="text"
+                placeholder="12/25"
+              />
+            </div>
+            <div className="div">
+              <label htmlFor="csc_card">
+                <p className="mb-[8px]">CSC*</p>
+              </label>
+              <input
+                className="w-full px-[4px] py-[4px] border-[1px] border-solid border-[#ccc] rounded-[4px]"
+                id="csc_card"
+                type="text"
+              />
+            </div>
+          </div>
+          <div className="absolute bottom-[8px] right-[8px]">
+            <a className="text-[#16a8e1] mr-[28px]" href="">
+              Hướng dẫn
+            </a>
+            <button className="text-white px-[12px] py-[12px] bg-[#ccc] rounded-[4px] hover:bg-[#333]">
+              Thanh toán
+            </button>
+          </div>
         </div>
-        <br></br>
-        <div>
-          <label className=" mr-2">CSC*</label>
-          <br></br>
-          <input
-            className=" border-solid border-black border-[1px]"
-            type="text"
-          ></input>
-        </div>
-      </form>
+      </div>
     </div>
   );
 };
+
+// http://t3.gstatic.com/licensed-image?q=tbn:ANd9GcSh-wrQu254qFaRcoYktJ5QmUhmuUedlbeMaQeaozAVD4lh4ICsGdBNubZ8UlMvWjKC

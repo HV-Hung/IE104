@@ -30,7 +30,7 @@
   width: 55%;
   margin-left: 70px;
 
-  height: 600px;
+  height: 700px;
 }
 
 .dashboard {
@@ -128,29 +128,30 @@
   padding-top: 10px;
   border-radius: 12px;
   margin: 10px 20px 0;
+  position: relative;
 }
 
 
 .dot-beign {
   position: absolute;
-  width: 6px;
-  height: 6px;
+  width: 7px;
+  height: 7px;
   background-color: white;
   padding-top: 6px;
-  top: 48%;
-  left: 14.5%;
+  top: 51.2%;
+  left: 1.5%;
   border-radius: 100%;
   transform: translate(-50%, -50%);
 }
 
 .dot-end {
   position: absolute;
-  width: 6px;
-  height: 6px;
+  width: 7px;
+  height: 7px;
   background-color: white;
   padding-top: 6px;
-  top: 48%;
-  right: 13%;
+  top: 51.2%;
+  right: 0%;
   border-radius: 100%;
   transform: translate(-50%, -50%);
 }
@@ -164,7 +165,7 @@
 }
 
 .user-menu {
-  margin-top: 20px;
+  margin-top: 30px;
   margin-left: 10px;
 }
 
@@ -342,9 +343,6 @@ nav {
   height: 60px;
 }
 
-
-
-
 .not-active {
   display: none;
 }
@@ -405,3 +403,30 @@ nav {
 .tab-content span {
   font-size: 1.2rem;
 }
+
+.column-main [title="TÊN KHÁCH HÀNG"], .column-main [title="SỐ ĐIỆN THOẠI"], .column-main [title="SINH NHẬT"], .column-main [title="EMAIL"]{
+  font-size: 20px;
+}
+
+.column-main .ant-form-item-control-input-content input{
+  height: 50px;
+}
+
+.column-main .ant-picker-input input{
+  width: 100%;
+}
+
+.column-main [type="submit"]{
+  background: #007bff;
+  border: none;
+  padding: 5px 15px;
+  outline: none;
+  border-radius: 10px;
+}
+
+.column-main .ant-picker-input>input{
+  font-size: 20px;
+}
+
+
+

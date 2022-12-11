@@ -5,7 +5,7 @@ import "./Profile.css";
 import UserInfo from "./UserInfo";
 import UserBenefit from "./UserBenefit";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faUser, faClockRotateLeft, faGift } from "@fortawesome/free-solid-svg-icons";
+import { faUser, faClockRotateLeft, faGift, faCircle } from "@fortawesome/free-solid-svg-icons";
 
 export const Profile = () => {
   const [tab, setTab] = React.useState(1);
@@ -38,7 +38,7 @@ export const Profile = () => {
 
             <div className="user-progress-bar">
               <div className="dot-beign"></div>
-              <div className="dot"></div>
+              <FontAwesomeIcon className="absolute text-[20px] text-white left-[0%]" icon={faCircle} />
               <div className="dot-end"></div>
             </div>
 
@@ -87,7 +87,7 @@ export const Profile = () => {
           </div>)}
           </div>
         </div>
-      
+     
     </Layout>
   );
 };
