@@ -1,4 +1,3 @@
-
 import React from "react";
 import { useNavigate } from "react-router-dom";
 
@@ -9,15 +8,6 @@ export const PaymentMoMo = () => {
       <div className="div"></div>
       <div className="div"></div>
     </div>
-        {/* <button
-          className="text-3xl absolute left-5 bottom-[20px]"
-          onClick={() => {
-            navigate(`/payment`);
-          }}
-        >
-          ⬅️ Quay lại
-        </button> */}
-      
   );
 };
 
