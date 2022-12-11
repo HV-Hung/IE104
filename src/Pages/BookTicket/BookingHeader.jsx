@@ -13,7 +13,7 @@ export const BookingHeader = ({ showtime, step }) => {
             height: "7px",
             width: "30vw",
             margin: "10px",
-            backgroundColor: "#31D7A9",
+            backgroundColor: "rgb(34 211 238)",
           }}
         ></div>
         <span
@@ -24,7 +24,7 @@ export const BookingHeader = ({ showtime, step }) => {
             fontWeight: "bold",
             textAlign: "center",
             padding: "0 auto",
-            color: "#31D7A9",
+            color: "#0c468a",
           }}
         >
           BOOKING ONLINE
@@ -35,27 +35,27 @@ export const BookingHeader = ({ showtime, step }) => {
             height: "7px",
             width: "30vw",
             margin: "10px",
-            backgroundColor: "#31D7A9",
+            backgroundColor: "rgb(34 211 238)",
           }}
         ></div>
       </div>
-      <div style={{ margin: "10px" }}>
+      <div className="mx-[100px] text-[20px] font-bold mb-[20px]">
         <span>
           {`${showtime?.cinema.name} | Phòng ${
             showtime?.showtime.roomId.name
           } | Số ghế (${240 - showtime?.showtime.tickets.length}/240)`}
-          <br />
+          <br/>
         </span>
         <span>
-          {formatDate} {showtime?.showtime.time} ~ {formatDate}{" "}
+          {formatDate} {showtime?.showtime.time} - {" "}
           {showtime?.showtime.time_end}
         </span>
       </div>
-      <hr></hr>
-      <div style={{ textAlign: "center", fontSize: "20px" }}>
-        {step === 1 ? "Đặt ghế" : "Bắp / Nước"}
+      <hr className="mx-[80px] border-cyan-400"></hr>
+      <div className="text-center text-[20px] font-bold my-[5px]">
+        {step === 1 ? "Lựa chọn ghế ngồi" : "Mua bắp nước"}
       </div>
-      <hr></hr>
+      <hr className="mx-[80px] border-cyan-400"></hr>
     </div>
   );
 };

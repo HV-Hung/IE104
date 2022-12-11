@@ -53,42 +53,50 @@ export const BookTicket = () => {
       >
         <BookingHeader step={step} showtime={ShowTimeResult} />
         {step === 1 && (
-          <Space direction="vertical" align="center" className="w-full my-15">
-            <Space>
-              {seatMap.firstRow.map((seat) => (
-                <Seat
-                  key={seat.id}
-                  status={status(seat.id)}
-                  seat={seat}
-                  pickSeat={pickSeat}
-                />
-              ))}
+          <div>
+            <div className="w-full">
+              <img
+                className="h-[100px]"
+                src="https://www.cgv.vn/skin/frontend/cgv/default/images/bg-cgv/bg-screen.png"
+              />
+            </div>
+            <Space direction="vertical" align="center" className="w-full my-15">
+              <Space>
+                {seatMap.firstRow.map((seat) => (
+                  <Seat
+                    key={seat.id}
+                    status={status(seat.id)}
+                    seat={seat}
+                    pickSeat={pickSeat}
+                  />
+                ))}
+              </Space>
+              <Space direction="vertical">
+                {seatMap.insideRows.map((insideRow, index) => (
+                  <Space key={index}>
+                    {insideRow.map((seat) => (
+                      <Seat
+                        key={seat.id}
+                        pickSeat={pickSeat}
+                        status={status(seat.id)}
+                        seat={seat}
+                      />
+                    ))}
+                  </Space>
+                ))}
+              </Space>
+              <Space>
+                {seatMap.lastRow.map((seat) => (
+                  <Seat
+                    key={seat.id}
+                    pickSeat={pickSeat}
+                    status={status(seat.id)}
+                    seat={seat}
+                  />
+                ))}
+              </Space>
             </Space>
-            <Space direction="vertical">
-              {seatMap.insideRows.map((insideRow, index) => (
-                <Space key={index}>
-                  {insideRow.map((seat) => (
-                    <Seat
-                      key={seat.id}
-                      pickSeat={pickSeat}
-                      status={status(seat.id)}
-                      seat={seat}
-                    />
-                  ))}
-                </Space>
-              ))}
-            </Space>
-            <Space>
-              {seatMap.lastRow.map((seat) => (
-                <Seat
-                  key={seat.id}
-                  pickSeat={pickSeat}
-                  status={status(seat.id)}
-                  seat={seat}
-                />
-              ))}
-            </Space>
-          </Space>
+          </div>
         )}
         {step === 2 && (
           <div
