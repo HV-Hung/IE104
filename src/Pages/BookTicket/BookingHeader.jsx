@@ -11,8 +11,8 @@ export const BookingHeader = ({ showtime, step }) => {
           style={{
             display: "inline-block",
             height: "7px",
-            width: "25rem",
-            margin: "10px 10px 10px 10px",
+            width: "30vw",
+            margin: "10px",
             backgroundColor: "#31D7A9",
           }}
         ></div>
@@ -33,13 +33,13 @@ export const BookingHeader = ({ showtime, step }) => {
           style={{
             display: "inline-block",
             height: "7px",
-            width: "25rem",
-            margin: "10px 10px 10px 10px",
+            width: "30vw",
+            margin: "10px",
             backgroundColor: "#31D7A9",
           }}
         ></div>
       </div>
-      <div style={{ margin: "10px 10px 10px 10px" }}>
+      <div style={{ margin: "10px" }}>
         <span>
           {`${showtime?.cinema.name} | Phòng ${
             showtime?.showtime.roomId.name

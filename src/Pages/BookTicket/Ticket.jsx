@@ -1,9 +1,18 @@
 import React from "react";
+import { useState } from "react";
 import background from "./img/ticket_bg.png";
 import { seats as allSeat } from "./seats";
 import { foodItems } from "./foodItems";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { useNavigate } from "react-router-dom";
+import {
+  faArrowLeft,
+  faArrowRight,
+  faCreditCard,
+} from "@fortawesome/free-solid-svg-icons";
 
 export const Ticket = ({ seats, showtime, step, setStep, foods }) => {
+  const navigate = useNavigate();
   const pickingSeat = allSeat.filter((seat) => seats?.includes(seat.id));
   const pickingSeatCode = pickingSeat?.map((seat) => seat.code);
   const date = new Date(showtime?.showtime.date);
@@ -23,7 +32,7 @@ export const Ticket = ({ seats, showtime, step, setStep, foods }) => {
         display: "grid",
         columnGap: "17px",
         gridTemplateRows: "4 1fr",
-        gridTemplateColumns: "120px 120px 1.7fr 0.75fr 1fr 1fr 1fr 120px",
+        gridTemplateColumns: "100px 110px 1.5fr 0.77fr 1.5fr 1fr 0.75fr 100px",
         margin: "auto",
         marginTop: "80px",
         backgroundImage: `url(${background})`,
@@ -31,13 +40,17 @@ export const Ticket = ({ seats, showtime, step, setStep, foods }) => {
         backgroundRepeat: "no-repeat",
         color: "white",
       }}
-      className=" text-[15px] h-[200px] w-[70vw] col-start-1 col-end-3 row-start-4 row-end-5 self-start footer rounded-xl"
+      className=" text-[15px] h-[200px] w-[70vw] col-[1_/_3] row-[4_/_5] self-start footer rounded-xl"
     >
       {step > 1 && (
         <button
-          onClick={() => setStep(step - 1)}
-          className="h-[100px] w-[100px] bg-amber-900  rounded-[20px] col-start-1 col-end-2 row-start-1 row-end-6 justify-self-center self-center"
+          onClick={() => (step === 3 ? setStep(1) : setStep(step - 1))}
+          className="h-[80px] w-[80px]  bg-[#444444] rounded-[20px] col-[1_/_2] row-[1_/_6] justify-self-center self-center text-xs hover:opacity-80 border"
         >
+          <FontAwesomeIcon
+            className="mx-[20px] text-4xl"
+            icon={faArrowLeft}
+          ></FontAwesomeIcon>
           PREVUOUS
         </button>
       )}
@@ -57,7 +70,7 @@ export const Ticket = ({ seats, showtime, step, setStep, foods }) => {
         2D
       </div>
 
-      <div className="col-start-3 col-end-4 row-start-3 row-end-4 justify-self-left self-center ">
+      <div className="col-[3_/_4] row-[3_/_4] justify-self-left self-center ">
         {/* Hiển thị độ tuổi được xem phim */}
         {showtime?.showtime.movieId.rated}
       </div>
@@ -123,10 +136,19 @@ export const Ticket = ({ seats, showtime, step, setStep, foods }) => {
       </div>
 
       <button
-        onClick={() => setStep(step + 1)}
-        className="h-[100px] w-[100px] bg-orange-400 rounded-[20px] col-start-8 col-end-9 row-start-1 row-end-5 justify-self-center self-center"
+        onClick={() => {
+          if (step === 2) {
+            setStep(step + 1);
+            navigate(`/payment`);
+          } else setStep(step + 1);
+        }}
+        className="h-[80px] w-[80px] bg-[#e71a0f] border-white rounded-[20px] col-[8_/_9] row-[1_/_5] justify-self-center self-center text-xs hover:opacity-80 border"
       >
-        PAYMENT
+        <FontAwesomeIcon
+          className="mx-[20px] text-4xl"
+          icon={step < 3 ? faArrowRight : faCreditCard}
+        ></FontAwesomeIcon>
+        {step < 3 ? "NEXT" : "PAYMENT"}
       </button>
     </div>
   );

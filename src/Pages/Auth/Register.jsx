@@ -3,6 +3,8 @@ import { Button, Form, Input } from "antd";
 import { useNavigate } from "react-router-dom";
 import "./Register.css";
 import { usePost } from "../../api/post";
+import { Layout } from "../../Layout/Layout";
+import { Breadcrumb } from "antd";
 
 export const Register = () => {
   let navigate = useNavigate();
@@ -14,10 +16,18 @@ export const Register = () => {
     navigate("/login");
   };
 
+  const handleClick = () => {
+    navigate("/login");
+  };
+
   return (
+    <Layout>
+    <Breadcrumb style={{ marginLeft: "16px" }}>
+      <Breadcrumb.Item>Profile</Breadcrumb.Item>
+    </Breadcrumb>
     <div className="register-container relative w-screen min-h-screen m-0 p-0 bg-[#e5e7eb]">
       <div className="register-form-container absolute w-[500px] m-auto top-[20px] left-0 right-0 pt-[80px] pb-[100px] pl-[50px] pr-[50px]">
-        <h1 className="title text-center text-[40px] mb-[40px] mt-[-50px]">
+        <h1 className="title font-bold text-center text-[40px] mb-[40px] mt-[-50px]">
           ĐĂNG KÝ
         </h1>
 
@@ -103,8 +113,19 @@ export const Register = () => {
               ĐĂNG KÝ
             </Button>
           </Form.Item>
+          <Form.Item wrapperCol={{ offset: 0, span: 24 }}>
+              <div className="footer flex content-center justify-center text-base">
+                <p onClick={handleClick} className="text">
+                  Đã có tài khoản? 
+                  <a className="no-underline text-emerald-600" href="">
+                    Đăng nhập ngay
+                  </a>
+                </p>
+              </div>
+            </Form.Item>
         </Form>
       </div>
     </div>
+    </Layout>
   );
 };

@@ -21,10 +21,6 @@ export const Login = () => {
   console.log(result);
 
   return (
-    <Layout>
-      <Breadcrumb style={{ marginLeft: "16px" }}>
-        <Breadcrumb.Item>Profile</Breadcrumb.Item>
-      </Breadcrumb>
       <div className="login-container relative w-screen min-h-screen m-0 p-0 bg-[#e5e7eb]">
         <div className="login-form-container absolute w-[540px] m-auto top-[80px] left-0 right-0 pt-[100px] pb-[0px] pl-[50px] pr-[50px]">
           <h1 className="text-white font-bold text-center text-[40px] mb-[30px] mt-[-50px]">
@@ -75,7 +71,7 @@ export const Login = () => {
             <Form.Item wrapperCol={{ offset: 0, span: 24 }}>
               <div className=" flex content-center justify-center text-base">
                 <p onClick={handleClick} className="text">
-                  Chưa có tài khoản?{" "}
+                  Chưa có tài khoản? 
                   <a className="no-underline text-emerald-600" href="">
                     Đăng ký ngay
                   </a>
@@ -85,6 +81,6 @@ export const Login = () => {
           </Form>
         </div>
       </div>
-    </Layout>
+    
   );
 };
