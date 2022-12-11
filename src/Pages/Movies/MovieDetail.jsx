@@ -43,11 +43,8 @@ export const MovieDetail = () => {
 
   const ref = React.useRef(null);
   const handleClick = () => {
-    setBuyTicket(!buyTicket);
     ref.current?.scrollIntoView({ behavior: "smooth" });
   };
-
-  const [buyTicket, setBuyTicket] = React.useState(false);
 
   const [date, setDate] = React.useState(Dates[0].date);
 
