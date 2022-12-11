@@ -3,7 +3,7 @@ import { useNavigate } from "react-router-dom";
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faMoneyBill1, faCreditCard, faBarcode, faArrowLeft } from "@fortawesome/free-solid-svg-icons";
 
-export const PaymentShopee = () => {
+export const PaymentShopeePay = () => {
   const navigate = useNavigate();
   return (
     <div className="w-[900px] mx-[auto] my-[32px] flex">

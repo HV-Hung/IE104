@@ -14,6 +14,8 @@ import { News } from "./Pages/News/News";
 import { Profile } from "./Pages/Auth/Profile";
 import { PaymentMoMo } from "./Pages/Payment/PaymentMoMo";
 import { PaymentVisa } from "./Pages/Payment/PaymentVisa";
+import { PaymentZaloPay } from "./Pages/Payment/PaymentZaloPay";
+import { PaymentShopeePay } from "./Pages/Payment/PaymentShopeePay";
 import { NewsDetail } from "./Pages/News/NewsDetail";
 import { Ticket } from "./Pages/Ticket/Ticket";
 
@@ -29,6 +31,8 @@ const App = () => {
       <Route path="/payment" element={<Payment />} />
       <Route path="/payment/momo" element={<PaymentMoMo />} />
       <Route path="/payment/visa" element={<PaymentVisa />} />
+      <Route path="/payment/zalopay" element={<PaymentZaloPay />} />
+      <Route path="/payment/shopeepay" element={<PaymentShopeePay />} />
       <Route path="/cinema" element={<Cinema />} />
       <Route path="/cinema/:id" element={<CinemaDetail />} />
       <Route path="/login" element={<Login />} />

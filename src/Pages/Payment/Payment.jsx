@@ -3,7 +3,7 @@ import React from "react";
 import { Layout } from "../../Layout/Layout";
 import "../Payment/Payment.css"
 import { useNavigate } from "react-router-dom";
-//import { Ticket } from "../BookTicket/Ticket";
+import { Ticket } from "../BookTicket/Ticket";
 
 export const Payment = () => {
 
@@ -99,6 +99,7 @@ export const Payment = () => {
             </div>
           </div>
         </div>
+        <Ticket onClick={pay}></Ticket>
     </Layout>
   );
 };
