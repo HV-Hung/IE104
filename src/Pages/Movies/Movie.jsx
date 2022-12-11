@@ -67,10 +67,10 @@ export const Movie = () => {
         </div>
       </div>
 
-      <div className="max-w-[1228px] mb-[50px] mx-auto grid grid-cols-5 gap-x-[67px] gap-y-[50px]">
+      <div className="max-w-[1228px] mb-[50px] mx-auto grid grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-y-[50px] justify-items-center">
         {(movieType ? nowShowing : comingSoon)?.map((item, index) => {
           return (
-            <div key={index} className="h-[540px]">
+            <div key={index} className="h-[540px] w-[192px]">
               <div>
                 <img
                   className="w-[192px] h-[276px] mx-auto cursor-pointer transition ease-in-out delay-150 hover:scale-110 duration-300"

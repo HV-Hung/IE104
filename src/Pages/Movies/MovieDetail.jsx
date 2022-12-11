@@ -44,7 +44,7 @@ export const MovieDetail = () => {
   const ref = React.useRef(null);
   const handleClick = () => {
     setBuyTicket(!buyTicket);
-    ref.current?.scrollIntoView({ behavior: "smooth" });
+    // ref.current?.scrollIntoView({ behavior: "smooth" });
   };
 
   const [buyTicket, setBuyTicket] = React.useState(false);
@@ -83,8 +83,8 @@ export const MovieDetail = () => {
         <Breadcrumb.Item></Breadcrumb.Item>
       </Breadcrumb>
 
-      <div className="max-w-[1228px] mx-auto">
-        <div className="py-[20px] h-[90px] text-[40px] font-bold">NỘI DUNG</div>
+      <div className="mx-[200px]">
+        <div className="py-[20px] min-h-[90px] text-[40px] font-bold">NỘI DUNG</div>
 
         <div className="grid grid-cols-[27%_73%] gap-x-[20px] mb-[40px]">
           <img className="mr-[30px] w-[100%]" src={movie?.image} alt="" />
@@ -147,16 +147,17 @@ export const MovieDetail = () => {
         </div>
 
         <div className="text-[25px] font-medium text-center mb-[15px]">CHI TIẾT PHIM</div>
-        <div className="text-[18px] mb-[30px] leading-[25px]">
+        <div className="text-[18px] mb-[40px] leading-[25px]">
           {movie?.description}
         </div>
       </div>
 
       {buyTicket === true && (
         <div
-          className="p-[24px] min-h-[360px] bg-white my-[50px] mx-[200px]"
+          className="my-[24px] min-h-[360px] mb-[50px] mx-[200px]"
           ref={ref}
         >
+        <div className="text-[25px] font-medium text-center mb-[20px]">VUI LÒNG CHỌN THÔNG TIN VÉ</div>
           <div className="border-y-4 border-black py-5">
             {Dates.map((item) => (
               <button
@@ -187,6 +188,7 @@ export const MovieDetail = () => {
                 </button>
               ))}
           </div>
+
           <div>
             {showtimeResult &&
               showtimeResult.map((item) => (
