@@ -5,12 +5,24 @@ import "./Profile.css";
 import UserInfo from "./UserInfo";
 import UserBenefit from "./UserBenefit";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faUser, faClockRotateLeft, faGift, faCircle } from "@fortawesome/free-solid-svg-icons";
+import {
+  faUser,
+  faClockRotateLeft,
+  faGift,
+  faCircle,
+} from "@fortawesome/free-solid-svg-icons";
 import { HistoryBooKing } from "./HistoryBooKing";
 
 export const Profile = () => {
   const [tab, setTab] = React.useState(1);
   console.log(tab);
+  const currentUser = JSON.parse(localStorage.getItem("user"));
+  const total = currentUser?.tickets.reduce(
+    (total, ticket) => total + ticket.totalTicket + ticket.totalFood,
+    0
+  );
+  console.log({ total });
+
   return (
     <Layout>
       <div className="profile-container ">
@@ -22,10 +34,16 @@ export const Profile = () => {
             </div>
             <div className="user-info-card-header">
               <span>Nguyễn Phi Long</span>
-              
             </div>
             <div className="user-card-barcode flex flex-col">
-              <Barcode className="barcode" displayValue={false}  format="CODE128" value="0393277584"  width='8px' height='180px'/>
+              <Barcode
+                className="barcode"
+                displayValue={false}
+                format="CODE128"
+                value="0393277584"
+                width="8px"
+                height="180px"
+              />
               <span className="font-bold mt-[5px] text-[20px]">0393277584</span>
             </div>
           </div>
@@ -39,15 +57,22 @@ export const Profile = () => {
 
             <div className="user-progress-bar">
               <div className="dot-beign"></div>
-              <FontAwesomeIcon className="absolute text-[20px] text-white left-[0%]" icon={faCircle} />
+              <FontAwesomeIcon
+                className="absolute text-[20px] text-white left-[0%]"
+                icon={faCircle}
+              />
               <div className="dot-end"></div>
             </div>
 
             <p className="flex flex-row ml-[10px] mr-[10px] text-[24px] my-[20px] justify-between">
-             <span>Tổng chi tiêu</span>
-             <span className="font-bold">80.000.000 VNĐ</span>
+              <span>Tổng chi tiêu</span>
+              <span className="font-bold">
+                {total.toLocaleString("it-IT", {
+                  style: "currency",
+                  currency: "VND",
+                })}
+              </span>
             </p>
-            
           </div>
 
           <div className="user-menu">
@@ -59,7 +84,7 @@ export const Profile = () => {
                 <FontAwesomeIcon className="text-[28px]" icon={faUser} />
                 <span>Thông tin tài khoản</span>
               </li>
-              
+
               <li
                 onClick={() => setTab(2)}
                 className={`user-item ${tab === 2 && "active"}`}
@@ -71,7 +96,10 @@ export const Profile = () => {
                 onClick={() => setTab(3)}
                 className={`user-item ${tab === 3 && "active"}`}
               >
-                <FontAwesomeIcon className="text-[28px]" icon={faClockRotateLeft} />
+                <FontAwesomeIcon
+                  className="text-[28px]"
+                  icon={faClockRotateLeft}
+                />
                 <span>Lịch sử đặt vé</span>
               </li>
             </ul>
@@ -80,13 +108,11 @@ export const Profile = () => {
 
         <div className="column-main">
           {tab === 1 && <UserInfo />}
-          
 
           {tab === 2 && <UserBenefit />}
-          {tab === 3 && <HistoryBooKing/>}
-          </div>
+          {tab === 3 && <HistoryBooKing />}
         </div>
-     
+      </div>
     </Layout>
   );
 };

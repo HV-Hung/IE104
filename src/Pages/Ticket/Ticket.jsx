@@ -41,6 +41,7 @@ export const Ticket = () => {
               <img
                 className="w-[370px] rounded-lg"
                 src={ticket?.movieImage}
+                alt=""
               ></img>
             </div>
             <div className="ml-[50px] text-start w-full mb-[75px] text-[20px] font-bold">

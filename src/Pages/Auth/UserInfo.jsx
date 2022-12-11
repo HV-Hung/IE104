@@ -1,13 +1,9 @@
 import React from "react";
 import { Button, Form, Input, notification } from "antd";
-import { useNavigate } from "react-router-dom";
 import "./Register.css";
-import { usePost } from "../../api/post";
-import { Layout } from "../../Layout/Layout";
+import { usePatch, useGet } from "../../api";
 import { DatePicker } from "antd";
-import { Radio } from "antd";
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faCircle} from "@fortawesome/free-solid-svg-icons";
+import moment from "moment";
 
 const openNotificationWithIcon = (type, message = "", des = "") => {
   notification[type]({
@@ -15,109 +11,106 @@ const openNotificationWithIcon = (type, message = "", des = "") => {
     description: des,
   });
 };
-const user = JSON.parse(localStorage.getItem("user"));
-console.log(user);
-const UserInfo = () => {
-  let navigate = useNavigate();
-  const { fetchPost, result, isError } = usePost();
 
+const UserInfo = () => {
+  const { fetchPatch } = usePatch();
+  const { fetchGet, result: user } = useGet();
+  const currentUser = JSON.parse(localStorage.getItem("user"));
+  console.log({ currentUser });
+  const dateFormat = "DD/MM/YYYY";
   const onFinish = (values) => {
     console.log(values);
-   
+    fetchPatch("user/" + currentUser?._id, {
+      ...values,
+      gender: currentUser.gender,
+    });
+    fetchGet("user/" + currentUser?._id);
+    openNotificationWithIcon("success", "Cập nhật thông tin thành công ");
   };
 
-  const handleClick = () => {
-    navigate("/login");
-  };
   React.useEffect(() => {
-    if (result.message) {
-      if (isError) openNotificationWithIcon("error", result.message);
-      else {
-        openNotificationWithIcon("success", "Đăng ký thành công");
-        navigate("/login");
-      }
-    }
-  }, [result, navigate, isError]);
-  console.log(user);
-  const dateFormat = "DD/MM/YYYY";
+    fetchGet("user/" + currentUser?._id);
+  }, []);
+
   return (
     <div id="dashboard" className="dashboard control">
       <div className="page-title">
         <h1>Thông tin tài khoản</h1>
       </div>
 
-      <Form
-        name="basic"
-        labelCol={{ span: 24 }}
-        wrapperCol={{ span: 24 }}
-        onFinish={onFinish}
-        autoComplete="off"
-        initialValues={{
-          name: user?.name,
-          phoneNumber:user?.phoneNumber,
-          email:user?.email,
-          
-        }}
-      >
-        <Form.Item
-          label="TÊN KHÁCH HÀNG"
-          name="name"
-          rules={[{ required: true, message: "Hãy nhập tên của bạn!" }]}
+      {user && (
+        <Form
+          name="basic"
+          labelCol={{ span: 24 }}
+          wrapperCol={{ span: 24 }}
+          onFinish={onFinish}
+          autoComplete="off"
+          initialValues={{
+            name: user?.name,
+            phoneNumber: user?.phoneNumber,
+            email: user?.email,
+            dayOfBirth: moment(user?.dayOfBirth),
+          }}
         >
-          <Input
-  
-            title="Tên chỉ nên chứa kí tự hoa hoặc kí tự thường"
-            type="text"
-            placeholder="Nhập tên"
-            className="text-[20px]"
-          />
-        </Form.Item>
+          <Form.Item
+            label="TÊN KHÁCH HÀNG"
+            name="name"
+            rules={[{ required: true, message: "Hãy nhập tên của bạn!" }]}
+          >
+            <Input
+              title="Tên chỉ nên chứa kí tự hoa hoặc kí tự thường"
+              type="text"
+              placeholder="Nhập tên"
+              className="text-[20px]"
+            />
+          </Form.Item>
 
-        <Form.Item
-          label="SỐ ĐIỆN THOẠI"
-          name="phoneNumber"
-          
-        >
-          <Input
-            title="Chỉ chứa chữ số và dài tối thiểu 10"
-            type="phonenumber"
-            placeholder="Nhập số điện thoại "
-            disabled
-            className="text-[20px]"
-          />
-        </Form.Item>
-        <Form.Item
-          label="SINH NHẬT"
-          name="dayOfBirth"
-          // className="flex flex-nowrap flex-row"
-          rules={[
-            {
-              required: true,
-              message: "Nhập ngày sinh trước ngày hiện tại",
-            },
-          ]}
-        >
-          <DatePicker  className="w-[100%] text-[20px]" format={dateFormat} />
-        </Form.Item>
-        <Form.Item
-          label="EMAIL"
-          name="email"
-          
-        >
-          <Input className="text-[20px]" disabled type="email" placeholder="Nhập email" />
-        </Form.Item>
-        
-        
+          <Form.Item label="SỐ ĐIỆN THOẠI" name="phoneNumber">
+            <Input
+              title="Chỉ chứa chữ số và dài tối thiểu 10"
+              type="phonenumber"
+              placeholder="Nhập số điện thoại "
+              disabled
+              className="text-[20px]"
+            />
+          </Form.Item>
+          <Form.Item
+            label="SINH NHẬT"
+            name="dayOfBirth"
+            // className="flex flex-nowrap flex-row"
+            rules={[
+              {
+                required: true,
+                message: "Nhập ngày sinh trước ngày hiện tại",
+              },
+            ]}
+          >
+            <DatePicker className="w-[100%] text-[20px]" format={dateFormat} />
+          </Form.Item>
+          <Form.Item label="EMAIL" name="email">
+            <Input
+              className="text-[20px]"
+              disabled
+              type="email"
+              placeholder="Nhập email"
+            />
+          </Form.Item>
 
-        <Form.Item
-          className="gap-0 flex flex-row justify-end  mt-[50px] h-[100px]"
-          wrapperCol={{ offset: 0, span: 24 }}
-        >
-          <Button className="bg-sky-700 hover:bg-sky-500 h-[50px] font-bold text-center text-[20px] rounded-lg" id="update" type="primary" htmlType="submit">
-            CẬP NHẬT
-          </Button>
-        </Form.Item>
-      </Form>
+          <Form.Item
+            className="gap-0 flex flex-row justify-end  mt-[50px] h-[100px]"
+            wrapperCol={{ offset: 0, span: 24 }}
+          >
+            <Button
+              className="bg-sky-700 hover:bg-sky-500 h-[50px] font-bold text-center text-[20px] rounded-lg"
+              id="update"
+              type="primary"
+              htmlType="submit"
+            >
+              CẬP NHẬT
+            </Button>
+          </Form.Item>
+        </Form>
+      )}
     </div>
   );
 };
