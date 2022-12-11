@@ -82,7 +82,7 @@ export const MovieDetail = () => {
       </Breadcrumb>
 
       <div className="mx-[200px]">
-      <div style={{ textAlign: "center" }}>
+        <div style={{ textAlign: "center" }}>
           <div
             style={{
               display: "inline-block",
@@ -117,38 +117,42 @@ export const MovieDetail = () => {
         </div>
 
         <div className="grid grid-cols-[27%_73%] gap-x-[60px] my-[40px]">
-          <img className="mr-[30px] w-[100%] rounded-lg" src={movie?.image} alt="" />
+          <img
+            className="mr-[30px] w-[100%] rounded-lg"
+            src={movie?.image}
+            alt=""
+          />
 
           <div>
-            <div className="text-[30px] mb-[20px] font-semibold">
+            <div className="text-[30px] text-black mb-[20px] font-semibold">
               {movie?.name}
             </div>
             <div className="mb-[40px]">
-              <div className="text-[18px] leading-[25px] mb-[15px]">
+              <div className="text-[18px] text-black leading-[25px] mb-[15px]">
                 <span className="font-medium mx-0">Đạo diễn: </span>
                 {movie?.director}
               </div>
-              <div className="text-[18px] leading-[25px] mb-[15px]">
+              <div className="text-[18px] text-black leading-[25px] mb-[15px]">
                 <span className="font-medium mx-0">Diễn viên: </span>
                 {movie?.actors}
               </div>
-              <div className="text-[18px] leading-[25px] mb-[15px]">
+              <div className="text-[18px] text-black leading-[25px] mb-[15px]">
                 <span className="font-medium mx-0">Thể loại: </span>
                 {movie?.genre.join(", ")}
               </div>
-              <div className="text-[18px] leading-[25px] mb-[15px]">
+              <div className="text-[18px] text-black leading-[25px] mb-[15px]">
                 <span className="font-medium mx-0">Khởi chiếu: </span>
                 {new Date(movie?.releaseDate).toLocaleDateString("en-UK")}
               </div>
-              <div className="text-[18px] leading-[25px] mb-[15px]">
+              <div className="text-[18px] text-black leading-[25px] mb-[15px]">
                 <span className="font-medium mx-0">Thời lượng: </span>
                 {movie?.duration} phút
               </div>
-              <div className="text-[18px] leading-[25px] mb-[15px]">
+              <div className="text-[18px] text-black leading-[25px] mb-[15px]">
                 <span className="font-medium mx-0">Ngôn ngữ: </span>
                 {movie?.language}
               </div>
-              <div className="text-[18px] leading-[25px]">
+              <div className="text-[18px] text-black leading-[25px]">
                 <span className="font-medium mx-0">Phân loại: </span>
                 <span className="font-bold mx-0 text-[20px]">
                   {movie?.rated}
@@ -176,17 +180,17 @@ export const MovieDetail = () => {
           </div>
         </div>
 
-        <div className="text-[25px] font-medium text-center mb-[15px]">
+        <div className="text-[25px] text-black font-medium text-center mb-[15px]">
           CHI TIẾT PHIM
         </div>
-        <div className="text-[18px] mb-[40px] leading-[25px]">
+        <div className="text-[18px] text-black mb-[40px] leading-[25px]">
           {movie?.description}
         </div>
       </div>
 
       {new Date(movie?.releaseDate) <= nowDay && (
         <div className="my-[24px] min-h-[360px] mb-[50px] mx-[200px]" ref={ref}>
-          <div className="text-[25px] font-medium text-center mb-[20px]">
+          <div className="text-[25px] font-medium text-center mb-[20px] text-black">
             VUI LÒNG CHỌN THÔNG TIN VÉ
           </div>
 
@@ -224,26 +228,29 @@ export const MovieDetail = () => {
           <div>
             {showtimeResult &&
               showtimeResult.map((item) => (
-                <div className="border-t-2 border-slate-600 py-5 mx-[50px]">
-                  <div className="text-[30px] mb-[20px] font-bold">
-                    {item?.cinema?.name}
-                  </div>
-                  <Space wrap>
-                    {item.showtimes.map((temp, index) => {
-                      return (
-                        <div
-                          key={index}
-                          className="ml-5 mb-2 border-sky-800 border-2 hover:bg-sky-300 rounded-lg font-bold text-[20px] text-black h-[50px] w-[100px] text-center pt-2 cursor-pointer relative"
-
-                          onClick={() => {
-                            navigate(`/bookticket/${temp._id}`);
-                          }}
-                        >
-                          {temp.time}
-                        </div>
-                      );
-                    })}
-                  </Space>
+                <div>
+                  {item.showtimes.length > 0 ? (
+                    <div className="border-t-2 border-black py-5 mx-[50px]">
+                      <div className="text-[30px] mb-[20px] font-bold">
+                        {item?.cinema?.name}
+                      </div>
+                      <Space wrap>
+                        {item.showtimes.map((temp, index) => {
+                          return (
+                            <div
+                              key={index}
+                              className="ml-5 mb-2 border-sky-800 border-2 hover:bg-sky-300 rounded-lg font-bold text-[20px] text-black h-[50px] w-[100px] text-center pt-2 cursor-pointer relative"
+                              onClick={() => {
+                                navigate(`/bookticket/${temp._id}`);
+                              }}
+                            >
+                              {temp.time}
+                            </div>
+                          );
+                        })}
+                      </Space>
+                    </div>
+                  ) : null}
                 </div>
               ))}
           </div>
