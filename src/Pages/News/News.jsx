@@ -142,22 +142,23 @@ export const News = () => {
         <Breadcrumb.Item></Breadcrumb.Item>
       </Breadcrumb>
       <div className="w-[1228px] mx-auto flex justify-center items-center cursor-pointer">
-        <div className={`text-[32px] text-white text-center font-semibold mx-[16px] my-[32px] hover:text-[#d4dd29] hover:cursor-pointer ${tabItem === 0 && "text-[#d4dd29]"}`} onClick={() => setTabIitem(0)}>KHUYẾN MÃI</div>
-        <div className="border-l-[3px] border-solid border-[#fff] h-[32px]"></div>
-        <div className={`text-[32px] text-white text-center font-semibold mx-[16px] my-[32px] hover:text-[#d4dd29] hover:cursor-pointer ${tabItem === 1 && "text-[#d4dd29]"}`} onClick={() => setTabIitem(1)}>TIN TỨC</div>
+        <div className={`text-[30px] text-center px-[20px] py-[10px]  mx-[16px] my-[32px] font-bold hover:text-amber-300
+        cursor-pointer rounded-full border-sky-600 border-2 ${tabItem === 0 && "text-amber-300 bg-[#0284c7]"}`} onClick={() => setTabIitem(0)}>KHUYẾN MÃI</div>
+        <div className={`text-[30px] text-center px-[20px] py-[10px] mx-[16px] my-[32px] font-bold hover:text-amber-300
+        cursor-pointer rounded-full border-sky-600 border-2 ${tabItem === 1 && "text-amber-300 bg-[#0284c7]"}`} onClick={() => setTabIitem(1)}>TIN TỨC</div>
       </div>
-      {tabItem === 0 && <div className="active max-h-[1872px] w-[1228px] mx-auto grid grid-cols-4 gap-x-[25px] gap-y-[25px]">
+      {tabItem === 0 && <div className="max-h-[1872px] px-[200px] grid grid-cols-4 gap-x-[30px] gap-y-[30px]">
         {deal_list.map((item) => {
           return (
            <Link to={`/news/${item.id}`}>
             <div className="w-full h-auto cursor-pointer">
-              <img className="h-[164px] w-full" src={item.img} alt="" />
+              <img className="w-full h-[230px]" src={item.img} alt="" />
               <div className="">
-                <div className="text-white text-[16px] text-center uppercase py-[8px] hover:text-[#d4dd29]">
+                <div className="text-black text-[18px] text-center uppercase py-[12px] hover:text-[#0c468a]">
                   {item.name}
                 </div>
-                <div className="text-white text text-center pb-[8px]">
-                  <FontAwesomeIcon className="mx-[8px]" icon={faCalendarDays}></FontAwesomeIcon>
+                <div className="text-black text-[16px] text-center pb-[8px]">
+                  <FontAwesomeIcon className="text-[#0c468a] mx-[8px]" icon={faCalendarDays}></FontAwesomeIcon>
                   {item.date}
                 </div>
               </div>
@@ -166,18 +167,18 @@ export const News = () => {
           )
         })}
       </div>}
-      {tabItem === 1 && <div className="max-h-[1872px] w-[1228px] mx-auto grid grid-cols-4 gap-y-[25px] hover:text-[#d4dd29]">
+      {tabItem === 1 && <div className="max-h-[1872px] px-[200px] grid grid-cols-4 gap-y-[25px] hover:text-[#d4dd29]">
         {news_list.map((item) => {
           return (
             <Link to={`/news/${item.id}`}>
               <div className="w-full h-auto cursor-pointer">
-                <img className="mx-[auto]" src={item.img} alt="" />
+                <img className="w-[85%] h-[425px] mx-[auto]" src={item.img} alt="" />
                 <div className="">
-                  <div className="text-white text-[16px] text-center uppercase py-[8px] hover:text-[#d4dd29]">
+                  <div className="text-black text-[18px] text-center font-semibold uppercase py-[12px] hover:text-[#0c468a]">
                     {item.name}
                   </div>
-                  <div className="text-white text text-center pb-[8px]">
-                    <FontAwesomeIcon className="mx-[8px]" icon={faCalendarDays}></FontAwesomeIcon>
+                  <div className="text-black text-[16px] text-center pb-[8px]">
+                    <FontAwesomeIcon className="text-[#0c468a] mx-[8px]" icon={faCalendarDays}></FontAwesomeIcon>
                     {item.date}
                   </div>
                 </div>

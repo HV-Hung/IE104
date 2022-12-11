@@ -7,7 +7,7 @@ const deal_detail = [
   {
     id: "d_1",
     name: "LỄ HỘI MERCHANDISE",
-    img: "https://www.cgv.vn/media/wysiwyg/2022/122022/N_O_350x495_1.jpg",
+    img: "./img/news_detail_img_d1.jpg",
     date: "Từ ngày 07/12/2022 - 09/12/2022.",
     contents: [
       "- Mua 01 Merchandise (có kèm nước) trị giá 149K, có ngay 01 phần Bắp mix.",
@@ -409,7 +409,7 @@ export const NewsDetail = () => {
               return (
                 <div>
                   <div className="py-[30px]">
-                    <h2 className="text-[22px] text-[#e71a0f] font-[500] my-[0]">
+                    <h2 className="text-[24px] text-[#e71a0f] font-[500] my-[0]">
                       {item.name}
                     </h2>
                   </div>
@@ -420,11 +420,11 @@ export const NewsDetail = () => {
                       alt="Ảnh minh họa"
                     />
                     <div className="">
-                      <p className="text-[16px]">
+                      <p className="text-[18px]">
                         <b>1. Thời gian áp dụng: </b>
                         {item.date}
                       </p>
-                      <div className="text-[16px] mt-[16px]">
+                      <div className="text-[18px] mt-[16px]">
                         <b>
                           2. Nội dung chương trình: <br/>
                         </b>
@@ -434,11 +434,11 @@ export const NewsDetail = () => {
                           ))}
                         </ul>
                       </div>
-                      <p className="text-[16px] mt-[16px]">
+                      <p className="text-[18px] mt-[16px]">
                         <b>3. Địa điểm áp dụng: </b>
                         {item.address}
                       </p>
-                      <p className="text-[16px] mt-[16px]">
+                      <p className="text-[18px] mt-[16px]">
                         <b>
                           4. Đối tượng khuyến mại: <br/>
                         </b>
@@ -448,7 +448,7 @@ export const NewsDetail = () => {
                           ))}
                         </ul>
                       </p>
-                      <div className="text-[16px] mt-[16px]">
+                      <div className="text-[18px] mt-[16px]">
                         <b>
                           5. Điều kiện và điều khoản: <br />
                         </b>
@@ -471,7 +471,7 @@ export const NewsDetail = () => {
               return (
                 <div>
                   <div className="py-[30px]">
-                    <h2 className="text-[22px] text-[#e71a0f] font-[500] my-[0]">
+                    <h2 className="text-[24px] text-[#e71a0f] font-[500] my-[0]">
                       {item.name}
                     </h2>
                   </div>
@@ -482,12 +482,12 @@ export const NewsDetail = () => {
                       alt="Ảnh minh họa"
                     />
                     <div className="">
-                      <div className="text-[16px]">
+                      <div className="text-[18px]">
                         <b>Sự kiện: </b>
                         <br/>
                         <span className="uppercase mx-[0]" >{item.title}</span> 
                       </div>
-                      <div className="text-[16px] mt-[16px]">
+                      <div className="text-[18px] mt-[16px]">
                         <b>
                           Nội dung: <br/>
                         </b>
