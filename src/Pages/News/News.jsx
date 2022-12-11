@@ -4,6 +4,7 @@ import { Layout } from "../../Layout/Layout";
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faCalendarDays } from '@fortawesome/free-solid-svg-icons';
 import { Link } from "react-router-dom";
+import imagend1 from "./img/news_img_d1"
 
 
 const deal_list = [
