@@ -5,6 +5,7 @@ import "./Register.css";
 import { usePost } from "../../api/post";
 import { Layout } from "../../Layout/Layout";
 import { Breadcrumb } from "antd";
+import { DatePicker, Space } from 'antd';
 
 export const Register = () => {
   let navigate = useNavigate();
@@ -19,7 +20,9 @@ export const Register = () => {
   const handleClick = () => {
     navigate("/login");
   };
-
+  const onChange = (date, dateString) => {
+    console.log(date, dateString);
+  };
   return (
     <Layout>
     <Breadcrumb style={{ marginLeft: "16px" }}>
@@ -73,7 +76,18 @@ export const Register = () => {
           >
             <Input type="email" placeholder="Nhập email" />
           </Form.Item>
-
+          <Form.Item
+           label="NGÀY SINH"
+           name="dateOfBirth"
+           rules={[{ required: true, message: "Hãy nhập ngày sinh của bạn!" }]}>
+            <Space direction="horizontal">
+              <DatePicker placeholder="Ngày " onChange={onChange} picker="date"/>
+            
+              <DatePicker placeholder="Tháng" onChange={onChange} picker="month" />
+              
+              <DatePicker placeholder="Năm" onChange={onChange} picker="year" />
+            </Space>
+          </Form.Item>
           <Form.Item
             label="MẬT KHẨU"
             name="password"
