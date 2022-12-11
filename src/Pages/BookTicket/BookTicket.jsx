@@ -7,19 +7,26 @@ import { foodItems } from "./foodItems";
 import { Ticket } from "./Ticket";
 import { seatMap } from "./seats";
 import { Seat } from "./Seat";
-import { useParams } from "react-router-dom";
+import { useParams, useNavigate } from "react-router-dom";
 import { useGet, usePost } from "../../api";
+import { useEffect } from "react";
+import { openNotificationWithIcon } from "../Auth/Login";
+import { Payment } from "../Payment/Payment";
 
 export const BookTicket = () => {
   const { id } = useParams();
+  const navigate = useNavigate();
   const { fetchGet: fetchShowtime, result: ShowTimeResult } = useGet();
-  console.log(ShowTimeResult)
-  const { fetchPost: fetchBook, result: booked } = usePost();
+  const { fetchPost: fetchBook, result: booked, isError } = usePost();
   const [bookingSeats, setBookingSeats] = React.useState([]);
-  const [bookedSeats, setBookedSeat] = React.useState([0, 1, 200, 50]);
+  const [bookedSeats, setBookedSeat] = React.useState([]);
   const [step, setStep] = React.useState(1);
   const [foods, setFoods] = React.useState([]);
-
+  const user = JSON.parse(localStorage.getItem("user"));
+  if (!user) {
+    sessionStorage.setItem("showtime", id);
+    navigate("/login");
+  }
   const status = (seatId) => {
     if (bookedSeats.includes(seatId)) return 2;
     if (bookingSeats.includes(seatId)) return 1;
@@ -35,17 +42,33 @@ export const BookTicket = () => {
 
   React.useEffect(() => {
     fetchShowtime("showtime/" + id);
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
+  React.useEffect(() => {
+    if (ShowTimeResult?.showtime.seats)
+      setBookedSeat(ShowTimeResult.showtime.seats);
+  }, [ShowTimeResult]);
   const bookTicket = () => {
     fetchBook("ticket", {
       showtime: id,
-      user: "63945659e1908fbde745df3b",
+      user: user._id,
       seat: bookingSeats,
       foods: foods,
       paymentMethod: "momo",
     });
   };
+  React.useEffect(() => {
+    if (isError)
+      openNotificationWithIcon(
+        "error",
+        "Vé bạn chọn đã có người đặt, vui lòng đặt lại"
+      );
+
+    if (booked.Showtime)
+      openNotificationWithIcon("success", "Đặt vé thành công");
+  }, [isError, booked]);
+
   return (
     <Layout>
       <div
@@ -57,6 +80,7 @@ export const BookTicket = () => {
           <div>
             <div className="w-full">
               <img
+                alt=""
                 className="h-[100px]"
                 src="https://www.cgv.vn/skin/frontend/cgv/default/images/bg-cgv/bg-screen.png"
               />
@@ -116,6 +140,7 @@ export const BookTicket = () => {
             <Button onClick={bookTicket}> book</Button>
           </div>
         )}
+        {step === 3 && <Payment />}
         <Ticket
           seats={bookingSeats}
           showtime={ShowTimeResult}

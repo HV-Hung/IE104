@@ -4,7 +4,7 @@
   box-sizing: border-box;
 }
 
-.container {
+.profile-container {
   padding: 24px 200px;
   background: #f9f7f7;
   height: 100vh;
@@ -368,9 +368,6 @@ nav {
   width: 60px;
   height: 60px;
 }
-
-
-
 
 .not-active {
   display: none;
