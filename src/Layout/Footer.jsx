@@ -48,15 +48,6 @@ export const Footer = () => {
           UIT CINEMA
         </p>
         <h3 className="text-white">CÔNG TY TNHH UIT CINEMA VIETNAM</h3>
-        <p>
-          Giấy CNĐKDN: 202222002, đăng ký lần đầu ngày 12/12/2012, đăng ký thay
-          đổi lần thứ 2 ngày 12/12/2022, cấp bởi Sở KHĐT thành phố Hồ Chí Minh.
-        </p>
-        <p>
-          Địa Chỉ:&nbsp;Tầng 12, Rivera Park Saigon - Số 12/12 Thành Thái, P.12,
-          Q.12, TPHCM.
-        </p>
-        <p>Hotline: 1900 1212.</p>
         <p>COPYRIGHT 2022 UIT CINEMA. All RIGHTS RESERVED.</p>
       </div>
     </Layout.Footer>
