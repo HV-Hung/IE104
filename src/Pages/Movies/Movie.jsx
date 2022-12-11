@@ -4,6 +4,8 @@ import { Layout } from "../../Layout/Layout";
 import { useNavigate } from "react-router-dom";
 import { useState } from "react";
 
+
+
 export const Movie = () => {
   const navigate = useNavigate();
   const [movies, setMovies] = useState(undefined);
@@ -67,7 +69,7 @@ export const Movie = () => {
         </div>
       </div>
 
-      <div className="max-w-[1228px] mb-[50px] mx-auto grid grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-y-[50px] justify-items-center">
+      <div className="max-w-[1228px] mb-[80px] mx-auto grid grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-y-[80px] justify-items-center">
         {(movieType ? nowShowing : comingSoon)?.map((item, index) => {
           return (
             <div key={index} className="h-[540px] w-[192px]">
@@ -105,7 +107,7 @@ export const Movie = () => {
               </div>
               <div className="h-[33px] flex justify-center">
                 <Button
-                  className="bg-blue-500 font-bold"
+                  className="bg-sky-700 font-bold text-center text-[20px] pb-[40px] rounded-lg"
                   type="primary"
                   onClick={() => {
                     navigate(`/movie/${item._id}`);

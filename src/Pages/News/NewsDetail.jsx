@@ -430,7 +430,7 @@ export const NewsDetail = () => {
               return (
                 <div>
                   <div className="py-[30px]">
-                    <h2 className="text-[24px] text-[#e71a0f] font-[500] my-[0]">
+                    <h2 className="text-[24px] text-[#000] font-[500] my-[0]">
                       {item.name}
                     </h2>
                   </div>
@@ -492,7 +492,7 @@ export const NewsDetail = () => {
               return (
                 <div>
                   <div className="py-[30px]">
-                    <h2 className="text-[24px] text-[#e71a0f] font-[500] my-[0]">
+                    <h2 className="text-[24px] text-[#000] font-[500] my-[0]">
                       {item.name}
                     </h2>
                   </div>
