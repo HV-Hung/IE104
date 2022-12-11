@@ -141,22 +141,22 @@ export const News = () => {
       <Breadcrumb style={{ marginLeft: "16px" }}>
         <Breadcrumb.Item></Breadcrumb.Item>
       </Breadcrumb>
-      <div className="w-[1228px] mx-auto flex justify-center items-center cursor-pointer">
-        <div className={`text-[32px] text-white text-center font-semibold mx-[16px] my-[32px] hover:text-[#d4dd29] hover:cursor-pointer ${tabItem === 0 && "text-[#d4dd29]"}`} onClick={() => setTabIitem(0)}>KHUYẾN MÃI</div>
+      <div className="px-[200px] flex justify-center items-center cursor-pointer">
+        <div className={`text-[32px] text-black text-center font-semibold mx-[16px] my-[32px] hover:text-[#d4dd29] hover:cursor-pointer ${tabItem === 0 && "text-[#d4dd29]"}`} onClick={() => setTabIitem(0)}>KHUYẾN MÃI</div>
         <div className="border-l-[3px] border-solid border-[#fff] h-[32px]"></div>
-        <div className={`text-[32px] text-white text-center font-semibold mx-[16px] my-[32px] hover:text-[#d4dd29] hover:cursor-pointer ${tabItem === 1 && "text-[#d4dd29]"}`} onClick={() => setTabIitem(1)}>TIN TỨC</div>
+        <div className={`text-[32px] text-black text-center font-semibold mx-[16px] my-[32px] hover:text-[#d4dd29] hover:cursor-pointer ${tabItem === 1 && "text-[#d4dd29]"}`} onClick={() => setTabIitem(1)}>TIN TỨC</div>
       </div>
-      {tabItem === 0 && <div className="active max-h-[1872px] w-[1228px] mx-auto grid grid-cols-4 gap-x-[25px] gap-y-[25px]">
+      {tabItem === 0 && <div className="max-h-[1872px] px-[200px] grid grid-cols-4 gap-x-[25px] gap-y-[25px]">
         {deal_list.map((item) => {
           return (
            <Link to={`/news/${item.id}`}>
             <div className="w-full h-auto cursor-pointer">
               <img className="h-[164px] w-full" src={item.img} alt="" />
               <div className="">
-                <div className="text-white text-[16px] text-center uppercase py-[8px] hover:text-[#d4dd29]">
+                <div className="text-black text-[16px] text-center uppercase py-[8px] hover:text-[#d4dd29]">
                   {item.name}
                 </div>
-                <div className="text-white text text-center pb-[8px]">
+                <div className="text-black text text-center pb-[8px]">
                   <FontAwesomeIcon className="mx-[8px]" icon={faCalendarDays}></FontAwesomeIcon>
                   {item.date}
                 </div>
@@ -173,10 +173,10 @@ export const News = () => {
               <div className="w-full h-auto cursor-pointer">
                 <img className="mx-[auto]" src={item.img} alt="" />
                 <div className="">
-                  <div className="text-white text-[16px] text-center uppercase py-[8px] hover:text-[#d4dd29]">
+                  <div className="text-black text-[16px] text-center uppercase py-[8px] hover:text-[#d4dd29]">
                     {item.name}
                   </div>
-                  <div className="text-white text text-center pb-[8px]">
+                  <div className="text-black text text-center pb-[8px]">
                     <FontAwesomeIcon className="mx-[8px]" icon={faCalendarDays}></FontAwesomeIcon>
                     {item.date}
                   </div>
