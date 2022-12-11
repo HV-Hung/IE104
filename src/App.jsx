@@ -30,10 +30,10 @@ const App = () => {
     <Routes>
       <Route path="/" element={<Home />}></Route>
       <Route path="/payment" element={<Payment />} />
-      <Route path="/payment/momo" element={<PaymentMoMo />} />
-      <Route path="/payment/visa" element={<PaymentVisa />} />
-      <Route path="/payment/zalopay" element={<PaymentZaloPay />} />
-      <Route path="/payment/shopeepay" element={<PaymentShopeePay />} />
+      <Route path="/payment/momo/:id" element={<PaymentMoMo />} />
+      <Route path="/payment/visa/:id" element={<PaymentVisa />} />
+      <Route path="/payment/zalopay/:id" element={<PaymentZaloPay />} />
+      <Route path="/payment/shopeepay/:id" element={<PaymentShopeePay />} />
       <Route path="/cinema" element={<Cinema />} />
       <Route path="/cinema/:id" element={<CinemaDetail />} />
       <Route path="/login" element={<Login />} />
@@ -51,7 +51,7 @@ const App = () => {
         }
       />
       <Route path="/login" element={<Login />} />
-      <Route path="/ticket" element={<Ticket />} />
+      <Route path="/ticket/:id" element={<Ticket />} />
       <Route path="/register" element={<Register />} />
 
       <Route path="*" element={<NotFound />}></Route>

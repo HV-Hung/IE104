@@ -23,7 +23,6 @@ export const Payment = () => {
       navigate(`/payment/zalopay`);
     else if (payments === "shopepay")
       navigate(`/payment/shopepay`);
-
   }
 
 
