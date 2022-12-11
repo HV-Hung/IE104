@@ -6,6 +6,8 @@ import { usePost } from "../../api/post";
 import { Layout } from "../../Layout/Layout";
 import { Breadcrumb } from "antd";
 import { DatePicker, Space } from 'antd';
+import { Radio } from 'antd';
+import FormItem from "antd/es/form/FormItem";
 
 export const Register = () => {
   let navigate = useNavigate();
@@ -14,7 +16,7 @@ export const Register = () => {
   const onFinish = (values) => {
     console.log(values);
     fetchPost("auth/register", values);
-    navigate("/login");
+    navigate("/");
   };
 
   const handleClick = () => {
@@ -23,13 +25,18 @@ export const Register = () => {
   const onChange = (date, dateString) => {
     console.log(date, dateString);
   };
+  const [value, setValue] = React.useState("male");
+  const onClick = (e) => {
+    console.log('radio checked', e.target.value);
+    setValue(e.target.value);
+  };
   return (
     <Layout>
     <Breadcrumb style={{ marginLeft: "16px" }}>
       <Breadcrumb.Item>Profile</Breadcrumb.Item>
     </Breadcrumb>
     <div className="register-container relative w-screen min-h-screen m-0 p-0 bg-[#e5e7eb]">
-      <div className="register-form-container absolute w-[500px] m-auto top-[20px] left-0 right-0 pt-[80px] pb-[100px] pl-[50px] pr-[50px]">
+      <div className="register-form-container absolute w-[600px] m-auto top-[10px] left-0 right-0 pt-[80px] pb-[100px] pl-[50px] pr-[50px]">
         <h1 className="title font-bold text-center text-[40px] mb-[40px] mt-[-50px]">
           ĐĂNG KÝ
         </h1>
@@ -79,15 +86,21 @@ export const Register = () => {
           <Form.Item
            label="NGÀY SINH"
            name="dateOfBirth"
+           className="flex flex-nowrap flex-row"
            rules={[{ required: true, message: "Hãy nhập ngày sinh của bạn!" }]}>
-            <Space direction="horizontal">
-              <DatePicker placeholder="Ngày " onChange={onChange} picker="date"/>
+            <Space className="mr-[25px]" direction="horizontal">
+              <DatePicker className="w-[85px]" placeholder="Ngày " onChange={onChange} picker="date"/>
             
-              <DatePicker placeholder="Tháng" onChange={onChange} picker="month" />
+              <DatePicker className="w-[90px]" placeholder="Tháng" onChange={onChange} picker="month" />
               
-              <DatePicker placeholder="Năm" onChange={onChange} picker="year" />
+              <DatePicker className="w-[80px]" placeholder="Năm" onChange={onChange} picker="year" />
             </Space>
+            <Radio.Group className="w-[200px]" onChange={onClick} value={value}>
+              <Radio className="text-white " value={"male"}>Nam</Radio>
+              <Radio className="text-white" value={"female"}>Nữ</Radio>
+            </Radio.Group>
           </Form.Item>
+          
           <Form.Item
             label="MẬT KHẨU"
             name="password"
@@ -122,21 +135,21 @@ export const Register = () => {
             <Input.Password placeholder="Nhập lại mật khẩu" />
           </Form.Item>
 
-          <Form.Item wrapperCol={{ offset: 0, span: 18 }}>
+          <Form.Item className="gap-0 flex flex-col mt-[90px]" wrapperCol={{ offset: 0, span: 24 }}>
             <Button id="register" type="primary" htmlType="submit">
               ĐĂNG KÝ
             </Button>
+
+            <div className="footer flex content-center justify-center text-base">
+              <p onClick={handleClick} className="text">
+                Đã có tài khoản? 
+                <a className="no-underline text-emerald-600" href="">
+                  Đăng nhập ngay
+                </a>
+              </p>
+            </div>
           </Form.Item>
-          <Form.Item wrapperCol={{ offset: 0, span: 24 }}>
-              <div className="footer flex content-center justify-center text-base">
-                <p onClick={handleClick} className="text">
-                  Đã có tài khoản? 
-                  <a className="no-underline text-emerald-600" href="">
-                    Đăng nhập ngay
-                  </a>
-                </p>
-              </div>
-            </Form.Item>
+         
         </Form>
       </div>
     </div>

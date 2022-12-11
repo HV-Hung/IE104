@@ -154,7 +154,6 @@
 .ant-form-item-control-input-content .ant-btn{
     margin: 0;
     position: relative;
-    top: -10px;
     left: 50%;
     transform: translate(-50%, 0);
     cursor: pointer;
@@ -176,7 +175,6 @@
 .register-container .register-form-container .ant-form .ant-form-item .ant-row .ant-col label{
     display: inline-block;
     position: relative;
-    width: 175px;
     cursor: pointer;
 }
 
@@ -264,7 +262,6 @@
 .register-container .ant-form-item-control-input-content .ant-btn{
     margin: 0;
     position: relative;
-    top: 20px;
     left: 50%;
     transform: translate(-50%, 0);
     cursor: pointer;
@@ -287,17 +284,16 @@
     margin-top: 7px;
 }
 
-.register-container .ant-form-item-row{
-   display: flex;
-   justify-content: center;
-}
-
-.register-container #register{
-    margin-top: 50px;
-    cursor: pointer;
-}
-
 .register-container .footer{
-    margin-top: 100px;
+    margin-top: 50px;
 }
+
+/* .register-container .ant-radio-group{
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    gap: 5px;
+    align-items: center;
+    justify-content: center;
+} */
 
