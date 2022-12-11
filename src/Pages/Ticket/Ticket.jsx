@@ -10,7 +10,7 @@ export const Ticket = () => {
   const { fetchGet, result: ticket } = useGet();
 
   useEffect(() => {
-    fetchGet("ticket/6394869ad027e20aade7aab2");
+    fetchGet("ticket/6395ad4086c1a37aec0d5f65");
   }, []);
   console.log(ticket);
   const foods = ticket?.foods.filter((food) => food.quantity !== 0);

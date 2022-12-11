@@ -44,16 +44,19 @@ export const BookingHeader = ({ showtime, step }) => {
           {`${showtime?.cinema.name} | Phòng ${
             showtime?.showtime.roomId.name
           } | Số ghế (${240 - showtime?.showtime.tickets.length}/240)`}
-          <br/>
+          <br />
         </span>
         <span>
-          {formatDate} {showtime?.showtime.time} - {" "}
-          {showtime?.showtime.time_end}
+          {formatDate} {showtime?.showtime.time} - {showtime?.showtime.time_end}
         </span>
       </div>
       <hr className="mx-[80px] border-cyan-400"></hr>
       <div className="text-center text-[20px] font-bold my-[5px]">
-        {step === 1 ? "Lựa chọn ghế ngồi" : "Mua bắp nước"}
+        {step === 1
+          ? "Lựa chọn ghế ngồi"
+          : step === 2
+          ? "Mua bắp nước"
+          : "Thanh toán"}
       </div>
       <hr className="mx-[80px] border-cyan-400"></hr>
     </div>

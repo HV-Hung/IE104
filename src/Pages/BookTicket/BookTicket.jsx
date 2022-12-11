@@ -11,6 +11,7 @@ import { useParams, useNavigate } from "react-router-dom";
 import { useGet, usePost } from "../../api";
 import { useEffect } from "react";
 import { openNotificationWithIcon } from "../Auth/Login";
+import { Payment } from "../Payment/Payment";
 
 export const BookTicket = () => {
   const { id } = useParams();
@@ -138,6 +139,7 @@ export const BookTicket = () => {
             <Button onClick={bookTicket}> book</Button>
           </div>
         )}
+        {step === 3 && <Payment />}
         <Ticket
           seats={bookingSeats}
           showtime={ShowTimeResult}

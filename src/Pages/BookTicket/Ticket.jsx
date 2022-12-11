@@ -62,8 +62,7 @@ export const Ticket = ({ seats, showtime, step, setStep, foods }) => {
       />
 
       <div className="font-bold col-start-3 col-end-4 row-start-2 row-end-3 justify-self-left self-center">
-      {showtime?.showtime.movieId.name}
-
+        {showtime?.showtime.movieId.name}
       </div>
 
       <div className="col-[3_/_4] row-[3_/_4] justify-self-left self-center ">
@@ -131,10 +130,10 @@ export const Ticket = ({ seats, showtime, step, setStep, foods }) => {
         })}
       </div>
 
-      {seats.length !== 0 && (
+      {seats?.length !== 0 && (
         <button
           onClick={() => {
-            if (step === 2) {
+            if (step === 3) {
               setStep(step + 1);
               navigate(`/payment`);
             } else setStep(step + 1);
