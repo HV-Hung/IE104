@@ -105,7 +105,7 @@ export const Home = () => {
             slider.current = ref;
           }}
           autoplay
-          className="h-[700px] w-screen"
+          className="h-[850px] w-screen"
         >
           <div className="bg-black relative">
             <img
@@ -206,7 +206,7 @@ export const Home = () => {
                       <div className="absolute bottom-5 translate-x-[-50%] left-[50%] flex justify-center">
                         <Button
                           type="primary"
-                          className="bg-sky-700 font-bold text-center text-[20px] pb-[40px]"
+                          className="bg-sky-700 font-bold text-center text-[20px] pb-[40px] rounded-lg"
                         >
                           Mua vé
                         </Button>
