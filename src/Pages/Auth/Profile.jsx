@@ -106,15 +106,14 @@ export const Profile = () => {
               <h1>Sổ địa chỉ</h1>
             </div>
           )}
+
           {tab === 3 && <UserBenefit />}
-          <div
-            id="card-product-note-item"
-            className="card-product-note-item control"
-          >
-            <input type={"text"}></input>
+          {tab === 4 && (<div id="card-product-note-item" className="card-product-note-item control">
+            <input type="text" name="" id="" />
+          </div>)}
           </div>
         </div>
-      </div>
+      
     </Layout>
   );
 };
