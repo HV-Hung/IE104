@@ -134,9 +134,8 @@ export const Cinema = () => {
   return (
     <Layout>
       <Breadcrumb style={{ marginLeft: "16px" }}>
-        <Breadcrumb.Item>Cinema</Breadcrumb.Item>
       </Breadcrumb>
-      <div className="mb-10">
+      <div className="my-10">
         <div style={{ textAlign: "center" }}>
           <div
             style={{
