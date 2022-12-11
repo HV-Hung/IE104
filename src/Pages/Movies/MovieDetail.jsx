@@ -43,11 +43,8 @@ export const MovieDetail = () => {
 
   const ref = React.useRef(null);
   const handleClick = () => {
-    setBuyTicket(!buyTicket);
     ref.current?.scrollIntoView({ behavior: "smooth" });
   };
-
-  const [buyTicket, setBuyTicket] = React.useState(false);
 
   const [date, setDate] = React.useState(Dates[0].date);
 
@@ -59,6 +56,7 @@ export const MovieDetail = () => {
   const { fetchGet: fetchGetShowtime, result: showtimeResult } = useGet();
 
   React.useEffect(() => {
+    window.scrollTo(0, 0)
     fetchGet("province");
     // eslint-disable-next-line
   }, []);
@@ -83,57 +81,48 @@ export const MovieDetail = () => {
         <Breadcrumb.Item></Breadcrumb.Item>
       </Breadcrumb>
 
-      <div className="max-w-[1228px] mx-auto">
-        <div className="pt-[20px] h-[90px] text-[40px] font-semibold">
-          Nội dung
-        </div>
+      <div className="mx-[200px]">
+        <div className="py-[20px] min-h-[90px] text-[40px] font-bold">NỘI DUNG</div>
 
-        <div className="grid grid-cols-[30%_70%] gap-x-[20px] mb-[40px]">
-          <img
-            className="mr-[30px] w-[100%] h-[w-[100%]*2]"
-            src={movie?.image}
-            alt=""
-          />
+        <div className="grid grid-cols-[27%_73%] gap-x-[20px] mb-[40px]">
+          <img className="mr-[30px] w-[100%]" src={movie?.image} alt="" />
+
           <div>
             <div className="text-[30px] mb-[20px] font-semibold">
               {movie?.name}
             </div>
-            <div className="text-[16px] mb-[30px] leading-[25px]">
-              {movie?.description}
-            </div>
-            <div>
-              <div className="text-[16px] leading-[25px] mb-[15px]">
+            <div className="mb-[40px]">
+              <div className="text-[18px] leading-[25px] mb-[15px]">
                 <span className="font-medium mx-0">Đạo diễn: </span>
                 {movie?.director}
               </div>
-              <div className="text-[16px] leading-[25px] mb-[15px]">
+              <div className="text-[18px] leading-[25px] mb-[15px]">
                 <span className="font-medium mx-0">Diễn viên: </span>
                 {movie?.actors}
               </div>
-              <div className="text-[16px] leading-[25px] mb-[15px]">
+              <div className="text-[18px] leading-[25px] mb-[15px]">
                 <span className="font-medium mx-0">Thể loại: </span>
                 {movie?.genre.join(", ")}
               </div>
-              <div className="text-[16px] leading-[25px] mb-[15px]">
+              <div className="text-[18px] leading-[25px] mb-[15px]">
                 <span className="font-medium mx-0">Khởi chiếu: </span>
                 {new Date(movie?.releaseDate).toLocaleDateString("en-UK")}
               </div>
-              <div className="text-[16px] leading-[25px] mb-[15px]">
+              <div className="text-[18px] leading-[25px] mb-[15px]">
                 <span className="font-medium mx-0">Thời lượng: </span>
                 {movie?.duration} phút
               </div>
-              <div className="text-[16px] leading-[25px] mb-[15px]">
+              <div className="text-[18px] leading-[25px] mb-[15px]">
                 <span className="font-medium mx-0">Ngôn ngữ: </span>
                 {movie?.language}
               </div>
-              <div className="text-[16px] leading-[25px] mb-[15px] mb-[40px]">
+              <div className="text-[18px] leading-[25px]">
                 <span className="font-medium mx-0">Phân loại: </span>
-                <span className="font-bold mx-0 text-[18px]">
+                <span className="font-bold mx-0 text-[20px]">
                   {movie?.rated}
                 </span>
               </div>
             </div>
-
             <div className="flex flex-start">
               <Button
                 type="primary"
@@ -154,13 +143,19 @@ export const MovieDetail = () => {
             </div>
           </div>
         </div>
+
+        <div className="text-[25px] font-medium text-center mb-[15px]">CHI TIẾT PHIM</div>
+        <div className="text-[18px] mb-[40px] leading-[25px]">
+          {movie?.description}
+        </div>
       </div>
 
-      {buyTicket === true && (
+      {new Date(movie?.releaseDate) <= nowDay && (
         <div
-          className="p-[24px] min-h-[360px] bg-white my-[50px] mx-[200px]"
+          className="my-[24px] min-h-[360px] mb-[50px] mx-[200px]"
           ref={ref}
         >
+        <div className="text-[25px] font-medium text-center mb-[20px]">VUI LÒNG CHỌN THÔNG TIN VÉ</div>
           <div className="border-y-4 border-black py-5">
             {Dates.map((item) => (
               <button
@@ -191,6 +186,7 @@ export const MovieDetail = () => {
                 </button>
               ))}
           </div>
+
           <div>
             {showtimeResult &&
               showtimeResult.map((item) => (
@@ -198,7 +194,7 @@ export const MovieDetail = () => {
                   <div className="text-[30px] mb-[20px]">
                     {item?.cinema?.name}
                   </div>
-                  <Space>
+                  <Space wrap>
                     {item.showtimes.map((temp, index) => {
                       return (
                         <div
