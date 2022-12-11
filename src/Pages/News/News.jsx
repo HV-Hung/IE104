@@ -162,19 +162,19 @@ export const News = () => {
         <Breadcrumb.Item></Breadcrumb.Item>
       </Breadcrumb>
       <div className="w-[1228px] mx-auto flex justify-center items-center cursor-pointer">
-        <div className={`text-[30px] text-center px-[20px] py-[10px]  mx-[16px] my-[32px] font-bold hover:text-amber-300
+        <div className={`text-[30px] text-center px-[20px] py-[10px] mx-[16px] my-[32px] font-bold hover:text-amber-300
         cursor-pointer rounded-full border-sky-600 border-2 ${tabItem === 0 && "text-amber-300 bg-[#0284c7]"}`} onClick={() => setTabIitem(0)}>KHUYẾN MÃI</div>
         <div className={`text-[30px] text-center px-[20px] py-[10px] mx-[16px] my-[32px] font-bold hover:text-amber-300
         cursor-pointer rounded-full border-sky-600 border-2 ${tabItem === 1 && "text-amber-300 bg-[#0284c7]"}`} onClick={() => setTabIitem(1)}>TIN TỨC</div>
       </div>
-      {tabItem === 0 && <div className="max-h-[1872px] px-[200px] grid grid-cols-4 gap-x-[30px] gap-y-[30px]">
+      {tabItem === 0 && <div className="max-h-[1872px] px-[200px] mb-[32px] grid grid-cols-4 gap-x-[30px] gap-y-[30px]">
         {deal_list.map((item) => {
           return (
            <Link to={`/news/${item.id}`}>
             <div className="w-full h-auto cursor-pointer">
-              <img className="w-full h-[230px]" src={item.img} alt="" />
+              <img className="w-full h-[230px] transition ease-in-out delay-150 hover:scale-110 duration-300" src={item.img} alt="" />
               <div className="">
-                <div className="text-black text-[18px] text-center uppercase py-[12px] hover:text-[#0c468a]">
+                <div className="text-black text-[18px] text-center font-[500] uppercase py-[12px] hover:text-[#0c468a]">
                   {item.name}
                 </div>
                 <div className="text-black text-[16px] text-center pb-[8px]">
@@ -187,12 +187,12 @@ export const News = () => {
           )
         })}
       </div>}
-      {tabItem === 1 && <div className="max-h-[1872px] px-[200px] grid grid-cols-4 gap-y-[25px] hover:text-[#d4dd29]">
+      {tabItem === 1 && <div className="max-h-[1872px] px-[200px] mb-[32px] grid grid-cols-4 gap-y-[25px] hover:text-[#d4dd29]">
         {news_list.map((item) => {
           return (
             <Link to={`/news/${item.id}`}>
               <div className="w-full h-auto cursor-pointer">
-                <img className="w-[85%] h-[425px] mx-[auto]" src={item.img} alt="" />
+                <img className="w-[85%] h-[425px] mx-[auto] transition ease-in-out delay-150 hover:scale-110 duration-300" src={item.img} alt="" />
                 <div className="">
                   <div className="text-black text-[18px] text-center font-semibold uppercase py-[12px] hover:text-[#0c468a]">
                     {item.name}
