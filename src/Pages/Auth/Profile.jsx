@@ -5,6 +5,7 @@ import "./Profile.css";
 import UserInfo from "./UserInfo";
 import UserBenefit from "./UserBenefit";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { useGet } from "../../api";
 import {
   faUser,
   faClockRotateLeft,
@@ -15,13 +16,17 @@ import { HistoryBooKing } from "./HistoryBooKing";
 
 export const Profile = () => {
   const [tab, setTab] = React.useState(1);
-  console.log(tab);
+  const { fetchGet, result: user } = useGet();
   const currentUser = JSON.parse(localStorage.getItem("user"));
-  const total = currentUser?.tickets.reduce(
+  const total = user?.tickets.reduce(
     (total, ticket) => total + ticket.totalTicket + ticket.totalFood,
     0
   );
-  console.log({ total });
+
+  console.log({ user });
+  React.useEffect(() => {
+    fetchGet("user/" + currentUser?._id);
+  }, []);
 
   return (
     <Layout>
@@ -33,18 +38,20 @@ export const Profile = () => {
               <span>Tích điểm</span>
             </div>
             <div className="user-info-card-header">
-              <span>Nguyễn Phi Long</span>
+              <span>{user?.name}</span>
             </div>
             <div className="user-card-barcode flex flex-col">
               <Barcode
                 className="barcode"
                 displayValue={false}
                 format="CODE128"
-                value="0393277584"
+                value={user?.phoneNumber}
                 width="8px"
                 height="180px"
               />
-              <span className="font-bold mt-[5px] text-[20px]">0393277584</span>
+              <span className="font-bold mt-[5px] text-[20px]">
+                {user?.phoneNumber}
+              </span>
             </div>
           </div>
 
@@ -67,7 +74,7 @@ export const Profile = () => {
             <p className="flex flex-row ml-[10px] mr-[10px] text-[24px] my-[20px] justify-between">
               <span>Tổng chi tiêu</span>
               <span className="font-bold">
-                {total.toLocaleString("it-IT", {
+                {total?.toLocaleString("it-IT", {
                   style: "currency",
                   currency: "VND",
                 })}
@@ -107,7 +114,7 @@ export const Profile = () => {
         </div>
 
         <div className="column-main">
-          {tab === 1 && <UserInfo />}
+          {tab === 1 && user && <UserInfo user={user} fetchGet={fetchGet} />}
 
           {tab === 2 && <UserBenefit />}
           {tab === 3 && <HistoryBooKing />}

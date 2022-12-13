@@ -1,7 +1,7 @@
 import React from "react";
 import { Button, Form, Input, notification } from "antd";
 import "./Register.css";
-import { usePatch, useGet } from "../../api";
+import { usePatch } from "../../api";
 import { DatePicker } from "antd";
 import moment from "moment";
 
@@ -12,11 +12,9 @@ const openNotificationWithIcon = (type, message = "", des = "") => {
   });
 };
 
-const UserInfo = () => {
+const UserInfo = ({ fetchGet, user }) => {
   const { fetchPatch } = usePatch();
-  const { fetchGet, result: user } = useGet();
   const currentUser = JSON.parse(localStorage.getItem("user"));
-  console.log({ currentUser });
   const dateFormat = "DD/MM/YYYY";
   const onFinish = (values) => {
     console.log(values);
@@ -28,10 +26,7 @@ const UserInfo = () => {
     openNotificationWithIcon("success", "Cập nhật thông tin thành công ");
   };
 
-  React.useEffect(() => {
-    fetchGet("user/" + currentUser?._id);
-  }, []);
-
+  console.log({ user });
   return (
     <div id="dashboard" className="dashboard control">
       <div className="page-title">

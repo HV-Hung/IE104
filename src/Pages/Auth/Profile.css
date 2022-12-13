@@ -8,6 +8,8 @@
   padding: 24px 200px;
   background: #f9f7f7;
   height: 100vh;
+
+  background-color: rgb(242, 247, 255);
 }
 
 .column-left {
@@ -29,8 +31,6 @@
   float: left;
   width: 55%;
   margin-left: 70px;
-
-  height: 700px;
 }
 
 .dashboard {
@@ -130,7 +130,6 @@
   margin: 10px 20px 0;
   position: relative;
 }
-
 
 .dot-beign {
   position: absolute;
@@ -388,11 +387,11 @@ nav {
   gap: 15px;
 }
 
-.blue-color{
+.blue-color {
   color: #007bff;
 }
 
-.silver-background{
+.silver-background {
   background: linear-gradient(#c0c0c0, #112d4e);
 }
 .tab-content .all-benefit {
@@ -404,19 +403,22 @@ nav {
   font-size: 1.2rem;
 }
 
-.column-main [title="TÊN KHÁCH HÀNG"], .column-main [title="SỐ ĐIỆN THOẠI"], .column-main [title="SINH NHẬT"], .column-main [title="EMAIL"]{
+.column-main [title="TÊN KHÁCH HÀNG"],
+.column-main [title="SỐ ĐIỆN THOẠI"],
+.column-main [title="SINH NHẬT"],
+.column-main [title="EMAIL"] {
   font-size: 20px;
 }
 
-.column-main .ant-form-item-control-input-content input{
+.column-main .ant-form-item-control-input-content input {
   height: 50px;
 }
 
-.column-main .ant-picker-input input{
+.column-main .ant-picker-input input {
   width: 100%;
 }
 
-.column-main [type="submit"]{
+.column-main [type="submit"] {
   background: #007bff;
   border: none;
   padding: 5px 15px;
@@ -424,9 +426,6 @@ nav {
   border-radius: 10px;
 }
 
-.column-main .ant-picker-input>input{
+.column-main .ant-picker-input > input {
   font-size: 20px;
 }
-
-
-

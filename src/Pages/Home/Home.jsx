@@ -247,6 +247,9 @@ export const Home = () => {
                       </div>
                       <div className="absolute bottom-5 translate-x-[-50%] left-[50%] flex justify-center">
                         <Button
+                          onClick={() => {
+                            navigate(`/movie/${item._id}`);
+                          }}
                           type="primary"
                           className="bg-sky-700 font-bold text-center text-[20px] pb-[40px] rounded-lg"
                         >
